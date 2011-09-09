@@ -1,0 +1,34 @@
+# SYSTEM
+alias cpu='top -o cpu'
+alias mem='top -o vsize'
+alias ..="cd .."
+alias ...="cd ../.."
+alias kuwest="cd ~/code/kuwest"
+alias reload="source ~/bin/dotfiles/bashrc"
+alias dotfiles="mate ~/bin/dotfiles/"
+alias code="cd ~/code"
+
+alias hg="history | grep "
+
+# RUBY
+alias r="rails"
+alias c='cucumber -f pretty'
+
+# GIT
+alias g='git status'
+alias gl='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
+alias gb='git checkout -b'
+function gm() {
+  git merge $1 --no-ff
+}
+
+function gc() {
+  git commit -v -a -m "$*"
+}
+
+function gbt() {
+  git branch --track $2 remotes/$1/$2
+  git checkout $2
+}
+
+alias pa="ps aux | grep "
