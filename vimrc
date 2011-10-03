@@ -21,6 +21,8 @@ set wildchar=<Tab> wildmenu wildmode=full
 map <Leader>h :set invhls <CR>
 set cursorline
 
+color jellybeans
+
 " no scrollbars in macvim
 set guioptions-=e
 set guioptions-=r
@@ -57,6 +59,15 @@ map <Leader>m :!mvim % <CR>
 " show trailing whitespace
 set list listchars=tab:»·,trail:
 
+" remove trailing whitespace and replace tabs with spaces
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+
+" git blame shortcut
+vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
+" autoindent is good
+filetype plugin indent on
+
 silent autocmd bufwritepost .vimrc source $MYVIMRC 
 silent autocmd VimResized :TMiniBufExplorer<CR> 
 
@@ -66,3 +77,9 @@ silent autocmd VimResized :TMiniBufExplorer<CR>
 
 " rabl is ruby
 au BufRead,BufNewFile *.rabl setf ruby
+
+" make movement keys simpler
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l

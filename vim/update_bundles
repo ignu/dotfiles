@@ -21,6 +21,7 @@ git_bundles = [
   "git://github.com/tsaleh/vim-matchit.git",
   "git://github.com/tsaleh/vim-tcomment.git",
   "git://github.com/vim-ruby/vim-ruby.git",
+  "git://github.com/mileszs/ack.vim.git",
 ]
 
 vim_org_scripts = [

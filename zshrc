@@ -20,3 +20,5 @@ done
 
 source $HOME/.aliasrc
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+export CC=/usr/bin/gcc-4.2

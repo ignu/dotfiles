@@ -11,12 +11,14 @@ alias code="cd ~/code"
 alias hg="history | grep "
 
 # RUBY
+alias s="bundle exec rspec"
+alias sr="bundle exec spec"
 alias r="rails"
 alias c='cucumber -f pretty'
 
 # GIT
 alias g='git status'
-alias gl='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
+alias gl='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative -n 10'
 alias gb='git checkout -b'
 function gm() {
   git merge $1 --no-ff
@@ -32,3 +34,6 @@ function gbt() {
 }
 
 alias pa="ps aux | grep "
+
+alias old="cd /Volumes/Macintosh\ HD/Users/ignu"
+
