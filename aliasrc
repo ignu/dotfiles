@@ -18,7 +18,7 @@ alias c='cucumber -f pretty'
 
 # GIT
 alias g='git status'
-alias gl='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative -n 10'
+alias gl='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative -n 15'
 alias gb='git checkout -b'
 function gm() {
   git merge $1 --no-ff
