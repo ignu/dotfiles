@@ -1,2 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/ignu/code/stylitics/app/views/layouts'
+let g:netrw_dirhist_2='/Users/ignu/code/stylitics/app/assets/javascripts'
+let g:netrw_dirhist_3='/Users/ignu/code/stylitics/vendor/assets/javascripts'
