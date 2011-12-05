@@ -27,4 +27,10 @@ echo "linking files"
 echo "updating vim packages"  
   mkdir .vim/bundle
   .vim/update_bundles
+
+echo "setup postgres"
+  initdb /usr/local/var/postgres
+  cp /usr/local/Cellar/postgresql/9.0.1/org.postgresql.postgres.plist ~/Library/LaunchAgents
+  launchctl load -w ~/Library/LaunchAgents/org.postgresql.postgres.plist
+  pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
  
