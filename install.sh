@@ -2,6 +2,7 @@
 
 echo "installing oh my zsh"
   wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+  cd ~/
   rm .zshrc
 
 echo "cloning repository"
@@ -11,14 +12,14 @@ echo "cloning repository"
 
 echo "linking files"
   cd
-  ln ~/bin/dotfiles/ackrc .ackrc
-  ln ~/bin/dotfiles/vimrc .vimrc
-  ln ~/bin/dotfiles/gvimrc .gvimrc
-  ln -s ~/bin/dotfiles/vim .vim
-  ln -s ~/bin/dotfiles/gitconfig .gitconfig
-  ln -s ~/bin/dotfiles/aliasrc .aliasrc
-  ln -s ~/bin/dotfiles/tmux.conf .tmux.conf
+  ln ~/bin/dotfiles2.0/ackrc .ackrc
+  ln ~/bin/dotfiles2.0/vimrc .vimrc
+  ln ~/bin/dotfiles2.0/gvimrc .gvimrc
+  ln -s ~/bin/dotfiles2.0/vim .vim
+  ln -s ~/bin/dotfiles2.0/gitconfig .gitconfig
+  ln -s ~/bin/dotfiles2.0/aliasrc .aliasrc
+  ln -s ~/bin/dotfiles2.0/tmux.conf .tmux.conf
 
-  ln ~/bin/dotfiles/zshrc .zshrc
-  ln -s ~/bin/dotfiles/zsh_profile.d
+  ln ~/bin/dotfiles.0/zshrc .zshrc
+  ln -s ~/bin/dotfiles2.0/zsh_profile.d
  
