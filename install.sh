@@ -20,6 +20,6 @@ echo "linking files"
   ln -s ~/bin/dotfiles2.0/aliasrc .aliasrc
   ln -s ~/bin/dotfiles2.0/tmux.conf .tmux.conf
 
-  ln ~/bin/dotfiles.0/zshrc .zshrc
+  ln ~/bin/dotfiles2.0/zshrc .zshrc
   ln -s ~/bin/dotfiles2.0/zsh_profile.d
  
