@@ -15,9 +15,9 @@ echo "linking files"
   ln ~/bin/dotfiles2.0/vimrc .vimrc
   ln ~/bin/dotfiles2.0/gvimrc .gvimrc
   ln -s ~/bin/dotfiles2.0/vim .vim
-  ln -s ~/bin/dotfiles2.0/gitconfig .gitconfig
-  ln -s ~/bin/dotfiles2.0/aliasrc .aliasrc
-  ln -s ~/bin/dotfiles2.0/tmux.conf .tmux.conf
+  ln -~/bin/dotfiles2.0/gitconfig .gitconfig
+  ln ~/bin/dotfiles2.0/aliasrc .aliasrc
+  ln ~/bin/dotfiles2.0/tmux.conf .tmux.conf
 
   rm .zshrc
   ln ~/bin/dotfiles2.0/zshrc .zshrc
