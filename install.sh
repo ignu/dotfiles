@@ -21,5 +21,5 @@ echo "linking files"
   ln -s ~/bin/dotfiles2.0/tmux.conf .tmux.conf
 
   ln ~/bin/dotfiles2.0/zshrc .zshrc
-  ln -s ~/bin/dotfiles2.0/zsh_profile.d
+  ln -s ~/bin/dotfiles2.0/.zsh_profile.d
  
