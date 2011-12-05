@@ -23,4 +23,7 @@ echo "linking files"
   ln ~/bin/dotfiles2.0/zshrc .zshrc
   rm -rf ~/.zsh_profile.d
   ln -s ~/bin/dotfiles2.0/zsh_profile.d .zsh_profile.d
+
+echo "updating vim packages"  
+  .vim/update_bundles
  
