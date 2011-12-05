@@ -25,5 +25,6 @@ echo "linking files"
   ln -s ~/bin/dotfiles2.0/zsh_profile.d .zsh_profile.d
 
 echo "updating vim packages"  
+  mkdir .vim/bundle
   .vim/update_bundles
  
