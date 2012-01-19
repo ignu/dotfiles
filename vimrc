@@ -35,7 +35,8 @@ set listchars=tab:▸\ ,eol:¬
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 " show trailing whitespace
-set list listchars=tab:»·,trail:
+"set list listchars=tab:»·,trail:
+set list listchars=tab:»·,trail:.
 
 " ---------
 " bindings
