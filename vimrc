@@ -21,7 +21,7 @@ set wildchar=<Tab> wildmenu wildmode=full
 map <Leader>h :set invhls <CR>
 set cursorline
 
-color jellybeans
+color Tomorrow
 
 " no scrollbars in macvim
 set guioptions-=e
@@ -175,4 +175,17 @@ endfunction
 
 " Map this feature to the key sequence ',p' (comma lowercase-p)
 map <Leader>M :call PreviewMarkdown()<CR>
+
+
+
+function! OpenChangedFiles()
+  only " Close all windows, unless they're modified
+  let status = system('git status -s | grep "^ \?\(M\|A\)" | cut -d " " -f 3')
+  let filenames = split(status, "\n")
+  exec "edit " . filenames[0]
+  for filename in filenames[1:]
+    exec "sp " . filename
+  endfor
+endfunction
+command! OpenChangedFiles :call OpenChangedFiles()
 
