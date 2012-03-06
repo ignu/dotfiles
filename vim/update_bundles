@@ -3,6 +3,10 @@
 git_bundles = [ 
   #"git://github.com/astashov/vim-ruby-debugger.git",
   #"git://github.com/hallison/vim-rdoc.git",
+  'git://github.com/vim-scripts/tslime.vim.git',
+  'git://github.com/jgdavey/vim-turbux.git',
+  'git://github.com/vim-scripts/tslime.vim.git',
+  "git://github.com/digitaltoad/vim-jade.git",
   "git://github.com/tpope/vim-endwise.git",
   "git://github.com/Lokaltog/vim-powerline.git",
   "git://github.com/chrismetcalf/vim-yankring.git",

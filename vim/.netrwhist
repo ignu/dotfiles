@@ -1,4 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/Users/ignu/code/stylitics/spec/helpers'
-let g:netrw_dirhist_2='/Users/ignu/code/stylitics/config'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/ignu/code/styleog/spec'
+let g:netrw_dirhist_2='/Users/ignu/code/styleog/spec/models'
+let g:netrw_dirhist_3='/Users/ignu/code/styleog/spec'
+let g:netrw_dirhist_4='/Users/ignu/bin/dotfiles2.0/vim'
+let g:netrw_dirhist_5='/Users/ignu/code/stylitics/spec/controllers'
+let g:netrw_dirhist_6='/Users/ignu/code/telvue/ion/app/views'
+let g:netrw_dirhist_7='/Users/ignu/code/telvue/ion/app/views/dashboards'
