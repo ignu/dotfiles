@@ -25,6 +25,14 @@ alias gs='git show --stat'
 alias gl='git log -n 14'
 alias gb='git checkout -b'
 alias glo='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
+
+function gitnewbranch() {
+  git fetch
+  git checkout master
+  git rebase origin/master
+  git checkout -b $1
+}
+
 function gm() {
   git merge $1 --no-ff
 }

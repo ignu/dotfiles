@@ -97,3 +97,5 @@ function! OpenChangedFiles()
 endfunction
 command! OpenChangedFiles :call OpenChangedFiles()
 
+
+map <Leader>B :bufdo bd <CR>

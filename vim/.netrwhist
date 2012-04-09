@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/ignu/code/stylitics/app/assets/stylesheets/application'
-let g:netrw_dirhist_2='/Users/ignu/code/stylitics/app/assets/stylesheets/application/views'
-let g:netrw_dirhist_3='/Users/ignu/code/stylitics/app/assets/javascripts'
-let g:netrw_dirhist_4='/Users/ignu/code/stylitics/app/assets'
-let g:netrw_dirhist_5='/Users/ignu/code/stylitics/app/assets/stylesheets'
-let g:netrw_dirhist_6='/Users/ignu/code/stylitics/app/assets/stylesheets/application'
-let g:netrw_dirhist_7='/Users/ignu/code/stylitics/app/assets/stylesheets/application/views'
