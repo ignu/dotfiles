@@ -1,0 +1,19 @@
+# #!/usr/bin/env ruby
+snippet it
+	it "${1:object}" do
+	  ${2}
+	end
+snippet des
+	describe "${1:object}" do
+	  ${2}
+	end
+snippet dess
+	require 'spec_helper'
+	
+	describe "${1:object}" do
+	  ${2}
+	end
+snippet lee
+	let!(:${1:object}) { Factory(:${2:$1}${3}) }
+snippet le
+	let(:${1:object}) { Factory(:${2:$1}${3}) }

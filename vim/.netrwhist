@@ -1,10 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/ignu/code/stylitics/app/views/shared'
-let g:netrw_dirhist_2='/Users/ignu/code/stylitics/app/views/profiles'
-let g:netrw_dirhist_3='/Users/ignu/code/stylitics/config'
-let g:netrw_dirhist_4='/Users/ignu/code/stylitics/config/initializers'
-let g:netrw_dirhist_5='/Users/ignu/code/stylitics/app/controllers'
-let g:netrw_dirhist_6='/Users/ignu/code/stylitics/app'
-let g:netrw_dirhist_7='/Users/ignu/code/stylitics/app/controllers'
-let g:netrw_dirhist_8='/Users/ignu/code/stylitics/app/controllers/users'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Users/ignu/code/statis/spec/models'
