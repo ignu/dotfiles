@@ -26,7 +26,7 @@ alias gl='git log -n 14'
 alias gb='git checkout -b'
 alias glo='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
-aluas theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
+alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
 
 function gitnewbranch() {
   git fetch
