@@ -14,7 +14,7 @@ ZSH_THEME="apple"
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(osx rails ruby git)
+plugins=(osx rails ruby git npm zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -56,6 +56,5 @@ alias sm="bundle exec rspec"
 if [[ -a /etc/zshenv ]]; then
   sudo mv /etc/zshenv /etc/zprofile
 fi
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
