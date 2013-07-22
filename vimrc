@@ -21,7 +21,7 @@ set wildchar=<Tab> wildmenu wildmode=full
 map <Leader>h :set invhls <CR>
 set cursorline
 
-color jellybeans
+color ironman
 
 " no scrollbars in macvim
 set guioptions-=e
