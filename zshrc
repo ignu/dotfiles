@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+DISABLE_AUTO_TITLE=true
 
 # lets do vim mode.
 bindkey -v
