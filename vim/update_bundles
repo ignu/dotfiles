@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 git_bundles = [
+  "git://github.com/kien/ctrlp.vim.git",
   "git://github.com/Shougo/unite.vim.git",
   "git://github.com/mileszs/ack.vim.git",
   "git://github.com/juvenn/mustache.vim.git",
@@ -27,7 +28,9 @@ git_bundles = [
   "git://github.com/bogado/file-line.git",
   "git://github.com/kchmck/vim-coffee-script.git",
   "git://github.com/msanders/snipmate.vim.git",
-  "git://github.com/scrooloose/nerdtree.git"
+  "git://github.com/scrooloose/nerdtree.git",
+  "git://github.com/LnL7/vim-tslime.git",
+  "git://github.com/jgdavey/vim-turbux.git"
 ]
 
 vim_org_scripts = [

@@ -1,4 +1,5 @@
-set shell=/bin/sh
+set shell=bash
+set mouse=a
 
 " ------------
 " Pathogen
@@ -7,12 +8,20 @@ call pathogen#infect()
 call pathogen#helptags()
 
 inoremap jk <ESC>
+map <Right> :cnext<CR>
+map <Left> :cprev<CR>
+
+"---------------
+" TSLIME/TURBUX
+"------------------
+let g:turbux_command_prefix = 'bundle exec'
+let g:turbux_runner  = 'tslime'
 
 " EMACS
-:noremap <C-a> <Home>
-:noremap <C-b> <Left>
-:noremap <C-f> <Right>
-:noremap <C-e> <End>
+noremap <C-a> <Home>
+noremap <C-b> <Left>
+noremap <C-f> <Right>
+noremap <C-e> <End>
 
 " ------------
 " better defaults
@@ -31,6 +40,9 @@ syntax on
 set wildmode=list:longest
 set wildchar=<Tab> wildmenu wildmode=full
 
+" open current buffer in NERDTree
+map <Leader>q :NERDTreeFind<cr>
+
 " Hide search highlighting
 map <Leader>h :set invhls <CR>
 
@@ -44,10 +56,13 @@ map <Leader>t' :Tabularize /'
 
 set cursorline
 
-color ironman
 " Press F4 to toggle highlighting on/off, and show current value.
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 
+
+color ironman
+
+au BufRead,BufNewFile *.hamlc set ft=haml
 " no scrollbars in macvim
 set guioptions-=e
 set guioptions-=r
@@ -72,6 +87,8 @@ map <D-j> :b#<CR>
 map <D-r> :bd<CR>
 "next quickfix file
 map <D-'> :cnext<CR>
+map <leader>' :w<CR> :cnext<CR>
+
 imap <Tab> <C-N>
 imap sao save_and_open_page
 imap `l p "=" * 80<ESC>
@@ -293,12 +310,14 @@ command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>'
 nnoremap <silent> <Leader>r :Bclose<CR>
 
 
+" Bring CtrlP back
+nnoremap <leader>f :CtrlP<cr>
 
 " Unite
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>j :Unite -buffer-name=files   file<cr>
-nnoremap <leader>f :Unite -buffer-name=files   file_rec/async<cr>
+nnoremap <leader>j :Unite -buffer-name=files   file_rec<cr>
+" nnoremap <leader>f :Unite -buffer-name=files   file_rec/async<cr>
 nnoremap <leader>F :Unite -buffer-name=files   file<cr>
 nnoremap <leader>1 :Unite -buffer-name=mru     file_mru<cr>
 nnoremap <leader>2 :Unite -buffer-name=outline outline<cr>
