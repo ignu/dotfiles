@@ -49,10 +49,11 @@ map <Leader>h :set invhls <CR>
 
 noremap <Leader>] :GitGutterNextHunk<CR>
 
-map <Leader>t= :Tabularize /=
-map <Leader>t: :Tabularize /:
-map <Leader>t, :Tabularize /,
-map <Leader>t' :Tabularize /'
+map <Leader>= :Tabularize /=<cr>
+map <Leader>: :Tabularize /:<cr>
+map <Leader>, :Tabularize /,<cr>
+map <Leader>" :Tabularize /"<cr>
+
 
 set cursorline
 
@@ -61,6 +62,9 @@ set cursorline
 
 
 color ironman
+if has("gui_macvim")
+  color corporation
+endif
 
 au BufRead,BufNewFile *.hamlc set ft=haml
 " no scrollbars in macvim
