@@ -7,6 +7,9 @@ set mouse=a
 call pathogen#infect()
 call pathogen#helptags()
 
+set so=14
+set ttymouse=xterm2
+
 inoremap jk <ESC>
 map <Right> :cnext<CR>
 map <Left> :cprev<CR>
@@ -46,6 +49,13 @@ map <Leader>q :NERDTreeFind<cr>
 " Hide search highlighting
 map <Leader>h :set invhls <CR>
 
+
+" Do not show cursorline on inactive panes
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
 
 noremap <Leader>] :GitGutterNextHunk<CR>
 

@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/ignu/code/stylitics/lib/notifications'
+let g:netrw_dirhist_2='/Users/ignu/code/stylitics/app/models'
+let g:netrw_dirhist_3='/Users/ignu/code/ce_bacchus/deploy'
+let g:netrw_dirhist_4='/Users/ignu/code/credoppl'
+let g:netrw_dirhist_5='/Users/ignu/code/ce_bacchus/deploy'
+let g:netrw_dirhist_6='/Users/ignu/code/credoppl'
+let g:netrw_dirhist_7='/Users/ignu/code/credoppl/app/models'
+let g:netrw_dirhist_8='/Users/ignu/code/ce_bacchus/app/views/layouts'
+let g:netrw_dirhist_9='/Users/ignu/code/ce_bacchus/app/views'

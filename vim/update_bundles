@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 
 git_bundles = [
+  "git://github.com/slim-template/vim-slim.git",
+  "git://github.com/Lokaltog/vim-easymotion.git",
+  "git://github.com/jnwhiteh/vim-golang.git",
   "git://github.com/kien/ctrlp.vim.git",
   "git://github.com/Shougo/unite.vim.git",
   "git://github.com/mileszs/ack.vim.git",
