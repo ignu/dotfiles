@@ -14,11 +14,17 @@ inoremap jk <ESC>
 map <Right> :cnext<CR>
 map <Left> :cprev<CR>
 
+let g:vimrubocop_ignore_warning = 1
+
 "---------------
 " TSLIME/TURBUX
 "------------------
 let g:turbux_command_prefix = 'bundle exec'
 let g:turbux_runner  = 'tslime'
+map <Leader><Right> :Tx rake db:migrate<CR>
+map <Leader><Left> :Tx rake db:rollback<CR>
+map <Leader><F3>:Tx bundle<CR>
+
 
 " EMACS
 noremap <C-a> <Home>
@@ -45,10 +51,10 @@ set wildchar=<Tab> wildmenu wildmode=full
 
 " open current buffer in NERDTree
 map <Leader>q :NERDTreeFind<cr>
+map <Leader>e :e config/routes.rb<cr>
 
 " Hide search highlighting
 map <Leader>h :set invhls <CR>
-
 
 " Do not show cursorline on inactive panes
 augroup CursorLine
@@ -57,19 +63,17 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-noremap <Leader>] :GitGutterNextHunk<CR>
+noremap <Leader>G :GitGutterNextHunk<CR>
 
 map <Leader>= :Tabularize /=<cr>
 map <Leader>: :Tabularize /:<cr>
 map <Leader>, :Tabularize /,<cr>
 map <Leader>" :Tabularize /"<cr>
 
-
 set cursorline
 
 " Press F4 to toggle highlighting on/off, and show current value.
 :noremap <F4> :set hlsearch! hlsearch?<CR>
-
 
 color ironman
 if has("gui_macvim")
@@ -106,6 +110,7 @@ map <leader>' :w<CR> :cnext<CR>
 imap <Tab> <C-N>
 imap sao save_and_open_page
 imap `l p "=" * 80<ESC>
+
 nmap <leader>v :tabedit $MYVIMRC<CR>
 nmap <leader># :set number<CR>
 nmap <leader>n :set nonumber<CR>
@@ -115,9 +120,10 @@ map <Leader>m :!mvim % <CR>
 " show trailing whitespace
 set list listchars=tab:»·,trail:
 
+map <Leader><F1> :ResetTmuxVars<CR>
+
 " remove trailing whitespace and replace tabs with spaces
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
-nnoremap <silent> <F2> :Dispatch rspec %<CR>
 
 " git blame shortcut
 vmap <Leader>g :<C-U>!git blame -w <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
@@ -126,7 +132,7 @@ vmap <Leader>g :<C-U>!git blame -w <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line
 filetype plugin indent on
 
 silent autocmd bufwritepost .vimrc source $MYVIMRC 
-silent autocmd VimResized :TMiniBufExplorer<CR> 
+"silent autocmd VimResized :TMiniBufExplorer<CR>
 
 "-----------
 " Syntax
@@ -328,20 +334,20 @@ nnoremap <silent> <Leader>r :Bclose<CR>
 nnoremap <leader>f :CtrlP<cr>
 
 " Unite
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>j :Unite -buffer-name=files   file_rec<cr>
+"let g:unite_source_history_yank_enable = 1
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"nnoremap <leader>j :Unite -buffer-name=files   file_rec<cr>
 " nnoremap <leader>f :Unite -buffer-name=files   file_rec/async<cr>
-nnoremap <leader>F :Unite -buffer-name=files   file<cr>
-nnoremap <leader>1 :Unite -buffer-name=mru     file_mru<cr>
-nnoremap <leader>2 :Unite -buffer-name=outline outline<cr>
-nnoremap <leader>y :Unite -buffer-name=yank    history/yank<cr>
-nnoremap <leader>e :Unite -buffer-name=buffer  buffer<cr>
+"nnoremap <leader>F :Unite -buffer-name=files   file<cr>
+"nnoremap <leader>1 :Unite -buffer-name=mru     file_mru<cr>
+"nnoremap <leader>2 :Unite -buffer-name=outline outline<cr>
+"nnoremap <leader>y :Unite -buffer-name=yank    history/yank<cr>
+"nnoremap <leader>e :Unite -buffer-name=buffer  buffer<cr>
 
 " Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
+"autocmd FileType unite call s:unite_settings()
+"function! s:unite_settings()
+"  " Enable navigation with control-j and control-k in insert mode
+"  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+"  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+"endfunction
