@@ -38,8 +38,9 @@ git_bundles = [
   "git://github.com/jgdavey/vim-turbux.git",
 
   #COLORS
-  "https://github.com/nanotech/jellybeans.vim.git",
-  "git://github.com/tpope/vim-vividchalk.git"
+  "git://github.com/nanotech/jellybeans.vim.git",
+  "git://github.com/tpope/vim-vividchalk.git",
+  "git://github.com/noahfrederick/vim-hemisu.git"
 ]
 
 vim_org_scripts = [
