@@ -4,7 +4,7 @@
   autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 
 " Go to full width and height in full screen mode.
-  set fuoptions=maxvert,maxhorz   
+  set fuoptions=maxvert,maxhorz
   set transparency=0
   set go-=L
 
@@ -13,11 +13,6 @@
 
 " Don't flick cursor.
   set guicursor=a:blinkon0
-" peepcode tab nav
-
-  " make peepopen nice
-  imap <D-t> <Esc><D-t>
-  imap <D-T> <Esc><D-T>
 
 " TABS: safari style tab navigation
   nmap <D-[> :tabprevious<CR>
@@ -57,9 +52,5 @@
   vmap <D-[> <<
   imap <D-[> <C-O><<
 
- if has("gui_macvim")
-    macmenu &File.New\ Tab key=<nop>
-    map <D-t> <Plug>PeepOpen
- end
 call pathogen#runtime_append_all_bundles()
 
