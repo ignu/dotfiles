@@ -10,11 +10,21 @@ call pathogen#helptags()
 set so=14
 set ttymouse=xterm2
 
-inoremap jk <ESC>
-map <Right> :cnext<CR>
-map <Left> :cprev<CR>
-
 let g:vimrubocop_ignore_warning = 1
+
+" Escape when trying to find cursor
+inoremap jk <ESC>
+
+" Remember last location in file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal g'\"" | endif
+endif
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+set numberwidth=1
 
 "---------------
 " TSLIME/TURBUX
@@ -22,15 +32,27 @@ let g:vimrubocop_ignore_warning = 1
 let g:turbux_command_prefix = 'bundle exec'
 let g:turbux_runner  = 'tslime'
 map <Leader><Right> :Tx rake db:migrate<CR>
+
 map <Leader><Left> :Tx rake db:rollback<CR>
-map <Leader><F3>:Tx bundle<CR>
 
+map <Up> :GitGutterPrevHunk<CR>
+map <Down> :GitGutterNextHunk<CR>
+" Arrow Keys Navigate QuickFix Window
+map <Right> :cnext<CR>
+map <Left> :cprev<CR>
 
+map <Leader><Up> :GitGutterLineHighlightsToggle<CR>
+map <Leader><F3> :Tx bundle<CR>
+
+" ---------
 " EMACS
+" ---------
 noremap <C-a> <Home>
 noremap <C-b> <Left>
 noremap <C-f> <Right>
 noremap <C-e> <End>
+
+"noremap <C-l> :match ErrorMsg '\%>79v.\+'<CR>
 
 " ------------
 " better defaults
@@ -49,12 +71,6 @@ syntax on
 set wildmode=list:longest
 set wildchar=<Tab> wildmenu wildmode=full
 
-" open current buffer in NERDTree
-map <Leader>q :NERDTreeFind<cr>
-map <Leader>e :e config/routes.rb<cr>
-
-" Hide search highlighting
-map <Leader>h :set invhls <CR>
 
 " Do not show cursorline on inactive panes
 augroup CursorLine
@@ -75,12 +91,25 @@ set cursorline
 " Press F4 to toggle highlighting on/off, and show current value.
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 
-color ironman
-if has("gui_macvim")
-  color corporation
+" Press F12 to Toggle NerdTree
+:noremap <F12> :NERDTreeToggle<CR>
+:noremap <F11> :NERDTreeFind<CR>
+
+" open current buffer in NERDTree
+map <Leader>q :NERDTreeFind<cr>
+
+color blackboard
+set background=dark
+"if has("gui_macvim")
+"endif
+"
+if has("persistent_undo")
+  set undodir=~/.vim/undodir
+  set undofile
 endif
 
 au BufRead,BufNewFile *.hamlc set ft=haml
+au BufRead,BufNewFile *.skim set ft=slim
 " no scrollbars in macvim
 set guioptions-=e
 set guioptions-=r
@@ -109,6 +138,7 @@ map <leader>' :w<CR> :cnext<CR>
 
 imap <Tab> <C-N>
 imap sao save_and_open_page
+imap ;pr require 'pry'; binding.pry<esc>
 imap `l p "=" * 80<ESC>
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
@@ -121,6 +151,7 @@ map <Leader>m :!mvim % <CR>
 set list listchars=tab:»·,trail:
 
 map <Leader><F1> :ResetTmuxVars<CR>
+map <F1> :echo expand('%:t')<CR>
 
 " remove trailing whitespace and replace tabs with spaces
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
@@ -329,6 +360,14 @@ endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 nnoremap <silent> <Leader>r :Bclose<CR>
 
+"let g:rails_projections = {
+"      \ "app/services/cloud_stack/*_service.rb": {
+"      \   "command" : "service",
+"      \   "affinity": "model",
+"      \   "template": "class CloudStack::%SService\n  include",
+"      \   "keywords": "service",
+"      \   "test"    : "spec/services/cloud_stack/%s_spec.rb"
+"      \ }
 
 " Bring CtrlP back
 nnoremap <leader>f :CtrlP<cr>
@@ -351,3 +390,16 @@ nnoremap <leader>f :CtrlP<cr>
 "  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
 "  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 "endfunction
+nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
+hi OverLength ctermbg=none cterm=none
+match OverLength /\%>79v/
+fun! s:LongLineHLToggle()
+ if !exists('w:longlinehl')
+  let w:longlinehl = matchadd('ErrorMsg', '.\%>80v', 0)
+  echo "Long lines highlighted"
+ else
+  call matchdelete(w:longlinehl)
+  unl w:longlinehl
+  echo "Long lines unhighlighted"
+ endif
+endfunction

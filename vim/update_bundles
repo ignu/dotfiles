@@ -4,17 +4,15 @@ git_bundles = [
   "git://github.com/ignu/vim-rubocop.git",
   "git://github.com/slim-template/vim-slim.git",
   "git://github.com/Lokaltog/vim-easymotion.git",
+  "git://github.com/scrooloose/nerdcommenter.git",
   "git://github.com/jnwhiteh/vim-golang.git",
   "git://github.com/kien/ctrlp.vim.git",
-  "git://github.com/Shougo/unite.vim.git",
   "git://github.com/mileszs/ack.vim.git",
   "git://github.com/juvenn/mustache.vim.git",
   "git://github.com/tpope/vim-bundler.git",
   "git://github.com/tpope/vim-fugitive.git",
   "git://github.com/ecomba/vim-ruby-refactoring",
-  "git://github.com/tpope/vim-dispatch.git",
   "git://github.com/airblade/vim-gitgutter.git",
-  "git://github.com/vim-scripts/closetag.vim.git",
   "git://github.com/scrooloose/syntastic.git",
   "git://github.com/tpope/vim-endwise.git",
   "git://github.com/airblade/vim-rooter.git",
@@ -32,12 +30,16 @@ git_bundles = [
   "git://github.com/kchmck/vim-coffee-script.git",
   "git://github.com/msanders/snipmate.vim.git",
   "git://github.com/scrooloose/nerdtree.git",
+  "git://github.com/vitaly/vim-syntastic-coffee.git",
 
+  #"git://github.com/tpope/vim-dispatch.git",
   # TMUX
   "git://github.com/LnL7/vim-tslime.git",
   "git://github.com/jgdavey/vim-turbux.git",
 
   #COLORS
+  "git://github.com/junegunn/seoul256.vim.git",
+  "git://github.com/w0ng/vim-hybrid.git",
   "git://github.com/nanotech/jellybeans.vim.git",
   "git://github.com/tpope/vim-vividchalk.git",
   "git://github.com/noahfrederick/vim-hemisu.git"
