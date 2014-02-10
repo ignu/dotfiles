@@ -2,6 +2,7 @@
 
 git_bundles = [
   "git://github.com/ignu/vim-rubocop.git",
+  "git://github.com/ignu/javascript_spec_navigator.vim.git",
   "git://github.com/slim-template/vim-slim.git",
   "git://github.com/Lokaltog/vim-easymotion.git",
   "git://github.com/scrooloose/nerdcommenter.git",
@@ -31,6 +32,7 @@ git_bundles = [
   "git://github.com/msanders/snipmate.vim.git",
   "git://github.com/scrooloose/nerdtree.git",
   "git://github.com/vitaly/vim-syntastic-coffee.git",
+  "git//github.com/bling/vim-airline.git",
 
   #"git://github.com/tpope/vim-dispatch.git",
   # TMUX
