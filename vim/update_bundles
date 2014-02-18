@@ -8,7 +8,6 @@ git_bundles = [
   "git://github.com/scrooloose/nerdcommenter.git",
   "git://github.com/jnwhiteh/vim-golang.git",
   "git://github.com/kien/ctrlp.vim.git",
-  "git://github.com/mileszs/ack.vim.git",
   "git://github.com/juvenn/mustache.vim.git",
   "git://github.com/tpope/vim-bundler.git",
   "git://github.com/tpope/vim-fugitive.git",
@@ -32,7 +31,7 @@ git_bundles = [
   "git://github.com/msanders/snipmate.vim.git",
   "git://github.com/scrooloose/nerdtree.git",
   "git://github.com/vitaly/vim-syntastic-coffee.git",
-  "git//github.com/bling/vim-airline.git",
+  "git://github.com/rking/ag.vim.git",
 
   #"git://github.com/tpope/vim-dispatch.git",
   # TMUX
