@@ -1,0 +1,22 @@
+# #!/usr/bin/env ruby
+snippet dess
+	#= require ./support/spec_helper
+	describe("${1}", function() {
+	  ${2}
+	});
+
+
+snippet des
+	describe("${1}", function() {
+	  before(function() { ${4} });
+	
+	  it("${2}", function() {
+	    ${3};
+	  });
+	});
+
+snippet --
+	console.log("${2:$1}", ${1:object});
+snippet ---
+	console.debug(${1});
+	console.debug("------------------------------------------");
