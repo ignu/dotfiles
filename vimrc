@@ -69,12 +69,19 @@ syntax on
 set wildmode=list:longest
 set wildchar=<Tab> wildmenu wildmode=full
 
+" RSI sucks. my pooooor thumb
+noremap \ :w<CR>
+
 augroup MiscMisc
   au!
   silent autocmd bufwritepost .vimrc source $MYVIMRC
 
   " let autocomplete work for marionette handlers
   au BufRead,BufNewFile *.coffee setlocal iskeyword+=:
+
+  " remember fold positions
+  autocmd BufWinLeave .* mkview
+  autocmd BufWinEnter .* silent loadview 
 augroup END
 
 " Remember last location in file
@@ -126,6 +133,7 @@ endif
 " no scrollbars in macvim
 set guioptions-=e
 set guioptions-=r
+nmap K :vsp<cr>:Glog<cr>
 
 " -----------------
 " Text Formatting
@@ -134,8 +142,6 @@ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set listchars=tab:▸\ ,eol:¬
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
-" show trailing whitespace
-"set list listchars=tab:»·,trail:
 set list listchars=tab:»·,trail:.
 
 " ---------
@@ -152,7 +158,8 @@ iabbrev SAO save_and_open_buffer
 
 noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
 
-inoremap <Tab> <C-N>
+map <Tab> :tabn<cr>
+map <S-Tab> :tabp<cr>
 inoremap ;pr require 'pry'; binding.pry<esc>
 inoremap `l p "=" * 80<ESC>
 
@@ -183,6 +190,7 @@ filetype plugin indent on
 " Syntax
 " ----------
 
+nmap <> :tabn<CR>
 "noremap <C-u> :tabn<CR>
 "noremap <C-i> :tabp<CR>
 
