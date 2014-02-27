@@ -122,6 +122,7 @@ noremap <F4> :set hlsearch! hlsearch?<CR>
 " Press F12 to Toggle NerdTree
 noremap <F12> :NERDTreeToggle<CR>
 noremap <F11> :NERDTreeFind<CR>
+noremap ; :Ag 
 
 color blackboard
 set background=dark
@@ -202,7 +203,7 @@ nmap <> :tabn<CR>
 "noremap <C-i> :tabp<CR>
 
 "Ack current word
-nnoremap <leader>a :exe "Ack " . shellescape(expand("<cWORD>")) . " ."<cr>
+nnoremap <leader>a :exe "Ag " . shellescape(expand("<cWORD>")) . " ."<cr>
 noremap  <leader>z :call JsSpecNavigate()<CR>
 
 " make movement keys simpler
