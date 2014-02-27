@@ -5,12 +5,19 @@ snippet dess
 
 snippet des
 	describe "${1}", ->
-	  before ->"
-	  it "${2}"
+	  before ->
+	    ${2}
+	
+	  it "${3}"
 
+snippet it
+	it "${1}", ->
+	  ${2}
 snippet --
 	console.log "${2:$1}", ${1:object}
+snippet ----
+	console.debug ${2:$1} = ${1:object}
+	console.debug "*******************************************************"
 snippet ---
-	console.log "||||||||||||||||||||||"
-	console.log ${1}
-	console.log "||||||||||||||||||||||"
+	console.debug ${1:object}
+	console.debug "*******************************************************"
