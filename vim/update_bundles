@@ -2,6 +2,7 @@
 
 git_bundles = [
   "git://github.com/ignu/vim-rubocop.git",
+  #"git://github.com/zhaocai/GoldenView.Vim.git",
   "git://github.com/ignu/javascript_spec_navigator.vim.git",
   "git://github.com/slim-template/vim-slim.git",
   "git://github.com/Lokaltog/vim-easymotion.git",
@@ -33,7 +34,8 @@ git_bundles = [
   "git://github.com/scrooloose/nerdtree.git",
   "git://github.com/vitaly/vim-syntastic-coffee.git",
   "git://github.com/rking/ag.vim.git",
-  "git://zenorocha/dracula-theme.git",
+  "git://github.com/shinokada/dragvisuals.vim.git",
+  #'git://christoomey/vim-tmux-navigator',
 
   #"git://github.com/tpope/vim-dispatch.git",
   # TMUX
@@ -41,6 +43,7 @@ git_bundles = [
   "git://github.com/jgdavey/vim-turbux.git",
 
   #COLORS
+  "git://zenorocha/dracula-theme.git",
   "git://github.com/junegunn/seoul256.vim.git",
   "git://github.com/w0ng/vim-hybrid.git",
   "git://github.com/nanotech/jellybeans.vim.git",

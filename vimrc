@@ -20,6 +20,8 @@ set backspace=indent,eol,start
 
 set numberwidth=1
 
+nnoremap ; :
+
 "---------------
 " TSLIME/TURBUX
 "------------------
@@ -35,7 +37,6 @@ noremap <Down> :GitGutterNextHunk<CR>
 noremap <Right> :cnext<CR>
 noremap <Left> :cprev<CR>
 noremap <Leader><Up> :GitGutterLineHighlightsToggle<CR>
-noremap <Leader><F3> :Tx bundle<CR>
 
 " simpler surround.vim
 :onoremap p i(
@@ -81,7 +82,7 @@ augroup MiscMisc
 
   " remember fold positions
   autocmd BufWinLeave .* mkview
-  autocmd BufWinEnter .* silent loadview 
+  autocmd BufWinEnter .* silent loadview
 augroup END
 
 " Remember last location in file
@@ -116,13 +117,7 @@ map <Leader>" :Tabularize /"<cr>
 
 set cursorline
 
-" Press F4 to toggle highlighting on/off, and show current value.
-noremap <F4> :set hlsearch! hlsearch?<CR>
-
-" Press F12 to Toggle NerdTree
-noremap <F12> :NERDTreeToggle<CR>
-noremap <F11> :NERDTreeFind<CR>
-noremap ; :Ag 
+noremap ; :Ag
 
 color blackboard
 set background=dark
@@ -162,7 +157,7 @@ noremap <D-r> :bd<CR>
 noremap <D-'> :cnext<CR>
 noremap <leader>' :w<CR> :cnext<CR>
 iabbrev sao save_and_open_page
-iabbrev SAO save_and_open_buffer
+iabbrev SAO save_and_open_screenshot
 
 noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
 
@@ -182,9 +177,16 @@ set list listchars=tab:»·,trail:
 
 noremap <Leader><F1> :ResetTmuxVars<CR>
 noremap <F1> :echo expand('%:t')<CR>
-
 " remove trailing whitespace and replace tabs with spaces
+" Press F4 to toggle highlighting on/off, and show current value.
+noremap <F2> :noremap <F1> :Tx
+:nnoremap <F3> :buffers<CR>:b<Space>
+noremap <Leader><F3> :Tx bundle<CR>
+noremap <F4> :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+:nnoremap <F9> :bufdo! bd<cr>
+noremap <F12> :NERDTreeToggle<CR>
+noremap <F11> :NERDTreeFind<CR>
 
 " git blame shortcut
 vnoremap <Leader>g :<C-U>!git blame -w <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
@@ -203,7 +205,8 @@ nmap <> :tabn<CR>
 "noremap <C-i> :tabp<CR>
 
 "Ack current word
-nnoremap <leader>a :exe "Ag " . shellescape(expand("<cWORD>")) . " ."<cr>
+nmap <C-;>a :vsp<cr> :exe "Ag " .  expand("<cword>") . " "<cr>
+nmap <leader>a :vsp<cr> :exe "Ag " .  expand("<cword>") . " "<cr>
 noremap  <leader>z :call JsSpecNavigate()<CR>
 
 " make movement keys simpler
@@ -313,6 +316,13 @@ nnoremap <silent> <Leader>r :Bclose<CR>
 
 " Bring CtrlP back
 nnoremap <leader>f :CtrlP<cr>
+
+" DRAG VISUALS
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
 
 nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
 hi OverLength ctermbg=none cterm=none
