@@ -1,5 +1,5 @@
 " ======================================================================
-" Slime Contrast
+" Snappy Light
 " ======================================================================
 " A Sublime Text 2 / Textmate theme.
 " Copyright (c) 2014 Dayle Rees.
@@ -16,8 +16,8 @@ syntax reset
 
 hi Cursor      guibg=#cc4455  guifg=white     ctermbg=4 ctermfg=15
 hi link CursorIM Cursor
-hi Normal      guibg=#0b0c0d  guifg=#FFFFFF    gui=none ctermbg=0 ctermfg=15
-hi NonText     guibg=bg  guifg=#FFFFFF   ctermbg=8 ctermfg=14
+hi Normal      guibg=#ffffff  guifg=#555555    gui=none ctermbg=0 ctermfg=15
+hi NonText     guibg=bg  guifg=#555555   ctermbg=8 ctermfg=14
 hi Visual      guibg=#557799  guifg=white    gui=none ctermbg=9 ctermfg=15
 
 hi Linenr      guibg=bg       guifg=#aaaaaa  gui=none ctermbg=bg ctermfg=7
@@ -33,17 +33,12 @@ hi Titled      guibg=bg guifg=fg       gui=none ctermbg=bg ctermfg=fg
 hi ErrorMsg    guibg=bg guifg=#ff0000   ctermbg=bg ctermfg=12
 hi ModeMsg     guibg=bg guifg=#ffeecc  gui=none ctermbg=bg ctermfg=14
 hi link  MoreMsg     ModeMsg
-hi Question    guibg=bg guifg=#d8e778   ctermbg=bg ctermfg=10
+hi Question    guibg=bg guifg=#4ea1df   ctermbg=bg ctermfg=10
 hi link  WarningMsg  ErrorMsg
 
-
 hi StatusLine     guibg=#ffeecc  guifg=black     ctermbg=14 ctermfg=0
-hi StatusLineNC   guibg=#0b0c0d  guifg=white    gui=none ctermbg=4  ctermfg=11
-hi VertSplit      guibg=#0b0c0d  guifg=white    gui=none ctermbg=4  ctermfg=11
-hi LineNr      guibg=#0b0c0d  guifg=white    gui=none ctermbg=4  ctermfg=11
-hi SignColumn      guibg=#0b0c0d  guifg=white    gui=none ctermbg=4  ctermfg=11
-hi FoldColumn      guibg=#0b0c0d  guifg=white    gui=none ctermbg=4  ctermfg=11
-
+hi StatusLineNC   guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
+hi VertSplit      guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
 
 hi DiffAdd     guibg=#446688  guifg=fg    gui=none ctermbg=1 ctermfg=fg
 hi DiffChange  guibg=#558855  guifg=fg    gui=none ctermbg=2 ctermfg=fg
@@ -52,47 +47,47 @@ hi DiffText    guibg=#884444  guifg=fg     ctermbg=4 ctermfg=fg
 
 " Colors for Syntax Highlighting.
 
-hi Comment  guibg=bg  guifg=#4F5A63  gui=none    ctermbg=8   ctermfg=7
+hi Comment  guibg=bg  guifg=#bbbbbb  gui=none    ctermbg=8   ctermfg=7
 
 hi Constant    guibg=bg    guifg=white        ctermbg=8   ctermfg=15
-hi String      guibg=bg    guifg=#FAFFDB    ctermbg=bg  ctermfg=14
-hi Character   guibg=bg    guifg=#6a9ec5      ctermbg=bg  ctermfg=14
-hi Number      guibg=bg    guifg=#C7AF3F      ctermbg=1   ctermfg=15
-hi Boolean     guibg=bg    guifg=#C7AF3F  gui=none    ctermbg=1   ctermfg=15
-hi Float       guibg=bg    guifg=#C7AF3F      ctermbg=1   ctermfg=15
+hi String      guibg=bg    guifg=#4ea1df    ctermbg=bg  ctermfg=14
+hi Character   guibg=bg    guifg=#f66153      ctermbg=bg  ctermfg=14
+hi Number      guibg=bg    guifg=#4ea1df      ctermbg=1   ctermfg=15
+hi Boolean     guibg=bg    guifg=#4ea1df  gui=none    ctermbg=1   ctermfg=15
+hi Float       guibg=bg    guifg=#4ea1df      ctermbg=1   ctermfg=15
 
-hi Identifier  guibg=bg    guifg=#FFFFFF      ctermbg=bg  ctermfg=12
-hi Function    guibg=bg    guifg=#6a9ec5      ctermbg=bg  ctermfg=12
-hi Statement   guibg=bg    guifg=#6a9ec5      ctermbg=bg  ctermfg=14
+hi Identifier  guibg=bg    guifg=#555555      ctermbg=bg  ctermfg=12
+hi Function    guibg=bg    guifg=#f66153      ctermbg=bg  ctermfg=12
+hi Statement   guibg=bg    guifg=#f66153      ctermbg=bg  ctermfg=14
 
-hi Conditional guibg=bg    guifg=#689dc5      ctermbg=bg  ctermfg=12
-hi Repeat      guibg=bg    guifg=#689dc5      ctermbg=4   ctermfg=14
+hi Conditional guibg=bg    guifg=#da564a      ctermbg=bg  ctermfg=12
+hi Repeat      guibg=bg    guifg=#da564a      ctermbg=4   ctermfg=14
 hi Label       guibg=bg    guifg=#ffccff      ctermbg=bg   ctermfg=13
-hi Operator    guibg=bg    guifg=#689dc5      ctermbg=6   ctermfg=15
-hi Keyword     guibg=bg    guifg=#689dc5      ctermbg=bg  ctermfg=10
-hi Exception   guibg=bg    guifg=#6a9ec5      ctermbg=bg  ctermfg=10
+hi Operator    guibg=bg    guifg=#da564a      ctermbg=6   ctermfg=15
+hi Keyword     guibg=bg    guifg=#da564a      ctermbg=bg  ctermfg=10
+hi Exception   guibg=bg    guifg=#f66153      ctermbg=bg  ctermfg=10
 
 hi PreProc    guibg=bg   guifg=#ffcc99   ctermbg=4  ctermfg=14
-hi Include    guibg=bg   guifg=#d8e778   ctermbg=bg ctermfg=10
+hi Include    guibg=bg   guifg=#4ea1df   ctermbg=bg ctermfg=10
 hi link Define    Include
 hi link Macro     Include
 hi link PreCondit Include
 
-hi Type       guibg=bg   guifg=#d8e778      ctermbg=bg  ctermfg=12
-hi StorageClass   guibg=bg   guifg=#6a9ec5      ctermbg=bg  ctermfg=10
-hi Structure      guibg=bg   guifg=#FFFFFF      ctermbg=bg  ctermfg=10
-hi Typedef    guibg=bg   guifg=#d8e778    ctermbg=bg  ctermfg=10
+hi Type       guibg=bg   guifg=#4ea1df      ctermbg=bg  ctermfg=12
+hi StorageClass   guibg=bg   guifg=#f66153      ctermbg=bg  ctermfg=10
+hi Structure      guibg=bg   guifg=#555555      ctermbg=bg  ctermfg=10
+hi Typedef    guibg=bg   guifg=#4ea1df    ctermbg=bg  ctermfg=10
 
 hi Special    guibg=bg   guifg=#bbddff      ctermbg=1   ctermfg=15
 hi SpecialChar    guibg=bg   guifg=#bbddff      ctermbg=1   ctermfg=15
 hi Tag        guibg=bg   guifg=#bbddff      ctermbg=1   ctermfg=15
 hi Delimiter      guibg=bg   guifg=fg       ctermbg=1   ctermfg=fg
-hi SpecialComment guibg=#334455  guifg=#80919f    ctermbg=1   ctermfg=15
+hi SpecialComment guibg=#334455  guifg=#7d7d7d    ctermbg=1   ctermfg=15
 hi Debug      guibg=bg   guifg=#ff9999  gui=none    ctermbg=8   ctermfg=12
 
 hi Underlined guibg=bg guifg=#99ccff gui=underline ctermbg=bg ctermfg=9 cterm=underline
 
-hi Title    guibg=bg  guifg=#FFFFFF        ctermbg=1   ctermfg=15
+hi Title    guibg=bg  guifg=#555555        ctermbg=1   ctermfg=15
 hi Ignore   guibg=bg       guifg=#cccccc    ctermbg=bg  ctermfg=8
 hi Error    guibg=#ff0000  guifg=white        ctermbg=12  ctermfg=15
 hi Todo     guibg=#556677  guifg=#ff0000      ctermbg=1   ctermfg=12
@@ -105,6 +100,6 @@ hi link htmlH6 htmlH5
 
 " And finally.
 
-let g:colors_name = "Slime Contrast"
-let colors_name   = "Slime Contrast"
+let g:colors_name = "Snappy Light"
+let colors_name   = "Snappy Light"
 

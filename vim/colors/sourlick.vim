@@ -37,8 +37,8 @@ hi Question    guibg=bg guifg=#EDF252   ctermbg=bg ctermfg=10
 hi link  WarningMsg  ErrorMsg
 
 hi StatusLine     guibg=#ffeecc  guifg=black     ctermbg=14 ctermfg=0
-hi StatusLineNC   guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
-hi VertSplit      guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
+hi StatusLineNC   guibg=#000000  guifg=white    gui=none ctermbg=4  ctermfg=11
+hi VertSplit      guibg=#000000  guifg=white    gui=none ctermbg=4  ctermfg=11
 
 hi DiffAdd     guibg=#446688  guifg=fg    gui=none ctermbg=1 ctermfg=fg
 hi DiffChange  guibg=#558855  guifg=fg    gui=none ctermbg=2 ctermfg=fg
@@ -49,7 +49,7 @@ hi DiffText    guibg=#884444  guifg=fg     ctermbg=4 ctermfg=fg
 
 hi Comment  guibg=bg  guifg=#615953  gui=none    ctermbg=8   ctermfg=7
 
-hi Constant    guibg=bg    guifg=white        ctermbg=8   ctermfg=15
+hi Constant    guibg=bg    guifg=#8AC27A        ctermbg=8   ctermfg=15
 hi String      guibg=bg    guifg=#E4FF33    ctermbg=bg  ctermfg=14
 hi Character   guibg=bg    guifg=#8AC27A      ctermbg=bg  ctermfg=14
 hi Number      guibg=bg    guifg=#FC580C      ctermbg=1   ctermfg=15
@@ -84,6 +84,27 @@ hi Tag        guibg=bg   guifg=#bbddff      ctermbg=1   ctermfg=15
 hi Delimiter      guibg=bg   guifg=fg       ctermbg=1   ctermfg=fg
 hi SpecialComment guibg=#334455  guifg=#92867d    ctermbg=1   ctermfg=15
 hi Debug      guibg=bg   guifg=#ff9999  gui=none    ctermbg=8   ctermfg=12
+
+hi Function    guibg=bg    guifg=#8AC27A      ctermbg=bg  ctermfg=12
+
+highlight link rubyClass Keyword
+highlight link rubyDefine Keyword
+highlight link rubyConstant Type
+highlight link rubySymbol Constant
+highlight link rubyStringDelimiter rubyString
+highlight link rubyInclude Keyword
+highlight link rubyAttribute Keyword
+highlight link rubyInstanceVariable Normal
+
+highlight link javaScriptValue Constant
+highlight link javaScriptRegexpString rubyRegexp
+
+highlight link coffeeRegExp javaScriptRegexpString
+
+highlight link htmlTag Type
+highlight link htmlEndTag htmlTag
+highlight link htmlTagName htmlTag
+
 
 hi Underlined guibg=bg guifg=#99ccff gui=underline ctermbg=bg ctermfg=9 cterm=underline
 

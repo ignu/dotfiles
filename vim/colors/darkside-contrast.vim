@@ -37,8 +37,8 @@ hi Question    guibg=bg guifg=#1CC3E8   ctermbg=bg ctermfg=10
 hi link  WarningMsg  ErrorMsg
 
 hi StatusLine     guibg=#ffeecc  guifg=black     ctermbg=14 ctermfg=0
-hi StatusLineNC   guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
-hi VertSplit      guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
+hi StatusLineNC   guibg=#222222  guifg=white    gui=none ctermbg=4  ctermfg=11
+hi VertSplit      guibg=#222222  guifg=white    gui=none ctermbg=4  ctermfg=11
 
 hi DiffAdd     guibg=#446688  guifg=fg    gui=none ctermbg=1 ctermfg=fg
 hi DiffChange  guibg=#558855  guifg=fg    gui=none ctermbg=2 ctermfg=fg

@@ -15,6 +15,7 @@ syntax reset
 " Colors for the User Interface.
 
 hi Cursor      guibg=#cc4455  guifg=white     ctermbg=4 ctermfg=15
+hi CursorLine  guibg=#444444
 hi link CursorIM Cursor
 hi Normal      guibg=#31332C  guifg=#F8F8F2    gui=none ctermbg=0 ctermfg=15
 hi NonText     guibg=bg  guifg=#F8F8F2   ctermbg=8 ctermfg=14
@@ -37,8 +38,8 @@ hi Question    guibg=bg guifg=#D1F2A5   ctermbg=bg ctermfg=10
 hi link  WarningMsg  ErrorMsg
 
 hi StatusLine     guibg=#ffeecc  guifg=black     ctermbg=14 ctermfg=0
-hi StatusLineNC   guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
-hi VertSplit      guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
+hi StatusLineNC   guibg=#5C634F  guifg=white    gui=none ctermbg=4  ctermfg=11
+hi VertSplit      guibg=#5C634F  guifg=white    gui=none ctermbg=4  ctermfg=11
 
 hi DiffAdd     guibg=#446688  guifg=fg    gui=none ctermbg=1 ctermfg=fg
 hi DiffChange  guibg=#558855  guifg=fg    gui=none ctermbg=2 ctermfg=fg
@@ -49,7 +50,7 @@ hi DiffText    guibg=#884444  guifg=fg     ctermbg=4 ctermfg=fg
 
 hi Comment  guibg=bg  guifg=#5C634F  gui=none    ctermbg=8   ctermfg=7
 
-hi Constant    guibg=bg    guifg=white        ctermbg=8   ctermfg=15
+hi Constant    guibg=bg    guifg=#F56991       ctermbg=8   ctermfg=15
 hi String      guibg=bg    guifg=#D1F2A5    ctermbg=bg  ctermfg=14
 hi Character   guibg=bg    guifg=#F56991      ctermbg=bg  ctermfg=14
 hi Number      guibg=bg    guifg=#F56991      ctermbg=1   ctermfg=15

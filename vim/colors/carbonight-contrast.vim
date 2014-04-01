@@ -37,8 +37,8 @@ hi Question    guibg=bg guifg=#C4C4C4   ctermbg=bg ctermfg=10
 hi link  WarningMsg  ErrorMsg
 
 hi StatusLine     guibg=#ffeecc  guifg=black     ctermbg=14 ctermfg=0
-hi StatusLineNC   guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
-hi VertSplit      guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
+hi StatusLineNC   guibg=#333333  guifg=white    gui=none ctermbg=4  ctermfg=11
+hi VertSplit      guibg=#333333  guifg=white    gui=none ctermbg=4  ctermfg=11
 
 hi DiffAdd     guibg=#446688  guifg=fg    gui=none ctermbg=1 ctermfg=fg
 hi DiffChange  guibg=#558855  guifg=fg    gui=none ctermbg=2 ctermfg=fg
@@ -49,7 +49,7 @@ hi DiffText    guibg=#884444  guifg=fg     ctermbg=4 ctermfg=fg
 
 hi Comment  guibg=bg  guifg=#423F3D  gui=none    ctermbg=8   ctermfg=7
 
-hi Constant    guibg=bg    guifg=white        ctermbg=8   ctermfg=15
+hi Constant    guibg=bg    guifg=#999999       ctermbg=8   ctermfg=15
 hi String      guibg=bg    guifg=#ffffff    ctermbg=bg  ctermfg=14
 hi Character   guibg=bg    guifg=#8C8C8C      ctermbg=bg  ctermfg=14
 hi Number      guibg=bg    guifg=#B0B0B0      ctermbg=1   ctermfg=15
