@@ -23,6 +23,7 @@ git_bundles = [
   "git://github.com/tpope/vim-cucumber.git",
   "git://github.com/tpope/vim-haml.git",
   "git://github.com/tpope/vim-markdown.git",
+  "git://github.com/tpope/vim-sleuth.git",
   "git://github.com/tpope/vim-rails.git",
   "git://github.com/tpope/vim-repeat.git",
   "git://github.com/tpope/vim-surround.git",
@@ -35,6 +36,7 @@ git_bundles = [
   "git://github.com/vitaly/vim-syntastic-coffee.git",
   "git://github.com/rking/ag.vim.git",
   "git://github.com/shinokada/dragvisuals.vim.git",
+  "git://github.com/jgdavey/vim-blockle.git",
   #'git://christoomey/vim-tmux-navigator',
 
   #"git://github.com/tpope/vim-dispatch.git",

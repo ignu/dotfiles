@@ -1,10 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/ignu/bin/dotfiles2.0/vim/bundle/vim-rubocop'
-let g:netrw_dirhist_2='/Users/ignu/code/ce_bacchus/app/assets/javascripts/backbone/controls'
-let g:netrw_dirhist_3='/Users/ignu/code/ce_bacchus/app/assets/javascripts/backbone/controls/templates'
-let g:netrw_dirhist_4='/Users/ignu/code/credoppl/app/admin'
-let g:netrw_dirhist_5='/Users/ignu/code/ce_bacchus/app/services/cloud_stack'
-let g:netrw_dirhist_6='/Users/ignu/code/ce_bacchus/app/controllers/vms'
-let g:netrw_dirhist_7='app/controllers'
-let g:netrw_dirhist_8='/Users/ignu/code/ce_bacchus/app/services/cloud_stack'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Users/ignu/code/ce_bacchus'

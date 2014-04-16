@@ -1,5 +1,6 @@
 set shell=bash
 set mouse=a
+imap jj <Esc>
 
 " ------------
 " Pathogen
@@ -151,6 +152,15 @@ set list listchars=tab:»·,trail:.
 " bindings
 " ---------
 let mapleader = ","
+nmap <Space> ,
+
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
 noremap <D-j> :b#<CR>
 noremap <D-r> :bd<CR>
 "next quickfix file
@@ -179,7 +189,7 @@ noremap <Leader><F1> :ResetTmuxVars<CR>
 noremap <F1> :echo expand('%:t')<CR>
 " remove trailing whitespace and replace tabs with spaces
 " Press F4 to toggle highlighting on/off, and show current value.
-noremap <F2> :noremap <F1> :Tx
+noremap <F2> :noremap <F1> :Tx 
 :nnoremap <F3> :buffers<CR>:b<Space>
 noremap <Leader><F3> :Tx bundle<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
@@ -187,6 +197,10 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:
 :nnoremap <F9> :bufdo! bd<cr>
 noremap <F12> :NERDTreeToggle<CR>
 noremap <F11> :NERDTreeFind<CR>
+
+nmap <Leader><F12> :e ~/Dropbox/Notes/<cr>
+nmap <Leader><F12> :e ~/Dropbox/Notes/TIL.md<cr>
+nmap <Leader><F1> :e ~/.vim/update_bundles<cr>
 
 " git blame shortcut
 vnoremap <Leader>g :<C-U>!git blame -w <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
@@ -314,8 +328,7 @@ nnoremap <silent> <Leader>r :Bclose<CR>
 "      \   "test"    : "spec/services/cloud_stack/%s_spec.rb"
 "      \ }
 
-" Bring CtrlP back
-nnoremap <leader>f :CtrlP<cr>
+nmap <leader>f <Plug>(easymotion-jumptoanywhere)
 
 " DRAG VISUALS
 vmap  <expr>  <LEFT>   DVB_Drag('left')
