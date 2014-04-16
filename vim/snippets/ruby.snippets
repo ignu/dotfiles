@@ -1,5 +1,5 @@
 # #!/usr/bin/env ruby
-snippet bpp
+snippet pry
 	require 'pry'; binding.pry;
 snippet it
 	it "${1:object}" do
@@ -37,3 +37,4 @@ snippet ---
 	p '-' * 88
 snippet --
 	p '-' * 88
+	p ${1:object}
