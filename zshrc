@@ -74,3 +74,5 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+[ -s "/Users/ignu/.nvm/nvm.sh" ] && . "/Users/ignu/.nvm/nvm.sh" # This loads nvm

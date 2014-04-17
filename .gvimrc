@@ -1,4 +1,4 @@
-  set guioptions-=T
+  set guioptions-=T 
   set guifont=Monaco:h12
   set antialias
   autocmd BufNewFile,BufRead *_spec.rb compiler rspec
@@ -51,3 +51,6 @@
   nmap <D-[> <<
   vmap <D-[> <<
   imap <D-[> <C-O><<
+
+call pathogen#runtime_append_all_bundles()
+
