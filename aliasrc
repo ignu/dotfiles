@@ -27,6 +27,17 @@ alias gb='git checkout -b'
 alias glo='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
 alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
+alias co='git checkout'
+
+function gfom() {
+  git fetch
+  git rebase origin/master
+}
+
+function gwp() {
+  git add .
+  git commit -am "wip"
+}
 
 function gitnewbranch() {
   git fetch
