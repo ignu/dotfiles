@@ -28,6 +28,7 @@ alias glo='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Cre
 alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
 alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
 alias co='git checkout'
+alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
 
 function gfom() {
   git fetch
