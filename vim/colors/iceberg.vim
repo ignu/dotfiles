@@ -36,7 +36,7 @@ hi link  MoreMsg     ModeMsg
 hi Question    guibg=bg guifg=#59C0E3   ctermbg=bg ctermfg=10
 hi link  WarningMsg  ErrorMsg
 
-hi StatusLine     guibg=#ffeecc  guifg=black     ctermbg=14 ctermfg=0
+hi StatusLine     guibg=#cc4455  guifg=black     ctermbg=14 ctermfg=0
 hi StatusLineNC   guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
 hi VertSplit      guibg=#cc4455  guifg=white    gui=none ctermbg=4  ctermfg=11
 
