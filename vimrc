@@ -75,6 +75,11 @@ set wildchar=<Tab> wildmenu wildmode=full
 " RSI sucks. my pooooor thumb
 noremap \ :w<CR>
 
+" save and restore folds when a file is closed and re-opened. ugh.
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
+
+
 augroup MiscMisc
   au!
   silent autocmd bufwritepost .vimrc source $MYVIMRC
@@ -123,7 +128,7 @@ set cursorline
 
 noremap ; :Ag 
 
-color blackboard
+color hemisu
 set background=dark
 if has("persistent_undo")
   set undodir=~/.vim/undodir
