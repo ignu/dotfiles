@@ -126,7 +126,7 @@ noremap cp yap<S-}>p
 
 set cursorline
 
-noremap ; :Ag 
+noremap ; :Ag
 
 color hemisu
 set background=dark
@@ -251,7 +251,7 @@ vnoremap ar a[
 " object of the given type.  These don't necessarily have to be in the current
 " line.
 "
-" Currently works for (, [, {, and their shortcuts b, r, B. 
+" Currently works for (, [, {, and their shortcuts b, r, B.
 "
 " Next kind of works for ' and " as long as there are no escaped versions of
 " them in the string (TODO: fix that).  Last is currently broken for quotes
@@ -318,7 +318,7 @@ function! s:NextTextObject(motion, dir)
         let open = ''
         let close = ''
 
-        if c ==# "(" 
+        if c ==# "("
             let open = "("
             let close = ")"
         elseif c ==# "{"
@@ -421,7 +421,7 @@ noremap <Leader><F1> :ResetTmuxVars<CR>
 noremap <F1> :echo expand('%:t')<CR>
 " remove trailing whitespace and replace tabs with spaces
 " Press F4 to toggle highlighting on/off, and show current value.
-nmap <F2> :noremap <Enter> :Tx 
+nmap <F2> :noremap <Enter> :Tx
 :nnoremap <F3> :buffers<CR>:b<Space>
 noremap <Leader><F3> :Tx bundle<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
