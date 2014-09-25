@@ -399,6 +399,7 @@ noremap <leader>' :w<CR> :cnext<CR>
 iabbrev sao save_and_open_page
 iabbrev SAO save_and_open_screenshot
 
+
 iabbrev furm # rubocop:disable MethodLength
 
 noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
@@ -446,6 +447,13 @@ filetype plugin indent on
 "-----------
 " Syntax
 " ----------
+" Don't stomp over Ctrl-P
+let g:yankring_paste_n_bkey = 'T'
+let g:yankring_paste_n_akey = 't'
+let g:yankring_paste_v_bkey = 'T'
+let g:yankring_paste_v_akey = 't'
+"nmap <C-t> :CtrlP<cr>
+
 
 nmap <> :tabn<CR>
 "noremap <C-u> :tabn<CR>
