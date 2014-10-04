@@ -1,2 +1,4 @@
 .DS_Store
 vim/bundle
+vim/view
+vim/.netrwhist

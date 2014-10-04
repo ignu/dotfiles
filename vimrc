@@ -3,10 +3,85 @@ set mouse=a
 imap jj <Esc>
 
 " ------------
-" Pathogen
+" Plugins
 " ------------
-call pathogen#infect()
-call pathogen#helptags()
+call plug#begin('~/.vim/bundle')
+
+" Purgatory
+" Plug 'Lokaltog/vim-easymotion'
+" Plug 'git://github.com/tsaleh/vim-matchit.git'
+" Plug 'scrooloose/nerdcommenter'
+" Plug 'git://github.com/vim-scripts/YankRing.vim.git'
+" git://github.com/shinokada/dragvisuals.vim.git
+
+" New
+Plug 'junegunn/vim-github-dashboard'
+
+" Essentials
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/localvimrc'
+Plug 'scrooloose/syntastic'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-repeat'
+Plug 'msanders/snipmate.vim'
+
+" TMUX
+Plug 'git://github.com/LnL7/vim-tslime.git',
+Plug 'git://github.com/jgdavey/vim-turbux.git',
+
+" Lanugage
+Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
+Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+Plug 'vitaly/vim-syntastic-coffee', { 'for' : 'coffee' }
+Plug 'kchmck/vim-coffee-script', { 'for' : 'coffee' }
+Plug 'jnwhiteh/vim-golang'
+
+" Templates
+Plug 'slim-template/vim-slim', { 'for': ['slim', 'skim'] }
+Plug 'juvenn/mustache.vim'
+Plug 'tpope/vim-haml', { 'for': 'haml' }
+Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown'] }
+
+" JavaScript
+Plug 'ignu/javascript_spec_navigator.vim'
+Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
+
+" Ruby
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-endwise'
+Plug 'ecomba/vim-ruby-refactoring', { 'for' : 'ruby' }
+Plug 'tpope/vim-cucumber', { 'for' : 'feature' }
+Plug 'tpope/vim-bundler'
+Plug 'jgdavey/vim-blockle'
+
+" Navigation/Search
+Plug 'kien/ctrlp.vim'
+Plug 'rking/ag.vim'
+Plug 'bogado/file-line'
+Plug 'airblade/vim-rooter'
+
+" COLORS
+Plug 'whatyouhide/vim-gotham'
+Plug 'morhetz/gruvbox'
+Plug 'vim-scripts/ScrollColors'
+Plug 'reedes/vim-colors-pencil'
+Plug 'jeetsukumaran/vim-nefertiti'
+Plug 'zenorocha/dracula-theme'
+Plug 'junegunn/seoul256.vim'
+Plug 'w0ng/vim-hybrid'
+Plug 'nanotech/jellybeans.vim'
+Plug 'tpope/vim-vividchalk'
+Plug 'noahfrederick/vim-hemisu'
+
+"GIT
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+call plug#end()
 
 set so=14
 set ttymouse=xterm2
@@ -128,7 +203,7 @@ set cursorline
 
 noremap ; :Ag
 
-color hemisu
+color blackboard
 set background=dark
 if has("persistent_undo")
   set undodir=~/.vim/undodir
