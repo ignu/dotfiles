@@ -9,7 +9,6 @@ call plug#begin('~/.vim/bundle')
 
 " Purgatory
 " Plug 'Lokaltog/vim-easymotion'
-" Plug 'git://github.com/tsaleh/vim-matchit.git'
 " Plug 'scrooloose/nerdcommenter'
 " Plug 'git://github.com/vim-scripts/YankRing.vim.git'
 " git://github.com/shinokada/dragvisuals.vim.git
@@ -27,6 +26,7 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'msanders/snipmate.vim'
+Plug 'tmhedberg/matchit'
 
 " TMUX
 Plug 'git://github.com/LnL7/vim-tslime.git',
