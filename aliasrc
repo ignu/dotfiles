@@ -35,6 +35,24 @@ function gfom() {
   git rebase origin/master
 }
 
+# stash changes, switch to branch and then pop stash.
+# pass in an argument to go to that branch. defaults to '-'
+function coo() {
+  echo "COO COO..."
+  git stash
+
+  if [ ! $1 ]; then
+    echo "*********** Checking out previous branch *************"
+    git checkout -
+  else
+    echo "*********** Checking out $1 *************"
+    git checkout $1
+  fi
+
+  git stash pop
+  echo "********** Done *************"
+}
+
 function gwp() {
   git add .
   git commit -am "wip"
