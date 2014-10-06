@@ -109,7 +109,7 @@ noremap <Leader><Left> :Tx rake db:rollback<CR>
 
 noremap <Up> :GitGutterPrevHunk<CR>
 noremap <Down> :GitGutterNextHunk<CR>
-noremap <Leader>+ :GitGutterStageHunk<CR>
+nmap <Leader>+ :GitGutterStageHunk<CR>
 
 " Arrow Keys Navigate QuickFix Window
 noremap <Right> :cnext<CR>
@@ -119,6 +119,9 @@ noremap <Leader><Up> :GitGutterLineHighlightsToggle<CR>
 " simpler surround.vim
 :onoremap p i(
 :onoremap q i"
+
+" Copy Paragraph
+noremap cp yap<S-}>p
 
 " ---------
 " EMACS
@@ -138,7 +141,6 @@ set nowritebackup
 set noswapfile
 set autoread
 set t_Co=256
-
 
 "set autoindent
 scriptencoding utf-8
@@ -191,14 +193,10 @@ augroup NewSyntaxes
   au BufRead,BufNewFile *.skim set ft=slim
 augroup end
 
-noremap <Leader>G :GitGutterNextHunk<CR>
-
 map <Leader>= :Tabularize /=<cr>
 map <Leader>: :Tabularize /:<cr>
 map <Leader>, :Tabularize /,<cr>
 map <Leader>" :Tabularize /"<cr>
-
-noremap cp yap<S-}>p
 
 set cursorline
 
@@ -288,9 +286,6 @@ hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
 hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
 hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
 hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
-
-cnoremap <c-a> <home>
-cnoremap <c-e> <end>
 
 nnoremap Q gqip
 
@@ -524,12 +519,6 @@ filetype plugin indent on
 " Syntax
 " ----------
 " Don't stomp over Ctrl-P
-let g:yankring_paste_n_bkey = 'T'
-let g:yankring_paste_n_akey = 't'
-let g:yankring_paste_v_bkey = 'T'
-let g:yankring_paste_v_akey = 't'
-"nmap <C-t> :CtrlP<cr>
-
 
 nmap <> :tabn<CR>
 "noremap <C-u> :tabn<CR>
