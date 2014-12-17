@@ -53,9 +53,13 @@ function coo() {
   echo "********** Done *************"
 }
 
+function headers() {
+  curl -s -D - $1 -o /dev/null
+}
+
 function gwp() {
   git add .
-  git commit -am "wip"
+  git commit -am "wip $1"
 }
 
 function gitnewbranch() {
@@ -85,6 +89,10 @@ function gbtr() {
 function gbt() {
   git branch --track $2 remotes/$1/$2
   git checkout $2
+}
+
+function wasthiseverathing() {
+  git rev-list --all | xargs git grep $1
 }
 
 alias pa="ps aux | grep "
