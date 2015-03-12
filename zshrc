@@ -14,7 +14,7 @@ ZSH_THEME="apple"
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(osx rails ruby git npm zsh-syntax-highlighting)
+plugins=(osx rails ruby git npm nvm colorize pow zsh-syntax-highlighting per-directory-history history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
