@@ -18,6 +18,7 @@ echo "linking files"
   ln ~/bin/dotfiles2.0/gitconfig .gitconfig
   ln ~/bin/dotfiles2.0/aliasrc .aliasrc
   ln ~/bin/dotfiles2.0/tmux.conf .tmux.conf
+  ln ~/bin/dotfiles2.0/spacemacs .spacemacs
 
   rm .zshrc
   ln ~/bin/dotfiles2.0/zshrc .zshrc
