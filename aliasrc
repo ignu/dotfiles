@@ -3,8 +3,7 @@ alias cpu='top -o cpu'
 alias mem='top -o vsize'
 alias ..="cd .."
 alias ...="cd ../.."
-alias kuwest="cd ~/code/kuwest"
-alias styl="cd ~/code/stylitics"
+alias tru="cd ~/code/true-app"
 alias reload="source ~/bin/dotfiles/bashrc"
 alias dotfiles="mate ~/bin/dotfiles/"
 alias code="cd ~/code"
@@ -28,7 +27,10 @@ alias glo='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Cre
 alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
 alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
 alias co='git checkout'
-alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
+alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | pick | xargs git checkout"
+alias truestaging="ssh -i infrastructure/trueapp.pem ec2-user@ec2-52-6-227-114.compute-1.amazonaws.com"
+alias trueprod="ssh -i infrastructure/trueapp.pem ec2-user@ec2-52-4-42-3.compute-1.amazonaws.com"
+
 
 function gfom() {
   git fetch
