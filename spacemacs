@@ -18,7 +18,11 @@
      ;; <M-m f e R> (Emacs style) to install them.
      ;;
      ----------------------------------------------------------------
-     auto-completion
+     yasnippet
+     (auto-completion :variables
+                      auto-completion-return-key-behavior nil
+                      auto-completion-tab-key-behavior 'complete
+                      auto-completion-enable-snippets-in-popup t)
      ;; better-defaults
      emacs-lisp
      git
@@ -34,7 +38,6 @@
      rspec-mode
      syntax-checking
      version-control
-     yasnippet
      eyebrowse
      themes-megapack
      )
@@ -198,8 +201,9 @@ layers configuration."
   (setq alchemist-hooks-test-on-save t)
 
   ;; YASNIPPETS
+  (require 'yasnippet)
   (yas-global-mode 1)
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (setq yas-snippet-dirs '("~/.emacs.d/private/snippets"))
 
   (define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
 ))
