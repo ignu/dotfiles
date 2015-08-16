@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: SAO
+# key: SAO
+# binding: direct-keybinding
+# --
+save_and_open_screenshot
