@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: --
+# key: --
+# binding: direct-keybinding
+# --
+IO.puts "------------------------"
+IO.inspect $0
+IO.puts "------------------------"
