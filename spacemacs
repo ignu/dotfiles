@@ -175,6 +175,10 @@ before layers configuration."
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
 
+  " Be like an OSX app"
+  (global-set-key (kbd "M-s") 'save-buffer)
+  (global-set-key (kbd "M-v") 'x-clipboard-yank)
+
   " ROBE "
   (add-hook 'ruby-mode-hook 'robe-mode) 
 
