@@ -47,6 +47,7 @@
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(
                                       coffee-mode
+                                      flymake-coffee
                                       alchemist
                                       robe
                                       rvm
