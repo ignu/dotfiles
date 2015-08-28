@@ -40,14 +40,16 @@
      version-control
      eyebrowse
      themes-megapack
+     flymake
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(
-                                      coffee-mode
+                                      flymake-easy
                                       flymake-coffee
+                                      coffee-mode
                                       alchemist
                                       robe
                                       rvm
@@ -202,6 +204,10 @@ layers configuration."
 
   ;; This gives you a tab of 2 spaces
   (custom-set-variables '(coffee-tab-width 2))
+
+  (require 'flymake-coffee)
+  (flymake-mode-on)
+  (add-hook 'coffee-mode-hook 'flymake-coffee-load)
 
   (setq alchemist-hooks-test-on-save t)
 

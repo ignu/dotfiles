@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: console.log
-# key: --
+# name: GDN
+# key: GDN
 # binding: direct-keybinding
 # --
-console.log "$1", $1
+.getDOMNode()
