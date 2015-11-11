@@ -32,6 +32,7 @@
      scss-mode
      ruby
      syntax-checking
+     ranger
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
