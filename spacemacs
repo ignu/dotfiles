@@ -32,18 +32,23 @@
      scss-mode
      ruby
      syntax-checking
+     flycheck
      ranger
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
+     colors
      osx
      rspec-mode
-     syntax-checking
      version-control
      eyebrowse
      themes-megapack
      flymake
+     erlang
+     elixir
+     alchemist
+     fasd
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -54,7 +59,6 @@
                                       flymake-coffee
                                       coffee-mode
                                       slim-mode
-                                      alchemist
                                       robe
                                       rvm
                                       )
@@ -210,6 +214,16 @@ layers configuration."
 
   ;; This gives you a tab of 2 spaces
   (custom-set-variables '(coffee-tab-width 2))
+
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
 
   (require 'flymake-coffee)
   (flymake-mode-on)
