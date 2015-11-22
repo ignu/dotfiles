@@ -32,7 +32,6 @@
      scss-mode
      ruby
      syntax-checking
-     flycheck
      ranger
      ;; org
      ;; (shell :variables
@@ -58,9 +57,11 @@
                                       flymake-easy
                                       flymake-coffee
                                       coffee-mode
+                                      js2-mode
                                       slim-mode
                                       robe
                                       rvm
+                                      web-mode
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -216,14 +217,50 @@ layers configuration."
   (custom-set-variables '(coffee-tab-width 2))
 
   (setq-default
-   ;; js2-mode
+   js2-mode
    js2-basic-offset 2
-   ;; web-mode
+   web-mode
+   setq js-indent-level 2
    css-indent-offset 2
    web-mode-markup-indent-offset 2
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
+  (setq js-indent-level 2)
+  (setq js2-indent-level 2)
+  (setq jsx-indent-level 2)
+  (setq Javascript-indent-level 2)
+
+
+  (setq js2-basic-offset 2)
+
+  ;; use web-mode for .jsx files
+  (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+
+  ;; http://www.flycheck.org/manual/latest/index.html
+  (require 'flycheck)
+
+  ;; turn on flychecking globally
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+
+  ;; disable jshint since we prefer eslint checking
+  (setq-default flycheck-disabled-checkers
+                (append flycheck-disabled-checkers
+                        '(javascript-jshint)))
+
+  ;; use eslint with web-mode for jsx files
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+
+  ;; disable json-jsonlist checking for json files
+  (setq-default flycheck-disabled-checkers
+                (append flycheck-disabled-checkers
+                        '(json-jsonlist)))
+
+  ;; https://github.com/purcell/exec-path-from-shell
+  ;; only need exec-path-from-shell on OSX
+  ;; this hopefully sets up path and other vars better
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize))
 
   (require 'flymake-coffee)
   (flymake-mode-on)
@@ -289,6 +326,7 @@ layers configuration."
  '(hl-fg-colors
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
+ '(js-indent-level 2)
  '(linum-format " %7i " t)
  '(magit-diff-use-overlays nil)
  '(package-archives
