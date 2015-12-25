@@ -99,7 +99,8 @@ function wasthiseverathing() {
 
 alias pa="ps aux | grep "
 
-alias old="cd /Volumes/Macintosh\ HD/Users/ignu"
 alias tmux="TERM=xterm-256color tmux"
 alias n="node --harmony_arrow_functions"
 
+
+alias nod="nodemon --exec npm run babel-node -- "
