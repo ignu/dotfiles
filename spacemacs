@@ -29,7 +29,6 @@
      markdown
      evil-rails
      slim-mode
-     scss-mode
      ruby
      syntax-checking
      ranger
@@ -60,8 +59,13 @@
                                       js2-mode
                                       slim-mode
                                       robe
+                                      scss-mode
+                                      sass-mode
                                       rvm
+                                      yaml-mode
+                                      jsx-mode
                                       web-mode
+                                      material
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -96,7 +100,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(darktooth
+                         spacemacs-dark
                          spacemacs-light
                          zenburn)
    ;; If non nil the cursor color matches the state color.
@@ -226,6 +231,8 @@ layers configuration."
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
+  (setq css-indent-level 2)
+  (setq scss-indent-level 2)
   (setq js-indent-level 2)
   (setq js2-indent-level 2)
   (setq jsx-indent-level 2)
