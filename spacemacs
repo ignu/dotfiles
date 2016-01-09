@@ -208,7 +208,12 @@ layers configuration."
   (global-set-key (kbd "s-8") 'eyebrowse-switch-to-window-config-8)
   (global-set-key (kbd "s-9") 'eyebrowse-switch-to-window-config-9)
 
-  (global-set-key (kbd "<f8>") 'ruby-test-run-at-point)
+  (defun save-and-test-ruby-at-point (args)
+    (interactive "P")
+    (save-buffer)
+    (ruby-test-run-at-point)
+    )
+  (global-set-key (kbd "<f8>") 'save-and-test-ruby-at-point)
 
   " ROBE "
   (add-hook 'ruby-mode-hook 'robe-mode) 
