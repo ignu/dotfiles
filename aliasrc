@@ -14,7 +14,9 @@ alias hg="history | grep "
 alias be="bundle exec"
 alias bet="be rake test TEST="
 alias s="bundle exec rspec"
-alias sr="bundle exec spec"
+alias rbe="rbenv exec bundle exec"
+alias rbes="rbenv exec bundle exec rspec"
+alias rber="rbenv exec bundle exec rake"
 alias r="rails"
 alias c='cucumber -f pretty'
 
