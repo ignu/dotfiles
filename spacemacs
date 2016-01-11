@@ -215,8 +215,19 @@ layers configuration."
     )
   (global-set-key (kbd "<f8>") 'save-and-test-ruby-at-point)
 
+  (global-set-key (kbd "<f11>") 'ranger)
+
+  (global-set-key (kbd "<f12>") 'projectile-invalidate-cache)
+
+  (defvar spacemacs-mode-line-new-version-lighterp t)
+
+  "JSX"
+  (setq web-mode-content-types-alist
+        '(("jsx" . "\\.js[x]?\\'")))
+
+
   " ROBE "
-  (add-hook 'ruby-mode-hook 'robe-mode) 
+  (add-hook 'ruby-mode-hook 'robe-mode)
 
   " RVM "
   (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
