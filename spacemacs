@@ -43,6 +43,7 @@
      version-control
      eyebrowse
      themes-megapack
+     abyss-theme
      flymake
      erlang
      elixir
@@ -58,6 +59,8 @@
                                       flymake-coffee
                                       coffee-mode
                                       js2-mode
+                                      tern
+                                      tern-autocomplete
                                       slim-mode
                                       robe
                                       scss-mode
@@ -192,6 +195,7 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+  (setq powerline-default-separator 'nil)
 
   " Be like an OSX app"
   (global-set-key (kbd "s-r") 'kill-this-buffer)
@@ -208,6 +212,8 @@ layers configuration."
   (global-set-key (kbd "s-8") 'eyebrowse-switch-to-window-config-8)
   (global-set-key (kbd "s-9") 'eyebrowse-switch-to-window-config-9)
 
+  (global-set-key (kbd "<f9>") 'tern-find-definition)
+
   (defun save-and-test-ruby-at-point (args)
     (interactive "P")
     (save-buffer)
@@ -219,12 +225,27 @@ layers configuration."
 
   (global-set-key (kbd "<f12>") 'projectile-invalidate-cache)
 
+  (setq term-default-bg-color nil)
+
+  (setq term-default-fg-color nil)
+  (setq system-uses-terminfo nil)
+
+  " JAVASRIPT "
+  (setq js2-strict-missing-semi-warning nil)
+  (setq js2-strict-trailing-comma-warning nil)
+  (setq js2-strict-trailing-comma-warning nil)
+
+  (autoload 'js2-mode "js2-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)) 
+
+  (custom-set-faces
+   '(term ((t (:inherit default)))))
+
   (defvar spacemacs-mode-line-new-version-lighterp t)
 
   "JSX"
   (setq web-mode-content-types-alist
         '(("jsx" . "\\.js[x]?\\'")))
-
 
   " ROBE "
   (add-hook 'ruby-mode-hook 'robe-mode)
@@ -259,10 +280,12 @@ layers configuration."
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
+
   (setq css-indent-level 2)
   (setq scss-indent-level 2)
   (setq js-indent-level 2)
   (setq js2-indent-level 2)
+
   (setq jsx-indent-level 2)
   (setq Javascript-indent-level 2)
 
