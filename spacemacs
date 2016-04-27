@@ -197,6 +197,25 @@ before layers configuration."
 layers configuration."
   (setq powerline-default-separator 'nil)
 
+  (defun eslint-fix-file ()
+    (interactive)
+    (message "eslint --fixing the file" (buffer-file-name))
+    (shell-command (concat "eslint --fix " (buffer-file-name))))
+
+  (defun eslint-fix-file-and-revert ()
+    (interactive)
+    (eslint-fix-file)
+    (revert-buffer t t))
+
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
+
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
+
+
   " Be like an OSX app"
   (global-set-key (kbd "s-r") 'kill-this-buffer)
   (global-set-key (kbd "M-s") 'save-buffer)
