@@ -217,6 +217,8 @@ layers configuration."
 
 
   " Be like an OSX app"
+
+  (global-set-key (kbd "s-b") 'helm-mini)
   (global-set-key (kbd "s-r") 'kill-this-buffer)
   (global-set-key (kbd "M-s") 'save-buffer)
   (global-set-key (kbd "M-v") 'x-clipboard-yank)
