@@ -9,14 +9,13 @@ alias dotfiles="mate ~/bin/dotfiles/"
 alias code="cd ~/code"
 
 alias hg="history | grep "
+alias npmr="npm run build"
 
 # RUBY
 alias be="bundle exec"
 alias bet="be rake test TEST="
 alias s="bundle exec rspec"
-alias rbe="rbenv exec bundle exec"
-alias rbes="rbenv exec bundle exec rspec"
-alias rber="rbenv exec bundle exec rake"
+alias sr="bundle exec spec"
 alias r="rails"
 alias c='cucumber -f pretty'
 
@@ -65,7 +64,7 @@ function headers() {
 
 function gwp() {
   git add .
-  git commit -am "wip $1"
+  git commit -am "wip $1" --no-verify
 }
 
 function gitnewbranch() {
