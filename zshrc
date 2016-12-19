@@ -73,3 +73,5 @@ bindkey '^Z' fancy-ctrl-z
 
 # added by travis gem
 [ -f /Users/ignu/.travis/travis.sh ] && source /Users/ignu/.travis/travis.sh
+
+[[ $TERM == eterm-color ]] && export TERM=xterm

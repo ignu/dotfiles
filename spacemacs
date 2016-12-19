@@ -12,24 +12,32 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     sql
+     html
+     javascript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;;
-     ----------------------------------------------------------------
-     yasnippet
+     ;;----------------------------------------------------------------
+     ;;yasnippet
+     ;;evil-rails
+     ;;slim-mode
+     ;;scss-mode
+     ;;flymake
+     ;;eyebrowse
      (auto-completion :variables
                       auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
                       auto-completion-enable-snippets-in-popup t)
+     ;; better-defaults
+     ;; rspec-mode
+     ;; alchemist
 
      emacs-lisp
      git
      markdown
-     evil-rails
-     slim-mode
-     scss-mode
      ruby
      syntax-checking
      ranger
@@ -39,27 +47,18 @@
      ;;        shell-default-position 'bottom)
      colors
      osx
-     rspec-mode
      version-control
-     eyebrowse
      themes-megapack
-     abyss-theme
-     flymake
      erlang
      elixir
-     alchemist
      fasd
      )
-
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(
-                                      beacon
                                       flymake-easy
-                                      flymake-coffee
-                                      coffee-mode
                                       js2-mode
                                       tern
                                       tern-autocomplete
@@ -71,6 +70,7 @@
                                       yaml-mode
                                       jsx-mode
                                       web-mode
+                                      yasnippet
                                       material
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -87,6 +87,7 @@ This function is called at the very startup of Spacemacs initialization
 before layers configuration."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
+
   (setq-default
    ;; Either `vim' or `emacs'. Evil is always enabled but if the variable
    ;; is `emacs' then the `holy-mode' is enabled at startup.
@@ -106,16 +107,15 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(darktooth
-                         spacemacs-dark
+   dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light
-                         zenburn)
+                         )
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 15
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -191,33 +191,26 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
-  )
+)
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+
+  (message "-------------------")
+  (message "Loading config.....")
+  (message "-------------------")
+
   (setq powerline-default-separator 'nil)
 
-  (defun eslint-fix-file ()
-    (interactive)
-    (message "eslint --fixing the file" (buffer-file-name))
-    (shell-command (concat "eslint --fix " (buffer-file-name))))
-
-  (defun eslint-fix-file-and-revert ()
-    (interactive)
-    (eslint-fix-file)
-    (revert-buffer t t))
-
-  (add-hook 'js2-mode-hook
-            (lambda ()
-              (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
-
-  (add-hook 'web-mode-hook
-            (lambda ()
-              (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
+  (fset 'evil-visual-update-x-selection 'ignore)
+  (setq x-select-enable-clipboard nil)
 
 
+  (message "-------------------")
+  (message "Loading Hot Keys.....")
+  (message "-------------------")
   " Be like an OSX app"
 
   (global-set-key (kbd "s-b") 'helm-mini)
@@ -236,13 +229,13 @@ layers configuration."
   (global-set-key (kbd "s-9") 'eyebrowse-switch-to-window-config-9)
 
   (global-set-key (kbd "<f9>") 'tern-find-definition)
-  (beacon-mode 1)
 
   (defun save-and-test-ruby-at-point (args)
     (interactive "P")
     (save-buffer)
     (ruby-test-run-at-point)
     )
+
   (global-set-key (kbd "<f8>") 'save-and-test-ruby-at-point)
 
   (global-set-key (kbd "<f11>") 'ranger)
@@ -250,26 +243,20 @@ layers configuration."
   (global-set-key (kbd "<f12>") 'projectile-invalidate-cache)
 
   (setq term-default-bg-color nil)
-
   (setq term-default-fg-color nil)
   (setq system-uses-terminfo nil)
+  (custom-set-faces
+   '(term ((t (:inherit default)))))
 
   " JAVASRIPT "
   (setq js2-strict-missing-semi-warning nil)
   (setq js2-strict-trailing-comma-warning nil)
-  (setq js2-strict-trailing-comma-warning nil)
+  (setq js2-missing-semi-one-line-override nil)
 
   (autoload 'js2-mode "js2-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)) 
 
-  (custom-set-faces
-   '(term ((t (:inherit default)))))
-
   (defvar spacemacs-mode-line-new-version-lighterp t)
-
-  "JSX"
-  (setq web-mode-content-types-alist
-        '(("jsx" . "\\.js[x]?\\'")))
 
   " ROBE "
   (add-hook 'ruby-mode-hook 'robe-mode)
@@ -282,6 +269,8 @@ layers configuration."
   (defun dotspacemacs/init ()
     (setq-default ruby-version-manager 'rbenv)
 
+  (setq make-backup-files nil)
+
   (eval-after-load 'company
     '(push 'company-robe company-backends))
 
@@ -290,9 +279,6 @@ layers configuration."
 
   ;; only show bad whitespace
   (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
-
-  ;; This gives you a tab of 2 spaces
-  (custom-set-variables '(coffee-tab-width 2))
 
   (setq-default
    js2-mode
@@ -309,6 +295,8 @@ layers configuration."
   (setq scss-indent-level 2)
   (setq js-indent-level 2)
   (setq js2-indent-level 2)
+  (setq js2-basic-offset 2)
+  (setq-local js2-basic-offset 2)
 
   (setq jsx-indent-level 2)
   (setq Javascript-indent-level 2)
@@ -344,9 +332,7 @@ layers configuration."
   (when (memq window-system '(mac ns))
     (exec-path-from-shell-initialize))
 
-  (require 'flymake-coffee)
   (flymake-mode-on)
-  (add-hook 'coffee-mode-hook 'flymake-coffee-load)
 
   (setq alchemist-hooks-test-on-save t)
 
@@ -371,19 +357,15 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
- '(ansi-color-faces-vector
-   [default bold shadow italic underline bold bold-italic bold])
- '(ansi-color-names-vector
-   ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#657b83")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
- '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
  '(custom-safe-themes
    (quote
     ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" default)))
+ '(fci-rule-character-color "#d9d9d9")
  '(fci-rule-color "#383838" t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
@@ -409,7 +391,8 @@ layers configuration."
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
  '(js-indent-level 2)
- '(linum-format " %7i " t)
+ '(js2-basic-offset 2)
+ '(linum-format " %7i ")
  '(magit-diff-use-overlays nil)
  '(package-archives
    (quote
@@ -446,13 +429,7 @@ layers configuration."
      (340 . "#94BFF3")
      (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3")
- '(weechat-color-list
-   (quote
-    (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ '(web-mode-code-indent-offset 2)
+ '(web-mode-css-indent-offset 2)
+ '(web-mode-markup-indent-offset 2)
+ )
