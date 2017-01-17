@@ -75,3 +75,72 @@ bindkey '^Z' fancy-ctrl-z
 [ -f /Users/ignu/.travis/travis.sh ] && source /Users/ignu/.travis/travis.sh
 
 [[ $TERM == eterm-color ]] && export TERM=xterm
+
+
+function gfom() {
+  git fetch
+  git rebase origin/master
+}
+
+# stash changes, switch to branch and then pop stash.
+# pass in an argument to go to that branch. defaults to '-'
+function coo() {
+  echo "COO COO..."
+  git stash
+
+  if [ ! $1 ]; then
+    echo "*********** Checking out previous branch *************"
+    git checkout -
+  else
+    echo "*********** Checking out $1 *************"
+    git checkout $1
+  fi
+
+  git stash pop
+  echo "********** Done *************"
+}
+
+function headers() {
+  curl -s -D - $1 -o /dev/null
+}
+
+function gwp() {
+  git add .
+  git commit -am "wip $1" --no-verify
+}
+
+function gitnewbranch() {
+  git fetch
+  git checkout master
+  git rebase origin/master
+  git checkout -b $1
+}
+
+function gm() {
+  git merge $1 --no-ff
+}
+
+function gc() {
+  git commit -v -a -m "$*"
+}
+
+function gbtr() {
+  git branch --track $1 remotes/origin/$1
+  git checkout $1
+  git rebase master
+  git checkout master
+  git rebase $1
+  git branch -D $1
+}
+
+function gbt() {
+  git branch --track $2 remotes/$1/$2
+  git checkout $2
+}
+
+function wasthiseverathing() {
+  git rev-list --all | xargs git grep $1
+}
+
+alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
+alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
