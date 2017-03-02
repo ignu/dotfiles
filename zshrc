@@ -82,6 +82,11 @@ function gfom() {
   git rebase origin/master
 }
 
+function gfod() {
+  git fetch
+  git rebase origin/develop
+}
+
 # stash changes, switch to branch and then pop stash.
 # pass in an argument to go to that branch. defaults to '-'
 function coo() {
