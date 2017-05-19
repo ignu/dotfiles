@@ -48,6 +48,10 @@ Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown'] }
 " JavaScript
 Plug 'ignu/javascript_spec_navigator.vim'
 Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
+Plug 'mxw/vim-jsx'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
 
 " Ruby
 Plug 'tpope/vim-rails'
@@ -198,6 +202,7 @@ map <Leader>: :Tabularize /:<cr>
 map <Leader>, :Tabularize /,<cr>
 map <Leader>" :Tabularize /"<cr>
 
+let g:jsx_ext_required = 0
 set cursorline
 
 noremap ; :Ag
