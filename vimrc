@@ -21,6 +21,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'flowtype/vim-flow'
 Plug 'neomake/neomake'
 Plug 'sbdchd/neoformat'
+Plug 'benizi/vim-automkdir'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'ternjs/tern_for_vim'
+Plug 'flowtype/vim-flow'
+Plug 'steelsojka/deoplete-flow'
 
 " Essentials
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
@@ -54,6 +60,7 @@ Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown'] }
 
 " JavaScript
 Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -94,10 +101,12 @@ call plug#end()
 
 " NEOFORMAT
 "
-Autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
+autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#flow#flow_bin = 'flow'
 
 " NEOMAKE
-autocmd! BufWritePost,BufEnter * Neomake  "neomake: run on save
+silent autocmd BufWritePost,BufEnter * Neomake  "neomake: run on save
 let g:neomake_javascript_enabled_makers = []
 let g:neomake_jsx_enabled_makers = []
 
@@ -109,6 +118,16 @@ if executable('flow')
   let g:neomake_javascript_enabled_makers += ['flow']
   let g:neomake_jsx_enabled_makers += ['flow']
 endif
+
+let g:javascript_plugin_flow = 1
+
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_arrow_function       = "⇒"
 
 set so=14
 "set ttymouse=xterm2
@@ -188,9 +207,6 @@ autocmd BufWinLeave *.* mkview
 augroup MiscMisc
   au!
   silent autocmd bufwritepost .vimrc source $MYVIMRC
-
-  " let autocomplete work for marionette handlers
-  au BufRead,BufNewFile *.coffee setlocal iskeyword+=:
 
   " remember fold positions
   autocmd BufWinLeave .* mkview
