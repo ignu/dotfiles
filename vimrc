@@ -15,6 +15,8 @@ call plug#begin('~/.vim/bundle')
 
 " New
 Plug 'junegunn/vim-github-dashboard'
+Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-janah'
 
 " Essentials
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
@@ -88,7 +90,7 @@ Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set so=14
-set ttymouse=xterm2
+"set ttymouse=xterm2
 
 let g:vimrubocop_ignore_warning = 1
 
@@ -159,7 +161,7 @@ noremap \ :w<CR>
 
 " save and restore folds when a file is closed and re-opened. ugh.
 autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview 
+"autocmd BufWinEnter *.* silent loadview 
 
 
 augroup MiscMisc
@@ -207,7 +209,9 @@ set cursorline
 
 noremap ; :Ag
 
-color blackboard
+autocmd ColorScheme janah highlight Normal ctermbg=235
+colorscheme janah
+
 set background=dark
 if has("persistent_undo")
   set undodir=~/.vim/undodir
