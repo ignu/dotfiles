@@ -32,10 +32,11 @@ alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --forma
 alias truestaging="ssh -i infrastructure/trueapp.pem ec2-user@ec2-52-6-227-114.compute-1.amazonaws.com"
 alias trueprod="ssh -i infrastructure/trueapp.pem ec2-user@ec2-52-4-42-3.compute-1.amazonaws.com"
 
-
 alias pa="ps aux | grep "
 
 alias tmux="TERM=xterm-256color tmux"
+alias vim="nvim"
+alias vi="nvim"
 alias n="node --harmony_arrow_functions"
 
 alias emul="/Users/ignu/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_One_API_23"

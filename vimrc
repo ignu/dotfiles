@@ -544,6 +544,17 @@ noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
+let g:startify_custom_header = [
+  \'',
+  \'',
+  \'  ____   ____.__  .___   _____                                      .___  ',
+  \'  \   \ /   /|__| |   | /     \ _____________  _______  __ ____   __| _/  ',
+  \'   \   Y   / |  | |   |/  \ /  \\____ \_  __ \/  _ \  \/ // __ \ / __ |   ',
+  \'    \     /  |  | |   /    Y    \  |_> >  | \(  <_> )   /\  ___// /_/ |   ',
+  \'     \___/   |__| |___\____|__  /   __/|__|   \____/ \_/  \___  >____ |   ',
+  \'                              \/|__|                          \/     \/   ',
+  \]
+
 " OpenChangedFiles (<Leader>O)---------------------- {{{
 function! OpenChangedFiles()
   only " Close all windows, unless they're modified
