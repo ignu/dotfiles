@@ -17,6 +17,10 @@ call plug#begin('~/.vim/bundle')
 Plug 'junegunn/vim-github-dashboard'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-janah'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'flowtype/vim-flow'
+Plug 'neomake/neomake'
+Plug 'sbdchd/neoformat'
 
 " Essentials
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
@@ -40,6 +44,7 @@ Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'vitaly/vim-syntastic-coffee', { 'for' : 'coffee' }
 Plug 'kchmck/vim-coffee-script', { 'for' : 'coffee' }
 Plug 'jnwhiteh/vim-golang'
+Plug 'ElmCast/elm-vim'
 
 " Templates
 Plug 'slim-template/vim-slim', { 'for': ['slim', 'skim'] }
@@ -48,12 +53,10 @@ Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown'] }
 
 " JavaScript
-Plug 'ignu/javascript_spec_navigator.vim'
-Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
+Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-
 
 " Ruby
 Plug 'tpope/vim-rails'
@@ -88,6 +91,24 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 call plug#end()
+
+" NEOFORMAT
+"
+Autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
+
+" NEOMAKE
+autocmd! BufWritePost,BufEnter * Neomake  "neomake: run on save
+let g:neomake_javascript_enabled_makers = []
+let g:neomake_jsx_enabled_makers = []
+
+if executable('eslint')
+  let g:neomake_javascript_enabled_makers += ['eslint']
+  let g:neomake_jsx_enabled_makers += ['eslint']
+endif
+if executable('flow')
+  let g:neomake_javascript_enabled_makers += ['flow']
+  let g:neomake_jsx_enabled_makers += ['flow']
+endif
 
 set so=14
 "set ttymouse=xterm2
@@ -509,8 +530,9 @@ noremap <F4> :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 :nnoremap <F8> :GitGutterToggle<cr>
 :nnoremap <F9> :bufdo! bd<cr>
-noremap <F12> :NERDTreeToggle<CR>
+:nnoremap <F10> :Neoformat<cr>
 noremap <F11> :NERDTreeFind<CR>
+noremap <F12> :NERDTreeToggle<CR>
 
 nmap <Leader><F12> :e ~/Dropbox/Notes/<cr>
 nmap <Leader><F12> :e ~/Dropbox/Notes/TIL.md<cr>
