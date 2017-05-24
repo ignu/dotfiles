@@ -282,49 +282,6 @@ set synmaxcol=800
 " Save when losing focus
 au FocusLost * :silent! wall
 
-" Keep search matches in the middle of the window.
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-function! HiInterestingWord(n) " {{{
-    " Save our location.
-    normal! mz
-
-    " Yank the current word into the z register.
-    normal! "zyiw
-
-    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
-    let mid = 86750 + a:n
-
-    " Clear existing matches, but don't worry if they don't exist.
-    silent! call matchdelete(mid)
-
-    " Construct a literal pattern that has to match at boundaries.
-    let pat = '\V\<' . escape(@z, '\') . '\>'
-
-    " Actually match the words.
-    call matchadd("InterestingWord" . a:n, pat, 1, mid)
-
-    " Move back to our original location.
-    normal! `z
-endfunction " }}}
-
-" Mappings {{{
-
-nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
-nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
-nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
-nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
-nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
-nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
-
-hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
-hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
-hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
-hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
-hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
-hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
-
 nnoremap Q gqip
 
 let g:indentguides_state = 0
@@ -350,164 +307,20 @@ onoremap ar a[
 vnoremap ir i[
 vnoremap ar a[
 
-" }}}
-" Next and Last {{{
-"
-" Motion for "next/last object".  "Last" here means "previous", not "final".
-" Unfortunately the "p" motion was already taken for paragraphs.
-"
-" Next acts on the next object of the given type, last acts on the previous
-" object of the given type.  These don't necessarily have to be in the current
-" line.
-"
-" Currently works for (, [, {, and their shortcuts b, r, B.
-"
-" Next kind of works for ' and " as long as there are no escaped versions of
-" them in the string (TODO: fix that).  Last is currently broken for quotes
-" (TODO: fix that).
-"
-" Some examples (C marks cursor positions, V means visually selected):
-"
-" din'  -> delete in next single quotes                foo = bar('spam')
-"                                                      C
-"                                                      foo = bar('')
-"                                                                C
-"
-" canb  -> change around next parens                   foo = bar('spam')
-"                                                      C
-"                                                      foo = bar
-"                                                               C
-"
-" vin"  -> select inside next double quotes            print "hello ", name
-"                                                       C
-"                                                      print "hello ", name
-"                                                             VVVVVV
-
-onoremap an :<c-u>call <SID>NextTextObject('a', '/')<cr>
-xnoremap an :<c-u>call <SID>NextTextObject('a', '/')<cr>
-onoremap in :<c-u>call <SID>NextTextObject('i', '/')<cr>
-xnoremap in :<c-u>call <SID>NextTextObject('i', '/')<cr>
-
-onoremap al :<c-u>call <SID>NextTextObject('a', '?')<cr>
-xnoremap al :<c-u>call <SID>NextTextObject('a', '?')<cr>
-onoremap il :<c-u>call <SID>NextTextObject('i', '?')<cr>
-xnoremap il :<c-u>call <SID>NextTextObject('i', '?')<cr>
-
-
-function! s:NextTextObject(motion, dir)
-    let c = nr2char(getchar())
-    let d = ''
-
-    if c ==# "b" || c ==# "(" || c ==# ")"
-        let c = "("
-    elseif c ==# "B" || c ==# "{" || c ==# "}"
-        let c = "{"
-    elseif c ==# "r" || c ==# "[" || c ==# "]"
-        let c = "["
-    elseif c ==# "'"
-        let c = "'"
-    elseif c ==# '"'
-        let c = '"'
-    else
-        return
-    endif
-
-    " Find the next opening-whatever.
-    execute "normal! " . a:dir . c . "\<cr>"
-
-    if a:motion ==# 'a'
-        " If we're doing an 'around' method, we just need to select around it
-        " and we can bail out to Vim.
-        execute "normal! va" . c
-    else
-        " Otherwise we're looking at an 'inside' motion.  Unfortunately these
-        " get tricky when you're dealing with an empty set of delimiters because
-        " Vim does the wrong thing when you say vi(.
-
-        let open = ''
-        let close = ''
-
-        if c ==# "("
-            let open = "("
-            let close = ")"
-        elseif c ==# "{"
-            let open = "{"
-            let close = "}"
-        elseif c ==# "["
-            let open = "\\["
-            let close = "\\]"
-        elseif c ==# "'"
-            let open = "'"
-            let close = "'"
-        elseif c ==# '"'
-            let open = '"'
-            let close = '"'
-        endif
-
-        " We'll start at the current delimiter.
-        let start_pos = getpos('.')
-        let start_l = start_pos[1]
-        let start_c = start_pos[2]
-
-        " Then we'll find it's matching end delimiter.
-        if c ==# "'" || c ==# '"'
-            " searchpairpos() doesn't work for quotes, because fuck me.
-            let end_pos = searchpos(open)
-        else
-            let end_pos = searchpairpos(open, '', close)
-        endif
-
-        let end_l = end_pos[0]
-        let end_c = end_pos[1]
-
-        call setpos('.', start_pos)
-
-        if start_l == end_l && start_c == (end_c - 1)
-            " We're in an empty set of delimiters.  We'll append an "x"
-            " character and select that so most Vim commands will do something
-            " sane.  v is gonna be weird, and so is y.  Oh well.
-            execute "normal! ax\<esc>\<left>"
-            execute "normal! vi" . c
-        elseif start_l == end_l && start_c == (end_c - 2)
-            " We're on a set of delimiters that contain a single, non-newline
-            " character.  We can just select that and we're done.
-            execute "normal! vi" . c
-        else
-            " Otherwise these delimiters contain something.  But we're still not
-            " sure Vim's gonna work, because if they contain nothing but
-            " newlines Vim still does the wrong thing.  So we'll manually select
-            " the guts ourselves.
-            let whichwrap = &whichwrap
-            set whichwrap+=h,l
-
-            execute "normal! va" . c . "hol"
-
-            let &whichwrap = whichwrap
-        endif
-    endif
-endfunction
-
 " ---------
 " bindings
 " ---------
 let mapleader = ","
 nmap <Space> ,
 
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
-
 noremap <D-j> :b#<CR>
 noremap <D-r> :bd<CR>
+
 "next quickfix file
 noremap <D-'> :cnext<CR>
 noremap <leader>' :w<CR> :cnext<CR>
 iabbrev sao save_and_open_page
 iabbrev SAO save_and_open_screenshot
-
 
 iabbrev furm # rubocop:disable MethodLength
 
@@ -521,8 +334,6 @@ inoremap `l p "=" * 80<ESC>
 nnoremap <leader>v :tabedit $MYVIMRC<CR>
 nnoremap <leader>n :set number!<CR>
 nnoremap <leader>N :set relativenumber!<CR>
-"open file in macvim
-noremap <Leader>m :!mvim % <CR>
 
 " show trailing whitespace
 set list listchars=tab:»·,trail:
@@ -542,31 +353,17 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:
 noremap <F11> :NERDTreeFind<CR>
 noremap <F12> :NERDTreeToggle<CR>
 
-nmap <Leader><F12> :e ~/Dropbox/Notes/<cr>
-nmap <Leader><F12> :e ~/Dropbox/Notes/TIL.md<cr>
-nmap <Leader><F1> :e ~/.vim/update_bundles<cr>
-
 " git blame shortcut
 vnoremap <Leader>g :<C-U>!git blame -w <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " autoindent is good
 filetype plugin indent on
 
-"silent autocmd VimResized :TMiniBufExplorer<CR>
-
-"-----------
-" Syntax
-" ----------
-" Don't stomp over Ctrl-P
-
 nmap <> :tabn<CR>
-"noremap <C-u> :tabn<CR>
-"noremap <C-i> :tabp<CR>
 
 "Ack current word
 nmap <C-;>a :vsp<cr> :exe "Ag " .  expand("<cword>") . " "<cr>
 nmap <leader>a :vsp<cr> :exe "Ag " .  expand("<cword>") . " "<cr>
-noremap  <leader>z :call JsSpecNavigate()<CR>
 
 " make movement keys simpler
 noremap <C-j> <C-W>j
@@ -609,8 +406,6 @@ endfunction
 command! OpenChangedFiles :call OpenChangedFiles()
 noremap<Leader>O :OpenChangedFiles <CR>
 " }}}
-
-noremap <Leader>h :cal SetSyn("html") <CR>
 
 " Delete buffer while keeping window layout (don't close buffer's windows).
 " Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
@@ -685,24 +480,6 @@ function! s:Bclose(bang, buffer)
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 nnoremap <silent> <Leader>r :Bclose<CR>
-
-"let g:rails_projections = {
-"      \ "app/services/cloud_stack/*_service.rb": {
-"      \   "command" : "service",
-"      \   "affinity": "model",
-"      \   "template": "class CloudStack::%SService\n  include",
-"      \   "keywords": "service",
-"      \   "test"    : "spec/services/cloud_stack/%s_spec.rb"
-"      \ }
-
-nmap <leader>f <Plug>(easymotion-jumptoanywhere)
-
-" DRAG VISUALS
-vmap  <expr>  <LEFT>   DVB_Drag('left')
-vmap  <expr>  <RIGHT>  DVB_Drag('right')
-vmap  <expr>  <DOWN>   DVB_Drag('down')
-vmap  <expr>  <UP>     DVB_Drag('up')
-vmap  <expr>  D        DVB_Duplicate()
 
 nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
 hi OverLength ctermbg=none cterm=none
