@@ -23,17 +23,18 @@ Plug 'neomake/neomake'
 Plug 'sbdchd/neoformat'
 Plug 'benizi/vim-automkdir'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neoinclude.vim'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'ternjs/tern_for_vim'
 Plug 'flowtype/vim-flow'
 Plug 'steelsojka/deoplete-flow'
+Plug 'chemzqm/vim-jsx-improve'
 
 " Essentials
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/localvimrc'
-Plug 'scrooloose/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
@@ -47,7 +48,6 @@ Plug 'git://github.com/jgdavey/vim-turbux.git',
 " Lanugage
 Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-Plug 'vitaly/vim-syntastic-coffee', { 'for' : 'coffee' }
 Plug 'kchmck/vim-coffee-script', { 'for' : 'coffee' }
 Plug 'jnwhiteh/vim-golang'
 Plug 'ElmCast/elm-vim'
@@ -58,20 +58,13 @@ Plug 'juvenn/mustache.vim'
 Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown'] }
 
-" JavaScript
-Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'mxw/vim-jsx'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-
 " Ruby
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails', { 'for' : 'ruby' }
+Plug 'vim-ruby/vim-ruby', { 'for' : 'ruby' }
+Plug 'tpope/vim-endwise', { 'for' : 'ruby' }
 Plug 'ecomba/vim-ruby-refactoring', { 'for' : 'ruby' }
 Plug 'tpope/vim-cucumber', { 'for' : 'feature' }
-Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-bundler', { 'for' : 'ruby' }
 Plug 'jgdavey/vim-blockle'
 
 " Navigation/Search
@@ -84,7 +77,6 @@ Plug 'airblade/vim-rooter'
 Plug 'whatyouhide/vim-gotham'
 Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/ScrollColors'
-Plug 'reedes/vim-colors-pencil'
 Plug 'jeetsukumaran/vim-nefertiti'
 Plug 'zenorocha/dracula-theme'
 Plug 'junegunn/seoul256.vim'
