@@ -8,16 +8,13 @@ imap jj <Esc>
 call plug#begin('~/.vim/bundle')
 
 " Purgatory
-" Plug 'Lokaltog/vim-easymotion'
 " Plug 'scrooloose/nerdcommenter'
-" Plug 'git://github.com/vim-scripts/YankRing.vim.git'
-" git://github.com/shinokada/dragvisuals.vim.git
 
 " New
+Plug 'gko/vim-coloresque'
 Plug 'junegunn/vim-github-dashboard'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-janah'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'flowtype/vim-flow'
 Plug 'neomake/neomake'
 Plug 'sbdchd/neoformat'
@@ -31,6 +28,7 @@ Plug 'steelsojka/deoplete-flow'
 Plug 'chemzqm/vim-jsx-improve'
 
 " Essentials
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -48,13 +46,12 @@ Plug 'git://github.com/jgdavey/vim-turbux.git',
 " Lanugage
 Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-Plug 'kchmck/vim-coffee-script', { 'for' : 'coffee' }
+Plug 'kchmck/vim-coffee-script'
 Plug 'jnwhiteh/vim-golang'
-Plug 'ElmCast/elm-vim'
+Plug 'ElmCast/elm-vim', { 'for' : 'elm' }
 
 " Templates
 Plug 'slim-template/vim-slim', { 'for': ['slim', 'skim'] }
-Plug 'juvenn/mustache.vim'
 Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown'] }
 
@@ -184,7 +181,6 @@ set t_Co=256
 scriptencoding utf-8
 set number
 set autoread
-syntax on
 set wildmode=list:longest
 set wildchar=<Tab> wildmenu wildmode=full
 
@@ -331,7 +327,7 @@ map <S-Tab> :tabp<cr>
 inoremap ;pr require 'pry'; binding.pry<esc>
 inoremap `l p "=" * 80<ESC>
 
-nnoremap <leader>v :tabedit $MYVIMRC<CR>
+nnoremap <leader>v :tabedit ~/bin/dotfiles2.0/vimrc<CR>
 nnoremap <leader>n :set number!<CR>
 nnoremap <leader>N :set relativenumber!<CR>
 
