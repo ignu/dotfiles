@@ -25,5 +25,8 @@ echo "linking files"
   rm -rf ~/.zsh_profile.d
   ln -s ~/bin/dotfiles2.0/zsh_profile.d .zsh_profile.d
 
+  brew install python3
+  pip3 install --upgrade neovim
+
 echo "install pow"
   curl get.pow.cx | sh
