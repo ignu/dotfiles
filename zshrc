@@ -31,7 +31,7 @@ source $HOME/.aliasrc
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 PATH=~/bin:$PATH
 
