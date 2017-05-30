@@ -26,6 +26,7 @@ Plug 'ternjs/tern_for_vim'
 Plug 'flowtype/vim-flow'
 Plug 'steelsojka/deoplete-flow'
 Plug 'chemzqm/vim-jsx-improve'
+Plug 'itmammoth/doorboy.vim'
 
 " Essentials
 Plug 'ctrlpvim/ctrlp.vim'
@@ -95,7 +96,6 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#flow#flow_bin = 'flow'
 
 " NEOMAKE
-silent autocmd BufWritePost,BufEnter * Neomake  "neomake: run on save
 let g:neomake_javascript_enabled_makers = []
 let g:neomake_jsx_enabled_makers = []
 
@@ -119,6 +119,7 @@ let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_arrow_function       = "⇒"
 
 set so=14
+set relativenumber
 "set ttymouse=xterm2
 
 let g:vimrubocop_ignore_warning = 1
