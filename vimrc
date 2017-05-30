@@ -27,6 +27,7 @@ Plug 'flowtype/vim-flow'
 Plug 'steelsojka/deoplete-flow'
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'itmammoth/doorboy.vim'
+Plug 'leafgarland/typescript-vim'
 
 " Essentials
 Plug 'ctrlpvim/ctrlp.vim'
@@ -92,6 +93,8 @@ call plug#end()
 " NEOFORMAT
 "
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
+autocmd FileType typescript :set makeprg=tsc
+
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#flow#flow_bin = 'flow'
 
