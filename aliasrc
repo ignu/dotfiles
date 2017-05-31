@@ -29,6 +29,7 @@ alias co='git checkout'
 alias gpom="git push origin master"
 alias gap="git add -p"
 alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | pick | xargs git checkout"
+alias que="cat package.json | jq .scripts"
 alias truestaging="ssh -i infrastructure/trueapp.pem ec2-user@ec2-52-6-227-114.compute-1.amazonaws.com"
 alias trueprod="ssh -i infrastructure/trueapp.pem ec2-user@ec2-52-4-42-3.compute-1.amazonaws.com"
 
