@@ -504,3 +504,5 @@ fun! s:FindWordUnderCursor()
   exec "Ag " . @z
 endfun
 nmap <Leader>a :call s:FindWordUnderCursor()
+
+noremap <Enter> :w!<cr> :Tx npm run test<cr>
