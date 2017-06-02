@@ -14,7 +14,7 @@ ZSH_THEME="apple"
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(osx rails ruby git npm nvm colorize pow zsh-syntax-highlighting history-substring-search)
+plugins=(osx rails ruby git npm nvm colorize pow react-native tmux zsh-syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -138,9 +138,26 @@ function gbtr() {
   git branch -D $1
 }
 
+function mvnclean() {
+  cd ~/code/Dotcom-CMS/hbodata
+  mvn clean install -PautoInstallPackage
+  cd ~/code/Dotcom-CMS/hboweb
+  mvn clean install -PautoInstallPackage
+}
+
 function gbt() {
   git branch --track $2 remotes/$1/$2
   git checkout $2
+}
+
+function revim() {
+  rm -rf ~/.vimrc
+  rm -rf ~/.vim
+  rm ~/.config/nvim
+  mkdir ~/.config/nvim
+  ln -s ~/bin/dotfiles2.0/init.vim ~/.config/nvim/init.vim
+  ln -s ~/bin/dotfiles2.0/vim .vim
+  ln ~/bin/dotfiles2.0/vimrc .vimrc
 }
 
 function wasthiseverathing() {
