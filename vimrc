@@ -15,7 +15,6 @@ Plug 'gko/vim-coloresque'
 Plug 'junegunn/vim-github-dashboard'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-janah'
-Plug 'flowtype/vim-flow'
 Plug 'neomake/neomake'
 Plug 'sbdchd/neoformat'
 Plug 'benizi/vim-automkdir'
@@ -23,7 +22,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neoinclude.vim'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'ternjs/tern_for_vim'
-Plug 'flowtype/vim-flow'
+Plug 'flowtype/vim-flow', { 'on': ['FlowType', 'FlowToggle', 'FlowMake']}
 Plug 'steelsojka/deoplete-flow'
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'itmammoth/doorboy.vim'
