@@ -27,6 +27,7 @@ Plug 'steelsojka/deoplete-flow'
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'itmammoth/doorboy.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'MattesGroeger/vim-bookmarks'
 
 " Essentials
 Plug 'ctrlpvim/ctrlp.vim'
