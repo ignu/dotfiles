@@ -43,3 +43,6 @@ alias n="node --harmony_arrow_functions"
 alias emul="/Users/ignu/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_One_API_23"
 
 alias nod="nodemon --exec npm run babel-node -- "
+
+alias editalias="vim ~/bin/dotfiles2.0/aliasrc"
+alias editvim="vim ~/bin/dotfiles2.0/vimrc"
