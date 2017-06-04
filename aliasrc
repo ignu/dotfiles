@@ -38,11 +38,13 @@ alias pa="ps aux | grep "
 alias tmux="TERM=xterm-256color tmux"
 alias vim="nvim"
 alias vi="nvim"
-alias n="node --harmony_arrow_functions"
 
 alias emul="/Users/ignu/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_One_API_23"
 
-alias nod="nodemon --exec npm run babel-node -- "
-
 alias editalias="vim ~/bin/dotfiles2.0/aliasrc"
 alias editvim="vim ~/bin/dotfiles2.0/vimrc"
+alias godot="cd ~/bin/dotfiles2.0 && git add -p"
+
+# NODE
+alias nod="nodemon --exec npm run babel-node -- "
+alias nr="node run"
