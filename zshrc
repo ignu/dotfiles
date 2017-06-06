@@ -152,19 +152,23 @@ function gbt() {
 
 function reprofile() {
   cd
-  rm -rf ~/.vimrc
-  rm -rf ~/.vim
-  rm ~/.config/nvim
-  mkdir ~/.config/nvim
-  ln -s ~/bin/dotfiles2.0/init.vim ~/.config/nvim/init.vim
-  ln -s ~/bin/dotfiles2.0/vim .vim
-  ln ~/bin/dotfiles2.0/vimrc .vimrc
 
   rm ~/.zshrc
   ln -s ~/bin/dotfiles2.0/zshrc .zshrc
 
   rm ~/.aliasrc
   ln -s ~/bin/dotfiles2.0/aliasrc .aliasrc
+
+  rm ~/.gitignore_global
+  ln -s ~/bin/dotfiles2.0/gitignore_global .gitignore_global
+
+  rm  ~/.vimrc
+  rm -rf ~/.vim
+  rm ~/.config/nvim
+  mkdir ~/.config/nvim
+  ln -s ~/bin/dotfiles2.0/init.vim ~/.config/nvim/init.vim
+  ln -s ~/bin/dotfiles2.0/vim .vim
+  ln ~/bin/dotfiles2.0/vimrc .vimrc
 }
 
 function wasthiseverathing() {
