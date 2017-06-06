@@ -47,7 +47,7 @@ alias godot="cd ~/bin/dotfiles2.0 && git add -p"
 
 # NODE
 alias nod="nodemon --exec npm run babel-node -- "
-alias nr="node run"
+alias nr="npm run"
 
 # DOCKER
 alias burn="docker kill $(docker ps -q)"
