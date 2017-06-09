@@ -29,6 +29,7 @@ Plug 'itmammoth/doorboy.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'sk1418/Join'
+Plug 'majutsushi/tagbar'
 
 " Essentials
 Plug 'ctrlpvim/ctrlp.vim'
