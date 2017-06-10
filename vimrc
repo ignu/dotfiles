@@ -217,6 +217,13 @@ noremap \ :w<CR>
 autocmd BufWinLeave *.* mkview
 "autocmd BufWinEnter *.* silent loadview 
 
+function! JsxHack()
+  set syntax=html
+  set syntax=javascript.jsx
+endfunction
+
+autocmd BufRead *.js call JsxHack()
+autocmd BufRead *.jsx call JsxHack()
 
 augroup MiscMisc
   au!
