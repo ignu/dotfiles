@@ -40,7 +40,8 @@ Plug 'vim-scripts/localvimrc'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
-Plug 'msanders/snipmate.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'tmhedberg/matchit'
 
 " TMUX
@@ -75,6 +76,7 @@ Plug 'bogado/file-line'
 Plug 'airblade/vim-rooter'
 
 " COLORS
+Plug 'jakwings/vim-colors'
 Plug 'whatyouhide/vim-gotham'
 Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/ScrollColors'
@@ -91,6 +93,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 call plug#end()
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -268,7 +277,7 @@ set cursorline
 noremap ; :Ag
 
 autocmd ColorScheme janah highlight Normal ctermbg=235
-colorscheme blackangus
+colorscheme badwolf
 
 set background=dark
 if has("persistent_undo")
