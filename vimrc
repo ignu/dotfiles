@@ -30,7 +30,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'sk1418/Join'
 Plug 'majutsushi/tagbar'
-Plug 'felixhummel/setcolors.vim'
 
 " Essentials
 Plug 'ctrlpvim/ctrlp.vim'
@@ -269,7 +268,7 @@ set cursorline
 noremap ; :Ag
 
 autocmd ColorScheme janah highlight Normal ctermbg=235
-colorscheme janah
+colorscheme blackangus
 
 set background=dark
 if has("persistent_undo")
