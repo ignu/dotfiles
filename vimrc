@@ -126,6 +126,8 @@ endif
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
 autocmd FileType typescript :set makeprg=tsc
 autocmd! BufWritePost * Neomake
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#flow#flow_bin = 'flow'
