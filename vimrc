@@ -95,7 +95,7 @@ Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
@@ -174,6 +174,7 @@ inoremap ;fl (╯°□°）╯︵ ┻━┻"
 "------------------
 let g:turbux_command_prefix = 'bundle exec'
 let g:turbux_runner  = 'tslime'
+nmap t :NEXTCOLOR<CR>
 noremap <Leader><Right> :Tx rake db:migrate<CR>
 noremap <Leader><Left> :Tx rake db:rollback<CR>
 
