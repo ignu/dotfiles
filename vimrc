@@ -116,6 +116,20 @@ endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
 
+let g:useSystemClipboard = 0
+function! UseSystemClipboard()
+  if g:useSystemClipboard
+    echom "Using Vim Clipboard. ⓥ"
+    let g:useSystemClipboard = 0
+    set clipboard=""
+  else
+    echom "Using System Clipboard. 🌈"
+    let g:useSystemClipboard = 1
+    set clipboard=unnamed
+  endif
+endfunction
+noremap <F6> :call UseSystemClipboard()<CR>
+
 "Loccal config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
