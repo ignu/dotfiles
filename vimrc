@@ -11,6 +11,7 @@ call plug#begin('~/.vim/bundle')
 " Plug 'scrooloose/nerdcommenter'
 
 " New
+Plug 'jremmen/vim-ripgrep'
 Plug 'gko/vim-coloresque'
 Plug 'junegunn/vim-github-dashboard'
 Plug 'mhinz/vim-startify'
