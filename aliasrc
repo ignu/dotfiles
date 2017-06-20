@@ -3,7 +3,6 @@ alias cpu='top -o cpu'
 alias mem='top -o vsize'
 alias ..="cd .."
 alias ...="cd ../.."
-alias tru="cd ~/code/true-app"
 alias reload="source ~/bin/dotfiles/bashrc"
 alias dotfiles="mate ~/bin/dotfiles/"
 alias code="cd ~/code"
@@ -24,15 +23,13 @@ alias g='git status'
 alias gs='git show --stat'
 alias gl='git log -n 14'
 alias gb='git checkout -b'
+alias gca='git commit --amend'
 alias glo='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias co='git checkout'
 alias gpom="git push origin master"
 alias gap="git add -p"
 alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | pick | xargs git checkout"
 alias que="cat package.json | jq .scripts"
-alias truestaging="ssh -i infrastructure/trueapp.pem ec2-user@ec2-52-6-227-114.compute-1.amazonaws.com"
-alias trueprod="ssh -i infrastructure/trueapp.pem ec2-user@ec2-52-4-42-3.compute-1.amazonaws.com"
-
 alias pa="ps aux | grep "
 
 alias tmux="TERM=xterm-256color tmux"
