@@ -12,7 +12,6 @@ call plug#begin('~/.vim/bundle')
 
 " New
 Plug 'jremmen/vim-ripgrep'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'gko/vim-coloresque'
 Plug 'junegunn/vim-github-dashboard'
 Plug 'mhinz/vim-startify'
