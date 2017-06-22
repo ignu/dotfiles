@@ -370,6 +370,9 @@ vnoremap ar a[
 nnoremap <Space> <nop>
 let mapleader = " "
 
+" Search for character under word
+:nnoremap <Leader><Leader> :Ag <cword> <CR>
+
 noremap <D-j> :b#<CR>
 noremap <D-r> :bd<CR>
 
