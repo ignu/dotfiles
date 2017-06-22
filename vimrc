@@ -176,9 +176,6 @@ set relativenumber
 
 let g:vimrubocop_ignore_warning = 1
 
-" Escape when trying to find cursor
-inoremap jk <ESC>
-
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -193,34 +190,112 @@ inoremap ;fl (╯°□°）╯︵ ┻━┻"
 let g:turbux_command_prefix = 'bundle exec'
 let g:turbux_runner  = 'tslime'
 nmap t :NEXTCOLOR<CR>
-noremap <Leader><Right> :Tx rake db:migrate<CR>
-noremap <Leader><Left> :Tx rake db:rollback<CR>
 
-noremap <Up> :GitGutterPrevHunk<CR>
-noremap <Down> :GitGutterNextHunk<CR>
-nmap <Leader>+ :GitGutterStageHunk<CR>
 
-" Arrow Keys Navigate QuickFix Window
-noremap <Right> :cnext<CR>
-noremap <Left> :cprev<CR>
-noremap <Leader><Up> :GitGutterLineHighlightsToggle<CR>
+"-----------------
+" MAPPINGS 🚀 
+"-----------------
 
-" simpler surround.vim
-:onoremap p i(
-:onoremap q i"
+"-------------
+" INSERT  🌈
 
-" Copy Paragraph
-noremap cp yap<S-}>p
+" Escape when trying to find cursor
+inoremap jk <ESC>
 
-" ---------
+"-------------
+" NORMAL  🌈
+
 " EMACS
-" ---------
 noremap <C-a> <Home>
 noremap <C-b> <Left>
 noremap <C-f> <Right>
 noremap <C-e> <End>
 
-"noremap <C-l> :match ErrorMsg '\%>79v.\+'<CR>
+" make movement keys simpler
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
+
+noremap <Up> :GitGutterPrevHunk<CR>
+noremap <Down> :GitGutterNextHunk<CR>
+" Arrow Keys Navigate QuickFix Window
+noremap <Right> :cnext<CR>
+noremap <Left> :cprev<CR>
+
+" Search for character under word
+:nnoremap <Leader><Leader> :Ag <cword> <CR>
+
+noremap <Leader><Right> :Tx rake db:migrate<CR>
+noremap <Leader><Left> :Tx rake db:rollback<CR>
+noremap <Leader><Up> :GitGutterLineHighlightsToggle<CR>
+noremap <Leader>+ :GitGutterStageHunk<CR>
+
+nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
+nnoremap <silent> <Leader>r :Bclose<CR>
+
+nnoremap <leader>n :set number!<CR>
+nnoremap <leader>N :set relativenumber!<CR>
+
+noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
+nnoremap <leader>v :tabedit ~/bin/dotfiles2.0/vimrc<CR>
+
+noremap <Leader><F1> :ResetTmuxVars<CR>
+noremap <F1> :echo expand('%:t')<CR>
+" remove trailing whitespace and replace tabs with spaces
+" Press F4 to toggle highlighting on/off, and show current value.
+noremap <F2> :noremap <Enter> :Tx
+nnoremap <F3> :buffers<CR>:b<Space>
+noremap <Leader><F3> :Tx bundle<CR>
+noremap <F4> :set hlsearch! hlsearch?<CR>
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+" F6 open
+" F7 open
+nnoremap <F8> :GitGutterToggle<cr>
+nnoremap <F9> :bufdo! bd<cr>
+nnoremap <F10> :Neoformat<cr>
+noremap <F11> :NERDTreeFind<CR>
+noremap <F12> :NERDTreeToggle<CR>
+
+" RSI sucks. save with \ my pooooor thumb
+noremap \ :w<CR>
+noremap ; :Ag
+
+" Copy Paragraph
+noremap cp yap<S-}>p
+
+" OPEN LOGS
+nmap K :vsp<cr>:Glog<cr>
+
+" simpler surround.vim
+:onoremap p i(
+:onoremap q i"
+
+nnoremap <Space> <nop>
+let mapleader = " "
+
+
+"-------------
+" INSERT  🌈
+"
+"next quickfix file
+iabbrev sao save_and_open_page
+iabbrev SAO save_and_open_screenshot
+inoremap ;pr require 'pry'; binding.pry<esc>
+
+"-------------
+" VISUAL  🌈
+"
+" git blame shortcut
+vnoremap <Leader>g :<C-U>!git blame -w <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
+vnoremap <Leader>= :Tabularize /=<cr>
+vnoremap <Leader>: :Tabularize /:<cr>
+vnoremap <Leader>, :Tabularize /,<cr>
+vnoremap <Leader>" :Tabularize /"<cr>
+
+map <Tab> :tabn<cr>
+map <S-Tab> :tabp<cr>
 
 " ------------
 " better defaults
@@ -237,9 +312,6 @@ set number
 set autoread
 set wildmode=list:longest
 set wildchar=<Tab> wildmenu wildmode=full
-
-" RSI sucks. my pooooor thumb
-noremap \ :w<CR>
 
 " save and restore folds when a file is closed and re-opened. ugh.
 autocmd BufWinLeave *.* mkview
@@ -285,15 +357,8 @@ augroup NewSyntaxes
   au BufRead,BufNewFile *.skim set ft=slim
 augroup end
 
-map <Leader>= :Tabularize /=<cr>
-map <Leader>: :Tabularize /:<cr>
-map <Leader>, :Tabularize /,<cr>
-map <Leader>" :Tabularize /"<cr>
-
 let g:jsx_ext_required = 0
 set cursorline
-
-noremap ; :Ag
 
 autocmd ColorScheme janah highlight Normal ctermbg=235
 colorscheme badwolf
@@ -307,7 +372,6 @@ endif
 " no scrollbars in macvim
 set guioptions-=e
 set guioptions-=r
-nmap K :vsp<cr>:Glog<cr>
 
 " SILVER SEARCHER
 if executable('ag')
@@ -339,8 +403,6 @@ set synmaxcol=800
 " Save when losing focus
 au FocusLost * :silent! wall
 
-nnoremap Q gqip
-
 let g:indentguides_state = 0
 function! IndentGuides() " {{{
     if g:indentguides_state
@@ -359,77 +421,11 @@ nnoremap <F7> :call IndentGuides()<cr>
 
 " Shortcut for [] {{{
 
-onoremap ir i[
-onoremap ar a[
-vnoremap ir i[
-vnoremap ar a[
-
-" ---------
-" bindings
-" ---------
-nnoremap <Space> <nop>
-let mapleader = " "
-
-" Search for character under word
-:nnoremap <Leader><Leader> :Ag <cword> <CR>
-
-noremap <D-j> :b#<CR>
-noremap <D-r> :bd<CR>
-
-"next quickfix file
-noremap <D-'> :cnext<CR>
-noremap <leader>' :w<CR> :cnext<CR>
-iabbrev sao save_and_open_page
-iabbrev SAO save_and_open_screenshot
-
-iabbrev furm # rubocop:disable MethodLength
-
-noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
-
-map <Tab> :tabn<cr>
-map <S-Tab> :tabp<cr>
-inoremap ;pr require 'pry'; binding.pry<esc>
-inoremap `l p "=" * 80<ESC>
-
-nnoremap <leader>v :tabedit ~/bin/dotfiles2.0/vimrc<CR>
-nnoremap <leader>n :set number!<CR>
-nnoremap <leader>N :set relativenumber!<CR>
-
 " show trailing whitespace
 set list listchars=tab:»·,trail:
 
-noremap <Leader><F1> :ResetTmuxVars<CR>
-noremap <F1> :echo expand('%:t')<CR>
-" remove trailing whitespace and replace tabs with spaces
-" Press F4 to toggle highlighting on/off, and show current value.
-nmap <F2> :noremap <Enter> :Tx
-:nnoremap <F3> :buffers<CR>:b<Space>
-noremap <Leader><F3> :Tx bundle<CR>
-noremap <F4> :set hlsearch! hlsearch?<CR>
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
-:nnoremap <F8> :GitGutterToggle<cr>
-:nnoremap <F9> :bufdo! bd<cr>
-:nnoremap <F10> :Neoformat<cr>
-noremap <F11> :NERDTreeFind<CR>
-noremap <F12> :NERDTreeToggle<CR>
-
-" git blame shortcut
-vnoremap <Leader>g :<C-U>!git blame -w <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-
 " autoindent is good
 filetype plugin indent on
-
-nmap <> :tabn<CR>
-
-"Ack current word
-nmap <C-;>a :vsp<cr> :exe "Ag " .  expand("<cword>") . " "<cr>
-nmap <leader>a :vsp<cr> :exe "Ag " .  expand("<cword>") . " "<cr>
-
-" make movement keys simpler
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
 
 let g:startify_custom_header = [
   \'',
@@ -554,15 +550,3 @@ fun! s:LongLineHLToggle()
   echo "Long lines unhighlighted"
  endif
 endfunction
-
-
-fun! s:FindWordUnderCursor()
-  " Yank the word under the cursor into the z register
-  normal "zyiw
-  exec "copen"
-
-  exec "Ag " . @z
-endfun
-nmap <Leader>a :call s:FindWordUnderCursor()
-
-noremap <Enter> :w!<cr> :Tx npm run test<cr>
