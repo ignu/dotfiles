@@ -367,8 +367,8 @@ vnoremap ar a[
 " ---------
 " bindings
 " ---------
-let mapleader = ","
-nmap <Space> ,
+nnoremap <Space> <nop>
+let mapleader = " "
 
 noremap <D-j> :b#<CR>
 noremap <D-r> :bd<CR>
