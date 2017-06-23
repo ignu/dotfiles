@@ -26,7 +26,6 @@ Plug 'ternjs/tern_for_vim'
 Plug 'flowtype/vim-flow', { 'on': ['FlowType', 'FlowToggle', 'FlowMake']}
 Plug 'steelsojka/deoplete-flow'
 Plug 'chemzqm/vim-jsx-improve'
-Plug 'itmammoth/doorboy.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'sk1418/Join'
