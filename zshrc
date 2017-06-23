@@ -164,7 +164,7 @@ function reprofile() {
 
   rm  ~/.vimrc
   rm -rf ~/.vim
-  rm ~/.config/nvim
+  rm -rf ~/.config/nvim
   mkdir ~/.config/nvim
   ln -s ~/bin/dotfiles2.0/init.vim ~/.config/nvim/init.vim
   ln -s ~/bin/dotfiles2.0/vim .vim
