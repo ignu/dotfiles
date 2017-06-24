@@ -169,6 +169,7 @@ function reprofile() {
   ln -s ~/bin/dotfiles2.0/init.vim ~/.config/nvim/init.vim
   ln -s ~/bin/dotfiles2.0/vim .vim
   ln ~/bin/dotfiles2.0/vimrc .vimrc
+  echo "Profile linked! 🌈"
 }
 
 function wasthiseverathing() {
