@@ -173,6 +173,9 @@ set so=14
 set relativenumber
 "set ttymouse=xterm2
 
+" no more /g
+set gdefault
+
 let g:vimrubocop_ignore_warning = 1
 
 " allow backspacing over everything in insert mode
