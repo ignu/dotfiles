@@ -10,6 +10,8 @@ alias code="cd ~/code"
 alias hg="history | grep "
 alias npmr="npm run build"
 
+alias weather="curl wttr.in/98122"
+
 # RUBY
 alias be="bundle exec"
 alias bet="be rake test TEST="
