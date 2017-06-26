@@ -220,6 +220,7 @@ noremap <Leader><Left> :Tx rake db:rollback<CR>
 noremap <Leader><Up> :GitGutterLineHighlightsToggle<CR>
 noremap <Leader>+ :GitGutterStageHunk<CR>
 
+nnoremap <Leader>a :ALEToggle<cr>
 nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
 nnoremap <silent> <Leader>r :Bclose<CR>
 
@@ -239,12 +240,13 @@ noremap <Leader><F3> :Tx bundle<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 " F6  - use system clipboard
-nnoremap <F7> :ALEToggle<cr>
+" F7  - indent guides
 nnoremap <F8> :GitGutterToggle<cr>
 nnoremap <F9> :bufdo! bd<cr>
 nnoremap <F10> :Neoformat<cr>
 noremap <F11> :NERDTreeFind<CR>
 noremap <F12> :NERDTreeToggle<CR>
+
 
 " RSI sucks. save with \ my pooooor thumb
 noremap \ :w<CR>
