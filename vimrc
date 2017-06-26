@@ -138,8 +138,8 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
 let g:ale_sign_error = '💥'
 let g:ale_sign_warning = '👎'
 highlight clear ALEErrorSign
@@ -221,6 +221,8 @@ noremap <Down> :GitGutterNextHunk<CR>
 " Arrow Keys Navigate QuickFix Window
 noremap <Right> :cnext<CR>
 noremap <Left> :cprev<CR>
+noremap <Leader>j :lnext<CR>
+noremap <Leader>k :lprev<CR>
 
 " Search for character under word
 :nnoremap <Leader><Leader> :Ag <cword> <CR>
