@@ -172,6 +172,14 @@ function reprofile() {
   echo "Profile linked! 🌈"
 }
 
+function fetchprofile() {
+  cd ~/bin/dotfiles2.0
+  git stash
+  gfom
+  git stash pop
+  reprofile
+}
+
 function wasthiseverathing() {
   git rev-list --all | xargs git grep $1
 }
