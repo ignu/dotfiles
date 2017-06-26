@@ -16,7 +16,6 @@ Plug 'gko/vim-coloresque'
 Plug 'junegunn/vim-github-dashboard'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-janah'
-Plug 'neomake/neomake'
 Plug 'sbdchd/neoformat'
 Plug 'benizi/vim-automkdir'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -30,6 +29,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'sk1418/Join'
 Plug 'majutsushi/tagbar'
+Plug 'w0rp/ale'
 
 " Essentials
 Plug 'ctrlpvim/ctrlp.vim'
@@ -135,29 +135,16 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
-" NEOFORMAT
-"
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
 autocmd FileType typescript :set makeprg=tsc
-autocmd! BufWritePost * Neomake
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#flow#flow_bin = 'flow'
-
-" NEOMAKE
-let g:neomake_javascript_enabled_makers = []
-let g:neomake_jsx_enabled_makers = []
-
-if executable('eslint')
-  let g:neomake_javascript_enabled_makers += ['eslint']
-  let g:neomake_jsx_enabled_makers += ['eslint']
-endif
-if executable('flow')
-  let g:neomake_javascript_enabled_makers += ['flow']
-  let g:neomake_jsx_enabled_makers += ['flow']
-endif
 
 let g:javascript_plugin_flow = 1
 
