@@ -148,7 +148,6 @@ let g:ale_echo_msg_error_str = '💥'
 let g:ale_echo_msg_warning_str = '🤢'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
 autocmd FileType typescript :set makeprg=tsc
 autocmd QuickFixCmdPost [^l]* nested cwindow
@@ -318,14 +317,6 @@ set wildchar=<Tab> wildmenu wildmode=full
 " save and restore folds when a file is closed and re-opened. ugh.
 autocmd BufWinLeave *.* mkview
 "autocmd BufWinEnter *.* silent loadview 
-
-function! JsxHack()
-  set syntax=html
-  set syntax=javascript.jsx
-endfunction
-
-autocmd BufRead *.js call JsxHack()
-autocmd BufRead *.jsx call JsxHack()
 
 augroup MiscMisc
   au!
