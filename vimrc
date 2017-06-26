@@ -238,8 +238,8 @@ nnoremap <F3> :buffers<CR>:b<Space>
 noremap <Leader><F3> :Tx bundle<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
-" F6 open
-" F7 open
+" F6  - use system clipboard
+nnoremap <F7> :ALEToggle<cr>
 nnoremap <F8> :GitGutterToggle<cr>
 nnoremap <F9> :bufdo! bd<cr>
 nnoremap <F10> :Neoformat<cr>
