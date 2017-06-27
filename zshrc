@@ -21,21 +21,20 @@ source $ZSH/oh-my-zsh.sh
 export SECRET_KEY_BASE='blahblah'
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/Cellar/postgresql/9.1.2/bin:/Users/ignu/.rvm/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin/
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/Users/ignu/.rvm/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin/
 
 for zsh_source in $HOME/.zsh_profile.d/*.zsh; do
   source $zsh_source
 done
 
 source $HOME/.aliasrc
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR='nvim'
 
 PATH=~/bin:$PATH
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # autocompletion for cuc
 _cucumber_features() {
@@ -48,7 +47,6 @@ _spec_model() {
   compadd $(ls spec/models/**/*_spec.rb | sed "s/spec/models/\/\(.*\)_spec.rb\1/")
 }
 compdef _spec_model sm
-
 alias sm="bundle exec rspec"
 
 if [[ -a /etc/zshenv ]]; then
@@ -75,7 +73,6 @@ bindkey '^Z' fancy-ctrl-z
 [ -f /Users/ignu/.travis/travis.sh ] && source /Users/ignu/.travis/travis.sh
 
 [[ $TERM == eterm-color ]] && export TERM=xterm
-
 
 function gfom() {
   git fetch
