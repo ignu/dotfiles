@@ -166,6 +166,7 @@ function reprofile() {
   ln -s ~/bin/dotfiles2.0/init.vim ~/.config/nvim/init.vim
   ln -s ~/bin/dotfiles2.0/vim .vim
   ln ~/bin/dotfiles2.0/vimrc .vimrc
+  touch ~/.zshrc.local
   echo "Profile linked! 🌈"
 }
 
@@ -180,6 +181,8 @@ function fetchprofile() {
 function wasthiseverathing() {
   git rev-list --all | xargs git grep $1
 }
+
+source ~/.zshrc.local
 
 alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
 alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
