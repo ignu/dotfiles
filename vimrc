@@ -104,10 +104,11 @@ let g:localvimrc_sandbox = 0
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+
+set wildmode=list:longest,list:full
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-set wildmode=list:longest,list:full
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
@@ -180,9 +181,6 @@ set backspace=indent,eol,start
 
 set numberwidth=1
 
-nnoremap ; :
-inoremap ;fl (╯°□°）╯︵ ┻━┻"
-
 "---------------
 " TSLIME/TURBUX
 "------------------
@@ -239,7 +237,11 @@ nnoremap <silent> <Leader>r :Bclose<CR>
 nnoremap <leader>n :set number!<CR>
 nnoremap <leader>N :set relativenumber!<CR>
 
+noremap<Leader>O :OpenChangedFiles <CR>
+
 noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
+
+nnoremap <silent> <Leader>r :Bclose<CR>
 nnoremap <leader>v :tabedit ~/bin/dotfiles2.0/vimrc<CR>
 
 noremap <Leader><F1> :ResetTmuxVars<CR>
@@ -455,7 +457,6 @@ function! OpenChangedFiles()
   endfor
 endfunction
 command! OpenChangedFiles :call OpenChangedFiles()
-noremap<Leader>O :OpenChangedFiles <CR>
 " }}}
 
 " Delete buffer while keeping window layout (don't close buffer's windows).
@@ -530,9 +531,7 @@ function! s:Bclose(bang, buffer)
   execute wcurrent.'wincmd w'
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
-nnoremap <silent> <Leader>r :Bclose<CR>
 
-nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
 hi OverLength ctermbg=none cterm=none
 match OverLength /\%>79v/
 fun! s:LongLineHLToggle()
