@@ -77,6 +77,7 @@ Plug 'airblade/vim-rooter'
 
 " COLORS
 Plug 'jakwings/vim-colors'
+Plug 'trevordmiller/nova-vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/ScrollColors'
