@@ -277,8 +277,7 @@ nmap K :vsp<cr>:Glog<cr>
 :onoremap q i"
 
 nnoremap <Space> <nop>
-let mapleader = " "
-
+let mapleader = "\<space>"
 
 "-------------
 " INSERT  🌈
