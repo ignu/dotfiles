@@ -272,6 +272,10 @@ noremap cp yap<S-}>p
 " OPEN LOGS
 nmap K :vsp<cr>:Glog<cr>
 
+"dont get confused when lines wrap
+nnoremap j gj
+nnoremap k gk
+
 " simpler surround.vim
 :onoremap p i(
 :onoremap q i"
