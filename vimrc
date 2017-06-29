@@ -249,7 +249,7 @@ noremap <Leader><F1> :ResetTmuxVars<CR>
 noremap <F1> :echo expand('%:t')<CR>
 " remove trailing whitespace and replace tabs with spaces
 " Press F4 to toggle highlighting on/off, and show current value.
-noremap <F2> :noremap <Enter> :Tx
+" F2 gets trampled
 nnoremap <F3> :buffers<CR>:b<Space>
 noremap <Leader><F3> :Tx bundle<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
@@ -265,7 +265,6 @@ noremap <F12> :NERDTreeToggle<CR>
 
 " RSI sucks. save with \ my pooooor thumb
 noremap \ :w<CR>
-noremap ; :Ag
 
 " Copy Paragraph
 noremap cp yap<S-}>p
