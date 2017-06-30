@@ -154,6 +154,9 @@ function reprofile() {
   rm ~/.zshrc
   ln -s ~/bin/dotfiles2.0/zshrc .zshrc
 
+  rm ~/.tmux.conf
+  ln -s ~/bin/dotfiles2.0/tmux.conf .tmux.conf
+
   rm ~/.aliasrc
   ln -s ~/bin/dotfiles2.0/aliasrc .aliasrc
 
