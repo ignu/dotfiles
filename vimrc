@@ -280,8 +280,7 @@ nnoremap k gk
 :onoremap p i(
 :onoremap q i"
 
-nnoremap <Space> <nop>
-let mapleader = "\<space>"
+let mapleader = ","
 
 "-------------
 " INSERT  🌈
