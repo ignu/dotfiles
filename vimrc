@@ -52,7 +52,7 @@ Plug 'git://github.com/jgdavey/vim-turbux.git',
 Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'kchmck/vim-coffee-script'
-Plug 'jnwhiteh/vim-golang'
+Plug 'fatih/vim-go'
 Plug 'ElmCast/elm-vim', { 'for' : 'elm' }
 
 " Templates
