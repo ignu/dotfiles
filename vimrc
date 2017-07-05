@@ -272,6 +272,9 @@ noremap cp yap<S-}>p
 " OPEN LOGS
 nmap K :vsp<cr>:Glog<cr>
 
+"select last paste in visual mode
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 "dont get confused when lines wrap
 nnoremap j gj
 nnoremap k gk
