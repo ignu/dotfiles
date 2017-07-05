@@ -15,6 +15,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(osx ruby git npm nvm colorize pow react-native tmux zsh-syntax-highlighting history-substring-search)
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -171,6 +172,10 @@ function reprofile() {
   ln -s ~/bin/dotfiles2.0/vim .vim
   ln ~/bin/dotfiles2.0/vimrc .vimrc
   touch ~/.zshrc.local
+  if [ ! -f ~/.zsh/zsh-autosuggestions/Gemfile ]; then
+    echo "Cloning zsh autosuggestions..."
+    git clone git://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+  fi
   echo "Profile linked! 🌈"
 }
 
