@@ -11,6 +11,7 @@ call plug#begin('~/.vim/bundle')
 " Plug 'scrooloose/nerdcommenter'
 
 " New
+Plug 'rojspencer/vim-colorminder'
 Plug 'jremmen/vim-ripgrep'
 Plug 'gko/vim-coloresque'
 Plug 'junegunn/vim-github-dashboard'
@@ -363,7 +364,6 @@ let g:jsx_ext_required = 0
 set cursorline
 
 autocmd ColorScheme janah highlight Normal ctermbg=235
-colorscheme badwolf
 
 set background=dark
 if has("persistent_undo")
