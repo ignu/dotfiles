@@ -1,7 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: puts
-# key: --
-# binding: direct-keybinding
-# --
-p "-" * 88
-p $0

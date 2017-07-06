@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: GDN
-# key: GDN
-# binding: direct-keybinding
-# --
-.getDOMNode()
