@@ -34,6 +34,7 @@ alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --forma
 alias que="cat package.json | jq .scripts"
 alias qdev="cat package.json | jq .devDependencies"
 alias qdep="cat package.json | jq .dependencies"
+alias qd="qdev && qdep"
 alias pa="ps aux | grep "
 
 alias tmux="TERM=xterm-256color tmux"
