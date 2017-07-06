@@ -220,29 +220,29 @@ noremap <Down> :GitGutterNextHunk<CR>
 " Arrow Keys Navigate QuickFix Window
 noremap <Right> :cnext<CR>
 noremap <Left> :cprev<CR>
-noremap <Leader>j :lnext<CR>
-noremap <Leader>k :lprev<CR>
+noremap <space>j :lnext<CR>
+noremap <space>k :lprev<CR>
 
 " Search for character under word
-:nnoremap <Leader><Leader> :Ag <cword> <CR>
+:nnoremap <space><space> :Ag <cword> <CR>
 
 noremap <Leader><Right> :Tx rake db:migrate<CR>
 noremap <Leader><Left> :Tx rake db:rollback<CR>
 noremap <Leader><Up> :GitGutterLineHighlightsToggle<CR>
-noremap <Leader>+ :GitGutterStageHunk<CR>
+noremap <space>+ :GitGutterStageHunk<CR>
 
-nnoremap <Leader>a :ALEToggle<cr>
+nnoremap <space>a :ALEToggle<cr>
 nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
 nnoremap <silent> <Leader>r :Bclose<CR>
 
 nnoremap <leader>n :set number!<CR>
 nnoremap <leader>N :set relativenumber!<CR>
 
-noremap<Leader>O :OpenChangedFiles <CR>
+noremap<space>O :OpenChangedFiles <CR>
 
 noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
 
-nnoremap <silent> <Leader>r :Bclose<CR>
+nnoremap <silent> <space>r :Bclose<CR>
 nnoremap <leader>v :tabedit ~/bin/dotfiles2.0/vimrc<CR>
 
 noremap <Leader><F1> :ResetTmuxVars<CR>
@@ -297,7 +297,7 @@ inoremap ;pr require 'pry'; binding.pry<esc>
 " VISUAL  🌈
 "
 " git blame shortcut
-vnoremap <Leader>g :<C-U>!git blame -w <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vnoremap <space>g :<C-U>!git blame -w <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 vnoremap <Leader>= :Tabularize /=<cr>
 vnoremap <Leader>: :Tabularize /:<cr>
