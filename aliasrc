@@ -32,6 +32,8 @@ alias gpom="git push origin master"
 alias gap="git add -p"
 alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | pick | xargs git checkout"
 alias que="cat package.json | jq .scripts"
+alias qdev="cat package.json | jq .devDependencies"
+alias qdep="cat package.json | jq .dependencies"
 alias pa="ps aux | grep "
 
 alias tmux="TERM=xterm-256color tmux"
