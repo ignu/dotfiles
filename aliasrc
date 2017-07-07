@@ -26,6 +26,7 @@ alias gs='git show --stat'
 alias gl='git log -n 14'
 alias gb='git checkout -b'
 alias gca='git commit --amend'
+alias gitme='git log --author=Len'
 alias glo='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias co='git checkout'
 alias gpom="git push origin master"
