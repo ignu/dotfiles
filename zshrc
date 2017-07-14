@@ -195,6 +195,14 @@ function fetchprofile() {
   reprofile
 }
 
+function npwrap() {
+  npm install
+  npm prune
+  npm dedupe
+  npm install
+  npm shrinkwrap --dev
+}
+
 function wasthiseverathing() {
   git rev-list --all | xargs git grep $1
 }
