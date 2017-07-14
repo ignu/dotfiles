@@ -104,6 +104,12 @@ function coo() {
   echo "********** Done *************"
 }
 
+function gpr() {
+  git commit -m $1
+  git push origin HEAD
+  hub compare
+}
+
 function headers() {
   curl -s -D - $1 -o /dev/null
 }
