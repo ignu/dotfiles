@@ -6,6 +6,7 @@ alias ...="cd ../.."
 alias reload="source ~/bin/dotfiles/bashrc"
 alias dotfiles="mate ~/bin/dotfiles/"
 alias code="cd ~/code"
+alias cl="clear"
 
 alias hg="history | grep "
 alias npmr="npm run build"
