@@ -46,6 +46,7 @@ alias emul="/Users/ignu/Library/Android/sdk/tools/emulator -netdelay none -netsp
 
 alias editalias="vim ~/bin/dotfiles2.0/aliasrc"
 alias editvim="vim ~/bin/dotfiles2.0/vimrc"
+alias editzsh="vim ~/bin/dotfiles2.0/zshrc"
 alias godot="cd ~/bin/dotfiles2.0 && git add -p"
 
 # NODE
