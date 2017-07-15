@@ -94,6 +94,7 @@ Plug 'noahfrederick/vim-hemisu'
 "GIT
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/committia.vim'
 
 call plug#end()
 
@@ -470,6 +471,23 @@ command! OpenChangedFiles :call OpenChangedFiles()
 if v:version < 700 || exists('loaded_bclose') || &cp
   finish
 endif
+
+let g:committia_hooks = {}
+let g:committia_open_only_vim_starting = 1
+function! g:committia_hooks.edit_open(info)
+    " Additional settings
+    setlocal spell
+
+    " If no commit message, start with insert mode
+    if a:info.vcs ==# 'git' && getline(1) ==# ''
+        startinsert
+    end
+
+    " Scroll the diff window from insert mode
+    " Map <C-n> and <C-p>
+    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+endfunction
 
 let loaded_bclose = 1
 if !exists('bclose_multiple')
