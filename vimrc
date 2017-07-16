@@ -152,6 +152,9 @@ highlight clear ALEWarningSign
 let g:ale_echo_msg_error_str = '💥'
 let g:ale_echo_msg_warning_str = '🤢'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_linters = {
+\   'javascript': [],
+\}
 
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
 autocmd FileType typescript :set makeprg=tsc
