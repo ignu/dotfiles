@@ -32,6 +32,7 @@ Plug 'sk1418/Join'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'elixir-lang/vim-elixir'
 
 " Essentials
 Plug 'ctrlpvim/ctrlp.vim'
