@@ -215,5 +215,7 @@ function wasthiseverathing() {
 
 source ~/.zshrc.local
 
+source ~/.asdf/asdf.sh
+
 alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
 alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
