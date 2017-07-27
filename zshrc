@@ -159,24 +159,24 @@ function reprofile() {
   cd
 
   rm ~/.zshrc
-  ln -s ~/bin/dotfiles2.0/zshrc .zshrc
+  ln -s ~/bin/dotfiles/zshrc .zshrc
 
   rm ~/.tmux.conf
-  ln -s ~/bin/dotfiles2.0/tmux.conf .tmux.conf
+  ln -s ~/bin/dotfiles/tmux.conf .tmux.conf
 
   rm ~/.aliasrc
-  ln -s ~/bin/dotfiles2.0/aliasrc .aliasrc
+  ln -s ~/bin/dotfiles/aliasrc .aliasrc
 
   rm ~/.gitignore_global
-  ln -s ~/bin/dotfiles2.0/gitignore_global .gitignore_global
+  ln -s ~/bin/dotfiles/gitignore_global .gitignore_global
 
   rm  ~/.vimrc
   rm -rf ~/.vim
   rm -rf ~/.config/nvim
   mkdir ~/.config/nvim
-  ln -s ~/bin/dotfiles2.0/init.vim ~/.config/nvim/init.vim
-  ln -s ~/bin/dotfiles2.0/vim .vim
-  ln ~/bin/dotfiles2.0/vimrc .vimrc
+  ln -s ~/bin/dotfiles/init.vim ~/.config/nvim/init.vim
+  ln -s ~/bin/dotfiles/vim .vim
+  ln ~/bin/dotfiles/vimrc .vimrc
   touch ~/.zshrc.local
 
   if [ ! -f ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting/README.md ]; then
@@ -194,7 +194,7 @@ function reprofile() {
 }
 
 function fetchprofile() {
-  cd ~/bin/dotfiles2.0
+  cd ~/bin/dotfiles
   git stash
   gfom
   git stash pop

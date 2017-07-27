@@ -49,10 +49,10 @@ alias vi="nvim"
 
 alias emul="/Users/ignu/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_One_API_23"
 
-alias editalias="vim ~/bin/dotfiles2.0/aliasrc"
-alias editvim="vim ~/bin/dotfiles2.0/vimrc"
-alias editzsh="vim ~/bin/dotfiles2.0/zshrc"
-alias godot="cd ~/bin/dotfiles2.0 && git add -p"
+alias editalias="vim ~/bin/dotfiles/aliasrc"
+alias editvim="vim ~/bin/dotfiles/vimrc"
+alias editzsh="vim ~/bin/dotfiles/zshrc"
+alias godot="cd ~/bin/dotfiles && git add -p"
 
 # NODE
 alias nod="nodemon --exec npm run babel-node -- "

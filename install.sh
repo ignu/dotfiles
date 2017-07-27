@@ -7,23 +7,23 @@ echo "installing oh my zsh"
 echo "cloning repository"
   mkdir ~/bin
   cd ~/bin
-  git clone git@github.com:ignu/dotfiles2.0.git
+  git clone git@github.com:ignu/dotfiles.git
 
 echo "linking files"
   cd
-  ln ~/bin/dotfiles2.0/ackrc .ackrc
-  ln ~/bin/dotfiles2.0/vimrc .vimrc
-  ln ~/bin/dotfiles2.0/gvimrc .gvimrc
-  ln -s ~/bin/dotfiles2.0/vim .vim
-  ln -s ~/bin/dotfiles2.0/vim ~/config/nvim
-  ln ~/bin/dotfiles2.0/gitconfig .gitconfig
-  ln ~/bin/dotfiles2.0/aliasrc .aliasrc
-  ln ~/bin/dotfiles2.0/tmux.conf .tmux.conf
+  ln ~/bin/dotfiles/ackrc .ackrc
+  ln ~/bin/dotfiles/vimrc .vimrc
+  ln ~/bin/dotfiles/gvimrc .gvimrc
+  ln -s ~/bin/dotfiles/vim .vim
+  ln -s ~/bin/dotfiles/vim ~/config/nvim
+  ln ~/bin/dotfiles/gitconfig .gitconfig
+  ln ~/bin/dotfiles/aliasrc .aliasrc
+  ln ~/bin/dotfiles/tmux.conf .tmux.conf
 
   rm .zshrc
-  ln ~/bin/dotfiles2.0/zshrc .zshrc
+  ln ~/bin/dotfiles/zshrc .zshrc
   rm -rf ~/.zsh_profile.d
-  ln -s ~/bin/dotfiles2.0/zsh_profile.d .zsh_profile.d
+  ln -s ~/bin/dotfiles/zsh_profile.d .zsh_profile.d
 
   brew install python3
   pip3 install --upgrade neovim
