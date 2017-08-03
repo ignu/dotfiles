@@ -61,3 +61,5 @@ alias yg="yarn global"
 
 # DOCKER
 alias burn="docker kill $(docker ps -q)"
+
+alias l="exa -l"
