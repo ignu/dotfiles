@@ -17,6 +17,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(osx ruby git npm nvm colorize pow react-native tmux zsh-syntax-highlighting history-substring-search fast-syntax-highlighting)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+source ~/.zshrc.local
+
 source $ZSH/oh-my-zsh.sh
 
 export SECRET_KEY_BASE='blahblah'
@@ -212,8 +214,6 @@ function npwrap() {
 function wasthiseverathing() {
   git rev-list --all | xargs git grep $1
 }
-
-source ~/.zshrc.local
 
 source ~/.asdf/asdf.sh
 
