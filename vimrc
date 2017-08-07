@@ -250,7 +250,7 @@ noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
 
 nnoremap <silent> <space>r :Bclose<CR>
 nnoremap <leader>v :tabedit ~/bin/dotfiles/vimrc<CR>
-nnoremap z :noremap <F1> :w!
+nnoremap Z :noremap <F1> :w!
 
 noremap <Leader><F1> :ResetTmuxVars<CR>
 noremap <F1> :echo expand('%:t')<CR>
