@@ -64,3 +64,8 @@ alias yg="yarn global"
 alias burn="docker kill $(docker ps -q)"
 
 alias l="exa -l"
+
+# OOPS
+alias :sp='cowsay "this isnt vim."'
+alias :vsp='cowsay "this isnt vim."'
+alias :w='cowsay "this isnt vim."'
