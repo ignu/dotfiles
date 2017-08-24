@@ -217,5 +217,7 @@ function wasthiseverathing() {
 
 source ~/.asdf/asdf.sh
 
+source $HOME/.cargo/env
+
 alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
 alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
