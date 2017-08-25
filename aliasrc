@@ -62,6 +62,7 @@ alias yg="yarn global"
 
 # DOCKER
 alias burn="docker kill $(docker ps -q)"
+alias readme="mdv README.md | less"
 
 alias l="exa -l"
 
