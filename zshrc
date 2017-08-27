@@ -215,6 +215,10 @@ function wasthiseverathing() {
   git rev-list --all | xargs git grep $1
 }
 
+function dsh() {
+  docker-compose run $1 /bin/bash
+}
+
 source ~/.asdf/asdf.sh
 
 source $HOME/.cargo/env
