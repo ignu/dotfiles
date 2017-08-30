@@ -48,7 +48,7 @@ Plug 'tmhedberg/matchit'
 
 " TMUX
 Plug 'git://github.com/LnL7/vim-tslime.git',
-Plug 'git://github.com/jgdavey/vim-turbux.git',
+Plug 'janko-m/vim-test'
 
 " Lanugage
 Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
@@ -193,8 +193,6 @@ set numberwidth=1
 "------------------
 let g:turbux_command_prefix = 'bundle exec'
 let g:turbux_runner  = 'tslime'
-nmap t :NEXTCOLOR<CR>
-
 
 "-----------------
 " MAPPINGS 🚀 
@@ -249,6 +247,14 @@ noremap<space>O :OpenChangedFiles <CR>
 noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
 
 nnoremap <silent> <space>r :Bclose<CR>
+nnoremap <silent> t :w<cr> :TestNearest<CR>
+nnoremap <silent> T :w<cr> :TestFile<CR>
+nnoremap <silent> <leader>a :TestSuite<CR>
+nnoremap <silent> <leader>l :TestLast<CR>
+nnoremap <silent> <leader>g :TestVisit<CR>
+
+let test#strategy = "tslime"
+
 nnoremap <leader>v :tabedit ~/bin/dotfiles/vimrc<CR>
 nnoremap Z :noremap <F1> :w!
 
