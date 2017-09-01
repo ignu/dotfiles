@@ -219,6 +219,10 @@ function dsh() {
   docker-compose run $1 /bin/bash
 }
 
+function aw() {
+  ag $1 -l
+}
+
 source ~/.asdf/asdf.sh
 
 source $HOME/.cargo/env
