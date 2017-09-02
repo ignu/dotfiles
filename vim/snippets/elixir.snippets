@@ -9,3 +9,13 @@ snippet --
 	IO.puts IO.ANSI.underline <> "|||||||||||||" <> IO.ANSI.reset
 snippet ;-
 	IO.puts " ¯\_(⊙︿⊙)_/¯ ~ ~ "
+snippet te
+	test "${1}" do
+	  assert ${2}
+	end
+snippet des
+	describe "${1}" do
+	  test "${2}" do
+	    assert ${3}
+	  end
+	end
