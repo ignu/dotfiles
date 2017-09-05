@@ -33,6 +33,7 @@ Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 
 " Essentials
 Plug 'ctrlpvim/ctrlp.vim'
@@ -107,6 +108,8 @@ let g:localvimrc_sandbox = 0
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+let g:alchemist#extended_autocomplete = 1
 
 
 set wildmode=list:longest,list:full
