@@ -1,12 +1,12 @@
 # #!/usr/bin/env ruby
 snippet ---
-	IO.puts IO.ANSI.reverse <> "------------" <> IO.ANSI.reset
+	IO.puts IO.ANSI.reverse <> "------ ${$2:1} ------" <> IO.ANSI.reset
 	IO.puts ${1:object}
 	IO.puts IO.ANSI.reverse <> "------------" <> IO.ANSI.reset
 snippet --
-	IO.puts IO.ANSI.underline <> "|||||||||||||" <> IO.ANSI.reset
+	IO.puts IO.ANSI.underline <> "|||||-- ${$2:1} --|||||" <> IO.ANSI.reset
 	IO.inspect ${1:object}
-	IO.puts IO.ANSI.underline <> "|||||||||||||" <> IO.ANSI.reset
+	IO.puts IO.ANSI.underline <> "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*" <> IO.ANSI.reset
 snippet ;-
 	IO.puts " ¯\_(⊙︿⊙)_/¯ ~ ~ "
 snippet te
