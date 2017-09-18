@@ -26,14 +26,11 @@ Plug 'ternjs/tern_for_vim'
 Plug 'flowtype/vim-flow', { 'on': ['FlowType', 'FlowToggle', 'FlowMake']}
 Plug 'steelsojka/deoplete-flow'
 Plug 'chemzqm/vim-jsx-improve'
-Plug 'leafgarland/typescript-vim'
-Plug 'MattesGroeger/vim-bookmarks'
 Plug 'sk1418/Join'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'elixir-lang/vim-elixir'
-Plug 'slashmili/alchemist.vim'
+
+Plug 'MattesGroeger/vim-bookmarks'
 
 " Essentials
 Plug 'ctrlpvim/ctrlp.vim'
@@ -57,6 +54,9 @@ Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'fatih/vim-go'
 Plug 'ElmCast/elm-vim', { 'for' : 'elm' }
+Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+Plug 'leafgarland/typescript-vim'
 
 " Templates
 Plug 'slim-template/vim-slim', { 'for': ['slim', 'skim'] }
@@ -79,6 +79,7 @@ Plug 'bogado/file-line'
 Plug 'airblade/vim-rooter'
 
 " COLORS
+"
 Plug 'jakwings/vim-colors'
 Plug 'trevordmiller/nova-vim'
 Plug 'whatyouhide/vim-gotham'
@@ -91,11 +92,39 @@ Plug 'w0ng/vim-hybrid'
 Plug 'nanotech/jellybeans.vim'
 Plug 'tpope/vim-vividchalk'
 Plug 'noahfrederick/vim-hemisu'
+Plug 'drewtempelmeyer/palenight.vim'
 
 "GIT
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/committia.vim'
+
+" Vim Bookmarks...
+let g:bookmark_no_default_key_mappings = 1
+function! BookmarkMapKeys()
+    nmap mm :BookmarkToggle<CR>
+    nmap mi :BookmarkAnnotate<CR>
+    nmap mn :BookmarkNext<CR>
+    nmap mp :BookmarkPrev<CR>
+    nmap ma :BookmarkShowAll<CR>
+    nmap mc :BookmarkClear<CR>
+    nmap mx :BookmarkClearAll<CR>
+    nmap mkk :BookmarkMoveUp
+    nmap mjj :BookmarkMoveDown
+endfunction
+function! BookmarkUnmapKeys()
+    unmap mm
+    unmap mi
+    unmap mn
+    unmap mp
+    unmap ma
+    unmap mc
+    unmap mx
+    unmap mkk
+    unmap mjj
+endfunction
+autocmd BufEnter * :call BookmarkMapKeys()
+autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
 call plug#end()
 
@@ -190,12 +219,6 @@ let g:vimrubocop_ignore_warning = 1
 set backspace=indent,eol,start
 
 set numberwidth=1
-
-"---------------
-" TSLIME/TURBUX
-"------------------
-let g:turbux_command_prefix = 'bundle exec'
-let g:turbux_runner  = 'tslime'
 
 "-----------------
 " MAPPINGS 🚀 
