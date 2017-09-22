@@ -29,6 +29,7 @@ Plug 'chemzqm/vim-jsx-improve'
 Plug 'sk1418/Join'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
+Plug 'junegunn/vim-emoji'
 
 Plug 'MattesGroeger/vim-bookmarks'
 
@@ -177,8 +178,8 @@ endif
 
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
-let g:ale_sign_error = 'Æ'
-let g:ale_sign_warning = '¿'
+let g:ale_sign_error = emoji#for('boom')
+let g:ale_sign_warning = emoji#for('see_no_evil')
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_echo_msg_error_str = '💥'
