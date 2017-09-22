@@ -208,7 +208,6 @@ let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_arrow_function       = "⇒"
 
 set so=14
-set relativenumber
 "set ttymouse=xterm2
 
 " no more /g
