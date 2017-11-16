@@ -179,15 +179,20 @@ endif
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_sign_error = emoji#for('boom')
-let g:ale_sign_warning = emoji#for('see_no_evil')
+let g:ale_sign_warning = '¿'
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
-let g:ale_echo_msg_error_str = '💥'
+let g:ale_echo_msg_error_str = '¡'
 let g:ale_echo_msg_warning_str = '🤢'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
 \   'javascript': [],
 \}
+
+let g:gitgutter_sign_added = emoji#for('eight_spoked_asterisk')
+let g:gitgutter_sign_modified = emoji#for('pencil2')
+let g:gitgutter_sign_removed = "-"
+let g:gitgutter_sign_modified_removed = "-"
 
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
 autocmd FileType typescript :set makeprg=tsc
@@ -310,6 +315,8 @@ noremap cp yap<S-}>p
 
 " OPEN LOGS
 nmap K :vsp<cr>:Glog<cr>
+nmap -- :sp<cr>:Exp<cr>
+nmap || :vsp<cr>:Exp<cr>
 
 "select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
