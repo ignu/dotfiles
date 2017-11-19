@@ -316,7 +316,6 @@ noremap cp yap<S-}>p
 " OPEN LOGS
 nmap K :vsp<cr>:Glog<cr>
 nmap -- :sp<cr>:Exp<cr>
-nmap || :vsp<cr>:Exp<cr>
 
 "select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
