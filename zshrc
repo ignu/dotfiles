@@ -83,6 +83,11 @@ function gfom() {
   git rebase origin/master
 }
 
+function gmom() {
+  git fetch
+  git merge origin/master
+}
+
 function gfod() {
   git fetch
   git rebase origin/develop
