@@ -11,6 +11,9 @@ call plug#begin('~/.vim/bundle')
 " Plug 'scrooloose/nerdcommenter'
 
 " New
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-projectionist'
 Plug 'rojspencer/vim-colorminder'
 Plug 'jremmen/vim-ripgrep'
 Plug 'gko/vim-coloresque'
@@ -178,7 +181,7 @@ endif
 
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
-let g:ale_sign_error = emoji#for('boom')
+let g:ale_sign_error =  '✗'
 let g:ale_sign_warning = '¿'
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
@@ -315,7 +318,6 @@ noremap cp yap<S-}>p
 
 " OPEN LOGS
 nmap K :vsp<cr>:Glog<cr>
-nmap -- :sp<cr>:Exp<cr>
 
 "select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
