@@ -84,7 +84,7 @@ function gfom() {
 }
 
 function gmom() {
-  git fetch
+  git fetch origin
   git merge origin/master
 }
 
