@@ -11,6 +11,8 @@ call plug#begin('~/.vim/bundle')
 " Plug 'scrooloose/nerdcommenter'
 
 " New
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-projectionist'
@@ -110,6 +112,7 @@ if has('folding')
     set fillchars+=fold:·             " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
   endif
 end
+let g:airline_section_y = '%{bufnr("%")}'
 " Vim Bookmarks...
 let g:bookmark_no_default_key_mappings = 1
 function! BookmarkMapKeys()
