@@ -97,6 +97,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'tpope/vim-vividchalk'
 Plug 'noahfrederick/vim-hemisu'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'AlessandroYorba/Alduin'
 
 "GIT
 Plug 'tpope/vim-fugitive'
