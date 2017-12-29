@@ -104,6 +104,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/committia.vim'
 
+if has('folding')
+  if has('windows')
+    set fillchars=vert:┃              " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
+    set fillchars+=fold:·             " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
+  endif
+end
 " Vim Bookmarks...
 let g:bookmark_no_default_key_mappings = 1
 function! BookmarkMapKeys()
