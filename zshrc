@@ -117,6 +117,11 @@ function gpr() {
   hub compare
 }
 
+function hellno() {
+  git reset --hard
+  git clean -f
+}
+
 function headers() {
   curl -s -D - $1 -o /dev/null
 }
