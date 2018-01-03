@@ -11,9 +11,7 @@ echo "cloning repository"
 
 echo "linking files"
   cd
-  ln ~/bin/dotfiles/ackrc .ackrc
   ln ~/bin/dotfiles/vimrc .vimrc
-  ln ~/bin/dotfiles/gvimrc .gvimrc
   ln -s ~/bin/dotfiles/vim .vim
   ln -s ~/bin/dotfiles/vim ~/config/nvim
   ln ~/bin/dotfiles/gitconfig .gitconfig
@@ -24,9 +22,3 @@ echo "linking files"
   ln ~/bin/dotfiles/zshrc .zshrc
   rm -rf ~/.zsh_profile.d
   ln -s ~/bin/dotfiles/zsh_profile.d .zsh_profile.d
-
-  brew install python3
-  pip3 install --upgrade neovim
-
-echo "install pow"
-  curl get.pow.cx | sh
