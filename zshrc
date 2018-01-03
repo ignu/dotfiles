@@ -117,9 +117,9 @@ function gpr() {
   hub compare
 }
 
-function hellno() {
+function fuckit() {
   git reset --hard
-  git clean -f
+  git clean -fd
 }
 
 function headers() {
