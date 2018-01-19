@@ -12,6 +12,7 @@ call plug#begin('~/.vim/bundle')
 
 " New
 Plug 'vim-airline/vim-airline'
+Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-eunuch'
