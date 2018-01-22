@@ -3,6 +3,7 @@
 echo "installing prereqs..."
   brew install exa
   brew install wget
+  brew install ripgrep
 
 echo "installing oh my zsh"
   wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
@@ -26,3 +27,4 @@ echo "linking files"
   ln ~/bin/dotfiles/zshrc .zshrc
   rm -rf ~/.zsh_profile.d
   ln -s ~/bin/dotfiles/zsh_profile.d .zsh_profile.d
+
