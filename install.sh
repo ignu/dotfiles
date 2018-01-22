@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+echo "installing prereqs..."
+  brew install exa
+  brew install wget
+
 echo "installing oh my zsh"
   wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
   cd ~/
