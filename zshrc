@@ -184,10 +184,12 @@ function reprofile() {
 
   rm  ~/.vimrc
   rm -rf ~/.vim
+  rm -rf ~/config/karabiner
   rm -rf ~/.config/nvim
   mkdir ~/.config/nvim
   ln -s ~/bin/dotfiles/init.vim ~/.config/nvim/init.vim
   ln -s ~/bin/dotfiles/vim .vim
+  ln -s ~/bin/dotfiles/karabiner ~/.config/karabiner
   ln ~/bin/dotfiles/vimrc .vimrc
   touch ~/.zshrc.local
 
