@@ -232,7 +232,7 @@ function dsh() {
 }
 
 function aw() {
-  ag $1 -l
+  rg $1 -l
 }
 
 
