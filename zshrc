@@ -189,7 +189,7 @@ function reprofile() {
   mkdir ~/.config/nvim
   ln -s ~/bin/dotfiles/init.vim ~/.config/nvim/init.vim
   ln -s ~/bin/dotfiles/vim .vim
-  ln -s ~/bin/dotfiles/karabiner ~/.config/karabiner
+  ln -s ~/bin/dotfiles/karabiner ~/.config/
   ln ~/bin/dotfiles/vimrc .vimrc
   touch ~/.zshrc.local
 
