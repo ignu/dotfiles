@@ -10,7 +10,7 @@ bindkey '^r' history-incremental-search-backward
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="apple"
+ZSH_THEME="macovsky-ruby"
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -235,9 +235,10 @@ function aw() {
   ag $1 -l
 }
 
-source ~/.asdf/asdf.sh
 
-source $HOME/.cargo/env
+[[ -s "$HOME/.asdf/asdf.sh" ]] && source ~/.asdf/asdf.sh
+
+[[ -s "$HOME/.cargo/env" ]] && source $HOME/.cargo/env
 
 alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
 alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
