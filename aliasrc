@@ -18,6 +18,7 @@ alias weather="curl wttr.in/98122"
 
 # RUBY
 alias be="bundle exec"
+alias br="bundle exec rake"
 alias bet="be rake test TEST="
 alias s="bundle exec rspec"
 alias sr="bundle exec spec"
