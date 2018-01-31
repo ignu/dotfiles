@@ -1,0 +1,7 @@
+Style/StringLiterals:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/LineLength:
+  Max: 90
+  AllowURI: true

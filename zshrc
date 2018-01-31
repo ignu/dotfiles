@@ -193,6 +193,11 @@ function reprofile() {
   ln ~/bin/dotfiles/vimrc .vimrc
   touch ~/.zshrc.local
 
+  if [ ! -f ~/.rubocop.yml ]; then
+    echo "Initializing RuboCop 🚔"
+    cp ~/bin/dotfiles/.rubocop.yml ~/
+  fi
+
   if [ ! -f ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting/README.md ]; then
     echo "🖥 Cloning fast highting ..."
     cd ~/.oh-my-zsh/custom/plugins
