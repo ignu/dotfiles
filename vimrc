@@ -41,7 +41,8 @@ Plug 'junegunn/vim-emoji'
 Plug 'MattesGroeger/vim-bookmarks'
 
 " Essentials
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -81,7 +82,6 @@ Plug 'tpope/vim-bundler', { 'for' : 'ruby' }
 Plug 'jgdavey/vim-blockle'
 
 " Navigation/Search
-Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'bogado/file-line'
 Plug 'airblade/vim-rooter'
@@ -142,6 +142,8 @@ endfunction
 autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
+" FZF
+noremap <C-p> :GitFiles<CR>
 call plug#end()
 
 let g:UltiSnipsExpandTrigger="<tab>"
