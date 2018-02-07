@@ -10,6 +10,7 @@ alias cl="clear"
 alias q="exit"
 alias :q="exit"
 alias :wq="exit"
+alias c='clear'
 
 alias hg="history | grep "
 alias npmr="npm run build"
@@ -23,7 +24,6 @@ alias bet="be rake test TEST="
 alias s="bundle exec rspec"
 alias sr="bundle exec spec"
 alias r="rails"
-alias c='cucumber -f pretty'
 
 # GIT
 alias g='git status'
