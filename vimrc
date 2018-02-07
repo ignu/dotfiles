@@ -82,7 +82,6 @@ Plug 'tpope/vim-bundler', { 'for' : 'ruby' }
 Plug 'jgdavey/vim-blockle'
 
 " Navigation/Search
-Plug 'rking/ag.vim'
 Plug 'bogado/file-line'
 Plug 'airblade/vim-rooter'
 
