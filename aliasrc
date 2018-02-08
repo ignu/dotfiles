@@ -3,32 +3,27 @@ alias cpu='top -o cpu'
 alias mem='top -o vsize'
 alias ..="cd .."
 alias ...="cd ../.."
-alias reload="source ~/bin/dotfiles/bashrc"
 alias dotfiles="mate ~/bin/dotfiles/"
 alias code="cd ~/code"
-alias cl="clear"
 alias q="exit"
 alias :q="exit"
 alias :wq="exit"
 alias c='clear'
 
 alias hg="history | grep "
-alias npmr="npm run build"
 
-alias weather="curl wttr.in/98122"
+alias weather="curl wttr.in/98144"
 
 # RUBY
 alias be="bundle exec"
 alias br="bundle exec rake"
 alias bet="be rake test TEST="
 alias s="bundle exec rspec"
-alias sr="bundle exec spec"
-alias r="rails"
 
 # GIT
 alias g='git status'
 alias gs='git show --stat'
-alias gl='git log -n 14'
+alias gl='git log -n 16'
 alias gb='git checkout -b'
 alias gca='git commit --amend'
 alias gcaa='git add . && git commit --amend'
