@@ -39,12 +39,6 @@ export EDITOR='nvim'
 
 PATH=~/bin:$PATH
 
-# autocompletion for cuc
-_cucumber_features() {
-  compadd $(ls features/**/*.feature | sed "s/features\/\(.*\).feature/\1/")
-}
-compdef _cucumber_features cuc
-
 # autocompletion for sm
 _spec_model() {
   compadd $(ls spec/models/**/*_spec.rb | sed "s/spec/models/\/\(.*\)_spec.rb\1/")
@@ -153,13 +147,6 @@ function gbtr() {
   git checkout master
   git rebase $1
   git branch -D $1
-}
-
-function mvnclean() {
-  cd ~/code/Dotcom-CMS/hbodata
-  mvn clean install -PautoInstallPackage
-  cd ~/code/Dotcom-CMS/hboweb
-  mvn clean install -PautoInstallPackage
 }
 
 function gbt() {
