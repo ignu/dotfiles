@@ -140,6 +140,14 @@ function gc() {
   git commit -v -a -m "$*"
 }
 
+function whilepass() {
+  while $1; do :; done
+}
+
+function whilefail() {
+  while ! $1 ; do :; done
+}
+
 function gbtr() {
   git branch --track $1 remotes/origin/$1
   git checkout $1
