@@ -33,7 +33,7 @@ alias co='git checkout'
 alias gpom="git push origin master"
 alias gap="git add -p"
 alias gpp="git push origin head"
-alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | pick | xargs git checkout"
+alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | fzf | xargs git checkout"
 alias que="cat package.json | jq .scripts"
 alias qdev="cat package.json | jq .devDependencies"
 alias qdep="cat package.json | jq .dependencies"

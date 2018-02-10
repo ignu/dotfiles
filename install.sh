@@ -4,7 +4,6 @@ echo "installing prereqs..."
   brew install exa
   brew install wget
   brew install ripgrep
-  brew install pick
   brew install fzf
 
 echo "installing oh my zsh"
