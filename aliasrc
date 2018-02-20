@@ -9,6 +9,7 @@ alias q="exit"
 alias :q="exit"
 alias :wq="exit"
 alias c='clear'
+alias noo='fuckit'
 
 alias hg="history | grep "
 
