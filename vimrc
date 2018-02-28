@@ -229,7 +229,7 @@ endfunction
 call ale#linter#Define('elixir', {
 \   'name': 'elixirc',
 \   'executable': 'elixirc',
-\   'command': 'elixirc %s -o /tmp/',
+\   'command': 'mix compile',
 \   'callback': 'Elixirlinter',
 \})
 
