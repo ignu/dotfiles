@@ -323,7 +323,7 @@ noremap <Leader><Left> :Tx rake db:rollback<CR>
 noremap <Leader><Up> :GitGutterLineHighlightsToggle<CR>
 noremap <space>+ :GitGutterStageHunk<CR>
 
-nnoremap <space>a :ALEToggle<cr>
+nnoremap ;a :ALEToggle<cr>
 nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
 nnoremap <silent> <Leader>r :Bclose<CR>
 
@@ -335,6 +335,7 @@ noremap<space>O :OpenChangedFiles <CR>
 noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
 
 nnoremap <silent> <space>r :Bclose<CR>
+nnoremap <silent> <space>b :Buffers<CR>
 nnoremap <silent> t :w<cr> :TestNearest<CR>
 nnoremap <silent> T :w<cr> :TestFile<CR>
 nnoremap <silent> <leader>a :TestSuite<CR>
@@ -351,7 +352,7 @@ noremap <F1> :echo expand('%:t')<CR>
 " remove trailing whitespace and replace tabs with spaces
 " Press F4 to toggle highlighting on/off, and show current value.
 " F2 gets trampled
-nnoremap <F3> :buffers<CR>:b<Space>
+nnoremap <F3> :Buffers<CR>
 noremap <Leader><F3> :Tx bundle<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
