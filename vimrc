@@ -2,6 +2,9 @@ set shell=bash
 set mouse=a
 imap jj <Esc>
 
+let mapleader=" "
+let maplocalleader=" "
+
 " ------------
 " Plugins
 " ------------
@@ -63,7 +66,7 @@ Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'fatih/vim-go'
 Plug 'ElmCast/elm-vim', { 'for' : 'elm' }
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 Plug 'leafgarland/typescript-vim'
 
@@ -191,6 +194,44 @@ noremap <F6> :call UseSystemClipboard()<CR>
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+function! Elixirlinter(buffer, lines) abort
+    " Matches patterns like the following:
+    "
+    " (CompileError) apps/sim/lib/sim/server.ex:87: undefined function update_in/4
+    "
+    " TODO include warnings
+    let l:pattern = '\v\((CompileError|SyntaxError)\) ([^:]+):([^:]+): (.+)$'
+    let l:output = []
+
+    for l:match in ale#util#GetMatches(a:lines, l:pattern)
+        let l:type = 'C'
+        let l:text = l:match[4]
+
+        call add(l:output, {
+        \   'bufnr': a:buffer,
+        \   'lnum': l:match[3] + 0,
+        \   'col': 0,
+        \   'type': l:type,
+        \   'text': l:text,
+        \})
+    endfor
+
+    return l:output
+endfunction
+
+call ale#linter#Define('elixir', {
+\   'name': 'elixirc',
+\   'executable': 'elixirc',
+\   'command': 'elixirc %s -o /tmp/',
+\   'callback': 'Elixirlinter',
+\})
 
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
@@ -343,15 +384,12 @@ nnoremap k gk
 :onoremap p i(
 :onoremap q i"
 
-let mapleader = ","
-
 "-------------
 " INSERT  🌈
 "
 "next quickfix file
 iabbrev sao save_and_open_page
 iabbrev SAO save_and_open_screenshot
-inoremap ;pr require 'pry'; binding.pry<esc>
 
 "-------------
 " VISUAL  🌈
