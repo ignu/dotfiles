@@ -329,6 +329,9 @@ nnoremap <silent> <Leader>r :Bclose<CR>
 
 nnoremap <leader>n :set number!<CR>
 nnoremap <leader>N :set relativenumber!<CR>
+nnoremap ,u :GitGutterUndoHunk<CR>
+noremap ,+ :GitGutterStageHunk<CR>
+noremap ,c :Git commit<CR>
 
 noremap<space>O :OpenChangedFiles <CR>
 
