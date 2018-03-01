@@ -39,6 +39,8 @@ export EDITOR='nvim'
 
 PATH=~/bin:$PATH
 
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # autocompletion for sm
 _spec_model() {
   compadd $(ls spec/models/**/*_spec.rb | sed "s/spec/models/\/\(.*\)_spec.rb\1/")
