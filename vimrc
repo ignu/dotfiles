@@ -321,7 +321,6 @@ noremap <space>k :lprev<CR>
 noremap <Leader><Right> :Tx rake db:migrate<CR>
 noremap <Leader><Left> :Tx rake db:rollback<CR>
 noremap <Leader><Up> :GitGutterLineHighlightsToggle<CR>
-noremap <space>+ :GitGutterStageHunk<CR>
 
 nnoremap ;a :ALEToggle<cr>
 nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
