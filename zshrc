@@ -10,7 +10,7 @@ bindkey '^r' history-incremental-search-backward
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="macovsky-ruby"
+ZSH_THEME="apple"
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -237,6 +237,12 @@ function aw() {
   rg $1 -l
 }
 
+export KEYTIMEOUT=1
+
+eval "$(rbenv init -)"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 
 [[ -s "$HOME/.asdf/asdf.sh" ]] && source ~/.asdf/asdf.sh
 
@@ -246,3 +252,4 @@ alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
 alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/local/bin/pair_with.sh ] && . /usr/local/bin/pair_with.sh

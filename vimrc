@@ -243,9 +243,12 @@ let g:ale_echo_msg_error_str = '¡'
 let g:ale_echo_msg_warning_str = '🤢'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
-\   'javascript': [],
+\   'javascript': ['eslint'],
 \}
 
+let g:ale_fixer = {
+\   'javascript': ['eslint'],
+\}
 let g:gitgutter_sign_added = emoji#for('eight_spoked_asterisk')
 let g:gitgutter_sign_modified = emoji#for('pencil2')
 let g:gitgutter_sign_removed = "-"
@@ -321,7 +324,6 @@ noremap <space>k :lprev<CR>
 noremap <Leader><Right> :Tx rake db:migrate<CR>
 noremap <Leader><Left> :Tx rake db:rollback<CR>
 noremap <Leader><Up> :GitGutterLineHighlightsToggle<CR>
-noremap <space>+ :GitGutterStageHunk<CR>
 
 nnoremap ;a :ALEToggle<cr>
 nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>

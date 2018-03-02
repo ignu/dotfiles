@@ -2,3 +2,4 @@
 .tern-port
 .lvimrc
 .projections.json
+*/.tern-port
