@@ -364,6 +364,7 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:
 nnoremap <F8> :GitGutterToggle<cr>
 nnoremap <F9> :bufdo! bd<cr>
 nnoremap <F10> :Neoformat<cr>
+nnoremap ,p :Neoformat<cr>
 noremap <F11> :NERDTreeFind<CR>
 noremap <F12> :NERDTreeToggle<CR>
 
