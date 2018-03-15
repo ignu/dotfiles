@@ -14,6 +14,7 @@ call plug#begin('~/.vim/bundle')
 " Plug 'scrooloose/nerdcommenter'
 
 " New
+Plug 'ap/vim-css-color'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'vim-airline/vim-airline'
 Plug 'arcticicestudio/nord-vim'
