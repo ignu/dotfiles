@@ -39,6 +39,7 @@ alias que="cat package.json | jq .scripts"
 alias qdev="cat package.json | jq .devDependencies"
 alias qdep="cat package.json | jq .dependencies"
 alias qd="qdev && qdep"
+alias reyarn="rm -rf node_modules && yarn"
 alias pa="ps aux | grep "
 
 alias tmux="TERM=xterm-256color tmux"
