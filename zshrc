@@ -1,7 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 DISABLE_AUTO_TITLE=true
-
 # lets do vim mode.
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
@@ -10,7 +9,30 @@ bindkey '^r' history-incremental-search-backward
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="macovsky-ruby"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+POWERLEVEL9K_VCS_GIT_ICON='\ue60a'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time background_jobs ssh rbenv)
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
+
+POWERLEVEL9K_VCS_STAGED_ICON=$'\uf055'
+POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uf421'
+POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uf00d'
+POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\uf0ab '
+POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\uf0aa '
+
+POWERLEVEL9K_BATTERY_LOW_FOREGROUND='red'
+POWERLEVEL9K_BATTERY_CHARGING_FOREGROUND='yellow'
+POWERLEVEL9K_BATTERY_CHARGED_FOREGROUND='green'
+POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND='blue'
+
+
+POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M}"
+POWERLEVEL9K_STATUS_VERBOSE=false
+
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -87,6 +109,11 @@ function gmom() {
 function gfod() {
   git fetch
   git rebase origin/develop
+}
+
+function gac() {
+  git add .
+  git commit -m $1
 }
 
 # stash changes, switch to branch and then pop stash.
