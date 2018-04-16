@@ -152,6 +152,7 @@ autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
 " FZF
 noremap <C-p> :GitFiles<CR>
+noremap ,g :GFiles?<CR>
 call plug#end()
 
 let g:UltiSnipsExpandTrigger="<tab>"
