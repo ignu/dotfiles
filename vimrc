@@ -120,6 +120,9 @@ if has('folding')
   endif
 end
 let g:airline_section_y = '%{bufnr("%")}'
+let g:airline_powerline_fonts = 1
+let g:airline_right_sep=''
+let g:airline_left_sep=' '
 " Vim Bookmarks...
 let g:bookmark_no_default_key_mappings = 1
 function! BookmarkMapKeys()
