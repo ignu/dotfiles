@@ -15,6 +15,11 @@ snippet des
 	  });
 	});
 
+snippet it
+	it("${2}", () => {
+	  ${3};
+	});
+
 snippet tes
 	test("${1}", (t) => {
 	  t.is$4($2, $3)
@@ -35,3 +40,11 @@ snippet ---
 	console.debug("🦄${2:$1}", ${1});
 snippet ;-
 	console.debug('¯\_(⊙︿⊙)_/¯ ~ ~ ¯\_(⊙︿⊙)_/¯ ~ ~ ¯\_(⊙︿⊙)_/¯ ~ ~ ¯\_(⊙︿⊙)_/¯ ~ ~ ¯\_(⊙︿⊙)_/¯'
+snippet rcla
+	class ${1:MyComponent} extends Component {
+		render() {
+			return (
+				${0:<div></div>}
+			)
+		}
+	}
