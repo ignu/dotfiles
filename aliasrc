@@ -23,6 +23,7 @@ alias s="bundle exec rspec"
 
 # GIT
 alias g='git status'
+alias gsp='git stash show -p stash@{0}'
 alias gs='git show --stat'
 alias gl='git log -n 16'
 alias gb='git checkout -b'
