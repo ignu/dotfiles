@@ -2,10 +2,12 @@
 
 echo "installing prereqs..."
   brew install exa
+  brew install ccat
   brew install wget
   brew install ripgrep
   brew install fzf
   brew install tree
+  brew install elixir
 
 echo "installing oh my zsh"
   wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
