@@ -36,6 +36,7 @@ POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M}"
 POWERLEVEL9K_STATUS_VERBOSE=false
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)

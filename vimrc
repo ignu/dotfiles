@@ -538,7 +538,7 @@ nnoremap <F7> :call IndentGuides()<cr>
 " Shortcut for [] {{{
 
 " show trailing whitespace
-set list listchars=tab:»·,trail:
+set list listchars=tab:»·,trail:
 
 " autoindent is good
 filetype plugin indent on
