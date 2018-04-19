@@ -350,7 +350,7 @@ noremap<space>O :OpenChangedFiles <CR>
 noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
 
 nnoremap <silent> <space>r :Bclose<CR>
-nnoremap <silent> <space>b :Buffers<CR>
+nnoremap <silent> ,b :Buffers<CR>
 nnoremap <silent> t :w<cr> :TestNearest<CR>
 nnoremap <silent> T :w<cr> :TestFile<CR>
 nnoremap <silent> <leader>a :TestSuite<CR>
