@@ -268,6 +268,10 @@ function aw() {
   rg $1 -l
 }
 
+# rg reports dumb .gitignore errors
+function sg () {
+  rg $1 2> /dev/null
+}
 
 [[ -s "$HOME/.asdf/asdf.sh" ]] && source ~/.asdf/asdf.sh
 
