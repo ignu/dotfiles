@@ -23,9 +23,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-projectionist'
-Plug 'rojspencer/vim-colorminder'
+"Plug 'rojspencer/vim-colorminder'
 Plug 'jremmen/vim-ripgrep'
-Plug 'gko/vim-coloresque'
+"Plug 'gko/vim-coloresque'
 Plug 'junegunn/vim-github-dashboard'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-janah'
@@ -680,3 +680,5 @@ fun! s:LongLineHLToggle()
   echo "Long lines unhighlighted"
  endif
 endfunction
+
+color Monokai

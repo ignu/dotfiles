@@ -40,7 +40,7 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(osx ruby git npm nvm colorize pow react-native tmux zsh-syntax-highlighting history-substring-search fast-syntax-highlighting)
+plugins=(osx ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fast-syntax-highlighting)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source ~/.zshrc.local
@@ -98,7 +98,8 @@ bindkey '^Z' fancy-ctrl-z
 [ -f /Users/ignu/.travis/travis.sh ] && source /Users/ignu/.travis/travis.sh
 
 [[ $TERM == eterm-color ]] && export TERM=xterm
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
+export TERM="xterm-256color-italic"
 
 function gfom() {
   git fetch
