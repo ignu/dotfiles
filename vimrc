@@ -98,6 +98,7 @@ Plug 'jakwings/vim-colors'
 Plug 'trevordmiller/nova-vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'morhetz/gruvbox'
+let g:gruvbox_italic=1
 Plug 'vim-scripts/ScrollColors'
 Plug 'jeetsukumaran/vim-nefertiti'
 Plug 'dracula/vim'
