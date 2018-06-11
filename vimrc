@@ -210,6 +210,8 @@ function! UseSystemClipboard()
     set clipboard=unnamed
   endif
 endfunction
+let g:useSystemClipboard = 1
+set clipboard=unnamed
 noremap <F6> :call UseSystemClipboard()<CR>
 
 "Loccal config
