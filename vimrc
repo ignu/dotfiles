@@ -4,7 +4,6 @@ imap jj <Esc>
 
 let mapleader=" "
 let maplocalleader=" "
-
 " ------------
 " Plugins
 " ------------
@@ -14,6 +13,11 @@ call plug#begin('~/.vim/bundle')
 " Plug 'scrooloose/nerdcommenter'
 
 " New
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'ap/vim-css-color'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tommcdo/vim-fugitive-blame-ext'
@@ -65,6 +69,7 @@ Plug 'git://github.com/LnL7/vim-tslime.git',
 Plug 'janko-m/vim-test'
 
 " Lanugage
+Plug 'reasonml-editor/vim-reason-plus'
 Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'kchmck/vim-coffee-script'
@@ -114,6 +119,14 @@ Plug 'AlessandroYorba/Alduin'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/committia.vim'
+
+let g:LanguageClient_serverCommands = {
+    \ 'reason': ['ocaml-language-server', '--stdio'],
+    \ 'ocaml': ['ocaml-language-server', '--stdio'],
+    \ }
+
+nnoremap <silent> gf :call LanguageClient_textDocument_definition()<cr>
+nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
 
 if has('folding')
   if has('windows')
@@ -373,7 +386,7 @@ noremap <Leader><F3> :Tx bundle<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 " F6  - use system clipboard
-" F7  - indent guides
+nnoremap <F7> :call LanguageClient#textDocument_rename()<cr>
 nnoremap <F8> :GitGutterToggle<cr>
 nnoremap <F9> :bufdo! bd<cr>
 nnoremap <F10> :Neoformat<cr>
@@ -386,8 +399,7 @@ noremap <F12> :NERDTreeToggle<CR>
 noremap \ :w<CR>
 
 " Copy Paragraph
-noremap cp yap<S-}>p
-
+noremap cp yap<S-}>p 
 " OPEN LOGS
 nmap K :vsp<cr>:Glog<cr>
 
@@ -519,19 +531,6 @@ set synmaxcol=800
 
 " Save when losing focus
 au FocusLost * :silent! wall
-
-let g:indentguides_state = 0
-function! IndentGuides() " {{{
-    if g:indentguides_state
-        let g:indentguides_state = 0
-        2match None
-    else
-        let g:indentguides_state = 1
-        execute '2match IndentGuides /\%(\_^\s*\)\@<=\%(\%'.(0*&sw+1).'v\|\%'.(1*&sw+1).'v\|\%'.(2*&sw+1).'v\|\%'.(3*&sw+1).'v\|\%'.(4*&sw+1).'v\|\%'.(5*&sw+1).'v\|\%'.(6*&sw+1).'v\|\%'.(7*&sw+1).'v\)\s/'
-    endif
-endfunction " }}}
-hi def IndentGuides guibg=#303030 ctermbg=234
-nnoremap <F7> :call IndentGuides()<cr>
 
 " }}}
 " Text objects ------------------------------------------------------------ {{{
