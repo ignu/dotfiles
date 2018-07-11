@@ -4,7 +4,6 @@ alias mem='top -o vsize'
 alias ..="cd .."
 alias ...="cd ../.."
 alias dotfiles="mate ~/bin/dotfiles/"
-alias code="cd ~/code"
 alias q="exit"
 alias :q="exit"
 alias :wq="exit"
