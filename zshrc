@@ -269,6 +269,9 @@ function aw() {
   rg $1 -l
 }
 
+
+PATH=$PATH:$HOME/.opam/system/bin
+
 # rg reports dumb .gitignore errors
 function sg () {
   rg $1 2> /dev/null
