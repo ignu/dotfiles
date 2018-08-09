@@ -9,7 +9,8 @@ bindkey '^r' history-incremental-search-backward
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="cloud"
 
 POWERLEVEL9K_VCS_GIT_ICON='\ue60a'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status dir vcs)
@@ -285,3 +286,10 @@ alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
 alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/lsmith/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/lsmith/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/lsmith/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/lsmith/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
