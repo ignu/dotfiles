@@ -2,7 +2,7 @@
 
 echo "installing prereqs..."
   brew install exa
-  brew install ccat
+  brew install bat
   brew install wget
   brew install ripgrep
   brew install fzf
