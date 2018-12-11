@@ -1,7 +1,7 @@
 HISTFILE=~/.history
 
 HISTSIZE=10000
-HISTORY_IGNORE="(ls|cd|pwd|exit|..|...|wat|gl|gfom|cd ..)"
+HISTORY_IGNORE="(ls|cd|pwd|exit|..|...|wat|gl|gfom|hg|cd ..)"
 SAVEHIST=10000
 
 setopt hist_ignore_dups
