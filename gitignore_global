@@ -2,3 +2,6 @@
 .tern-port
 .lvimrc
 .projections.json
+.elixir_ls
+.vscode/
+.tool-versions
