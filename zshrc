@@ -270,6 +270,10 @@ function aw() {
   rg $1 -l
 }
 
+function brs() {
+  bundle exec rails s -p $1
+}
+
 function compilevs() {
   export NODE_ENV=development
   yarn
