@@ -133,7 +133,7 @@ function wb() {
     git checkout -
   else
     echo "*********** Checking out $1 *************"
-    git checkout $1
+    git checkout -b $1
   fi
 
   git stash pop
