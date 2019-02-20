@@ -65,7 +65,6 @@ alias iph="iex -S mix phx.server"
 # DOCKER
 alias burn="docker kill $(docker ps -q)"
 
-alias readme="mdv README.md | less"
 
 alias l="exa -l"
 alias code="code-insiders"

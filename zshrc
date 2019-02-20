@@ -242,6 +242,28 @@ function reprofile() {
   echo "Profile linked! 🌈"
 }
 
+function readme() {
+  if [ -f ./README.md ]; then
+    filename="README.md"
+  fi
+
+  if [ -f ./README ]; then
+    filename="README"
+  fi
+
+  if [ -f ./README.txt ]; then
+    filename="README.txt"
+  fi
+
+  if [ -x "$(command -v mdv)" ]; then
+    mdv $filename
+  fi
+
+  if [ -x "$(command -v bat)" ]; then
+    bat $filename
+  fi
+}
+
 function fetchprofile() {
   cd ~/bin/dotfiles
   git stash
