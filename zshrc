@@ -124,8 +124,8 @@ function gac() {
 
 # stash changes, switch to branch and then pop stash.
 # pass in an argument to go to that branch. defaults to '-'
-function coo() {
-  echo "COO COO..."
+function wb() {
+  echo "oh sorry wrong branch. 🤦🏻‍♀️"
   git stash
 
   if [ ! $1 ]; then
@@ -137,7 +137,7 @@ function coo() {
   fi
 
   git stash pop
-  echo "********** Done *************"
+  echo "********** Done. Sorry. *************"
 }
 
 function gpr() {
