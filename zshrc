@@ -324,3 +324,13 @@ alias theirs="!f() { git checkout --theirs $@ && git add $@; }; f"
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/lsmith/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/lsmith/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
+
+
+export RUBY_HEAP_MIN_SLOTS=1000000 #deprecated in ruby 2.10
+export RUBY_GC_HEAP_INIT_SLOTS=1000000
+export RUBY_HEAP_SLOTS_INCREMENT=1000000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=1000000000
+export RUBY_HEAP_FREE_MIN=500000
+export RUBY_FREE_MIN=$RUBY_HEAP_FREE_MIN #deprecated in ruby 2.10
+export RUBY_GC_HEAP_FREE_SLOTS=$RUBY_HEAP_FREE_MIN
