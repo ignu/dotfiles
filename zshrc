@@ -255,11 +255,7 @@ function readme() {
     filename="README.txt"
   fi
 
-  if [ -x "$(command -v mdv)" ]; then
-    mdv $filename
-  elif [ -x "$(command -v bat)" ]; then
-    bat $filename
-  fi
+  bat $filename
 }
 
 function fetchprofile() {
