@@ -10,7 +10,7 @@ bindkey '^r' history-incremental-search-backward
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # ZSH_THEME="powerlevel9k/powerlevel9k"
-ZSH_THEME="af-magic"
+ZSH_THEME="cloud"
 
 POWERLEVEL9K_VCS_GIT_ICON='\ue60a'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status dir vcs)
