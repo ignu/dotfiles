@@ -40,8 +40,11 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 COMPLETION_WAITING_DOTS="true"
 
+export DISABLE_FZF_AUTO_COMPLETION="true"
+
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(osx ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fast-syntax-highlighting)
+plugins=(osx ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fast-syntax-highlighting fzf)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source ~/.zshrc.local
