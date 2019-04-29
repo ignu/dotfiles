@@ -210,8 +210,6 @@ function! UseSystemClipboard()
     set clipboard=unnamed
   endif
 endfunction
-let g:useSystemClipboard = 1
-set clipboard=unnamed
 noremap <F6> :call UseSystemClipboard()<CR>
 
 "Loccal config
@@ -265,11 +263,11 @@ call ale#linter#Define('elixir', {
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_sign_error =  '✗'
-let g:ale_sign_warning = ''
+let g:ale_sign_warning = '⚠'
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
-let g:ale_echo_msg_error_str = '¡'
-let g:ale_echo_msg_warning_str = '🤢'
+let g:ale_echo_msg_error_str = '✗'
+let g:ale_echo_msg_warning_str = '∑' 
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
 \   'javascript': [],
@@ -540,7 +538,7 @@ au FocusLost * :silent! wall
 " Shortcut for [] {{{
 
 " show trailing whitespace
-set list listchars=tab:»·,trail:
+set list listchars=tab:»·,trail:ç
 
 " autoindent is good
 filetype plugin indent on
