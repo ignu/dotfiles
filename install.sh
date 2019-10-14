@@ -9,6 +9,8 @@ echo "installing prereqs..."
   brew install tree
   brew install elixir
   brew install diff-so-fancy
+  brew install python
+  pip install pygments
 
 echo "installing oh my zsh"
   wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh

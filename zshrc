@@ -11,6 +11,8 @@ bindkey '^r' history-incremental-search-backward
 # Look in ~/.oh-my-zsh/themes/
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 ZSH_THEME="cloud"
+ZSH_THEME="agnoster"
+
 
 POWERLEVEL9K_VCS_GIT_ICON='\ue60a'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status dir vcs)
