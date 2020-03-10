@@ -35,12 +35,18 @@ alias gpom="git push origin master"
 alias gap="git add -p"
 alias gpp="git push origin head"
 alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | fzf | xargs git checkout"
+
+alias hc="hub compare"
+
+#javascrittt
 alias que="cat package.json | jq .scripts"
 alias qdev="cat package.json | jq .devDependencies"
 alias qdep="cat package.json | jq .dependencies"
 alias qd="qdev && qdep"
 alias reyarn="rm -rf node_modules && yarn"
+
 alias pa="ps aux | grep "
+
 
 #alias tmux="TERM=xterm-256color tmux"
 alias vim="nvim"

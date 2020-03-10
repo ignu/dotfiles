@@ -308,10 +308,15 @@ function compilevs() {
 
 
 PATH=$PATH:$HOME/.opam/system/bin
+PATH=$PATH:$HOME/.local/bin
 
 # rg reports dumb .gitignore errors
 function sg () {
   rg $1 2> /dev/null
+}
+
+function when_delete() {
+ git log -c -S'$1' $2
 }
 
 [[ -s "$HOME/.asdf/asdf.sh" ]] && source ~/.asdf/asdf.sh
