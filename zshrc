@@ -77,6 +77,11 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 _spec_model() {
   compadd $(ls spec/models/**/*_spec.rb | sed "s/spec/models/\/\(.*\)_spec.rb\1/")
 }
+
+p() {
+  terminal-notifier -message $1 -title "terminal alert"
+}
+
 compdef _spec_model sm
 alias sm="bundle exec rspec"
 
@@ -344,3 +349,12 @@ export RUBY_GC_MALLOC_LIMIT=1000000000
 export RUBY_HEAP_FREE_MIN=500000
 export RUBY_FREE_MIN=$RUBY_HEAP_FREE_MIN #deprecated in ruby 2.10
 export RUBY_GC_HEAP_FREE_SLOTS=$RUBY_HEAP_FREE_MIN
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/lensmith/.asdf/installs/nodejs/8.10.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/lensmith/.asdf/installs/nodejs/8.10.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+prompt_context() {}

@@ -10,6 +10,8 @@ echo "installing prereqs..."
   brew install elixir
   brew install diff-so-fancy
   brew install python
+  brew install curlie
+  brew install tldr
   pip install pygments
 
 echo "installing oh my zsh"
