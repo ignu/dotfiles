@@ -44,6 +44,10 @@ COMPLETION_WAITING_DOTS="true"
 
 export DISABLE_FZF_AUTO_COMPLETION="true"
 
+# use bash complete compat for asdf
+autoload bashcompinit
+bashcompinit
+
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(osx ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fast-syntax-highlighting fzf)
@@ -129,19 +133,20 @@ bindkey '^Z' fancy-ctrl-z
 export TERM="xterm-256color"
 #export TERM="xterm-256color-italic"
 
+function defaultbranch() {
+  git remote show origin | grep "HEAD branch" | cut -d ":" -f 2 | xargs
+}
+
 function gfom() {
   git fetch
-  git rebase origin/master
+  branch="origin/$(defaultbranch)"
+  git rebase $branch
 }
 
 function gmom() {
   git fetch origin
-  git merge origin/master
-}
-
-function gfod() {
-  git fetch
-  git rebase origin/develop
+  branch="origin/$(defaultbranch)"
+  git merge $branch
 }
 
 function gac() {
@@ -189,8 +194,9 @@ function gwp() {
 
 function gitnewbranch() {
   git fetch
-  git checkout master
-  git rebase origin/master
+  branch="$(defaultbranch)"
+  git checkout $branch
+  git rebase origin/$branch
   git checkout -b $1
 }
 
