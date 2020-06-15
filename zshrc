@@ -219,8 +219,9 @@ function whilefail() {
 function gbtr() {
   git branch --track $1 remotes/origin/$1
   git checkout $1
-  git rebase master
-  git checkout master
+  branch="$(defaultbranch)"
+  git rebase $branch
+  git checkout $branch
   git rebase $1
   git branch -D $1
 }

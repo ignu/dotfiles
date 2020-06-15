@@ -31,7 +31,6 @@ alias gcaa='git add . && git commit --amend'
 alias gitme='git log --author=Len'
 alias glo='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias co='git checkout'
-alias gpom="git push origin master"
 alias gap="git add -p"
 alias gpp="git push origin head"
 alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | fzf | xargs git checkout"
