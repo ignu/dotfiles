@@ -382,3 +382,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [[ -f /Users/lensmith/.asdf/installs/nodejs/8.10.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/lensmith/.asdf/installs/nodejs/8.10.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
 
 prompt_context() {}
+
+source /Users/lensmith/.config/broot/launcher/bash/br
+eval "$(starship init zsh)"

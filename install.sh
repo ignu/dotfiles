@@ -12,6 +12,7 @@ echo "installing prereqs..."
   brew install python
   brew install curlie
   brew install tldr
+  brew install starship
   pip install pygments
 
 echo "installing oh my zsh"
