@@ -72,7 +72,6 @@ alias burn="docker kill $(docker ps -q)"
 
 
 alias l="exa -l"
-alias code="code-insiders"
 
 # OOPS
 alias :sp='cowsay "this isnt vim."'
