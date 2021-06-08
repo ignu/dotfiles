@@ -385,3 +385,4 @@ prompt_context() {}
 
 source /Users/lensmith/.config/broot/launcher/bash/br
 eval "$(starship init zsh)"
+export PATH="/opt/homebrew/bin:$PATH"
