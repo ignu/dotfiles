@@ -38,3 +38,13 @@ echo "linking files"
   rm -rf ~/.zsh_profile.d
   ln -s ~/bin/dotfiles/zsh_profile.d .zsh_profile.d
 
+  echo "install ohmyzsh plugins"
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/zdharma/fast-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+
+source ~/.zshrc
+reprofile
+
+
+
+

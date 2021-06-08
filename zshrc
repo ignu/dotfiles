@@ -7,6 +7,10 @@ bindkey -M viins 'jj' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 bindkey '^r' history-incremental-search-backward
 
+# Customize to your needs...
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/Users/ignu/.rvm/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin/
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -59,8 +63,6 @@ source $ZSH/oh-my-zsh.sh
 
 export SECRET_KEY_BASE='blahblah'
 
-# Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/Users/ignu/.rvm/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin/
 
 for zsh_source in $HOME/.zsh_profile.d/*.zsh; do
   source $zsh_source
@@ -383,6 +385,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 prompt_context() {}
 
-source /Users/lensmith/.config/broot/launcher/bash/br
+#source /Users/lensmith/.config/broot/launcher/bash/br
 eval "$(starship init zsh)"
-export PATH="/opt/homebrew/bin:$PATH"
