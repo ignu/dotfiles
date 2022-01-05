@@ -40,13 +40,19 @@ Plug 'SirVer/ultisnips'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips', { 'branch': 'main' }
 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'glepnir/lspsaga.nvim'
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+
+" modals
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 
 " Eval
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 Plug 'junegunn/vim-emoji'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
 
 " WTF ARE THESE?
 " Plug 'tpope/vim-vinegar'
@@ -89,7 +95,7 @@ Plug 'git://github.com/LnL7/vim-tslime.git',
 Plug 'janko-m/vim-test'
 
 " Lanugage
-Plug 'reasonml-editor/vim-reason-plus'
+Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'fatih/vim-go', { 'for' : 'go' }
@@ -117,30 +123,29 @@ Plug 'bogado/file-line'
 Plug 'airblade/vim-rooter'
 
 " COLORS
-"
+" Treesitter friendly
+Plug 'shaeinst/roshnivim-cs', { 'branch': 'main' }
+Plug 'rafamadriz/neon', { 'branch': 'main' }
+Plug 'marko-cerovac/material.nvim', { 'branch': 'main'}
+let g:material_style = 'darker'
+
 Plug 'jakwings/vim-colors'
 Plug 'trevordmiller/nova-vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'morhetz/gruvbox'
 let g:gruvbox_italic=1
-Plug 'vim-scripts/ScrollColors'
-Plug 'jeetsukumaran/vim-nefertiti'
 Plug 'dracula/vim'
 Plug 'junegunn/seoul256.vim'
-Plug 'w0ng/vim-hybrid'
 Plug 'nanotech/jellybeans.vim'
-Plug 'tpope/vim-vividchalk'
 Plug 'noahfrederick/vim-hemisu'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'AlessandroYorba/Alduin'
 
 "GIT
 Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'rhysd/committia.vim'
 
-nnoremap <silent> gf :call LanguageClient_textDocument_definition()<cr>
-nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
+"nnoremap <silent> gf :call LanguageClient_textDocument_definition()<cr>
+"nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
 
 if has('folding')
   if has('windows')
@@ -180,8 +185,8 @@ autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
 " FZF
-noremap <C-p> :GitFiles<CR>
-noremap ,g :GFiles?<CR>
+noremap <C-p> :Telescope git_files<CR>
+noremap ,g :Telescope find_files<CR>
 call plug#end()
 
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -293,8 +298,8 @@ autocmd FileType typescript :set makeprg=tsc
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#flow#flow_bin = 'flow'
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#sources#flow#flow_bin = 'flow'
 
 let g:javascript_plugin_flow = 1
 
@@ -369,7 +374,7 @@ nnoremap ,u :GitGutterUndoHunk<CR>
 noremap ,+ :GitGutterStageHunk<CR>
 noremap ,c :Git commit<CR>
 
-noremap<space>O :OpenChangedFiles <CR>
+noremap <leader>O :Telescope git_status <CR>
 
 noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
 
