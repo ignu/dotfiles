@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/lensmith/code/catalog-intake-poc/.git'
+let g:netrw_dirhist_5='/Users/lensmith/code/catalog-intake-poc/packages/catalog-ui/src'
+let g:netrw_dirhist_4='/Users/lensmith/code/catalog-intake-poc/packages/catalog-ui/src/ui'
+let g:netrw_dirhist_3='/Users/lensmith/code/catalog-intake-poc/packages/catalog-ui/src/ui/pages'
+let g:netrw_dirhist_2='/Users/lensmith/code/catalog-intake-poc/packages/catalog-ui/src/ui/pages/vendors-show-page'
+let g:netrw_dirhist_1='/Users/lensmith/code/catalog-intake-poc/packages/catalog-ui/src/ui/pages/vendors-show-page/components'

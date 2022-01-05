@@ -33,6 +33,7 @@ echo "linking files"
   ln ~/bin/dotfiles/gitconfig .gitconfig
   ln ~/bin/dotfiles/aliasrc .aliasrc
   ln ~/bin/dotfiles/tmux.conf .tmux.conf
+  ln -s ~/bin/dotfiles/nvim nvim
 
   rm .zshrc
   ln ~/bin/dotfiles/zshrc .zshrc
