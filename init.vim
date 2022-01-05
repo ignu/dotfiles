@@ -4,6 +4,7 @@ source ~/.vimrc
 set termguicolors
 lua require("lsp-config")
 lua require("cmp-config")
+lua require("gitsigns-config")
 
 noremap <Leader>G :GitGutterStageHunk<cr>
 noremap <Leader>g :GitGutterToggle<cr>

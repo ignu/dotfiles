@@ -54,7 +54,7 @@ bashcompinit
 
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(osx ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fast-syntax-highlighting fzf)
+plugins=(macos ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fast-syntax-highlighting fzf)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source ~/.zshrc.local
@@ -172,12 +172,6 @@ function wb() {
 
   git stash pop
   echo "********** Done. Sorry. *************"
-}
-
-function gpr() {
-  git commit -m "$1"
-  git push origin HEAD
-  hub compare
 }
 
 function fuckit() {
@@ -387,3 +381,10 @@ prompt_context() {}
 
 #source /Users/lensmith/.config/broot/launcher/bash/br
 eval "$(starship init zsh)"
+
+function gpr() {
+  git commit -m "$1"
+  git push origin HEAD
+  hub compare
+}
+

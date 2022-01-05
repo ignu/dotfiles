@@ -136,7 +136,7 @@ Plug 'AlessandroYorba/Alduin'
 
 "GIT
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'rhysd/committia.vim'
 
 nnoremap <silent> gf :call LanguageClient_textDocument_definition()<cr>
@@ -287,10 +287,6 @@ let g:ale_linters = {
 \   'javascript': [],
 \}
 
-let g:gitgutter_sign_added = emoji#for('eight_spoked_asterisk')
-let g:gitgutter_sign_modified = emoji#for('pencil2')
-let g:gitgutter_sign_removed = "-"
-let g:gitgutter_sign_modified_removed = "-"
 
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
 autocmd FileType typescript :set makeprg=tsc
