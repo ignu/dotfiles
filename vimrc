@@ -56,14 +56,19 @@ Plug 'junegunn/vim-emoji'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
 
+" navigate with -
+Plug 'tpope/vim-vinegar'
+
+" Rename, etc unix functions
+Plug 'tpope/vim-eunuch'
+
+" More commands are repeatable
+Plug 'tpope/vim-repeat'
+
 " WTF ARE THESE?
-" Plug 'tpope/vim-vinegar'
-"Plug 'tpope/vim-eunuch'
 Plug 'gko/vim-coloresque'
 Plug 'rojspencer/vim-colorminder'
-Plug 'junegunn/vim-github-dashboard'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-repeat'
+"Plug 'tpope/vim-sleuth'
 
 " Obsolete?
 Plug 'sbdchd/neoformat'
