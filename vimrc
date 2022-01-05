@@ -13,41 +13,64 @@ call plug#begin('~/.vim/bundle')
 " Plug 'scrooloose/nerdcommenter'
 
 " New
+Plug 'neovim/nvim-lspconfig'
+Plug 'jose-elias-alvarez/null-ls.nvim', { 'branch': 'main' }
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils', { 'branch' : 'main'}
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+
 Plug 'ap/vim-css-color'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'vim-airline/vim-airline'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-projectionist'
-Plug 'rojspencer/vim-colorminder'
 Plug 'jremmen/vim-ripgrep'
-Plug 'gko/vim-coloresque'
-Plug 'junegunn/vim-github-dashboard'
 Plug 'mhinz/vim-startify'
-Plug 'mhinz/vim-janah'
-Plug 'sbdchd/neoformat'
 Plug 'benizi/vim-automkdir'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/neco-syntax'
-Plug 'wokalski/autocomplete-flow'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'ternjs/tern_for_vim'
-Plug 'flowtype/vim-flow', { 'on': ['FlowType', 'FlowToggle', 'FlowMake']}
-Plug 'steelsojka/deoplete-flow'
-Plug 'chemzqm/vim-jsx-improve'
-Plug 'sk1418/Join'
+
+
+"Complete
+Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
+Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
+Plug 'SirVer/ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips', { 'branch': 'main' }
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'glepnir/lspsaga.nvim'
+
+
+" Eval
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 Plug 'junegunn/vim-emoji'
+
+" WTF ARE THESE?
+" Plug 'tpope/vim-vinegar'
+"Plug 'tpope/vim-eunuch'
+Plug 'gko/vim-coloresque'
+Plug 'rojspencer/vim-colorminder'
+Plug 'junegunn/vim-github-dashboard'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-repeat'
+
+" Obsolete?
+Plug 'sbdchd/neoformat'
+let g:neoformat_try_node_exe = 1
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/neoinclude.vim'
+"Plug 'Shougo/neco-syntax'
+"
+" Plug 'wokalski/autocomplete-flow'
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'ternjs/tern_for_vim'
+" Plug 'flowtype/vim-flow', { 'on': ['FlowType', 'FlowToggle', 'FlowMake']}
+" Plug 'steelsojka/deoplete-flow'
+" Plug 'chemzqm/vim-jsx-improve'
+" Plug 'sk1418/Join'
 
 Plug 'MattesGroeger/vim-bookmarks'
 
@@ -59,9 +82,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/localvimrc'
 Plug 'godlygeek/tabular'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-repeat'
-Plug 'SirVer/ultisnips'
 Plug 'tmhedberg/matchit'
 
 " TMUX
@@ -72,12 +92,11 @@ Plug 'janko-m/vim-test'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'toyamarinyon/vim-swift', { 'for': 'swift' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-Plug 'kchmck/vim-coffee-script'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'for' : 'go' }
 Plug 'ElmCast/elm-vim', { 'for' : 'elm' }
-Plug 'elixir-editors/vim-elixir'
-Plug 'slashmili/alchemist.vim'
-Plug 'leafgarland/typescript-vim'
+Plug 'elixir-editors/vim-elixir', {'for' : 'elixir'}
+Plug 'slashmili/alchemist.vim', {'for' : 'elixir'}
+" Plug 'leafgarland/typescript-vim'
 
 " Templates
 Plug 'slim-template/vim-slim', { 'for': ['slim', 'skim'] }
@@ -119,11 +138,6 @@ Plug 'AlessandroYorba/Alduin'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/committia.vim'
-
-let g:LanguageClient_serverCommands = {
-    \ 'reason': ['ocaml-language-server', '--stdio'],
-    \ 'ocaml': ['ocaml-language-server', '--stdio'],
-    \ }
 
 nnoremap <silent> gf :call LanguageClient_textDocument_definition()<cr>
 nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>

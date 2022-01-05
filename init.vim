@@ -2,6 +2,8 @@ set runtimepath+=~/.vim,~/.vim/after
 set packpath+=~/.vim
 source ~/.vimrc
 set termguicolors
+lua require("lsp-config")
+lua require("cmp-config")
 
 noremap <Leader>G :GitGutterStageHunk<cr>
 noremap <Leader>g :GitGutterToggle<cr>
