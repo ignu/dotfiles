@@ -19,7 +19,6 @@ Plug 'jose-elias-alvarez/nvim-lsp-ts-utils', { 'branch' : 'main'}
 
 
 Plug 'ap/vim-css-color'
-Plug 'ryanoasis/vim-devicons'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'vim-airline/vim-airline'
 Plug 'arcticicestudio/nord-vim'
@@ -28,6 +27,9 @@ Plug 'tpope/vim-projectionist'
 Plug 'jremmen/vim-ripgrep'
 Plug 'mhinz/vim-startify'
 Plug 'benizi/vim-automkdir'
+
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'chentau/marks.nvim'
 
 
 "Complete
@@ -78,7 +80,8 @@ let g:neoformat_try_node_exe = 1
 " Plug 'chemzqm/vim-jsx-improve'
 " Plug 'sk1418/Join'
 
-Plug 'MattesGroeger/vim-bookmarks'
+Plug 'chentau/marks.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Essentials
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -157,36 +160,15 @@ let g:airline_section_y = '%{bufnr("%")}'
 let g:airline_powerline_fonts = 1
 let g:airline_right_sep=''
 let g:airline_left_sep=' '
-" Vim Bookmarks...
-let g:bookmark_no_default_key_mappings = 1
-function! BookmarkMapKeys()
-    nmap mm :BookmarkToggle<CR>
-    nmap mi :BookmarkAnnotate<CR>
-    nmap mn :BookmarkNext<CR>
-    nmap mp :BookmarkPrev<CR>
-    nmap ma :BookmarkShowAll<CR>
-    nmap mc :BookmarkClear<CR>
-    nmap mx :BookmarkClearAll<CR>
-    nmap mkk :BookmarkMoveUp
-    nmap mjj :BookmarkMoveDown
-endfunction
-function! BookmarkUnmapKeys()
-    unmap mm
-    unmap mi
-    unmap mn
-    unmap mp
-    unmap ma
-    unmap mc
-    unmap mx
-    unmap mkk
-    unmap mjj
-endfunction
-autocmd BufEnter * :call BookmarkMapKeys()
-autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
 " FZF
 noremap <C-p> :Telescope git_files<CR>
 noremap ,g :Telescope find_files<CR>
+noremap <leader>ff :Telescope live_grep<CR>
+noremap <leader>f? :Telescope help_tags<CR>
+noremap <leader>fl :Telescope lsp_references<CR>
+noremap <leader>fm :Telescope marks<CR>
+noremap <leader>fk :Telescope keymaps<CR>
 call plug#end()
 
 let g:UltiSnipsExpandTrigger="<tab>"
