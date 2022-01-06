@@ -17,12 +17,11 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'jose-elias-alvarez/null-ls.nvim', { 'branch': 'main' }
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils', { 'branch' : 'main'}
 
+Plug 'nvim-lualine/lualine.nvim'
 
 Plug 'ap/vim-css-color'
 Plug 'tommcdo/vim-fugitive-blame-ext'
-Plug 'vim-airline/vim-airline'
 Plug 'arcticicestudio/nord-vim'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-projectionist'
 Plug 'jremmen/vim-ripgrep'
 Plug 'mhinz/vim-startify'
@@ -31,6 +30,7 @@ Plug 'benizi/vim-automkdir'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'chentau/marks.nvim'
 
+Plug 'windwp/nvim-ts-autotag', { 'branch': 'main' }
 
 "Complete
 Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
@@ -38,8 +38,9 @@ Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
 Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
-Plug 'SirVer/ultisnips'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips', { 'branch': 'main' }
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
@@ -120,9 +121,9 @@ Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown'] }
 " Ruby
 Plug 'tpope/vim-rails', { 'for' : 'ruby' }
 Plug 'vim-ruby/vim-ruby', { 'for' : 'ruby' }
-Plug 'tpope/vim-endwise', { 'for' : 'ruby' }
-Plug 'ecomba/vim-ruby-refactoring', { 'for' : 'ruby' }
-Plug 'tpope/vim-cucumber', { 'for' : 'feature' }
+"Plug 'tpope/vim-endwise', { 'for' : 'ruby' }
+"Plug 'ecomba/vim-ruby-refactoring', { 'for' : 'ruby' }
+"Plug 'tpope/vim-cucumber', { 'for' : 'feature' }
 Plug 'tpope/vim-bundler', { 'for' : 'ruby' }
 Plug 'jgdavey/vim-blockle'
 
@@ -135,6 +136,7 @@ Plug 'airblade/vim-rooter'
 Plug 'shaeinst/roshnivim-cs', { 'branch': 'main' }
 Plug 'rafamadriz/neon', { 'branch': 'main' }
 Plug 'marko-cerovac/material.nvim', { 'branch': 'main'}
+Plug 'rebelot/kanagawa.nvim'
 let g:material_style = 'darker'
 
 Plug 'jakwings/vim-colors'
@@ -146,6 +148,11 @@ Plug 'dracula/vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'noahfrederick/vim-hemisu'
+
+let g:neon_style='dark'
+let g:neon_italic_keyword=1
+let g:neon_italic_function=1
+let g:neon_transparent=1
 
 "GIT
 Plug 'tpope/vim-fugitive'
@@ -161,30 +168,22 @@ if has('folding')
     set fillchars+=fold:·             " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
   endif
 end
-let g:airline_section_y = '%{bufnr("%")}'
-let g:airline_powerline_fonts = 1
-let g:airline_right_sep=''
-let g:airline_left_sep=' '
 
 " FZF
 noremap <C-p> :Telescope git_files<CR>
 noremap ,g :Telescope find_files<CR>
 noremap <leader>ff :Telescope live_grep<CR>
+noremap <leader>fb :Telescope buffers<CR>
 noremap <leader>f? :Telescope help_tags<CR>
 noremap <leader>fl :Telescope lsp_references<CR>
 noremap <leader>fm :Telescope marks<CR>
 noremap <leader>fk :Telescope keymaps<CR>
 call plug#end()
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:localvimrc_ask = 0
 let g:localvimrc_sandbox = 0
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 let g:alchemist#extended_autocomplete = 1
 
@@ -193,16 +192,16 @@ set wildmode=list:longest,list:full
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <S-Tab> <c-n>
+"function! InsertTabWrapper()
+"    let col = col('.') - 1
+"    if !col || getline('.')[col - 1] !~ '\k'
+"        return "\<tab>"
+"    else
+"        return "\<c-p>"
+"    endif
+"endfunction
+"inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+"inoremap <S-Tab> <c-n>
 
 let g:useSystemClipboard = 0
 function! UseSystemClipboard()
@@ -324,6 +323,7 @@ inoremap jk <ESC>
 "-------------
 " NORMAL  🌈
 
+noremap <C-s> :w!<CR> :Neoformat<CR>
 " EMACS
 noremap <C-a> <Home>
 noremap <C-b> <Left>
@@ -460,11 +460,13 @@ autocmd BufWinLeave *.* mkview
 augroup MiscMisc
   au!
   silent autocmd bufwritepost .vimrc source $MYVIMRC
+  silent autocmd bufwritepost vimrc source $MYVIMRC
 
   " remember fold positions
   autocmd BufWinLeave .* mkview
   autocmd BufWinEnter .* silent loadview
 augroup END
+
 
 " Remember last location in file
 augroup RememberPosition
