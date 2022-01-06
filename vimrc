@@ -54,7 +54,6 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " Eval
 Plug 'majutsushi/tagbar'
-Plug 'w0rp/ale'
 Plug 'junegunn/vim-emoji'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
@@ -235,62 +234,12 @@ let g:fzf_action = {
     \ 'ctrl-x': 'split',
     \ 'ctrl-v': 'vsplit' }
 
-function! Elixirlinter(buffer, lines) abort
-    " Matches patterns like the following:
-    "
-    " (CompileError) apps/sim/lib/sim/server.ex:87: undefined function update_in/4
-    "
-    " TODO include warnings
-    let l:pattern = '\v\((CompileError|SyntaxError)\) ([^:]+):([^:]+): (.+)$'
-    let l:output = []
-
-    for l:match in ale#util#GetMatches(a:lines, l:pattern)
-        let l:type = 'C'
-        let l:text = l:match[4]
-
-        call add(l:output, {
-        \   'bufnr': a:buffer,
-        \   'lnum': l:match[3] + 0,
-        \   'col': 0,
-        \   'type': l:type,
-        \   'text': l:text,
-        \})
-    endfor
-
-    return l:output
-endfunction
-
-call ale#linter#Define('elixir', {
-\   'name': 'elixirc',
-\   'executable': 'elixirc',
-\   'command': 'mix compile',
-\   'callback': 'Elixirlinter',
-\})
-
-let g:ale_set_loclist = 1
-let g:ale_set_quickfix = 0
-let g:ale_sign_error =  '✗'
-let g:ale_sign_warning = '⚠'
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-let g:ale_echo_msg_error_str = '✗'
-let g:ale_echo_msg_warning_str = '∑' 
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_linters = {
-\   'javascript': [],
-\}
-
-
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
 autocmd FileType typescript :set makeprg=tsc
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
-"let g:deoplete#enable_at_startup = 1
-"let g:deoplete#sources#flow#flow_bin = 'flow'
-
 let g:javascript_plugin_flow = 1
-
 let g:javascript_conceal_function             = "ƒ"
 let g:javascript_conceal_this                 = "@"
 let g:javascript_conceal_undefined            = "¿"
@@ -347,20 +296,19 @@ noremap <space>j :lnext<CR>
 noremap <space>k :lprev<CR>
 
 " Search for character under word
-:nnoremap <space><space> :Ag <cword> <CR>
+:nnoremap <space><space> :Rg <cword> <CR>
 
 noremap <Leader><Right> :Tx rake db:migrate<CR>
 noremap <Leader><Left> :Tx rake db:rollback<CR>
 noremap <Leader><Up> :GitGutterLineHighlightsToggle<CR>
 
-nnoremap ;a :ALEToggle<cr>
 nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
 nnoremap <silent> <Leader>r :Bclose<CR>
 
 nnoremap <leader>n :set number!<CR>
 nnoremap <leader>N :set relativenumber!<CR>
-nnoremap ,u :GitGutterUndoHunk<CR>
-noremap ,+ :GitGutterStageHunk<CR>
+nnoremap ,u :Gitsigns undo_stage_hunk<CR>
+noremap ,+ :Gitsigns stage_hunks<CR>
 noremap ,c :Git commit<CR>
 
 noremap <leader>O :Telescope git_status <CR>
