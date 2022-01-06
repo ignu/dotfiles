@@ -247,7 +247,7 @@ function reprofile() {
   rm -rf ~/.vim
   rm -rf ~/config/karabiner
   rm -rf ~/.config/nvim
-  mkdir ~/.config/nvim
+  ln -s ~/bin/dotfiles/nvim ~/.config/nvim
   ln -s ~/bin/dotfiles/init.vim ~/.config/nvim/init.vim
   ln -s ~/bin/dotfiles/vim .vim
   ln -s ~/bin/dotfiles/karabiner ~/.config/

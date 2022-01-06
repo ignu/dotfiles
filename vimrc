@@ -274,7 +274,7 @@ inoremap jk <ESC>
 "-------------
 " NORMAL  🌈
 
-noremap <C-s> :FormatWrite<CR>
+noremap <C-s> :w<CR> :FormatWrite<CR>
 " EMACS
 noremap <C-a> <Home>
 noremap <C-b> <Left>
@@ -287,8 +287,8 @@ noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
-noremap <Up> :GitGutterPrevHunk<CR>
-noremap <Down> :GitGutterNextHunk<CR>
+noremap <Up> :Gitsigns next_hunk<CR>
+noremap <Down> :Gitsigns previous_hunk<CR>
 " Arrow Keys Navigate QuickFix Window
 noremap <Right> :cnext<CR>
 noremap <Left> :cprev<CR>
