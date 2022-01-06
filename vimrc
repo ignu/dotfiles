@@ -41,6 +41,8 @@ Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
+Plug 'benfowler/telescope-luasnip.nvim'
+Plug 'meain/vim-package-info', { 'do': 'npm install' }
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
@@ -71,9 +73,9 @@ Plug 'gko/vim-coloresque'
 Plug 'rojspencer/vim-colorminder'
 "Plug 'tpope/vim-sleuth'
 
+Plug 'mhartington/formatter.nvim'
+
 " Obsolete?
-Plug 'sbdchd/neoformat'
-let g:neoformat_try_node_exe = 1
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'Shougo/neoinclude.vim'
 "Plug 'Shougo/neco-syntax'
@@ -323,7 +325,7 @@ inoremap jk <ESC>
 "-------------
 " NORMAL  🌈
 
-noremap <C-s> :w!<CR> :Neoformat<CR>
+noremap <C-s> :FormatWrite<CR>
 " EMACS
 noremap <C-a> <Home>
 noremap <C-b> <Left>
@@ -391,8 +393,6 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:
 nnoremap <F7> :call LanguageClient#textDocument_rename()<cr>
 nnoremap <F8> :GitGutterToggle<cr>
 nnoremap <F9> :bufdo! bd<cr>
-nnoremap <F10> :Neoformat<cr>
-nnoremap ,p :Neoformat<cr>
 noremap <F11> :NERDTreeFind<CR>
 noremap <F12> :NERDTreeToggle<CR>
 

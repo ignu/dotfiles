@@ -33,3 +33,5 @@ require('lualine').setup {
   tabline = {},
   extensions = {}
 }
+
+require('telescope').load_extension('luasnip')
