@@ -19,12 +19,9 @@ saga.init_lsp_saga {
 local lsp = vim.lsp
 local handlers = lsp.handlers
 
--- Hover doc popup
-local pop_opts = { border = "rounded", max_width = 80 }
-handlers["textDocument/hover"] = lsp.with(handlers.hover, pop_opts)
-handlers["textDocument/signatureHelp"] = lsp.with(handlers.signature_help, pop_opts)
 
 local on_attach = function(client, bufnr)
+  -- lsp provider to find the cursor word definition and reference
     vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
     vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
     vim.cmd("command! LspCodeAction lua vim.lsp.buf.code_action()")
@@ -58,6 +55,7 @@ local on_attach = function(client, bufnr)
     buf_map(bufnr, "n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", {silent = true, noremap = true})
     buf_map(bufnr, "n", "<C-j>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>")
     buf_map(bufnr, "n", "<C-k>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>")
+    buf_map(bufnr, "n", "gh", ":<c-u>Lspsaga lsp_finder<cr>", {silent = true, noremap = true})
     --if client.resolved_capabilities.document_formatting then
     --    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
     --end
