@@ -45,7 +45,7 @@ Plug 'benfowler/telescope-luasnip.nvim'
 Plug 'meain/vim-package-info', { 'do': 'npm install' }
 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+Plug 'tami5/lspsaga.nvim', { 'branch': 'main' }
 
 " modals
 Plug 'nvim-lua/popup.nvim'
@@ -75,9 +75,6 @@ Plug 'rojspencer/vim-colorminder'
 Plug 'mhartington/formatter.nvim'
 
 " Obsolete?
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'Shougo/neoinclude.vim'
-"Plug 'Shougo/neco-syntax'
 "
 " Plug 'wokalski/autocomplete-flow'
 " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
@@ -140,12 +137,12 @@ Plug 'marko-cerovac/material.nvim', { 'branch': 'main'}
 Plug 'rebelot/kanagawa.nvim'
 let g:material_style = 'darker'
 
-Plug 'jakwings/vim-colors'
-Plug 'trevordmiller/nova-vim'
+"Plug 'jakwings/vim-colors'
+"Plug 'trevordmiller/nova-vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'morhetz/gruvbox'
 let g:gruvbox_italic=1
-Plug 'dracula/vim'
+"Plug 'dracula/vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'noahfrederick/vim-hemisu'
@@ -351,7 +348,6 @@ noremap \ :w<CR>
 " Copy Paragraph
 noremap cp yap<S-}>p 
 " OPEN LOGS
-nmap K :vsp<cr>:Glog<cr>
 
 "select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'

@@ -10,16 +10,25 @@ local buf_map = function(bufnr, mode, lhs, rhs, opts)
 end
 
 saga.init_lsp_saga {
-    error_sign = 'x',
-    warn_sign = '[',
+    error_sign = '',
+    warn_sign = '',
     hint_sign = '.',
     border_style = "round",
 }
+
+local lsp = vim.lsp
+local handlers = lsp.handlers
+
+-- Hover doc popup
+local pop_opts = { border = "rounded", max_width = 80 }
+handlers["textDocument/hover"] = lsp.with(handlers.hover, pop_opts)
+handlers["textDocument/signatureHelp"] = lsp.with(handlers.signature_help, pop_opts)
 
 local on_attach = function(client, bufnr)
     vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
     vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
     vim.cmd("command! LspCodeAction lua vim.lsp.buf.code_action()")
+    vim.cmd("command! LspHover lua vim.lsp.buf.hover()")
     vim.cmd("command! LspHover lua vim.lsp.buf.hover()")
     vim.cmd("command! LspRename lua vim.lsp.buf.rename()")
     vim.cmd("command! LspRefs lua vim.lsp.buf.references()")
@@ -30,15 +39,25 @@ local on_attach = function(client, bufnr)
     vim.cmd("command! LspDiagLine lua vim.diagnostic.open_float()")
     vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")    
     buf_map(bufnr, "n", "gd", ":LspDef<CR>")
-    buf_map(bufnr, "n", "gr", ":LspRename<CR>")
+    --buf_map(bufnr, "n", "gr", ":LspRename<CR>")
     buf_map(bufnr, "n", "gy", ":LspTypeDef<CR>")
-    buf_map(bufnr, "n", "K", ":LspHover<CR>")
-    buf_map(bufnr, "n", "K", ":LspHover<CR>")
+    buf_map(bufnr, "n", "K", ":Lspsaga hover_doc<CR>")
+    --buf_map(bufnr, "n", "K", ":LspHover<CR>")
     buf_map(bufnr, "n", "[a", ":LspDiagPrev<CR>")
     buf_map(bufnr, "n", "]a", ":LspDiagNext<CR>")
     buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>")
     buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
     buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")    
+    local map = nvim_buf_set_keymap,
+    buf_map(bufnr, "n", "gr", "<cmd>Lspsaga rename<cr>", {silent = true, noremap = true})
+    buf_map(bufnr, "n", "ga", "<cmd>Lspsaga code_action<cr>", {silent = true, noremap = true})
+    buf_map(bufnr, "x", "ga", ":<c-u>Lspsaga range_code_action<cr>", {silent = true, noremap = true})
+    buf_map(bufnr, "n", "K",  "<cmd>Lspsaga hover_doc<cr>", {silent = true, noremap = true})
+    buf_map(bufnr, "n", "go", "<cmd>Lspsaga show_line_diagnostics<cr>", {silent = true, noremap = true})
+    buf_map(bufnr, "n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", {silent = true, noremap = true})
+    buf_map(bufnr, "n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", {silent = true, noremap = true})
+    buf_map(bufnr, "n", "<C-j>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>")
+    buf_map(bufnr, "n", "<C-k>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>")
     --if client.resolved_capabilities.document_formatting then
     --    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
     --end
@@ -50,7 +69,7 @@ lspconfig.tsserver.setup({
         client.resolved_capabilities.document_range_formatting = false
         local ts_utils = require("nvim-lsp-ts-utils")
         ts_utils.setup({})
-        ts_utils.setup_client(client)        
+        ts_utils.setup_client(client)
         buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
         buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
         buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
