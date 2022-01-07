@@ -34,4 +34,14 @@ require('lualine').setup {
   extensions = {}
 }
 
+require'shade'.setup({
+  overlay_opacity = 60,
+  opacity_step = 1,
+  keys = {
+    brightness_up    = ',2',
+    brightness_down  = ',3',
+    toggle           = ',1',
+  }
+})
+
 require('telescope').load_extension('luasnip')

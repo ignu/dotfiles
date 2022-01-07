@@ -47,6 +47,8 @@ Plug 'meain/vim-package-info', { 'do': 'npm install' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'tami5/lspsaga.nvim', { 'branch': 'main' }
 
+Plug 'sunjon/shade.nvim'
+
 " modals
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
