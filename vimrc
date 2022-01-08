@@ -18,6 +18,7 @@ Plug 'jose-elias-alvarez/null-ls.nvim', { 'branch': 'main' }
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils', { 'branch' : 'main'}
 
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'ThePrimeagen/harpoon'
 
 Plug 'ap/vim-css-color'
 Plug 'tommcdo/vim-fugitive-blame-ext'
@@ -50,6 +51,7 @@ Plug 'tami5/lspsaga.nvim', { 'branch': 'main' }
 " modals
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch' : 'main', 'do': 'make' }
 
 
 " Eval
@@ -142,12 +144,15 @@ let g:material_style = 'darker'
 "Plug 'jakwings/vim-colors'
 "Plug 'trevordmiller/nova-vim'
 Plug 'whatyouhide/vim-gotham'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
+Plug 'EdenEast/nightfox.nvim', { 'branch': 'main' }
 let g:gruvbox_italic=1
 "Plug 'dracula/vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'noahfrederick/vim-hemisu'
+Plug 'sainnhe/everforest'
+Plug 'savq/melange'
 
 let g:neon_style='dark'
 let g:neon_italic_keyword=1
@@ -275,10 +280,10 @@ inoremap jk <ESC>
 
 noremap <C-s> :w<CR> :FormatWrite<CR>
 " EMACS
-noremap <C-a> <Home>
-noremap <C-b> <Left>
-noremap <C-f> <Right>
-noremap <C-e> <End>
+" noremap <C-a> <Home>
+" noremap <C-b> <Left>
+" noremap <C-f> <Right>
+" " noremap <C-e> <End>
 
 " make movement keys simpler
 noremap <C-j> <C-W>j
@@ -335,6 +340,7 @@ noremap <F1> :echo expand('%:t')<CR>
 nnoremap <F3> :Buffers<CR>
 noremap <Leader><F3> :Tx bundle<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
+noremap ,a :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 " F6  - use system clipboard
 nnoremap <F7> :call LanguageClient#textDocument_rename()<cr>
@@ -361,13 +367,6 @@ nnoremap k gk
 " simpler surround.vim
 :onoremap p i(
 :onoremap q i"
-
-"-------------
-" INSERT  🌈
-"
-"next quickfix file
-iabbrev sao save_and_open_page
-iabbrev SAO save_and_open_screenshot
 
 "-------------
 " VISUAL  🌈
@@ -423,11 +422,11 @@ augroup END
 
 
 " Do not show cursorline on inactive panes
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
-augroup END
+"augroup CursorLine
+"  au!
+"  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+"  au WinLeave * setlocal nocursorline
+"augroup END
 
 augroup NewSyntaxes
   au!
@@ -472,15 +471,7 @@ set autoread
 set shiftround
 set title
 set linebreak
-highlight NonText guifg=#4a4a59
-highlight SpecialKey guifg=#4a4a59
 set list listchars=tab:»·,trail:.
-
-" Don't try to highlight lines longer than 800 characters.
-set synmaxcol=800
-
-" Save when losing focus
-au FocusLost * :silent! wall
 
 " }}}
 " Text objects ------------------------------------------------------------ {{{
@@ -504,52 +495,6 @@ let g:startify_custom_header = [
   \'                              \/|__|                          \/     \/   ',
   \]
 
-" OpenChangedFiles (<Leader>O)---------------------- {{{
-function! OpenChangedFiles()
-  only " Close all windows, unless they're modified
-  let status = system('git status -s | grep "^ \?\(M\|A\)" | cut -d " " -f 3')
-  let filenames = split(status, "\n")
-
-  if len(filenames) < 1
-    let status = system('git show --pretty="format:" --name-only')
-    let filenames = split(status, "\n")
-  endif
-
-  exec "edit " . filenames[0]
-
-  for filename in filenames[1:]
-    if len(filenames) > 4
-      exec "tabedit " . filename
-    else
-      exec "sp " . filename
-    endif
-  endfor
-endfunction
-command! OpenChangedFiles :call OpenChangedFiles()
-" }}}
-
-" Delete buffer while keeping window layout (don't close buffer's windows).
-" Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
-if v:version < 700 || exists('loaded_bclose') || &cp
-  finish
-endif
-
-let g:committia_hooks = {}
-let g:committia_open_only_vim_starting = 1
-function! g:committia_hooks.edit_open(info)
-    " Additional settings
-    setlocal spell
-
-    " If no commit message, start with insert mode
-    if a:info.vcs ==# 'git' && getline(1) ==# ''
-        startinsert
-    end
-
-    " Scroll the diff window from insert mode
-    " Map <C-n> and <C-p>
-    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
-    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
-endfunction
 
 let loaded_bclose = 1
 if !exists('bclose_multiple')
@@ -617,16 +562,3 @@ function! s:Bclose(bang, buffer)
   execute wcurrent.'wincmd w'
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
-
-hi OverLength ctermbg=none cterm=none
-match OverLength /\%>79v/
-fun! s:LongLineHLToggle()
- if !exists('w:longlinehl')
-  let w:longlinehl = matchadd('ErrorMsg', '.\%>80v', 0)
-  echo "Long lines highlighted"
- else
-  call matchdelete(w:longlinehl)
-  unl w:longlinehl
-  echo "Long lines unhighlighted"
- endif
-endfunction

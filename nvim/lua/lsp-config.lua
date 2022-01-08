@@ -47,7 +47,9 @@ local on_attach = function(client, bufnr)
     buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")    
     local map = nvim_buf_set_keymap,
     buf_map(bufnr, "n", "gr", "<cmd>Lspsaga rename<cr>", {silent = true, noremap = true})
-    buf_map(bufnr, "n", "ga", "<cmd>Lspsaga code_action<cr>", {silent = true, noremap = true})
+    -- this one is creating a modal that i can't close
+    --buf_map(bufnr, "n", "ga", "<cmd>Lspsaga code_action<cr>", {silent = true, noremap = true})
+    buf_map(bufnr, "n", "ga", "<cmd>:LspCodeAction<cr>", {silent = true, noremap = true})
     buf_map(bufnr, "x", "ga", ":<c-u>Lspsaga range_code_action<cr>", {silent = true, noremap = true})
     buf_map(bufnr, "n", "K",  "<cmd>Lspsaga hover_doc<cr>", {silent = true, noremap = true})
     buf_map(bufnr, "n", "go", "<cmd>Lspsaga show_line_diagnostics<cr>", {silent = true, noremap = true})
