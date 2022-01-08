@@ -292,7 +292,7 @@ noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
 noremap <Up> :Gitsigns next_hunk<CR>
-noremap <Down> :Gitsigns previous_hunk<CR>
+noremap <Down> :Gitsigns prev_hunk<CR>
 " Arrow Keys Navigate QuickFix Window
 noremap <Right> :cnext<CR>
 noremap <Left> :cprev<CR>
