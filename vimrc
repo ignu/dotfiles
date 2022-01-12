@@ -30,6 +30,7 @@ Plug 'benizi/vim-automkdir'
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'chentau/marks.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 Plug 'windwp/nvim-ts-autotag', { 'branch': 'main' }
 
@@ -279,6 +280,7 @@ inoremap jk <ESC>
 " NORMAL  🌈
 
 noremap <C-s> :w<CR> :FormatWrite<CR>
+inoremap <C-s> <ESC>:w<CR> :FormatWrite<CR>
 " EMACS
 " noremap <C-a> <Home>
 " noremap <C-b> <Left>

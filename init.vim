@@ -27,3 +27,7 @@ nnoremap <silent><C-2> :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <silent><C-3> :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <silent><C-4> :lua require("harpoon.ui").nav_file(4)<CR>
 nmap gf :edit <cfile><cr>
+
+"let g:neovide_transparency=0.8
+"let g:neovide_fullscreen=v:true
+set guifont=DankMono\ Nerd\ Font
