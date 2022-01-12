@@ -389,3 +389,10 @@ function gpr() {
   hub compare
 }
 
+function gpp() {
+  git commit -m "$1"
+  git push origin HEAD
+  hub compare
+}
+
+

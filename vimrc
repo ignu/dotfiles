@@ -165,6 +165,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'rhysd/committia.vim'
 
+" TODO: move this to a gui nvimcr 
+
+
 "nnoremap <silent> gf :call LanguageClient_textDocument_definition()<cr>
 "nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
 
