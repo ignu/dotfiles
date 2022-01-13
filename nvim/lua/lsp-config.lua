@@ -32,7 +32,7 @@ local lsp_signature_config = {
                  -- This setting only take effect in insert mode, it does not affect signature help in normal
                  -- mode, 10 by default
 
-  floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
+  floating_window = false, -- show hint in a floating window, set to false for virtual text only mode
 
   floating_window_above_cur_line = true, -- try to place the floating above the current line when possible Note:
   -- will set to true when fully tested, set to false will use whichever side has more space
@@ -48,7 +48,7 @@ local lsp_signature_config = {
     border = "rounded"   -- double, rounded, single, shadow, none
   },
   always_trigger = true,
-  auto_close_after = nil, -- autoclose signature float win after x sec, disabled if nil.
+  auto_close_after = 5, -- autoclose signature float win after x sec, disabled if nil.
   extra_trigger_chars = {}, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
   zindex = 200, -- by default it will be on top of all floating windows, set to <= 50 send it to bottom
 

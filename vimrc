@@ -356,8 +356,8 @@ nnoremap <F7> :call LanguageClient#textDocument_rename()<cr>
 nnoremap <F8> :GitGutterToggle<cr>
 nnoremap <F9> :bufdo! bd<cr>
 nnoremap <F11> :NvimTreeFindToggle<CR>
-nnoremap <F11> :NvimTreeFindFile<CR>
-nnoremap - :NvimTreeToggle<CR>
+nnoremap <F11> :NvimTreeFindFileToggle<CR>
+nnoremap - :NvimTreeFindFileToggle<CR>
 let g:nvim_tree_git_hl = 1
 let g:nvim_tree_icons = {
     \ 'default': '',
