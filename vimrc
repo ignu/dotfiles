@@ -13,9 +13,12 @@ call plug#begin('~/.vim/bundle')
 " Plug 'scrooloose/nerdcommenter'
 
 " New
+
+" LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'jose-elias-alvarez/null-ls.nvim', { 'branch': 'main' }
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils', { 'branch' : 'main'}
+Plug 'ray-x/lsp_signature.nvim'
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'ThePrimeagen/harpoon'
@@ -42,7 +45,7 @@ Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
 Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
+Plug 'ignu/friendly-snippets', { 'branch': 'main' }
 Plug 'benfowler/telescope-luasnip.nvim'
 Plug 'meain/vim-package-info', { 'do': 'npm install' }
 
