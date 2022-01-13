@@ -35,7 +35,5 @@ require('lualine').setup {
   extensions = {}
 }
 
-vim.notify = require("notify")
-
 require('telescope').load_extension('luasnip')
 require'nvim-tree'.setup()

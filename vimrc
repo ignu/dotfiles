@@ -82,8 +82,6 @@ Plug 'rojspencer/vim-colorminder'
 
 Plug 'mhartington/formatter.nvim'
 
-Plug 'rcarriga/nvim-notify'
-
 " Obsolete?
 "
 " Plug 'wokalski/autocomplete-flow'
