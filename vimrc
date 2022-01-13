@@ -23,6 +23,8 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'ThePrimeagen/harpoon'
 
+Plug 'kyazdani42/nvim-tree.lua'
+
 Plug 'ap/vim-css-color'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'arcticicestudio/nord-vim'
@@ -65,7 +67,7 @@ Plug 'junegunn/vim-emoji'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
 
 " navigate with -
-Plug 'tpope/vim-vinegar'
+"Plug 'tpope/vim-vinegar'
 
 " Rename, etc unix functions
 Plug 'tpope/vim-eunuch'
@@ -98,7 +100,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Essentials
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/localvimrc'
@@ -354,9 +355,34 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:
 nnoremap <F7> :call LanguageClient#textDocument_rename()<cr>
 nnoremap <F8> :GitGutterToggle<cr>
 nnoremap <F9> :bufdo! bd<cr>
-noremap <F11> :NERDTreeFind<CR>
-noremap <F12> :NERDTreeToggle<CR>
-
+nnoremap <F11> :NvimTreeFindToggle<CR>
+nnoremap <F11> :NvimTreeFindFile<CR>
+nnoremap - :NvimTreeToggle<CR>
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "",
+    \   'ignored': "◌"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   }
+    \ }
+let g:nvim_tree_quit_on_open = 1
 
 " RSI sucks. save with \ my pooooor thumb
 noremap \ :w<CR>

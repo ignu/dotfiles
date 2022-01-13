@@ -38,3 +38,4 @@ require('lualine').setup {
 vim.notify = require("notify")
 
 require('telescope').load_extension('luasnip')
+require'nvim-tree'.setup()
