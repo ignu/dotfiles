@@ -35,8 +35,10 @@ require('lualine').setup {
   extensions = {}
 }
 
-local notify = require("notify").setup({
-  timeout = 2200
+local notify = require("notify")
+
+notify.setup({
+  timeout = 1700
 })
 
 vim.notify = notify
