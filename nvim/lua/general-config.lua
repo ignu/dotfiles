@@ -35,7 +35,11 @@ require('lualine').setup {
   extensions = {}
 }
 
-vim.notify = require("notify")
+local notify = require("notify").setup({
+  timeout = 2200
+})
+
+vim.notify = notify
 
 require('telescope').load_extension('luasnip')
 require'nvim-tree'.setup()
