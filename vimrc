@@ -19,13 +19,13 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'jose-elias-alvarez/null-ls.nvim', { 'branch': 'main' }
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils', { 'branch' : 'main'}
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'folke/trouble.nvim', {'branch' : 'main'}
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'ThePrimeagen/harpoon'
 
 Plug 'kyazdani42/nvim-tree.lua'
 
-Plug 'ap/vim-css-color'
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-projectionist'
@@ -358,6 +358,7 @@ nnoremap <F9> :bufdo! bd<cr>
 nnoremap <F11> :NvimTreeFindToggle<CR>
 nnoremap <F11> :NvimTreeFindFileToggle<CR>
 nnoremap - :NvimTreeFindFileToggle<CR>
+let g:nvim_tree_disable_window_picker = 1
 let g:nvim_tree_git_hl = 1
 let g:nvim_tree_icons = {
     \ 'default': '',
@@ -388,7 +389,7 @@ let g:nvim_tree_quit_on_open = 1
 noremap \ :w<CR>
 
 " Copy Paragraph
-noremap cp yap<S-}>p 
+" noremap cp yap<S-}>p 
 " OPEN LOGS
 
 "select last paste in visual mode
