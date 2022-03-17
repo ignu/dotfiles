@@ -14,17 +14,20 @@ call plug#begin('~/.vim/bundle')
 
 " New
 
-" LSP
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'jose-elias-alvarez/null-ls.nvim', { 'branch': 'main' }
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils', { 'branch' : 'main'}
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'folke/trouble.nvim', {'branch' : 'main'}
+Plug 'MunifTanjim/prettier.nvim'
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'ThePrimeagen/harpoon'
 
-Plug 'kyazdani42/nvim-tree.lua'
+"silent! let g:plugs['nvim-tree.lua'].commit = '9008bac180f84f71e5334311bdcb937bd57b6be0'
+"Plug 'kyazdani42/nvim-tree.lua'
+Plug 'luukvbaal/nnn.nvim'
 
 Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'arcticicestudio/nord-vim'
@@ -53,6 +56,7 @@ Plug 'meain/vim-package-info', { 'do': 'npm install' }
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'tami5/lspsaga.nvim', { 'branch': 'main' }
+Plug 'williamboman/nvim-lsp-installer'
 
 " modals
 Plug 'nvim-lua/popup.nvim'
@@ -144,12 +148,21 @@ Plug 'shaeinst/roshnivim-cs', { 'branch': 'main' }
 Plug 'rafamadriz/neon', { 'branch': 'main' }
 Plug 'marko-cerovac/material.nvim', { 'branch': 'main'}
 Plug 'rebelot/kanagawa.nvim'
+Plug 'jacoborus/tender.vim'
 let g:material_style = 'darker'
 
 "Plug 'jakwings/vim-colors'
 "Plug 'trevordmiller/nova-vim'
+
+" Color Scheme Framework used by other color schemes
+Plug 'AlessandroYorba/Alduin'
+Plug 'shaunsingh/moonlight.nvim'
+Plug 'rockerBOO/boo-colorscheme-nvim'
+Plug 'rktjmp/lush.nvim' 
+Plug 'adisen99/apprentice.nvim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'gruvbox-community/gruvbox'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'EdenEast/nightfox.nvim', { 'branch': 'main' }
 let g:gruvbox_italic=1
 "Plug 'dracula/vim'
@@ -184,7 +197,6 @@ end
 
 " FZF
 noremap <C-p> :Telescope git_files<CR>
-noremap ,g :Telescope find_files<CR>
 noremap <leader>ff :Telescope live_grep<CR>
 noremap <leader>fb :Telescope buffers<CR>
 noremap <leader>f? :Telescope help_tags<CR>
@@ -355,35 +367,11 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:
 nnoremap <F7> :call LanguageClient#textDocument_rename()<cr>
 nnoremap <F8> :GitGutterToggle<cr>
 nnoremap <F9> :bufdo! bd<cr>
-nnoremap <F11> :NvimTreeFindToggle<CR>
-nnoremap <F11> :NvimTreeFindFileToggle<CR>
-nnoremap - :NvimTreeFindFileToggle<CR>
-let g:nvim_tree_disable_window_picker = 1
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
-    \ 'git': {
-    \   'unstaged': "",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
-let g:nvim_tree_quit_on_open = 1
+
+nnoremap <F11> :NnnPicker %:p:h<CR>
+tnoremap <F11> :NnnExplorer<CR>
+nnoremap - :NnnPicker<CR>
+nnoremap - :NnnPicker %:p:h<CR>
 
 " RSI sucks. save with \ my pooooor thumb
 noremap \ :w<CR>

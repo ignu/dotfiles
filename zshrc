@@ -374,10 +374,6 @@ export RUBY_GC_HEAP_FREE_SLOTS=$RUBY_HEAP_FREE_MIN
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/lensmith/.asdf/installs/nodejs/8.10.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/lensmith/.asdf/installs/nodejs/8.10.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
-
 prompt_context() {}
 
 #source /Users/lensmith/.config/broot/launcher/bash/br
@@ -394,5 +390,4 @@ function gpp() {
   git push origin HEAD
   hub compare
 }
-
 

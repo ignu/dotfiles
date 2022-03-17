@@ -15,6 +15,7 @@ echo "installing prereqs..."
   brew install starship
   brew install alacritty
   brew install tmuxinator
+  brew install nnn
   pip install pygments
 
 echo "installing oh my zsh"

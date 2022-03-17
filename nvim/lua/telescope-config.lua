@@ -5,6 +5,9 @@ require('telescope').load_extension('fzf')
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
 require('telescope').setup {
+   find_files = {
+      theme = "dropdown",
+    },
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching

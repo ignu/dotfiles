@@ -1,9 +1,3 @@
-require'nvim-treesitter.configs'.setup {
-  autotag = {
-    enable = true,
-  }
-}
-
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -65,4 +59,5 @@ vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
 vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
   {silent = true, noremap = true}
 )
-require'nvim-tree'.setup()
+
+require("nnn").setup()
