@@ -345,7 +345,9 @@ function when_delete() {
  git log -c -S'$1' $2
 }
 
-[[ -s "$HOME/.asdf/asdf.sh" ]] && source ~/.asdf/asdf.sh
+[[ -s "$HOME/.afzfsdf/asdf.sh" ]] && source ~/.asdf/asdf.sh
+[[ -s "$HOME/.afzfsdf/asdf.sh" ]] && source ~/.asdf/asdf.
+[[ -s "$HOME/homebrew/opt/asdf/libexec/asdf.sh" ]] && source "$HOME/homebrew/opt/asdf/libexec/asdf.sh"
 
 [[ -s "$HOME/.cargo/env" ]] && source $HOME/.cargo/env
 

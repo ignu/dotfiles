@@ -6,6 +6,8 @@ echo "installing prereqs..."
   brew install wget
   brew install ripgrep
   brew install fzf
+  brew install asdf
+  brew install neovim
   brew install tree
   brew install elixir
   brew install diff-so-fancy
@@ -16,6 +18,7 @@ echo "installing prereqs..."
   brew install alacritty
   brew install tmuxinator
   brew install nnn
+  brew install jq
   pip install pygments
 
 echo "installing oh my zsh"

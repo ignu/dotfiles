@@ -61,7 +61,6 @@ Plug 'williamboman/nvim-lsp-installer'
 " modals
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch' : 'main', 'do': 'make' }
 
 
 " Eval
@@ -104,6 +103,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Essentials
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch' : 'main', 'do': 'make' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/localvimrc'
@@ -111,7 +111,7 @@ Plug 'godlygeek/tabular'
 Plug 'tmhedberg/matchit'
 
 " TMUX
-Plug 'git://github.com/LnL7/vim-tslime.git',
+Plug 'LnL7/vim-tslime',
 Plug 'janko-m/vim-test'
 
 " Lanugage
