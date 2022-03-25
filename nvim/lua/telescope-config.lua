@@ -8,6 +8,13 @@ require('telescope').setup {
    find_files = {
       theme = "dropdown",
     },
+  defaults = {
+    winblend = 9,
+  layout_config = {
+      vertical = { width = 0.9 },
+      -- other layout configuration here
+    }
+  },
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
@@ -18,3 +25,4 @@ require('telescope').setup {
     }
   }
 }
+require("telescope").load_extension('harpoon')

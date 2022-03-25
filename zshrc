@@ -387,7 +387,12 @@ function gpr() {
   hub compare
 }
 
-function gpp() {
+function editlocal() {
+  vim ~/.zshrc.local
+  source ~/.zshrc.local
+}
+
+function gppp() {
   git commit -m "$1"
   git push origin HEAD
   hub compare

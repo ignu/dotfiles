@@ -181,6 +181,7 @@ let g:neon_transparent=1
 Plug 'tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'rhysd/committia.vim'
+Plug 'rhysd/conflict-marker.vim'
 
 " TODO: move this to a gui nvimcr 
 
@@ -200,10 +201,19 @@ noremap <C-p> :Telescope git_files<CR>
 noremap <leader>ff :Telescope live_grep<CR>
 noremap <leader>fb :Telescope buffers<CR>
 noremap <leader>f? :Telescope help_tags<CR>
+noremap <leader>fh :Telescope harpoon marks<CR>
 noremap <leader>fl :Telescope lsp_references<CR>
 noremap <leader>fm :Telescope marks<CR>
 noremap <leader>fk :Telescope keymaps<CR>
 call plug#end()
+
+
+"ALT key bindings
+noremap <a-y> "+y
+noremap <a-v> "+p
+nnoremap <a-f> :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ winblend = 10, layout_config = {width = 0.9 }}))<cr>
+
+noremap Y y$
 
 
 let g:localvimrc_ask = 0
@@ -228,25 +238,10 @@ set wildmode=list:longest,list:full
 "inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 "inoremap <S-Tab> <c-n>
 
-let g:useSystemClipboard = 0
-function! UseSystemClipboard()
-  if g:useSystemClipboard
-    echom "Using Vim Clipboard. ⓥ"
-    let g:useSystemClipboard = 0
-    set clipboard=""
-  else
-    echom "Using System Clipboard. 🌈"
-    let g:useSystemClipboard = 1
-    set clipboard=unnamed
-  endif
-endfunction
-noremap <F6> :call UseSystemClipboard()<CR>
-
 "Loccal config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
-
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -337,6 +332,7 @@ noremap ,+ :Gitsigns stage_hunks<CR>
 noremap ,c :Git commit<CR>
 
 noremap <leader>O :Telescope git_status <CR>
+noremap <a-1> :Telescope git_status theme=dropdown <CR>
 
 noremap <leader>q :execute "rightbelow split " . bufname("#")<cr>
 
@@ -358,14 +354,14 @@ noremap <F1> :echo expand('%:t')<CR>
 " remove trailing whitespace and replace tabs with spaces
 " Press F4 to toggle highlighting on/off, and show current value.
 " F2 gets trampled
+nnoremap <F2> :Lspsaga rename<CR>
 nnoremap <F3> :Buffers<CR>
 noremap <Leader><F3> :Tx bundle<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
 noremap ,a :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
-" F6  - use system clipboard
-nnoremap <F7> :call LanguageClient#textDocument_rename()<cr>
-nnoremap <F8> :GitGutterToggle<cr>
+nnoremap <F7> :cclose<CR>
+nnoremap <F8> :copen<CR>
 nnoremap <F9> :bufdo! bd<cr>
 
 nnoremap <F11> :NnnPicker %:p:h<CR>

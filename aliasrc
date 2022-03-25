@@ -32,7 +32,7 @@ alias gitme='git log --author=Len'
 alias glo='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias co='git checkout'
 alias gap="git add -p"
-alias gpp="git push origin head"
+alias gpr="gppp"
 alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | fzf | xargs git checkout"
 
 alias hc="hub compare"
@@ -56,7 +56,6 @@ alias emul="/Users/ignu/Library/Android/sdk/tools/emulator -netdelay none -netsp
 alias editalias="vim ~/bin/dotfiles/aliasrc"
 alias editvim="vim ~/bin/dotfiles/vimrc"
 alias editzsh="vim ~/bin/dotfiles/zshrc"
-alias editlocal="vim ~/.zshrc.local"
 alias godot="cd ~/bin/dotfiles && git add -p"
 
 # NODE
