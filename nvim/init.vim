@@ -11,6 +11,7 @@ lua require("webicon-config")
 lua require("general-config")
 lua require("format-config")
 lua require("telescope-config")
+lua require("prettierd")
 
 " my test command on most projects these days.
 noremap <F1> :w!<cr> :Tx npm run test<cr>

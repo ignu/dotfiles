@@ -109,6 +109,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/localvimrc'
 Plug 'godlygeek/tabular'
 Plug 'tmhedberg/matchit'
+Plug 'ignu/rvcs'
 
 " TMUX
 Plug 'LnL7/vim-tslime',
@@ -141,6 +142,9 @@ Plug 'jgdavey/vim-blockle'
 " Navigation/Search
 Plug 'bogado/file-line'
 Plug 'airblade/vim-rooter'
+
+" if it doesnt have git we dont care
+let g:rooter_patterns = ['.git']
 
 " COLORS
 " Treesitter friendly
@@ -293,8 +297,8 @@ inoremap jk <ESC>
 "-------------
 " NORMAL  🌈
 
-noremap <C-s> :w<CR> :FormatWrite<CR>
-inoremap <C-s> <ESC>:w<CR> :FormatWrite<CR>
+noremap <C-s> :w<CR>
+inoremap <C-s> <ESC>:w<CR>
 " EMACS
 " noremap <C-a> <Home>
 " noremap <C-b> <Left>
@@ -457,8 +461,6 @@ augroup end
 
 let g:jsx_ext_required = 0
 set cursorline
-
-autocmd ColorScheme janah highlight Normal ctermbg=235
 
 set background=dark
 if has("persistent_undo")
