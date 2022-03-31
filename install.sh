@@ -54,5 +54,6 @@ source ~/.zshrc
 reprofile
 
 
+git config --global core.excludesfile ~/.gitignore_global
 
 

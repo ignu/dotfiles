@@ -36,8 +36,14 @@ notify.setup({
 })
 
 vim.notify = notify
+require('Comment').setup {
+  opleader = {
+    line = "gc",
+    block = "gb",
+  }
+}
 
-require('telescope').load_extension('luasnip')
+--require('telescope').load_extension('luasnip')
 require("trouble").setup {
   use_diagnostic_signs = true
 }

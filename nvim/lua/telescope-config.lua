@@ -5,12 +5,13 @@ require('telescope').load_extension('fzf')
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
 require('telescope').setup {
-   find_files = {
-      theme = "dropdown",
-    },
+  find_files = {
+     theme = "dropdown",
+  },
   defaults = {
     winblend = 9,
-  layout_config = {
+    path_display={"smart"},
+    layout_config = {
       vertical = { width = 0.9 },
       -- other layout configuration here
     }

@@ -9,12 +9,6 @@ let maplocalleader=" "
 " ------------
 call plug#begin('~/.vim/bundle')
 
-" Purgatory
-" Plug 'scrooloose/nerdcommenter'
-
-" New
-
-
 Plug 'neovim/nvim-lspconfig'
 Plug 'jose-elias-alvarez/null-ls.nvim', { 'branch': 'main' }
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils', { 'branch' : 'main'}
@@ -29,7 +23,7 @@ Plug 'ThePrimeagen/harpoon'
 "Plug 'kyazdani42/nvim-tree.lua'
 Plug 'luukvbaal/nnn.nvim'
 
-Plug 'tommcdo/vim-fugitive-blame-ext'
+"Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-projectionist'
 Plug 'jremmen/vim-ripgrep'
@@ -104,8 +98,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch' : 'main', 'do': 'make' }
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
+Plug 'numToStr/Comment.nvim'
 Plug 'vim-scripts/localvimrc'
 Plug 'godlygeek/tabular'
 Plug 'tmhedberg/matchit'
@@ -183,6 +176,7 @@ let g:neon_transparent=1
 
 "GIT
 Plug 'tpope/vim-fugitive'
+silent! let g:plugs['gitsigns.nvim'].commit = '2a107231d92fa37224efdbc475abfba71f94b5ee'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'rhysd/committia.vim'
 Plug 'rhysd/conflict-marker.vim'
@@ -219,6 +213,7 @@ nnoremap <a-f> :lua require'telescope.builtin'.find_files(require('telescope.the
 
 noremap Y y$
 
+noremap gc Vgc
 
 let g:localvimrc_ask = 0
 let g:localvimrc_sandbox = 0
@@ -334,6 +329,7 @@ nnoremap <leader>N :set relativenumber!<CR>
 nnoremap ,u :Gitsigns undo_stage_hunk<CR>
 noremap ,+ :Gitsigns stage_hunks<CR>
 noremap ,c :Git commit<CR>
+noremap ; :
 
 noremap <leader>O :Telescope git_status <CR>
 noremap <a-1> :Telescope git_status theme=dropdown <CR>
@@ -359,6 +355,8 @@ noremap <F1> :echo expand('%:t')<CR>
 " Press F4 to toggle highlighting on/off, and show current value.
 " F2 gets trampled
 nnoremap <F2> :Lspsaga rename<CR>
+nnoremap go :Lspsaga show_line_diagnostics<CR>
+nnoremap ga :LspCodeAction<CR>
 nnoremap <F3> :Buffers<CR>
 noremap <Leader><F3> :Tx bundle<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>

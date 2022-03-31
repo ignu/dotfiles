@@ -1,7 +1,6 @@
 local lspconfig = require("lspconfig")
 local saga = require('lspsaga')
 
-local null_ls = require("null-ls")
 
 local buf_map = function(bufnr, mode, lhs, rhs, opts)
     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
@@ -32,7 +31,7 @@ local lsp_signature_config = {
                  -- This setting only take effect in insert mode, it does not affect signature help in normal
                  -- mode, 10 by default
 
-  floating_window = false, -- show hint in a floating window, set to false for virtual text only mode
+  floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
 
   floating_window_above_cur_line = true, -- try to place the floating above the current line when possible Note:
   -- will set to true when fully tested, set to false will use whichever side has more space
@@ -41,21 +40,21 @@ local lsp_signature_config = {
   hint_enable = true, -- virtual hint enable
   use_lspsaga = true,  -- set to true if you want to use lspsaga popup
   hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
-  max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
+  max_height = 14, -- max height of signature floating_window, if content is more than max_height, you can scroll down
                    -- to view the hiding contents
-  max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+  max_width = 180, -- max_width of signature floating_window, line will be wrapped if exceed max_width
   handler_opts = {
     border = "rounded"   -- double, rounded, single, shadow, none
   },
   always_trigger = true,
   auto_close_after = 5, -- autoclose signature float win after x sec, disabled if nil.
-  extra_trigger_chars = {}, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
+  extra_trigger_chars = {","}, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
   zindex = 200, -- by default it will be on top of all floating windows, set to <= 50 send it to bottom
 
 
   shadow_guibg = 'Black', -- if you using shadow as border use this set the color e.g. 'Green' or '#121315'
-  timer_interval = 200, -- default timer check interval set to lower value if you want to reduce latency
-  toggle_key = nil -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
+  timer_interval = 100, -- default timer check interval set to lower value if you want to reduce latency
+  toggle_key = '<M-x>' -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
 }
 
 local lsp_signature = require "lsp_signature"
@@ -87,8 +86,8 @@ lspconfig.tsserver.setup({
         ts_utils.setup({})
         ts_utils.setup_client(client)
         buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-        buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
-        buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+        buf_map(bufnr, "n", "gr", ":TSLspRenameFile<CR>")
+        buf_map(bufnr, "n", "gI", ":TSLspImportAll<CR>")
         on_attach(client, bufnr)
     end,
 })
@@ -130,17 +129,17 @@ local on_attach = function(client, bufnr)
     vim.cmd("command! LspDiagPrev lua vim.diagnostic.goto_prev()")
     vim.cmd("command! LspDiagNext lua vim.diagnostic.goto_next()")
     vim.cmd("command! LspDiagLine lua vim.diagnostic.open_float()")
-    vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")    
+    vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
     buf_map(bufnr, "n", "gd", ":LspDef<CR>")
-    --buf_map(bufnr, "n", "gr", ":LspRename<CR>")
+    buf_map(bufnr, "n", "gr", ":LspRename<CR>")
     buf_map(bufnr, "n", "gy", ":LspTypeDef<CR>")
     buf_map(bufnr, "n", "K", ":Lspsaga hover_doc<CR>")
-    --buf_map(bufnr, "n", "K", ":LspHover<CR>")
+    buf_map(bufnr, "n", "K", ":LspHover<CR>")
     buf_map(bufnr, "n", "[a", ":LspDiagPrev<CR>")
     buf_map(bufnr, "n", "]a", ":LspDiagNext<CR>")
     buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>")
     buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
-    buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")    
+    buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
     local map = nvim_buf_set_keymap,
     buf_map(bufnr, "n", "gr", "<cmd>Lspsaga rename<cr>", {silent = true, noremap = true})
     -- this one is creating a modal that i can't close
@@ -168,11 +167,12 @@ local on_attach = function(client, bufnr)
     end
 end
 
+local null_ls = require("null-ls")
 null_ls.setup({
     sources = {
         --null_ls.builtins.diagnostics.eslint,
         --null_ls.builtins.code_actions.eslint,
-        null_ls.builtins.formatting.prettier,
+        --null_ls.builtins.formatting.prettier,
     },
     on_attach = on_attach,
 })
