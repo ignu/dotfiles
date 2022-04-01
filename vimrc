@@ -198,11 +198,13 @@ end
 noremap <C-p> :Telescope git_files<CR>
 noremap <leader>ff :Telescope live_grep<CR>
 noremap <leader>fb :Telescope buffers<CR>
+noremap <C-o> :Telescope git_status<CR>
 noremap <leader>f? :Telescope help_tags<CR>
 noremap <leader>fh :Telescope harpoon marks<CR>
 noremap <leader>fl :Telescope lsp_references<CR>
 noremap <leader>fm :Telescope marks<CR>
 noremap <leader>fk :Telescope keymaps<CR>
+nnoremap gD :only<bar>vsplit<CR>gd
 call plug#end()
 
 
@@ -300,14 +302,14 @@ inoremap <C-s> <ESC>:w<CR>
 " noremap <C-f> <Right>
 " " noremap <C-e> <End>
 
-" make movement keys simpler
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
+" make movement keys simpler and save on move
+noremap <C-j> :w<CR> <C-W>j
+noremap <C-k> :w<CR> <C-W>k
+noremap <C-h> :w<CR> <C-W>h
+noremap <C-l> :w<CR> <C-W>l
 
-noremap <Up> :Gitsigns next_hunk<CR>
-noremap <Down> :Gitsigns prev_hunk<CR>
+noremap <Up> :Gitsigns prev_hunk<CR>
+noremap <Down> :Gitsigns next_hunk<CR>
 " Arrow Keys Navigate QuickFix Window
 noremap <Right> :cnext<CR>
 noremap <Left> :cprev<CR>
@@ -362,10 +364,11 @@ noremap <Leader><F3> :Tx bundle<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
 noremap ,a :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+nnoremap <F6> :hi Normal guibg=NONE<CR>
 nnoremap <F7> :cclose<CR>
 nnoremap <F8> :copen<CR>
 nnoremap <F9> :bufdo! bd<cr>
-
+nnoremap <Leader>0 :Startify <CR>
 nnoremap <F11> :NnnPicker %:p:h<CR>
 tnoremap <F11> :NnnExplorer<CR>
 nnoremap - :NnnPicker<CR>
@@ -419,10 +422,6 @@ set autoread
 set wildmode=list:longest
 set wildchar=<Tab> wildmenu wildmode=full
 
-" save and restore folds when a file is closed and re-opened. ugh.
-autocmd BufWinLeave *.* mkview
-"autocmd BufWinEnter *.* silent loadview 
-
 augroup MiscMisc
   au!
   silent autocmd bufwritepost .vimrc source $MYVIMRC
@@ -432,7 +431,6 @@ augroup MiscMisc
   autocmd BufWinLeave .* mkview
   autocmd BufWinEnter .* silent loadview
 augroup END
-
 
 " Remember last location in file
 augroup RememberPosition

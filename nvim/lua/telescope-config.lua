@@ -12,7 +12,7 @@ require('telescope').setup {
     winblend = 9,
     path_display={"smart"},
     layout_config = {
-      vertical = { width = 0.9 },
+      vertical = { width = 1.1 },
       -- other layout configuration here
     }
   },
