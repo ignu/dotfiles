@@ -19,6 +19,12 @@ Plug 'MunifTanjim/prettier.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'ThePrimeagen/harpoon'
 
+" Autosave
+" this crashes, i think modals are triggering FocusLost
+"Plug '907th/vim-auto-save'
+"let g:auto_save = 1
+"let g:auto_save_events = ["BufWinLeave", "BufLeave", "FocusLost"]
+
 "silent! let g:plugs['nvim-tree.lua'].commit = '9008bac180f84f71e5334311bdcb937bd57b6be0'
 "Plug 'kyazdani42/nvim-tree.lua'
 Plug 'luukvbaal/nnn.nvim'
@@ -174,12 +180,17 @@ let g:neon_italic_keyword=1
 let g:neon_italic_function=1
 let g:neon_transparent=1
 
+
 "GIT
 Plug 'tpope/vim-fugitive'
 silent! let g:plugs['gitsigns.nvim'].commit = '2a107231d92fa37224efdbc475abfba71f94b5ee'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'rhysd/committia.vim'
 Plug 'rhysd/conflict-marker.vim'
+Plug 'machakann/vim-sandwich'
+call plug#end()
+" can i learn new keybindings? might make vscode switching a pita
+"runtime macros/sandwich/keymap/surround.vim
 
 " TODO: move this to a gui nvimcr 
 
@@ -205,7 +216,7 @@ noremap <leader>fl :Telescope lsp_references<CR>
 noremap <leader>fm :Telescope marks<CR>
 noremap <leader>fk :Telescope keymaps<CR>
 nnoremap gD :only<bar>vsplit<CR>gd
-call plug#end()
+nnoremap gT :only<bar>tabedit<CR>gd
 
 
 "ALT key bindings
@@ -303,10 +314,10 @@ inoremap <C-s> <ESC>:w<CR>
 " " noremap <C-e> <End>
 
 " make movement keys simpler and save on move
-noremap <C-j> :w<CR> <C-W>j
-noremap <C-k> :w<CR> <C-W>k
-noremap <C-h> :w<CR> <C-W>h
-noremap <C-l> :w<CR> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 noremap <Up> :Gitsigns prev_hunk<CR>
 noremap <Down> :Gitsigns next_hunk<CR>
