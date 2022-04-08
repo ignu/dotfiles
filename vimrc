@@ -15,6 +15,7 @@ Plug 'jose-elias-alvarez/nvim-lsp-ts-utils', { 'branch' : 'main'}
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'folke/trouble.nvim', {'branch' : 'main'}
 Plug 'MunifTanjim/prettier.nvim'
+Plug 'github/copilot.vim'
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'ThePrimeagen/harpoon'
