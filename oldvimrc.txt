@@ -56,7 +56,6 @@ Plug 'benfowler/telescope-luasnip.nvim'
 Plug 'meain/vim-package-info', { 'do': 'npm install' }
 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'tami5/lspsaga.nvim', { 'branch': 'main' }
 Plug 'williamboman/nvim-lsp-installer'
 
 " modals
