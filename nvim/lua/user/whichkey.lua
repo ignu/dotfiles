@@ -6,7 +6,7 @@ end
 local setup = {
     plugins = {
         marks = true, -- shows a list of your marks on ' and `
-        registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+        registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
         spelling = {
             enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
             suggestions = 20 -- how many suggestions should be shown in the list?
@@ -14,7 +14,7 @@ local setup = {
         -- the presets plugin, adds help for a bunch of default keybindings in Neovim
         -- No actual key bindings are created
         presets = {
-            operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+            operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
             motions = true, -- adds help for motions
             text_objects = true, -- help for text objects triggered after entering an operator
             windows = true, -- default bindings on <c-w>
@@ -59,7 +59,8 @@ local setup = {
         -- this is mostly relevant for key maps that start with a native binding
         -- most people should not need to change this
         i = {'j', 'k'},
-        v = {'j', 'k'}
+        v = {'j', 'k'},
+        n = {'s', 'k'}
     }
 }
 
@@ -80,8 +81,8 @@ local mappings = {
     },
     -- nnoremap <silent> <Leader>r :Bclose<CR>
     ['e'] = {'<cmd>NvimTreeToggle<cr>', 'Explorer'},
-    ['r'] = {'<cmd>w!<CR>', 'Save'},
-    ['c'] = {'<cmd>Bdelete!<CR>', 'Close Buffer'},
+    ['r'] = {'<cmd>w!<CR>:bd<CR>', 'Save and Close'},
+    --['c'] = {'<cmd>Bdelete!<CR>', 'Close Buffer'},
     ['h'] = {'<cmd>nohlsearch<CR>', 'No Highlight'},
     ['F'] = {'<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text'},
     --["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
@@ -109,8 +110,8 @@ local mappings = {
             'Undo Stage Hunk'
         },
         o = {'<cmd>Telescope git_status<cr>', 'Open changed file'},
-        b = {'<cmd>Telescope git_branches<cr>', 'Checkout branch'},
         c = {'<cmd>Telescope git_commits<cr>', 'Checkout commit'},
+        B = {'<cmd>Telescope git_branches<cr>', 'Checkout branch'},
         d = {
             '<cmd>Gitsigns diffthis HEAD<cr>',
             'Diff'
@@ -148,7 +149,7 @@ local mappings = {
         }
     },
     f = {
-        name = 'Search',
+        name = 'Telescope',
         b = {'<cmd>Telescope git_branches<cr>', 'Checkout branch'},
         c = {'<cmd>Telescope colorscheme<cr>', 'Colorscheme'},
         h = {'<cmd>Telescope help_tags<cr>', 'Find Help'},
@@ -157,8 +158,35 @@ local mappings = {
         R = {'<cmd>Telescope registers<cr>', 'Registers'},
         k = {'<cmd>Telescope keymaps<cr>', 'Keymaps'},
         C = {'<cmd>Telescope commands<cr>', 'Commands'},
-        T = {'<cmd>Telescope telescope<cr>', 'Commands'},
         T = {'<cmd>Telescope tagstack<cr>', 'tagstack'}
+    },
+    s = {
+        name = 'Sandwich',
+        D = {
+            '<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)',
+            'Delete'
+        },
+        d = {
+            '<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)',
+            'Delete named char'
+        },
+        a = {'<Plug>(operator-sandwich-add)', 'Add'},
+        C = {
+            '<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)',
+            'Change named char'
+        },
+        c = {
+            '<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)',
+            'Change'
+        },
+        s = {
+            '<Plug>(textobj-sandwich-auto-i)',
+            'Select inside'
+        },
+        S = {
+            '<Plug>(textobj-sandwich-auto-a)',
+            'Select outside'
+        }
     },
     t = {
         name = 'Terminal',

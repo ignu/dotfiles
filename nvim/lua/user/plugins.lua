@@ -45,6 +45,11 @@ return packer.startup(
     function(use)
         -- My plugins here
         use 'wbthomason/packer.nvim' -- Have packer manage itself
+
+        -- surround.vim replacement
+        use 'machakann/vim-sandwich'
+        --use 'tpope/vim-surround'
+
         use 'nvim-lua/popup.nvim' -- An implementation of the Popup API from vim in Neovim
         use 'nvim-lua/plenary.nvim' -- Useful lua functions used ny lots of plugins
         use 'windwp/nvim-autopairs' -- Autopairs, integrates with both cmp and treesitter
@@ -80,6 +85,7 @@ return packer.startup(
         use 'noahfrederick/vim-hemisu'
         use 'sainnhe/everforest'
         use 'savq/melange'
+        use 'shaeinst/roshnivim-cs'
 
         -- cmp plugins
         use 'hrsh7th/nvim-cmp' -- The completion plugin
@@ -93,8 +99,6 @@ return packer.startup(
         use 'L3MON4D3/LuaSnip' --snippet engine
         use 'rafamadriz/friendly-snippets' -- a bunch of snippets to use
 
-        -- surround.vim replacement
-        use 'machakann/vim-sandwich'
 
         -- LSP
         use 'neovim/nvim-lspconfig' -- enable LSP

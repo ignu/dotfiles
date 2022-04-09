@@ -274,6 +274,11 @@ _G.packer_plugins = {
     path = "/Users/len/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
   },
+  ["roshnivim-cs"] = {
+    loaded = true,
+    path = "/Users/len/.local/share/nvim/site/pack/packer/start/roshnivim-cs",
+    url = "https://github.com/shaeinst/roshnivim-cs"
+  },
   ["seoul256.vim"] = {
     loaded = true,
     path = "/Users/len/.local/share/nvim/site/pack/packer/start/seoul256.vim",
