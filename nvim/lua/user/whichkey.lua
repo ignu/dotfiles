@@ -147,7 +147,7 @@ local mappings = {
             'Workspace Symbols'
         }
     },
-    s = {
+    f = {
         name = 'Search',
         b = {'<cmd>Telescope git_branches<cr>', 'Checkout branch'},
         c = {'<cmd>Telescope colorscheme<cr>', 'Colorscheme'},
@@ -157,7 +157,8 @@ local mappings = {
         R = {'<cmd>Telescope registers<cr>', 'Registers'},
         k = {'<cmd>Telescope keymaps<cr>', 'Keymaps'},
         C = {'<cmd>Telescope commands<cr>', 'Commands'},
-        T = {'<cmd>Telescope telescope<cr>', 'Commands'}
+        T = {'<cmd>Telescope telescope<cr>', 'Commands'},
+        T = {'<cmd>Telescope tagstack<cr>', 'tagstack'}
     },
     t = {
         name = 'Terminal',
