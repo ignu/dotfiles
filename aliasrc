@@ -16,8 +16,8 @@ alias weather="curl wttr.in/98144"
 
 # RUBY
 alias be="bundle exec"
-alias br="bundle exec rake"
 alias bet="be rake test TEST="
+alias br="bundle exec rake"
 alias s="bundle exec rspec"
 
 # GIT
@@ -68,8 +68,6 @@ alias iph="iex -S mix phx.server"
 
 # DOCKER
 alias burn="docker kill $(docker ps -q)"
-
-
 alias l="exa -l"
 
 # OOPS
