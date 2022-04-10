@@ -7,3 +7,4 @@
 .tool-versions
 .scratch.sh
 .lvimrc
+.null-ls-root
