@@ -45,3 +45,5 @@ vim.cmd 'set whichwrap+=<,>,[,],h,l'
 vim.cmd 'set wildmode=list:longest,list:full'
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+
+vim.cmd 'let g:blameLineMessageWhenNotYetCommited = "."'

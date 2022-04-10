@@ -56,7 +56,7 @@ return packer.startup(
         use 'numToStr/Comment.nvim' -- Easily comment stuff
         use 'kyazdani42/nvim-web-devicons'
         use 'kyazdani42/nvim-tree.lua'
-        use 'akinsho/bufferline.nvim'
+        --use 'akinsho/bufferline.nvim'
         use 'moll/vim-bbye'
         use 'nvim-lualine/lualine.nvim'
         use 'akinsho/toggleterm.nvim'
@@ -97,7 +97,7 @@ return packer.startup(
 
         -- snippets
         use 'L3MON4D3/LuaSnip' --snippet engine
-        use 'rafamadriz/friendly-snippets' -- a bunch of snippets to use
+        use 'ignu/friendly-snippets' -- a bunch of snippets to use
 
 
         -- LSP
@@ -118,6 +118,7 @@ return packer.startup(
 
         -- Git
         use 'lewis6991/gitsigns.nvim'
+        use 'tveskag/nvim-blame-line'
 
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
