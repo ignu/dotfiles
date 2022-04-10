@@ -81,14 +81,16 @@ local mappings = {
     },
     -- nnoremap <silent> <Leader>r :Bclose<CR>
     ['e'] = {'<cmd>NvimTreeToggle<cr>', 'Explorer'},
-    ['r'] = {'<cmd>w!<CR>:bd<CR>', 'Save and Close'},
-    --['c'] = {'<cmd>Bdelete!<CR>', 'Close Buffer'},
+    ['r'] = {':w!<CR>:bd<CR>', 'Save and Close'},
+    ['N'] = {':set relativenumber!<CR>', 'Toggle Nums'},
+    ['n'] = {':set number!<CR>', 'Toggle Rel'},
     ['h'] = {'<cmd>nohlsearch<CR>', 'No Highlight'},
     ['F'] = {'<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text'},
-    --["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+    ['!'] = {':source %<cr>:echo "🚀sourced "<cr>', 'Source'},
 
+  --["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
     p = {
-        name = 'Packer',
+       name = 'Packer',
         c = {'<cmd>PackerCompile<cr>', 'Compile'},
         i = {'<cmd>PackerInstall<cr>', 'Install'},
         s = {'<cmd>PackerSync<cr>', 'Sync'},
@@ -127,6 +129,9 @@ local mappings = {
         w = {
             '<cmd>Telescope lsp_workspace_diagnostics<cr>',
             'Workspace Diagnostics'
+        },
+        K = {
+           ':lua vim.lsp.buf.hover()<cr>', 'Hover Doc'
         },
         f = {'<cmd>lua vim.lsp.buf.formatting()<cr>', 'Format'},
         i = {'<cmd>LspInfo<cr>', 'Info'},
