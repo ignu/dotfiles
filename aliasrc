@@ -56,7 +56,7 @@ alias emul="/Users/ignu/Library/Android/sdk/tools/emulator -netdelay none -netsp
 alias editalias="vim ~/bin/dotfiles/aliasrc"
 alias editvim="vim ~/bin/dotfiles/vimrc"
 alias editzsh="vim ~/bin/dotfiles/zshrc"
-alias godot="cd ~/bin/dotfiles && gs && echo '🚀' && git diff --stat"
+alias godot="cd ~/bin/dotfiles && gs && echo '🚀' && gl"
 
 # NODE
 alias nod="nodemon --exec npm run babel-node -- "

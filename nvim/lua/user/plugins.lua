@@ -48,7 +48,6 @@ return packer.startup(
 
         -- surround.vim replacement
         use 'machakann/vim-sandwich'
-        --use 'tpope/vim-surround'
 
         use 'nvim-lua/popup.nvim' -- An implementation of the Popup API from vim in Neovim
         use 'nvim-lua/plenary.nvim' -- Useful lua functions used ny lots of plugins
@@ -119,6 +118,9 @@ return packer.startup(
         -- Git
         use 'lewis6991/gitsigns.nvim'
         use 'tveskag/nvim-blame-line'
+
+        -- Sessions
+        use 'Shatur/neovim-session-manager'
 
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
