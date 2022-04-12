@@ -28,11 +28,24 @@ local js_snips = {
 	  s("fn", fmt("({1}) => {{\n  return {2};\n}}", {i(1, "name"), i(2, "undefined")})),
 	  s("tf", fmt("({1}: {2}) => {{\n  return {3};\n}}", {i(1, "name"), i(2, "any"), i(3, "undefined")})),
 }
+
+local firstUpper = function(index)
+  return f(function(arg, snip)
+    if arg[1][1] == nil then
+      return nil
+    end
+    return (arg[1][1]:gsub("^%l", string.upper))
+  end, { index })
+end
+
+local react_snips = {
+ s("ust", fmt("const [{}, set{}] = useState{0}();", {i(1, "name"), firstUpper(1)})),
+}
+
 ls.add_snippets("javascript", js_snips)
-ls.add_snippets("typescript", js_snips)
-ls.add_snippets("react_ts", {
+ls.add_snippets("typescriptreact", react_snips)
 
-})
-
+require('luasnip').filetype_extend("javascript", { "typescriptreact" })
+require('luasnip').filetype_extend("javascript", { "javascriptreact" })
 require('luasnip').filetype_extend("javascript", { "javascriptreact" })
 require('luasnip').filetype_extend("javascript", { "html" })
