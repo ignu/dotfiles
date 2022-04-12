@@ -34,10 +34,15 @@ keymap('n', 'Y', 'y$', opts)
 keymap('n', '<S-l>', ':bnext<CR>', opts)
 keymap('n', '<S-h>', ':bprevious<CR>', opts)
 
+-- close buffer and not window
+keymap('n', '<leader>r', ':bp<bar>sp<bar>bn<bar>bd<CR>', opts);
+
 -- Alt-y and Alt-p to use clipboard
 keymap('n', '<A-y>', '"+y', opts)
 keymap('n', '<A-p>', '"+p', opts)
+
 keymap('n', '<C-p>', ':Telescope git_files<CR>', opts)
+keymap('n', ',b', ':ToggleBlameLine<CR>', opts)
 
 -- ctrl-save
 keymap('n', '<c-s>', ':w<cr>', opts)

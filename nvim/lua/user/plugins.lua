@@ -85,6 +85,7 @@ return packer.startup(
         use 'sainnhe/everforest'
         use 'savq/melange'
         use 'shaeinst/roshnivim-cs'
+        use 'EdenEast/nightfox.nvim'
 
         -- cmp plugins
         use 'hrsh7th/nvim-cmp' -- The completion plugin
@@ -107,6 +108,7 @@ return packer.startup(
 
         -- Telescope
         use 'nvim-telescope/telescope.nvim'
+        use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
         -- Treesitter
         use {
@@ -118,9 +120,15 @@ return packer.startup(
         -- Git
         use 'lewis6991/gitsigns.nvim'
         use 'tveskag/nvim-blame-line'
+        use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
-        -- Sessions
-        use 'Shatur/neovim-session-manager'
+        -- Copilot
+        use 'github/copilot.vim'
+        use 'hrsh7th/cmp-copilot'
+
+        --Sessions
+        use 'rmagatti/auto-session'
+        use 'rmagatti/session-lens'
 
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins

@@ -47,3 +47,13 @@ vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
 vim.cmd 'let g:blameLineMessageWhenNotYetCommited = "."'
+
+
+-- TODO: lua this
+vim.cmd [[
+  augroup RememberPosition
+    au!
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+      \| exe "normal g'\"" | endif
+  augroup END
+]]

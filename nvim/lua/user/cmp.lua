@@ -8,8 +8,6 @@ if not snip_status_ok then
   return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load()
-
 local check_backspace = function()
   local col = vim.fn.col "." - 1
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
@@ -105,6 +103,7 @@ cmp.setup {
         luasnip = "{ -}",
         buffer = "{}",
         path = "{}",
+        copilot = "",
       })[entry.source.name]
       return vim_item
     end,
@@ -114,6 +113,7 @@ cmp.setup {
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
+    { name = 'copilot' }
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
