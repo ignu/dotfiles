@@ -39,11 +39,17 @@ local firstUpper = function(index)
 end
 
 local react_snips = {
- s("ust", fmt("const [{}, set{}] = useState{0}();", {i(1, "name"), firstUpper(1)})),
+ s("ust", fmt("const [{}, set{}] = useState();", {i(1, "name"), firstUpper(1)})),
+ s("fc", fmt("() => {{\n\n\treturn(\t\t<{1}>\n\t\t\t{3}\n\t\t</{2}>\n\t)\n}};", {i(1, "div"), rep(1), i(2)})),
+}
+
+local ts_react_snips = {
+ s("ust", fmt("const [{}, set{}] = useState<{}>({});", {i(1, "name"), firstUpper(1), i(2, "boolean"), i(3, "false")})),
+ s("fc", fmt("() => {{\n\treturn(\n\t\t<{1}>\n\t\t\t{3}\n\t\t</{2}>\n\t)\n}};", {i(1, "div"), rep(1), i(2)})),
 }
 
 ls.add_snippets("javascript", js_snips)
-ls.add_snippets("typescriptreact", react_snips)
+ls.add_snippets("typescriptreact", ts_react_snips)
 
 require('luasnip').filetype_extend("javascript", { "typescriptreact" })
 require('luasnip').filetype_extend("javascript", { "javascriptreact" })
