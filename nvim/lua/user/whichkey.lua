@@ -89,11 +89,11 @@ local mappings = {
 	["!"] = { ':w!<cr>:source %<cr>:echo "🚀sourced "<cr>', "Source" },
 
 	["j"] = {
-		"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+		"<cmd>lua vim.diagnostic.goto_next()<CR>",
 		"Next Diagnostic",
 	},
 	["k"] = {
-		"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+		"<cmd>lua vim.diagnostic.goto_prev()<cr>",
 		"Prev Diagnostic",
 	},
 	--["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },

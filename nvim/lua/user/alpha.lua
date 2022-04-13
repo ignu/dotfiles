@@ -5,12 +5,12 @@ end
 
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {
- [[____   ___.___   _____                                      .___   ]],
- [[\   \ /   |   | /     \ _____________  _______  __ ____   __| _/   ]],
- [[ \   Y   /|   |/  \ /  \\____ \_  __ \/  _ \  \/ _/ __ \ / __ |    ]],
- [[  \     / |   /    Y    |  |_> |  | \(  <_> \   /\  ___// /_/ |    ]],
- [[   \___/  |___\____|__  |   __/|__|   \____/ \_/  \___  \____ |    ]],
- [[                      \/|__|                          \/     \/    ]],
+	[[____   ___.___   _____                                      .___   ]],
+	[[\   \ /   |   | /     \ _____________  _______  __ ____   __| _/   ]],
+	[[ \   Y   /|   |/  \ /  \\____ \_  __ \/  _ \  \/ _/ __ \ / __ |    ]],
+	[[  \     / |   /    Y    |  |_> |  | \(  <_> \   /\  ___// /_/ |    ]],
+	[[   \___/  |___\____|__  |   __/|__|   \____/ \_/  \___  \____ |    ]],
+	[[                      \/|__|                          \/     \/    ]],
 }
 dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
@@ -18,14 +18,15 @@ dashboard.section.buttons.val = {
 	dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
 	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
 	dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+	dashboard.button("s", "  Last Session", ":e ~/bin/dotfiles/nvim/lua/user/plugins.lua <CR>"),
 	dashboard.button("c", "  Configuration", ":e ~/bin/dotfiles/nvim/lua/user/options.lua <CR>"),
-	dashboard.button("k", "  Keymaps", ":e ~/bin/dotfiles/nvim/lua/user/keymaps.lua <CR>"),
-	dashboard.button("p", "  Plugins", ":e ~/bin/dotfiles/nvim/lua/user/plugins.lua <CR>"),
+	dashboard.button("K", "  Keymaps", ":e ~/bin/dotfiles/nvim/lua/user/keymaps.lua <CR>"),
+	dashboard.button("P", "  Plugins", ":e ~/bin/dotfiles/nvim/lua/user/plugins.lua <CR>"),
 	dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
 }
 
 local function footer()
--- NOTE: requires the fortune-mod package to work
+	-- NOTE: requires the fortune-mod package to work
 	-- local handle = io.popen("fortune")
 	-- local fortune = handle:read("*a")
 	-- handle:close()

@@ -1,6 +1,6 @@
-local ls = require"luasnip"
+local ls = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
-local extras = require"luasnip.extras"
+local extras = require("luasnip.extras")
 local rep = extras.rep
 
 local s = ls.snippet
@@ -18,40 +18,48 @@ local ai = require("luasnip.nodes.absolute_indexer")
 
 ls.add_snippets("all", {
 	s("ternary", {
-		i(1, "cond"), t(" ? "), i(2, "then"), t(" : "), i(3, "else")
-	})
+		i(1, "cond"),
+		t(" ? "),
+		i(2, "then"),
+		t(" : "),
+		i(3, "else"),
+	}),
 })
 
 local js_snips = {
-	  s("pu", fmt("console.log('🦄 - {}', {})", {i(1, "label"), rep(1)})),
-	  s("pp", fmt("console.log('ℹ️  - {}', {})", {i(1, "label"), rep(1)})),
-	  s("fn", fmt("({1}) => {{\n  return {2};\n}}", {i(1, "name"), i(2, "undefined")})),
-	  s("tf", fmt("({1}: {2}) => {{\n  return {3};\n}}", {i(1, "name"), i(2, "any"), i(3, "undefined")})),
+	s("pu", fmt("console.log('🦄 - {}', {})", { i(1, "label"), rep(1) })),
+	s("pp", fmt("console.log('ℹ️  - {}', {})", { i(1, "label"), rep(1) })),
+	s("fn", fmt("({1}) => {{\n  return {2};\n}}", { i(1, "name"), i(2, "undefined") })),
+	s("tf", fmt("({1}: {2}) => {{\n  return {3};\n}}", { i(1, "name"), i(2, "any"), i(3, "undefined") })),
 }
 
 local firstUpper = function(index)
-  return f(function(arg, snip)
-    if arg[1][1] == nil then
-      return nil
-    end
-    return (arg[1][1]:gsub("^%l", string.upper))
-  end, { index })
+	return f(function(arg)
+		if arg[1][1] == nil then
+			return nil
+		end
+		return (arg[1][1]:gsub("^%l", string.upper))
+	end, { index })
 end
 
 local react_snips = {
- s("ust", fmt("const [{}, set{}] = useState();", {i(1, "name"), firstUpper(1)})),
- s("fc", fmt("() => {{\n\n\treturn(\t\t<{1}>\n\t\t\t{3}\n\t\t</{2}>\n\t)\n}};", {i(1, "div"), rep(1), i(2)})),
+	s("ust", fmt("const [{}, set{}] = useState();", { i(1, "name"), firstUpper(1) })),
+	s("fc", fmt("() => {{\n\n\treturn(\t\t<{1}>\n\t\t\t{3}\n\t\t</{2}>\n\t)\n}};", { i(1, "div"), rep(1), i(2) })),
 }
 
 local ts_react_snips = {
- s("ust", fmt("const [{}, set{}] = useState<{}>({});", {i(1, "name"), firstUpper(1), i(2, "boolean"), i(3, "false")})),
- s("fc", fmt("() => {{\n\treturn(\n\t\t<{1}>\n\t\t\t{3}\n\t\t</{2}>\n\t)\n}};", {i(1, "div"), rep(1), i(2)})),
+	s(
+		"ust",
+		fmt("const [{}, set{}] = useState<{}>({});", { i(1, "name"), firstUpper(1), i(2, "boolean"), i(3, "false") })
+	),
+	s("fc", fmt("() => {{\n\treturn(\n\t\t<{1}>\n\t\t\t{3}\n\t\t</{2}>\n\t)\n}};", { i(1, "div"), rep(1), i(2) })),
 }
 
 ls.add_snippets("javascript", js_snips)
+ls.add_snippets("javascriptreact", react_snips)
 ls.add_snippets("typescriptreact", ts_react_snips)
 
-require('luasnip').filetype_extend("javascript", { "typescriptreact" })
-require('luasnip').filetype_extend("javascript", { "javascriptreact" })
-require('luasnip').filetype_extend("javascript", { "javascriptreact" })
-require('luasnip').filetype_extend("javascript", { "html" })
+require("luasnip").filetype_extend("javascript", { "typescriptreact" })
+require("luasnip").filetype_extend("javascript", { "javascriptreact" })
+require("luasnip").filetype_extend("javascript", { "javascriptreact" })
+require("luasnip").filetype_extend("javascript", { "html" })
