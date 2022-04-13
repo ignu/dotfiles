@@ -130,6 +130,9 @@ return packer.startup(
         use 'rmagatti/auto-session'
         use 'rmagatti/session-lens'
 
+        -- marks
+        use 'chentau/marks.nvim'
+
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
         if PACKER_BOOTSTRAP then

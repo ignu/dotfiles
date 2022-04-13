@@ -22,10 +22,10 @@ keymap('n', '<C-Down>', ':resize +2<CR>', opts)
 keymap('n', '<C-Left>', ':vertical resize -2<CR>', opts)
 keymap('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 
-keymap('n', '<Left>', ':cprev<CR>', opts)
-keymap('n', '<Right>', ':cnext<CR>', opts)
-keymap('n', '<Up>', ':Gitsigns next_hunk<CR>', opts)
-keymap('n', '<Down>', ':Gitsigns prev_hunk<CR>', opts)
+keymap('n', '<Left>', ':w<CR> :cprev<CR>', opts)
+keymap('n', '<Right>', ':w<CR> :cnext<CR>', opts)
+keymap('n', '<Down>', ':Gitsigns next_hunk<CR>', opts)
+keymap('n', '<Up>', ':Gitsigns prev_hunk<CR>', opts)
 
 -- YANK TO EOL
 keymap('n', 'Y', 'y$', opts)

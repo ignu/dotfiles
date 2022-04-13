@@ -8,9 +8,9 @@ local options = {
     hlsearch = true, -- highlight all matches on previous search pattern
     ignorecase = true, -- ignore case in search patterns
     mouse = 'a', -- allow the mouse to be used in neovim
+    showtabline = 1, -- don't need to see tabs unless they're > 1
     pumheight = 10, -- pop up menu height
     showmode = false, -- we don't need to see things like -- INSERT -- anymore
-    showtabline = 2, -- always show tabs
     smartcase = true, -- smart case
     smartindent = true, -- make indenting smarter again
     splitbelow = true, -- force all horizontal splits to go below current window
@@ -25,7 +25,7 @@ local options = {
     shiftwidth = 2, -- the number of spaces inserted for each indentation
     tabstop = 2, -- insert 2 spaces for a tab
     cursorline = true, -- highlight the current line
-    number = true, -- set numbered lines
+    number = false, -- set numbered lines
     relativenumber = false, -- set relative numbered lines
     --numberwidth = 4,                         -- set number column width to 2 {default 4}
     signcolumn = 'yes', -- always show the sign column, otherwise it would shift the text each time
@@ -57,3 +57,4 @@ vim.cmd [[
       \| exe "normal g'\"" | endif
   augroup END
 ]]
+
