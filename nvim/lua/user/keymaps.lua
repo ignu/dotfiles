@@ -40,11 +40,15 @@ keymap("n", "<leader>r", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)
 keymap("n", "<A-y>", '"+y', opts)
 keymap("n", "<A-p>", '"+p', opts)
 
+-- open changed files
 keymap("n", "<C-p>", ":Telescope git_files<CR>", opts)
-keymap("n", ",b", ":ToggleBlameLine<CR>", opts)
+-- open changed files
+keymap("n", "<C-o>", ":Telescope git_status<CR>", opts)
+keymap("n", "<C-b>", ":ToggleBlameLine<CR>", opts)
 
 -- ctrl-save
 keymap("n", "<c-s>", ":w<cr>", opts)
+keymap("i", "<c-s>", "<esc>:w<cr>", opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -78,9 +82,13 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- quick fix list
 keymap("n", "\\", ":cclose<CR>", opts)
 keymap("n", "<Leader>\\", ":copen<CR>", opts)
+
 -- lsp
 keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
 keymap("n", "ga", "lua vim.lsp.buf.code_action()<cr>", opts)
+
+-- function keys
+keymap("n", "F4", ":if (hlstate == 0) | nohlsearch | else | set hlsearch | endif | let hlstate=1-hlstate<cr>", opts)
 
 -- Terminal --
 -- Better terminal navigation
