@@ -1,8 +1,8 @@
-vim.cmd [[
+vim.cmd([[
 try
-  colorscheme rvcs
+  colorscheme nordfox
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
   set background=dark
 endtry
-]]
+]])

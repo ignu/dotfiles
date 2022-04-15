@@ -15,6 +15,13 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- i never want to increment a number
+keymap("n", "<C-a>", ":LuaSnipListAvailable<CR>", opts)
+
+-- bind something to this later, i never want to alter case
+keymap("n", "gu", ":echo no<CR>", opts)
+keymap("n", "gU", ":echo no<CR>", opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)

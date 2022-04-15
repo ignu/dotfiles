@@ -16,6 +16,12 @@ local r = ls.restore_node
 local events = require("luasnip.util.events")
 local ai = require("luasnip.nodes.absolute_indexer")
 
+local same = function(index)
+	return f(function(args)
+		return args[1]
+	end, { index })
+end
+
 ls.add_snippets("all", {
 	s("ternary", {
 		i(1, "cond"),
@@ -27,8 +33,16 @@ ls.add_snippets("all", {
 })
 
 local js_snips = {
-	s("pu", fmt("console.log('🦄 - {}', {})", { i(1, "label"), rep(1) })),
-	s("pp", fmt("console.log('ℹ️  - {}', {})", { i(1, "label"), rep(1) })),
+	s("pu", {
+		t("console.log('🦄 - "),
+		rep(1),
+		t("', "),
+		i(1),
+		i(2),
+		t(");"),
+		i(0),
+	}),
+	s("pp", fmt("console.log('ℹ️  - {}', {})", { i(1, "label"), i(1) })),
 	s("fn", fmt("({1}) => {{\n  return {2};\n}}", { i(1, "name"), i(2, "undefined") })),
 	s("tf", fmt("({1}: {2}) => {{\n  return {3};\n}}", { i(1, "name"), i(2, "any"), i(3, "undefined") })),
 }
@@ -56,8 +70,10 @@ local ts_react_snips = {
 }
 
 ls.add_snippets("javascript", js_snips)
+ls.add_snippets("typescript", js_snips)
 ls.add_snippets("javascriptreact", react_snips)
 ls.add_snippets("typescriptreact", ts_react_snips)
+ls.add_snippets("typescriptreact", js_snips)
 
 require("luasnip").filetype_extend("javascript", { "typescriptreact" })
 require("luasnip").filetype_extend("javascript", { "javascriptreact" })
