@@ -133,6 +133,21 @@ return packer.startup(function(use)
 	-- marks
 	use("chentau/marks.nvim")
 
+  -- fidget
+  use('j-hui/fidget.nvim')
+
+  use {
+  "AckslD/nvim-neoclip.lua",
+  requires = {
+    {'tami5/sqlite.lua', module = 'sqlite'},
+    -- you'll need at least one of these
+    -- {'nvim-telescope/telescope.nvim'},
+    -- {'ibhagwan/fzf-lua'},
+  },
+  config = function()
+    require('neoclip').setup()
+  end,
+}
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

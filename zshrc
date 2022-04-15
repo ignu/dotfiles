@@ -133,7 +133,7 @@ bindkey '^Z' fancy-ctrl-z
 [ -f /Users/ignu/.travis/travis.sh ] && source /Users/ignu/.travis/travis.sh
 
 [[ $TERM == eterm-color ]] && export TERM=xterm
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 #export TERM="xterm-256color-italic"
 
 function defaultbranch() {
