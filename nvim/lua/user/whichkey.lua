@@ -127,6 +127,10 @@ local mappings = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Diff",
 		},
+		w = {
+			":echo \"getting url\"<CR><cmd>lua require'gitlinker'.get_buf_range_url('n')<cr>",
+			"Github url",
+		},
 	},
 	l = {
 		name = "LSP",

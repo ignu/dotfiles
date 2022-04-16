@@ -90,6 +90,9 @@ return packer.startup(function(use)
 	use("mcchrish/zenbones.nvim")
 	use("kvrohit/rasmus.nvim")
 
+	-- remember last color
+	use("rojspencer/vim-colorminder")
+
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
@@ -110,6 +113,8 @@ return packer.startup(function(use)
 
 	use("folke/trouble.nvim") -- for troubleshooting
 
+	use("haringsrob/nvim_context_vt") -- see method vt
+
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
@@ -126,9 +131,12 @@ return packer.startup(function(use)
 	use("tveskag/nvim-blame-line")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
+	use("ojroques/vim-oscyank")
+	use("ruifm/gitlinker.nvim")
+
 	-- Copilot
-	use("github/copilot.vim")
-	use("hrsh7th/cmp-copilot")
+	--use("github/copilot.vim")
+	--	use("hrsh7th/cmp-copilot")
 
 	--Sessions
 	use("rmagatti/auto-session")
@@ -139,9 +147,6 @@ return packer.startup(function(use)
 
 	-- fidget
 	use("j-hui/fidget.nvim")
-
-	-- animat jumps
-	use("edluffy/specs.nvim")
 
 	-- highlight current block
 	use({

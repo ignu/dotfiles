@@ -139,7 +139,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
-		{ name = "copilot" },
+		--{ name = "copilot" },
 	},
 	-- confirm_opts = {
 	-- 	behavior = cmp.ConfirmBehavior.Replace,
