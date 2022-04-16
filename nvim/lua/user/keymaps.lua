@@ -36,6 +36,9 @@ keymap("n", "<Up>", ":Gitsigns prev_hunk<CR>", opts)
 -- YANK TO EOL
 keymap("n", "Y", "y$", opts)
 
+-- toggle twilight
+keymap("n", "=", ":Twilight<CR>", opts)
+
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)

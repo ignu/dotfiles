@@ -85,6 +85,10 @@ return packer.startup(function(use)
 	use("shaeinst/roshnivim-cs")
 	use("EdenEast/nightfox.nvim")
 	use("folke/tokyonight.nvim")
+	use("sainnhe/edge")
+	use("NTBBloodbath/doom-one.nvim")
+	use("mcchrish/zenbones.nvim")
+	use("kvrohit/rasmus.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -133,21 +137,16 @@ return packer.startup(function(use)
 	-- marks
 	use("chentau/marks.nvim")
 
-  -- fidget
-  use('j-hui/fidget.nvim')
+	-- fidget
+	use("j-hui/fidget.nvim")
 
-  use {
-  "AckslD/nvim-neoclip.lua",
-  requires = {
-    {'tami5/sqlite.lua', module = 'sqlite'},
-    -- you'll need at least one of these
-    -- {'nvim-telescope/telescope.nvim'},
-    -- {'ibhagwan/fzf-lua'},
-  },
-  config = function()
-    require('neoclip').setup()
-  end,
-}
+	-- animat jumps
+	use("edluffy/specs.nvim")
+
+	-- highlight current block
+	use({
+		"folke/twilight.nvim",
+	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
