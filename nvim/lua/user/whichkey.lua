@@ -89,7 +89,7 @@ local mappings = {
 	["!"] = { ':w!<cr>:source %<cr>:echo "🚀sourced "<cr>', "Source" },
 
 	["j"] = {
-		"<cmd>lua vim.diagnostic.goto_next()<CR>",
+		"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>lua vim.lsp.buf.code_action()<cr>",
 		"Next Diagnostic",
 	},
 	["k"] = {
@@ -119,6 +119,10 @@ local mappings = {
 		u = {
 			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
 			"Undo Stage Hunk",
+		},
+		G = {
+			":LazyGit<cr>",
+			"Lazy Git",
 		},
 		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
@@ -177,10 +181,11 @@ local mappings = {
 		m = { "<cmd>Telescope marks<cr>", "Marks" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 		f = { "<cmd>Telescope live_grep<cr>", "Rg" },
+		G = { "<cmd>Telescope lazygit<cr>", "Lazygit" },
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
-		t = { "<cmd>Telescope tagstack<cr>", "Telescopes" },
+		t = { "<cmd>Telescope<cr>", "Telescopes" },
 		T = { "<cmd>Telescope tagstack<cr>", "tagstack" },
 	},
 	s = {

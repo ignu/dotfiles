@@ -78,6 +78,8 @@ telescope.setup({
 			},
 		},
 	},
+	file_ignore_patterns = { "types.d.ts" },
+	winblend = 7,
 	pickers = {
 		-- Default configuration for builtin pickers goes here:
 		-- picker_name = {
@@ -98,3 +100,4 @@ telescope.setup({
 	},
 })
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("lazygit")
