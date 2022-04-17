@@ -66,13 +66,14 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+	use("tjdevries/colorbuddy.nvim")
 	use("lunarvim/darkplus.nvim")
 	use("rebelot/kanagawa.nvim")
 	use("jacoborus/tender.vim")
-	use("trevordmiller/nova-vim")
 	use("AlessandroYorba/Alduin")
+	use("yashguptaz/calvera-dark.nvim")
 	use("shaunsingh/moonlight.nvim")
-	use("rockerBOO/boo-colorscheme-nvim")
+	use("trevordmiller/nova-vim")
 	use("rktjmp/lush.nvim")
 	use("adisen99/apprentice.nvim")
 	use("whatyouhide/vim-gotham")
@@ -130,6 +131,7 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 	use("tveskag/nvim-blame-line")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+	use("kdheepak/lazygit.nvim")
 
 	use("ojroques/vim-oscyank")
 	use("ruifm/gitlinker.nvim")
@@ -152,6 +154,9 @@ return packer.startup(function(use)
 	use({
 		"folke/twilight.nvim",
 	})
+
+	use("rockerBOO/boo-colorscheme-nvim")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
