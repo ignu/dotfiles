@@ -39,6 +39,9 @@ keymap("n", "Y", "y$", opts)
 -- toggle twilight
 keymap("n", "=", ":Twilight<CR>", opts)
 
+-- toggle endlines
+keymap("n", "<F3>", ":NvimContextVtToggle<CR>", opts)
+
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
@@ -50,8 +53,9 @@ keymap("n", "<leader>r", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)
 keymap("n", "<A-y>", '"+y', opts)
 keymap("n", "<A-p>", '"+p', opts)
 
--- open changed files
+-- open git files
 keymap("n", "<C-p>", ":Telescope git_files<CR>", opts)
+
 -- open changed files
 keymap("n", "<C-o>", ":Telescope git_status<CR>", opts)
 keymap("n", "<C-b>", ":ToggleBlameLine<CR>", opts)
@@ -86,9 +90,9 @@ keymap("n", "<S-Tab>", ":tabp<cr>", opts)
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-
 -- quick fix list
 keymap("n", "\\", ":cclose<CR>", opts)
 keymap("n", "<Leader>\\", ":copen<CR>", opts)
@@ -98,7 +102,8 @@ keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
 keymap("n", "ga", "lua vim.lsp.buf.code_action()<cr>", opts)
 
 -- function keys
-keymap("n", "F4", ":if (hlstate == 0) | nohlsearch | else | set hlsearch | endif | let hlstate=1-hlstate<cr>", opts)
+keymap("n", "<F2>", ":vsp<CR>", opts)
+keymap("n", "<F4>", ":set hls!", opts)
 
 -- Terminal --
 -- Better terminal navigation
