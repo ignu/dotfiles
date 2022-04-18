@@ -68,7 +68,7 @@ keymap("i", "<c-s>", "<esc>:w<cr>", opts)
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
 
-keymap("n", "-", ":NvimTreeToggle<CR>", opts)
+keymap("n", "-", ":Exp<CR>", opts)
 
 -- Visual --
 -- Stay in indent mode
