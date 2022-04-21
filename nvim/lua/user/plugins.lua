@@ -74,11 +74,8 @@ return packer.startup(function(use)
 	use("yashguptaz/calvera-dark.nvim")
 	use("shaunsingh/moonlight.nvim")
 	use("trevordmiller/nova-vim")
-	use("rktjmp/lush.nvim")
-	use("adisen99/apprentice.nvim")
 	use("whatyouhide/vim-gotham")
 	use("gruvbox-community/gruvbox")
-	use("junegunn/seoul256.vim")
 	use("nanotech/jellybeans.vim")
 	use("noahfrederick/vim-hemisu")
 	use("sainnhe/everforest")
@@ -88,8 +85,9 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use("sainnhe/edge")
 	use("NTBBloodbath/doom-one.nvim")
-	use("mcchrish/zenbones.nvim")
 	use("kvrohit/rasmus.nvim")
+	use("beikome/cosme.vim")
+	use("cocopon/iceberg.vim")
 
 	-- remember last color
 	use("rojspencer/vim-colorminder")
@@ -114,7 +112,7 @@ return packer.startup(function(use)
 
 	use("folke/trouble.nvim") -- for troubleshooting
 
-	use("haringsrob/nvim_context_vt") -- see method vt
+	--use("haringsrob/nvim_context_vt") -- see method vt
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -135,6 +133,9 @@ return packer.startup(function(use)
 
 	use("ojroques/vim-oscyank")
 	use("ruifm/gitlinker.nvim")
+
+	-- Beacon - flash cursors
+	use("DanilaMihailov/beacon.nvim")
 
 	-- Copilot
 	--use("github/copilot.vim")

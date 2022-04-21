@@ -103,7 +103,7 @@ keymap("n", "ga", "lua vim.lsp.buf.code_action()<cr>", opts)
 
 -- function keys
 keymap("n", "<F2>", ":vsp<CR>", opts)
-keymap("n", "<F4>", ":set hls!", opts)
+keymap("n", "<F4>", ":set hls!<CR>", opts)
 
 -- Terminal --
 -- Better terminal navigation
