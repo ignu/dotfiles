@@ -60,3 +60,10 @@ vim.cmd([[
 
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+-- miniyank
+vim.cmd([[
+  let g:miniyank_delete_maxlines = 5000
+  let g:miniyank_maxitems = 50
+  let g:miniyank_filename = $HOME."/.miniyank.mpack"
+]])

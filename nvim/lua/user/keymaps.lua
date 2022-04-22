@@ -22,12 +22,7 @@ keymap("n", "<C-a>", ":LuaSnipListAvailable<CR>", opts)
 keymap("n", "gu", ":echo no<CR>", opts)
 keymap("n", "gU", ":echo no<CR>", opts)
 
--- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
-
+-- Remap arrows
 keymap("n", "<Left>", ":w<CR> :cprev<CR>", opts)
 keymap("n", "<Right>", ":w<CR> :cnext<CR>", opts)
 keymap("n", "<Down>", ":Gitsigns next_hunk<CR>", opts)
@@ -36,11 +31,10 @@ keymap("n", "<Up>", ":Gitsigns prev_hunk<CR>", opts)
 -- YANK TO EOL
 keymap("n", "Y", "y$", opts)
 
+keymap("n", "p", "y$", opts)
+
 -- toggle twilight
 keymap("n", "=", ":Twilight<CR>", opts)
-
--- toggle endlines
-keymap("n", "<F3>", ":NvimContextVtToggle<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -53,12 +47,20 @@ keymap("n", "<leader>r", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)
 keymap("n", "<A-y>", '"+y', opts)
 keymap("n", "<A-p>", '"+p', opts)
 
+-- yanky/yankring
+keymap("n", "p", "<Plug>(YankyPutBefore)", opts)
+keymap("n", "P", "<Plug>(YankyPutAfter)", opts)
+keymap("n", "gp", "<Plug>(YankyGPutAfter)", opts)
+keymap("n", "gP", "<Plug>(YankyGPutBefore)", opts)
+
+keymap("n", "<c-up>", "<Plug>(YankyCycleForward)", opts)
+keymap("n", "<c-down>", "<Plug>(YankCycleBackward)", opts)
+
 -- open git files
 keymap("n", "<C-p>", ":Telescope git_files<CR>", opts)
 
 -- open changed files
 keymap("n", "<C-o>", ":Telescope git_status<CR>", opts)
-keymap("n", "<C-b>", ":ToggleBlameLine<CR>", opts)
 
 -- ctrl-save
 keymap("n", "<c-s>", ":w<cr>", opts)
@@ -101,9 +103,13 @@ keymap("n", "<Leader>\\", ":copen<CR>", opts)
 keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
 keymap("n", "ga", "lua vim.lsp.buf.code_action()<cr>", opts)
 
--- function keys
+-- FUNCTION KEYS
+keymap("n", "<F1>", '"+y', opts)
 keymap("n", "<F2>", ":vsp<CR>", opts)
+-- toggle endlines
+keymap("n", "<F3>", ":NvimContextVtToggle<CR>", opts)
 keymap("n", "<F4>", ":set hls!<CR>", opts)
+keymap("n", "<F6>", ":set hls!<CR>", opts)
 
 -- Terminal --
 -- Better terminal navigation

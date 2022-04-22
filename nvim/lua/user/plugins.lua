@@ -112,7 +112,7 @@ return packer.startup(function(use)
 
 	use("folke/trouble.nvim") -- for troubleshooting
 
-	--use("haringsrob/nvim_context_vt") -- see method vt
+	use("haringsrob/nvim_context_vt") -- see method vt
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -133,6 +133,14 @@ return packer.startup(function(use)
 
 	use("ojroques/vim-oscyank")
 	use("ruifm/gitlinker.nvim")
+
+	-- modern YankRing
+	use({
+		"gbprod/yanky.nvim",
+		config = function()
+			require("yanky").setup({})
+		end,
+	})
 
 	-- Beacon - flash cursors
 	use("DanilaMihailov/beacon.nvim")

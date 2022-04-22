@@ -97,14 +97,6 @@ local mappings = {
 		"Prev Diagnostic",
 	},
 	--["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-	p = {
-		name = "Packer",
-		c = { "<cmd>PackerCompile<cr>", "Compile" },
-		i = { "<cmd>PackerInstall<cr>", "Install" },
-		s = { "<cmd>PackerSync<cr>", "Sync" },
-		S = { "<cmd>PackerStatus<cr>", "Status" },
-		u = { "<cmd>PackerUpdate<cr>", "Update" },
-	},
 	g = {},
 	G = {
 		name = "Git",
@@ -127,6 +119,7 @@ local mappings = {
 		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
 		B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		l = { ":ToggleBlameLine<CR>", "Toggle BLAME" },
 		d = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Diff",
@@ -152,8 +145,7 @@ local mappings = {
 			"Hover Doc",
 		},
 		f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
-		i = { "<cmd>LspInfo<cr>", "Info" },
-		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+		i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
 		j = {
 			"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
 			"Next Diagnostic",
@@ -171,6 +163,8 @@ local mappings = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 			"Workspace Symbols",
 		},
+		y = { "<cmd>LspInfo<cr>", "Info" },
+		Y = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
 	},
 	f = {
 		name = "Telescope", -- find
@@ -223,6 +217,17 @@ local mappings = {
 		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
 		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+	},
+	X = {
+		name = "Window",
+		j = { "<cmd>:resize -8<CR>", "shorter" },
+		k = { "<cmd>:resize +8<CR>", "taller" },
+		h = { "<cmd>:vertical resize +8<CR>", "wider" },
+		l = { "<cmd>:vertical resize -8<CR>", "shorter" },
+		J = { "<cmd>:resize -18<CR>", "way shorter" },
+		K = { "<cmd>:resize +18<CR>", "way taller" },
+		H = { "<cmd>:vertical resize +18<CR>", "way wider" },
+		L = { "<cmd>:vertical resize -8<CR>", "way Shorter" },
 	},
 }
 
