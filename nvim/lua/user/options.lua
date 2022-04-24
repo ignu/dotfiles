@@ -67,3 +67,9 @@ vim.cmd([[
   let g:miniyank_maxitems = 50
   let g:miniyank_filename = $HOME."/.miniyank.mpack"
 ]])
+
+-- spell check markdown and txt
+vim.api.nvim_create_autocmd(
+	{ "BufRead", "BufNewFile" },
+	{ pattern = { "*.txt", "*.md", "*.tex" }, command = "setlocal spell" }
+)

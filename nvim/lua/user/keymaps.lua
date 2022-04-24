@@ -59,9 +59,6 @@ keymap("n", "<c-down>", "<Plug>(YankCycleBackward)", opts)
 -- open git files
 keymap("n", "<C-p>", ":Telescope git_files<CR>", opts)
 
--- open changed files
-keymap("n", "<C-o>", ":Telescope git_status<CR>", opts)
-
 -- ctrl-save
 keymap("n", "<c-s>", ":w<cr>", opts)
 keymap("i", "<c-s>", "<esc>:w<cr>", opts)

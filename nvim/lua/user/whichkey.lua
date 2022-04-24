@@ -155,6 +155,7 @@ local mappings = {
 			"Prev Diagnostic",
 		},
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+
 		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		R = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
@@ -173,6 +174,7 @@ local mappings = {
 		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 		m = { "<cmd>Telescope marks<cr>", "Marks" },
+		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 		f = { "<cmd>Telescope live_grep<cr>", "Rg" },
 		G = { "<cmd>Telescope lazygit<cr>", "Lazygit" },
