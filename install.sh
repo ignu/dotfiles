@@ -19,6 +19,9 @@ echo "installing prereqs..."
   brew install tmuxinator
   brew install nnn
   brew install jq
+  brew install fd
+  brew install tokei
+  brew install procs
   pip install pygments
 
 echo "installing oh my zsh"
