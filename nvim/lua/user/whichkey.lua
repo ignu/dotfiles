@@ -97,7 +97,7 @@ local mappings = {
 		"Prev Diagnostic",
 	},
 	--["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-	g = {},
+	--g = {},
 	G = {
 		name = "Git",
 		--g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
@@ -230,6 +230,7 @@ local mappings = {
 		K = { "<cmd>:resize +18<CR>", "way taller" },
 		H = { "<cmd>:vertical resize +18<CR>", "way wider" },
 		L = { "<cmd>:vertical resize -8<CR>", "way Shorter" },
+		y = { '<cmd>:"+y', "copy to clipboard" },
 	},
 }
 
