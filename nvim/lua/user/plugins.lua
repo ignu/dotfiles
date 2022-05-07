@@ -128,6 +128,7 @@ return packer.startup(function(use)
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 	use("tveskag/nvim-blame-line")
+	use("TimUntersberger/neogit")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("kdheepak/lazygit.nvim")
 
@@ -150,19 +151,25 @@ return packer.startup(function(use)
 	--	use("hrsh7th/cmp-copilot")
 
 	--Sessions
-	use("rmagatti/auto-session")
-	use("rmagatti/session-lens")
+	--use("rmagatti/auto-session")
+	--use("rmagatti/session-lens")
+	use("~/code/sessionverse.nvim")
 
 	-- marks
 	use("chentau/marks.nvim")
 
 	-- fidget
 	use("j-hui/fidget.nvim")
+	use("luisiacc/gruvbox-baby")
 
 	-- highlight current block
 	use({
 		"folke/twilight.nvim",
 	})
+
+	-- tmux
+	use("LnL7/vim-tslime")
+	use("janko-m/vim-test")
 
 	use("rockerBOO/boo-colorscheme-nvim")
 

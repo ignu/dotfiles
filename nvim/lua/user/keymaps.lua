@@ -85,6 +85,10 @@ keymap("n", "<S-Tab>", ":tabp<cr>", opts)
 
 keymap("n", "<S-Tab>", ":tabp<cr>", opts)
 
+-- testing
+keymap("n", "t", ":TestNearest<cr>", opts)
+keymap("n", "T", ":TestFile<cr>", opts)
+
 -- Visual Block --
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
@@ -107,6 +111,7 @@ keymap("n", "<F2>", ":vsp<CR>", opts)
 keymap("n", "<F3>", ":NvimContextVtToggle<CR>", opts)
 keymap("n", "<F4>", ":set hls!<CR>", opts)
 keymap("n", "<F6>", ":set hls!<CR>", opts)
+keymap("n", "<F12>", ":lua R'sessionverse'.openDirtyFiles()<CR>", opts)
 
 -- Terminal --
 -- Better terminal navigation
