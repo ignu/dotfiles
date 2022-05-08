@@ -86,8 +86,8 @@ keymap("n", "<S-Tab>", ":tabp<cr>", opts)
 keymap("n", "<S-Tab>", ":tabp<cr>", opts)
 
 -- testing
-keymap("n", "t", ":TestNearest<cr>", opts)
-keymap("n", "T", ":TestFile<cr>", opts)
+keymap("n", "t", ":w!<cr>:TestNearest<cr>", opts)
+keymap("n", "T", ":w!<cr>:TestFile<cr>", opts)
 
 -- Visual Block --
 -- Move text up and down
