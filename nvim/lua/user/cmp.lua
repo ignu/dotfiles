@@ -3,10 +3,22 @@ if not cmp_status_ok then
 	return
 end
 
-local snip_status_ok, luasnip = pcall(require, "luasnip")
+local snip_status_ok, snippy = pcall(require, "snippy")
 if not snip_status_ok then
 	return
 end
+
+snippy.setup({
+	mappings = {
+		is = {
+			["<Tab>"] = "expand_or_advance",
+			["<S-Tab>"] = "previous",
+		},
+		nx = {
+			["<leader>x"] = "cut_text",
+		},
+	},
+})
 
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
@@ -46,7 +58,7 @@ local kind_icons = {
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			luasnip.lsp_expand(args.body) -- For `luasnip` users.
+			require("snippy").expand_snippet(args.body)
 		end,
 	},
 	mapping = {
@@ -93,30 +105,6 @@ cmp.setup({
 		-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
 		-- ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		-- ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if luasnip.expandable() then
-				luasnip.expand()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			elseif check_backspace() then
-				fallback()
-			else
-				fallback()
-			end
-		end, {
-			"i",
-			"s",
-		}),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, {
-			"i",
-			"s",
-		}),
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
@@ -125,7 +113,7 @@ cmp.setup({
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 			vim_item.menu = ({
-				luasnip = "{ -}",
+				snippy = "{ -}",
 				nvim_lsp = "{}",
 				buffer = "{}",
 				path = "{}",
@@ -136,7 +124,7 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
+		{ name = "snippy" },
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
 		--{ name = "copilot" },

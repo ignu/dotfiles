@@ -101,8 +101,12 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") --snippet engine
-	use("ignu/friendly-snippets") -- a bunch of snippets to use
+	--use("L3MON4D3/LuaSnip") --snippet engine
+	--use("ignu/friendly-snippets") -- a bunch of snippets to use
+
+	use("dcampos/nvim-snippy")
+	use("dcampos/cmp-snippy")
+	use("ignu/vim-snippets")
 
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP

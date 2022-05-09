@@ -16,7 +16,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- i never want to increment a number
-keymap("n", "<C-a>", ":LuaSnipListAvailable<CR>", opts)
+keymap("n", "<C-a>", ":echo<CR>", opts)
 
 -- bind something to this later, i never want to alter case
 keymap("n", "gu", ":echo no<CR>", opts)
