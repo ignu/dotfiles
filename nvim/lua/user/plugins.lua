@@ -88,6 +88,7 @@ return packer.startup(function(use)
 	use("kvrohit/rasmus.nvim")
 	use("beikome/cosme.vim")
 	use("cocopon/iceberg.vim")
+	use("AndrewRadev/tagalong.vim")
 
 	-- remember last color
 	use("rojspencer/vim-colorminder")
@@ -134,7 +135,6 @@ return packer.startup(function(use)
 	use("tveskag/nvim-blame-line")
 	use("TimUntersberger/neogit")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
-	use("kdheepak/lazygit.nvim")
 
 	use("ojroques/vim-oscyank")
 	use("ruifm/gitlinker.nvim")
@@ -174,8 +174,6 @@ return packer.startup(function(use)
 	-- tmux
 	use("LnL7/vim-tslime")
 	use("janko-m/vim-test")
-
-	use("rockerBOO/boo-colorscheme-nvim")
 
 	-- ruby
 	use("vim-ruby/vim-ruby")
