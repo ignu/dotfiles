@@ -146,7 +146,7 @@ local mappings = {
 		},
 		f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
 		i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
-		I = {
+		O = {
 			'<cmd>vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})',
 		},
 		j = {

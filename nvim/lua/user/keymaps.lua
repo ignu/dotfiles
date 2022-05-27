@@ -41,7 +41,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- close buffer and not window
-keymap("n", "<leader>r", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)
+keymap("n", "<leader>r", ":Bdelete<CR>", opts)
 
 -- Alt-y and Alt-p to use clipboard
 keymap("n", "<A-y>", '"+y', opts)
