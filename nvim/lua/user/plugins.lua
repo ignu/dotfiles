@@ -119,6 +119,14 @@ return packer.startup(function(use)
 
 	use("haringsrob/nvim_context_vt") -- see method vt
 
+  use {
+  'ojroques/nvim-lspfuzzy',
+  requires = {
+    {'junegunn/fzf'},
+    {'junegunn/fzf.vim'},  -- to enable preview (optional)
+  },
+}
+
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })

@@ -172,6 +172,7 @@ local mappings = {
 	},
 	f = {
 		name = "Telescope", -- find
+		a = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search In Buffer" },
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 		c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
