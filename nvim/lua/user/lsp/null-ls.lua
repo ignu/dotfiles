@@ -40,9 +40,11 @@ _G.formatting_async = function(bufnr)
 end
 
 null_ls.setup({
-	debug = false,
+	debug = true,
 	sources = {
 		formatting.prettier,
+		null_ls.builtins.diagnostics.eslint,
+		null_ls.builtins.code_actions.eslint,
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
 		-- diagnostics.flake8
@@ -50,12 +52,13 @@ null_ls.setup({
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
 			-- wrap in an augroup to prevent duplicate autocmds
-			vim.cmd([[
-            augroup LspFormatting
-                autocmd! * <buffer>
-                autocmd BufWritePost <buffer> lua formatting_async(vim.fn.expand("<abuf>"))
-            augroup END
-            ]])
+			-- TODO: have a per project toggle for this
+			-- vim.cmd([[
+			--          augroup LspFormatting
+			--              autocmd! * <buffer>
+			--              autocmd BufWritePost <buffer> lua formatting_async(vim.fn.expand("<abuf>"))
+			--          augroup END
+			--          ]])
 		end
 	end,
 })

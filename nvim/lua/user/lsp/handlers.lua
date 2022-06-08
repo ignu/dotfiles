@@ -99,6 +99,57 @@ if not status_ok then
   return
 end
 
+require('lspfuzzy').setup {
+  methods = 'all',         -- either 'all' or a list of LSP methods (see below)
+  jump_one = true,         -- jump immediately if there is only one location
+  save_last = false,       -- save last location results for the :LspFuzzyLast command
+  callback = nil,          -- callback called after jumping to a location
+  fzf_preview = {          -- arguments to the FZF '--preview-window' option
+    'right:+{2}-/2'          -- preview on the right and centered on entry
+  },
+  fzf_action = {               -- FZF actions
+    ['ctrl-t'] = 'tab split',  -- go to location in a new tab
+    ['ctrl-v'] = 'vsplit',     -- go to location in a vertical split
+    ['ctrl-x'] = 'split',      -- go to location in a horizontal split
+  },
+  fzf_modifier = ':~:.',   -- format FZF entries, see |filename-modifiers|
+  fzf_trim = true,         -- trim FZF entries
+}
+
+require('nvim_context_vt').setup({
+  -- Enable by default. You can disable and use :NvimContextVtToggle to maually enable.
+  -- Default: true
+  enabled = true,
+
+  -- Override default virtual text prefix
+  -- Default: '-->'
+  prefix = '',
+
+  -- Override the internal highlight group name
+  -- Default: 'ContextVt'
+  highlight = 'Comment',
+
+  -- Disable virtual text for given filetypes
+  -- Default: { 'markdown' }
+  disable_ft = { 'markdown' },
+
+  -- Disable display of virtual text below blocks for indentation based languages like Python
+  -- Default: false
+  disable_virtual_lines = false,
+
+  -- Same as above but only for spesific filetypes
+  -- Default: {}
+  disable_virtual_lines_ft = { 'yaml' },
+
+  -- How many lines required after starting position to show virtual text
+  -- Default: 1 (equals two lines total)
+  min_rows = 1,
+
+  -- Same as above but only for spesific filetypes
+  -- Default: {}
+  min_rows_ft = {},
+})
+
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 return M

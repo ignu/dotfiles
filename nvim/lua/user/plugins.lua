@@ -56,7 +56,7 @@ return packer.startup(function(use)
 	--use 'akinsho/bufferline.nvim'
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
-	use("akinsho/toggleterm.nvim")
+	--use("akinsho/toggleterm.nvim")
 	use("ahmedkhalf/project.nvim")
 	use("lewis6991/impatient.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
@@ -66,17 +66,17 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use("Domeee/mosel.nvim")
 	use("tjdevries/colorbuddy.nvim")
 	use("lunarvim/darkplus.nvim")
 	use("rebelot/kanagawa.nvim")
-	use("jacoborus/tender.vim")
 	use("AlessandroYorba/Alduin")
 	use("yashguptaz/calvera-dark.nvim")
 	use("shaunsingh/moonlight.nvim")
 	use("trevordmiller/nova-vim")
 	use("whatyouhide/vim-gotham")
 	use("gruvbox-community/gruvbox")
-	use("nanotech/jellybeans.vim")
+	--use("nanotech/jellybeans.vim")
 	use("noahfrederick/vim-hemisu")
 	use("sainnhe/everforest")
 	use("savq/melange")
@@ -84,10 +84,11 @@ return packer.startup(function(use)
 	use("EdenEast/nightfox.nvim")
 	use("folke/tokyonight.nvim")
 	use("sainnhe/edge")
-	use("NTBBloodbath/doom-one.nvim")
 	use("kvrohit/rasmus.nvim")
 	use("beikome/cosme.vim")
 	use("cocopon/iceberg.vim")
+
+
 	use("AndrewRadev/tagalong.vim")
 
 	-- remember last color
@@ -126,10 +127,19 @@ return packer.startup(function(use)
     {'junegunn/fzf.vim'},  -- to enable preview (optional)
   },
 }
+  use {
+  "ray-x/lsp_signature.nvim",
+}
 
 	-- Telescope
-	use("nvim-telescope/telescope.nvim")
+  --	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+  use { --pass in options to rg
+    "nvim-telescope/telescope.nvim",
+    requires = {
+        { "nvim-telescope/telescope-live-grep-args.nvim" }
+    }
+}
 
 	-- Treesitter
 	use({
@@ -168,11 +178,10 @@ return packer.startup(function(use)
 	use("~/code/sessionverse.nvim")
 
 	-- marks
-	use("chentau/marks.nvim")
+	use("chentoast/marks.nvim")
 
-	-- fidget
+	-- fidget - lsp status virtual text
 	use("j-hui/fidget.nvim")
-	use("luisiacc/gruvbox-baby")
 
 	-- highlight current block
 	use({
@@ -182,10 +191,6 @@ return packer.startup(function(use)
 	-- tmux
 	use("LnL7/vim-tslime")
 	use("janko-m/vim-test")
-
-	-- ruby
-	use("vim-ruby/vim-ruby")
-	use("tpope/vim-rails")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

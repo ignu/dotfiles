@@ -24,13 +24,13 @@ vim.cmd([[
     autocmd VimResized * tabdo wincmd = 
   augroup end
 
-  " augroup _blame_line_auto
-  "   autocmd BufEnter * EnableBlameLine
-  " augroup end
-]])
 
--- Autoformat
--- augroup _lsp
---   autocmd!
---   autocmd BufWritePre * lua vim.lsp.buf.formatting()
--- augroup end
+  augroup _lsp
+    autocmd!
+    autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+  augroup end
+]])
+  -- augroup _blame_line_auto
+  --   autocmd BufEnter * EnableBlameLine
+  -- augroup end
+
