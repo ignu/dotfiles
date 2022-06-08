@@ -22,6 +22,8 @@ echo "installing prereqs..."
   brew install fd
   brew install tokei
   brew install procs
+  brew install stylua
+  brew install python
   pip install pygments
 
 echo "installing oh my zsh"
