@@ -81,12 +81,16 @@ local mappings = {
 	},
 	-- nnoremap <silent> <Leader>r :Bclose<CR>
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-	["r"] = { ":w!<CR>:bd<CR>", "Save and Close" },
 	["N"] = { ":set relativenumber!<CR>", "Toggle Nums" },
 	["n"] = { ":set number!<CR>", "Toggle Rel" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 	["!"] = { ':w!<cr>:source %<cr>:echo "🚀sourced "<cr>', "Source" },
+	["-"] = { [[
+               :w!<cr>:source ~/.config/nvim/init.lua<CR>
+               :w!<cr>:source ~/.config/nvim/lua/user/keymaps.lua<CR>
+               :echo "👾RELOADED VIM SETTNINGS"<cr>
+            ]], "Reload VIM init.lua" },
 
 	["j"] = {
 		"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>lua vim.lsp.buf.code_action()<cr>",
@@ -180,7 +184,7 @@ local mappings = {
 		m = { "<cmd>Telescope marks<cr>", "Marks" },
 		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-		f = { "<cmd>Telescope live_grep<cr>", "Rg" },
+		--f = { "<cmd>Telescope live_grep<cr>", "Rg" }, mapped in keymaps now
 		G = { "<cmd>Telescope lazygit<cr>", "Lazygit" },
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },

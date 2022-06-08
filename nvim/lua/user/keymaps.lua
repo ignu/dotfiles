@@ -16,15 +16,15 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- i never want to increment a number
-keymap("n", "<C-a>", ":echo<CR>", opts)
+keymap("n", "<C-a>", ":echo 'blah'<CR>", opts)
 
 -- bind something to this later, i never want to alter case
 keymap("n", "gu", ":echo no<CR>", opts)
 keymap("n", "gU", ":echo no<CR>", opts)
 
 -- Remap arrows
-keymap("n", "<Left>", ":w<CR> :cprev<CR>", opts)
-keymap("n", "<Right>", ":w<CR> :cnext<CR>", opts)
+keymap("n", "<Left>", ":cprev<CR>", opts)
+keymap("n", "<Right>", ":cnext<CR>", opts)
 keymap("n", "<Down>", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", "<Up>", ":Gitsigns prev_hunk<CR>", opts)
 
@@ -42,7 +42,11 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- close buffer and not window
 keymap("n", "<leader>r", ":Bdelete<CR>", opts)
+keymap("n", "<leader>R", ":Bwipeout<CR>", opts)
+keymap("n", ",,", ":Telescope jumplist<CR>", opts)
 
+
+-- jump to the previous item, skipping the groups
 -- Alt-y and Alt-p to use clipboard
 keymap("n", "<A-y>", '"+y', opts)
 keymap("n", "<A-p>", '"+p', opts)
@@ -58,6 +62,7 @@ keymap("n", "<c-down>", "<Plug>(YankCycleBackward)", opts)
 
 -- open git files
 keymap("n", "<C-p>", ":Telescope git_files<CR>", opts)
+keymap("n", "<leader>ff", ":lua require(\"telescope\").extensions.live_grep_args.live_grep_args()<CR>", opts)
 
 -- ctrl-save
 keymap("n", "<c-s>", ":w<cr>", opts)
@@ -111,7 +116,9 @@ keymap("n", "<F2>", ":vsp<CR>", opts)
 keymap("n", "<F3>", ":NvimContextVtToggle<CR>", opts)
 keymap("n", "<F4>", ":set hls!<CR>", opts)
 keymap("n", "<F6>", ":set hls!<CR>", opts)
+keymap("n", "<F10>", ":lua TroubleToggle", opts)
 keymap("n", "<F12>", ":lua R'sessionverse'.openDirtyFiles()<CR>", opts)
+
 
 -- Terminal --
 -- Better terminal navigation
@@ -120,3 +127,23 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
+
+vim.api.nvim_set_keymap("n", ",xx", "<cmd>Trouble<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", ",xw", "<cmd>Trouble workspace_diagnostics<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", ",xd", "<cmd>Trouble document_diagnostics<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", ",xl", "<cmd>Trouble loclist<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", ",xq", "<cmd>Trouble quickfix<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
+  {silent = true, noremap = true}
+)
