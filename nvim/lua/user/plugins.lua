@@ -66,7 +66,8 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use("Domeee/mosel.nvim")
+	use("Domeee/mosel.nvim")
+	use("adisen99/codeschool.nvim")
 	use("tjdevries/colorbuddy.nvim")
 	use("lunarvim/darkplus.nvim")
 	use("rebelot/kanagawa.nvim")
@@ -87,7 +88,6 @@ return packer.startup(function(use)
 	use("kvrohit/rasmus.nvim")
 	use("beikome/cosme.vim")
 	use("cocopon/iceberg.vim")
-
 
 	use("AndrewRadev/tagalong.vim")
 
@@ -120,26 +120,26 @@ return packer.startup(function(use)
 
 	use("haringsrob/nvim_context_vt") -- see method vt
 
-  use {
-  'ojroques/nvim-lspfuzzy',
-  requires = {
-    {'junegunn/fzf'},
-    {'junegunn/fzf.vim'},  -- to enable preview (optional)
-  },
-}
-  use {
-  "ray-x/lsp_signature.nvim",
-}
+	use({
+		"ojroques/nvim-lspfuzzy",
+		requires = {
+			{ "junegunn/fzf" },
+			{ "junegunn/fzf.vim" }, -- to enable preview (optional)
+		},
+	})
+	use({
+		"ray-x/lsp_signature.nvim",
+	})
 
 	-- Telescope
-  --	use("nvim-telescope/telescope.nvim")
+	--	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-  use { --pass in options to rg
-    "nvim-telescope/telescope.nvim",
-    requires = {
-        { "nvim-telescope/telescope-live-grep-args.nvim" }
-    }
-}
+	use({ --pass in options to rg
+		"nvim-telescope/telescope.nvim",
+		requires = {
+			{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		},
+	})
 
 	-- Treesitter
 	use({
@@ -175,7 +175,9 @@ return packer.startup(function(use)
 	--Sessions
 	--use("rmagatti/auto-session")
 	--use("rmagatti/session-lens")
+	use("rktjmp/lush.nvim")
 	use("~/code/sessionverse.nvim")
+	use("~/bin/hemisush")
 
 	-- marks
 	use("chentoast/marks.nvim")
