@@ -35,6 +35,8 @@ alias gap="git add -p"
 alias gpr="gppp"
 alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | fzf | xargs git checkout"
 
+alias xx="gt" # gt is way too close to git and my fingers hate it
+
 alias hc="hub compare"
 
 alias lg="lazygit"
