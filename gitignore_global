@@ -10,3 +10,4 @@
 .null-ls-root
 vim_all
 .nvimrc
+.tool-versions

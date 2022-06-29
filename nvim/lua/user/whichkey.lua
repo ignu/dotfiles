@@ -45,7 +45,7 @@ local setup = {
 	},
 	layout = {
 		height = { min = 4, max = 25 }, -- min and max height of the columns
-		width = { min = 20, max = 50 }, -- min and max width of the columns
+		width = { min = 60, max = 180 }, -- min and max width of the columns
 		spacing = 3, -- spacing between columns
 		align = "left", -- align columns left, center or right
 	},
@@ -86,11 +86,14 @@ local mappings = {
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 	["!"] = { ':w!<cr>:source %<cr>:echo "🚀sourced "<cr>', "Source" },
-	["-"] = { [[
+	["-"] = {
+		[[
                :w!<cr>:source ~/.config/nvim/init.lua<CR>
                :w!<cr>:source ~/.config/nvim/lua/user/keymaps.lua<CR>
                :echo "👾RELOADED VIM SETTNINGS"<cr>
-            ]], "Reload VIM init.lua" },
+            ]],
+		"Reload VIM init.lua",
+	},
 
 	["j"] = {
 		"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>lua vim.lsp.buf.code_action()<cr>",

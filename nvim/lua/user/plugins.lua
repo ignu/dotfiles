@@ -85,9 +85,14 @@ return packer.startup(function(use)
 	use("EdenEast/nightfox.nvim")
 	use("folke/tokyonight.nvim")
 	use("sainnhe/edge")
-	use("kvrohit/rasmus.nvim")
+	--use("kvrohit/rasmus.nvim")
+	use("Abstract-IDE/Abstract-cs")
+	use("rafamadriz/neon")
 	use("beikome/cosme.vim")
 	use("cocopon/iceberg.vim")
+	use("rose-pine/neovim")
+	use("ray-x/starry.nvim")
+	use("kyazdani42/blue-moon")
 
 	use("AndrewRadev/tagalong.vim")
 
@@ -115,6 +120,7 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	use("simrat39/symbols-outline.nvim")
 
 	use("folke/trouble.nvim") -- for troubleshooting
 
