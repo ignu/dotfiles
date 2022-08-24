@@ -56,3 +56,6 @@ local cfg = {
 }
 
 require("lsp_signature").setup({})
+
+require("lsp_lines").setup()
+vim.diagnostic.config({ virtual_lines = { only_current_line = true } })

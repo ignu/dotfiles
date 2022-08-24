@@ -81,7 +81,7 @@ end
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "neon",
+		theme = "gruvbox",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
@@ -106,7 +106,7 @@ lualine.setup({
 		lualine_y = {},
 		lualine_z = {},
 	},
-	theme = "neon",
+	-- theme = "gruvbox",
 	tabline = {},
 	extensions = {},
 })

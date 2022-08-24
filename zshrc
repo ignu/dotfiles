@@ -345,10 +345,10 @@ function when_delete() {
  git log -c -S'$1' $2
 }
 
-[[ -s "$HOME/.afzfsdf/asdf.sh" ]] && source ~/.asdf/asdf.sh
-[[ -s "$HOME/.afzfsdf/asdf.sh" ]] && source ~/.asdf/asdf.
+[[ -s "$HOME/.asdf/asdf.sh" ]] && source ~/.asdf/asdf.sh
+[[ -s "$HOME/.asdf/asdf.sh" ]] && source ~/.asdf/asdf.
 [[ -s "$HOME/homebrew/opt/asdf/libexec/asdf.sh" ]] && source "$HOME/homebrew/opt/asdf/libexec/asdf.sh"
-
+[[ -s "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]] && . "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 [[ -s "$HOME/.cargo/env" ]] && source $HOME/.cargo/env
 
 alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
@@ -398,3 +398,10 @@ function gppp() {
   hub compare
 }
 
+
+# bun completions
+[ -s "/Users/ignu/.bun/_bun" ] && source "/Users/ignu/.bun/_bun"
+
+# Bun
+export BUN_INSTALL="/Users/ignu/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

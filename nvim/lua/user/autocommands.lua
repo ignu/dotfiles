@@ -24,12 +24,12 @@ vim.cmd([[
     autocmd VimResized * tabdo wincmd = 
   augroup end
 
-  augroup remember_folds
-    autocmd!
-    au BufWinLeave ?* mkview 1
-    au BufWinEnter ?* silent! loadview 1
-  augroup END
 
+  augroup _save_folds
+      autocmd!
+      au BufWinLeave, BufLeave ?* silent! mkview
+      au BufWinEnter           ?* silent! loadview
+  augroup end
 
   augroup _lsp
     autocmd!
@@ -39,3 +39,8 @@ vim.cmd([[
 -- augroup _blame_line_auto
 --   autocmd BufEnter * EnableBlameLine
 -- augroup end
+--  augroup remember_folds
+--    autocmd!
+--    au BufWinLeave ?* mkview 1
+--    au BufWinEnter ?* silent! loadview 1
+--  augroup END

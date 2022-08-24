@@ -67,6 +67,8 @@ return packer.startup(function(use)
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
 	use("Domeee/mosel.nvim")
+	use("shaunsingh/oxocarbon.nvim")
+	use("Yazeed1s/minimal.nvim")
 	use("adisen99/codeschool.nvim")
 	use("tjdevries/colorbuddy.nvim")
 	use("lunarvim/darkplus.nvim")
@@ -77,15 +79,15 @@ return packer.startup(function(use)
 	use("trevordmiller/nova-vim")
 	use("whatyouhide/vim-gotham")
 	use("gruvbox-community/gruvbox")
-	--use("nanotech/jellybeans.vim")
-	--use("noahfrederick/vim-hemisu")
+	use("nanotech/jellybeans.vim")
+	use("noahfrederick/vim-hemisu")
 	use("sainnhe/everforest")
 	use("savq/melange")
 	use("shaeinst/roshnivim-cs")
 	use("EdenEast/nightfox.nvim")
 	use("folke/tokyonight.nvim")
 	--use("sainnhe/edge")
-	--use("kvrohit/rasmus.nvim")
+	use("kvrohit/rasmus.nvim")
 	use("Abstract-IDE/Abstract-cs")
 	use("rafamadriz/neon")
 	use("beikome/cosme.vim")
@@ -95,6 +97,8 @@ return packer.startup(function(use)
 	use("kyazdani42/blue-moon")
 	use("glepnir/zephyr-nvim")
 	use("adisen99/apprentice.nvim")
+	use("rockerBOO/boo-colorscheme-nvim")
+	use("bluz71/vim-moonfly-colors")
 
 	use("AndrewRadev/tagalong.vim")
 
@@ -123,6 +127,12 @@ return packer.startup(function(use)
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("simrat39/symbols-outline.nvim")
+	use({
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			require("lsp_lines").setup()
+		end,
+	})
 
 	use("folke/trouble.nvim") -- for troubleshooting
 
@@ -156,6 +166,7 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use("nvim-treesitter/nvim-treesitter-context")
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
