@@ -90,6 +90,7 @@ local mappings = {
 		[[
                :w!<cr>:source ~/.config/nvim/init.lua<CR>
                :w!<cr>:source ~/.config/nvim/lua/user/keymaps.lua<CR>
+               :w!<cr>:source ~/.config/nvim/lua/user/whichkey.lua<CR>
                :echo "👾RELOADED VIM SETTNINGS"<cr>
             ]],
 		"Reload VIM init.lua",
@@ -175,6 +176,7 @@ local mappings = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 			"Workspace Symbols",
 		},
+		t = { ":Telescope lsp_references<CR>", "Telescope references" },
 		y = { "<cmd>LspInfo<cr>", "Info" },
 		Y = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
 	},
