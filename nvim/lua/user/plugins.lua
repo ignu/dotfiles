@@ -58,14 +58,20 @@ return packer.startup(function(use)
 	use("nvim-lualine/lualine.nvim")
 	--use("akinsho/toggleterm.nvim")
 	use("ahmedkhalf/project.nvim")
+	-- use({
+	-- 	"charludo/projectmgr.nvim",
+	-- 	rocks = { "lsqlite3" },
+	-- })
 	use("lewis6991/impatient.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("goolord/alpha-nvim")
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("folke/which-key.nvim")
+	use("folke/todo-comments.nvim")
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+	use("ray-x/aurora")
 	use("Domeee/mosel.nvim")
 	use("shaunsingh/oxocarbon.nvim")
 	use("Yazeed1s/minimal.nvim")
@@ -99,6 +105,16 @@ return packer.startup(function(use)
 	use("adisen99/apprentice.nvim")
 	use("rockerBOO/boo-colorscheme-nvim")
 	use("bluz71/vim-moonfly-colors")
+	use({
+		"olivercederborg/poimandres.nvim",
+		config = function()
+			require("poimandres").setup({
+				-- leave this setup function empty for default config
+				-- or refer to the configuration section
+				-- for configuration options
+			})
+		end,
+	})
 
 	use("AndrewRadev/tagalong.vim")
 
