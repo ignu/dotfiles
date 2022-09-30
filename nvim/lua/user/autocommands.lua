@@ -26,9 +26,9 @@ vim.cmd([[
 
 
   augroup _save_folds
-      autocmd!
-      au BufWinLeave, BufLeave ?* silent! mkview
-      au BufWinEnter           ?* silent! loadview
+    autocmd!
+    au BufWinLeave, BufLeave ?* silent! mkview
+    au BufWinEnter           ?* silent! loadview
   augroup end
 
   augroup _lsp
