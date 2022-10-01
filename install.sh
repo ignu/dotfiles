@@ -39,12 +39,12 @@ echo "linking files"
   cd
   ln ~/bin/dotfiles/vimrc .vimrc
   ln -s ~/bin/dotfiles/vim .vim
-  ln -s ~/bin/dotfiles/vim ~/config/nvim
+  ln -s ~/bin/dotfiles/vim ~/.config/nvim
   ln ~/bin/dotfiles/gitconfig .gitconfig
   ln ~/bin/dotfiles/aliasrc .aliasrc
   ln ~/bin/dotfiles/tmux.conf .tmux.conf
   ln -s ~/bin/dotfiles/nvim nvim
-  ln -s ~/bin/dotfiles/nvim ~/config/nvim
+  ln -s ~/bin/dotfiles/nvim ~/.config/nvim
 
   rm .zshrc
   ln ~/bin/dotfiles/zshrc .zshrc
