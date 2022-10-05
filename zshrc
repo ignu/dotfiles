@@ -58,8 +58,6 @@ bashcompinit
 plugins=(macos ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fast-syntax-highlighting fzf)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-source ~/.zshrc.local
-
 source $ZSH/oh-my-zsh.sh
 
 export SECRET_KEY_BASE='blahblah'
@@ -272,6 +270,9 @@ function reprofile() {
 
   echo "Profile linked! 🌈"
 }
+
+source ~/.zshrc.local
+
 
 function readme() {
   if [ -f ./README.md ]; then
