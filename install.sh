@@ -24,6 +24,7 @@ echo "installing prereqs..."
   brew install procs
   brew install stylua
   brew install python
+  brew install --cask keycastr
   pip install pygments
 
 echo "installing oh my zsh"
