@@ -56,6 +56,9 @@ keymap("n", "P", "<Plug>(YankyPutAfter)", opts)
 keymap("n", "gp", "<Plug>(YankyGPutAfter)", opts)
 keymap("n", "gP", "<Plug>(YankyGPutBefore)", opts)
 
+-- OSCYANK
+keymap("n", "<leader>c", ":OSCYankReg +", opts)
+
 keymap("n", "<c-up>", "<Plug>(YankyCycleForward)", opts)
 keymap("n", "<c-down>", "<Plug>(YankCycleBackward)", opts)
 

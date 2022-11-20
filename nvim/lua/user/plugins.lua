@@ -45,7 +45,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 
 	-- surround.vim replacement
-	use("machakann/vim-sandwich")
+	--use("machakann/vim-sandwich")
 
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
@@ -69,14 +69,18 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim")
 	use("folke/todo-comments.nvim")
 
-	-- Colorschemes
+
+	-------------------
+	-- 🎨 Colorschemes
+	-------------------
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+	use("kvrohit/mellow.nvim")
 	use("ray-x/aurora")
-	use("Domeee/mosel.nvim")
+	--use("Domeee/mosel.nvim")
 	use("shaunsingh/oxocarbon.nvim")
-	use("Yazeed1s/minimal.nvim")
-	use("adisen99/codeschool.nvim")
-	use("tjdevries/colorbuddy.nvim")
+	--use("Yazeed1s/minimal.nvim")
+	--use("adisen99/codeschool.nvim")
+	--use("tjdevries/colorbuddy.nvim")
 	use("lunarvim/darkplus.nvim")
 	use("rebelot/kanagawa.nvim")
 	--use("AlessandroYorba/Alduin")
@@ -94,7 +98,7 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	--use("sainnhe/edge")
 	use("kvrohit/rasmus.nvim")
-	use("Abstract-IDE/Abstract-cs")
+	--use("Abstract-IDE/Abstract-cs")
 	use("rafamadriz/neon")
 	use("beikome/cosme.vim")
 	use("cocopon/iceberg.vim")
@@ -102,7 +106,7 @@ return packer.startup(function(use)
 	use("ray-x/starry.nvim")
 	use("kyazdani42/blue-moon")
 	use("glepnir/zephyr-nvim")
-	use("adisen99/apprentice.nvim")
+	--use("adisen99/apprentice.nvim")
 	use("rockerBOO/boo-colorscheme-nvim")
 	use("bluz71/vim-moonfly-colors")
 	use({
@@ -129,20 +133,31 @@ return packer.startup(function(use)
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
 
-	-- snippets
+	use({
+		"stevearc/aerial.nvim",
+	})
+
+	--use("simrat39/symbols-outline.nvim")
+	-- ----------------
+	-- ✂️ Snippets
+	-- ----------------
 	--use("L3MON4D3/LuaSnip") --snippet engine
 	--use("ignu/friendly-snippets") -- a bunch of snippets to use
-
 	use("dcampos/nvim-snippy")
 	use("dcampos/cmp-snippy")
 	use("ignu/vim-snippets")
 
-	-- LSP
+	-- ---	-- ------
+	-- 🔊 LSP
+	-- ---	-- -------
 	use("neovim/nvim-lspconfig") -- enable LSP
+	use({
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
+	})
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-	use("simrat39/symbols-outline.nvim")
 	use({
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		config = function()
@@ -151,7 +166,6 @@ return packer.startup(function(use)
 	})
 
 	use("folke/trouble.nvim") -- for troubleshooting
-
 	use("haringsrob/nvim_context_vt") -- see method vt
 
 	use({
@@ -164,10 +178,35 @@ return packer.startup(function(use)
 	use({
 		"ray-x/lsp_signature.nvim",
 	})
+	-- ------	-- ------
+	-- 💻 DAP
+	-- -----	-- -------
+	use("mfussenegger/nvim-dap")
+	use("nvim-telescope/telescope-dap.nvim")
+	use("mxsdev/nvim-dap-vscode-js")
 
-	--use("jose-elias-alvarez/typescript.nvim")
-	-- Telescope
-	--	use("nvim-telescope/telescope.nvim")
+	use("theHamsta/nvim-dap-virtual-text")
+	use("rcarriga/nvim-dap-ui")
+	use({
+		"microsoft/vscode-js-debug",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npm run compile",
+	})
+	use({
+		"microsoft/vscode-node-debug2",
+		opt = true,
+		run = "npm install && NODE_OPTIONS=--no-experimental-fetch npm run build",
+	})
+
+	-- ------
+
+	use({ "kevinhwang91/nvim-bqf", ft = "qf" })
+
+
+	-- -----	-- -------
+	-- 🔭 Telescope
+	-- -----	-- -------
+
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ --pass in options to rg
 		"nvim-telescope/telescope.nvim",
@@ -176,18 +215,30 @@ return packer.startup(function(use)
 		},
 	})
 
-	-- Treesitter
+
+  -- ----------
+	-- 🌲 Treesitter
+	-- ----------
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
-	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use("hashivim/vim-terraform")
+	use("JoosepAlviste/nvim-ts-context-commentstring", { event = "BufReadPost" })
 	use("nvim-treesitter/nvim-treesitter-context")
+	use({
+		"Kasama/nvim-custom-diagnostic-highlight",
+		config = function()
+			require("nvim-custom-diagnostic-highlight").setup({})
+		end,
+	})
 
-	-- Git
+	-- ----------
+	-- 📓 Git
+	-- ----------
 	use("lewis6991/gitsigns.nvim")
 	use("tveskag/nvim-blame-line")
-	use("TimUntersberger/neogit")
+	--use("TimUntersberger/neogit")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	use("ojroques/vim-oscyank")
@@ -212,9 +263,15 @@ return packer.startup(function(use)
 	--use("rmagatti/auto-session")
 	--use("rmagatti/session-lens")
 	use("rktjmp/lush.nvim")
-	use("~/code/sessionverse.nvim")
-	use("~/bin/hemisush")
+	--use("~/code/sessionverse.nvim")
+	--use("~/bin/hemisush")
 
+	use({
+		"nvim-zh/colorful-winsep.nvim",
+		config = function()
+			require("colorful-winsep").setup()
+		end,
+	})
 	-- marks
 	use("chentoast/marks.nvim")
 
@@ -222,9 +279,9 @@ return packer.startup(function(use)
 	use("j-hui/fidget.nvim")
 
 	-- highlight current block
-	use({
-		"folke/twilight.nvim",
-	})
+	--	use({
+	--		"folke/twilight.nvim",
+	--	})
 
 	-- tmux
 	use("LnL7/vim-tslime")
