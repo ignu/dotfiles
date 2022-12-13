@@ -406,3 +406,8 @@ function gppp() {
 # Bun
 export BUN_INSTALL="/Users/ignu/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/ignu/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
