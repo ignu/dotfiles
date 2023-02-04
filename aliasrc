@@ -34,6 +34,7 @@ alias co='git checkout'
 alias gap="git add -p"
 alias gpr="gppp"
 alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | fzf | xargs git checkout"
+alias pwtrace="ls ~/code/zeck/ui/test-results | fzf | xargs -I {} yarn playwright show-trace ~/code/zeck/ui/test-results/{}/trace.zip"
 
 alias xx="gt" # gt is way too close to git and my fingers hate it
 
