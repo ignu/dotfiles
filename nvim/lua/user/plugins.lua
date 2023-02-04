@@ -44,6 +44,8 @@ return packer.startup(function(use)
   -- My plugins here
   use("wbthomason/packer.nvim") -- Have packer manage itself
 
+  use("mrjones2014/nvim-ts-rainbow")
+
   -- surround.vim replacement
   use("machakann/vim-sandwich")
   use("tpope/vim-surround")
@@ -186,16 +188,6 @@ return packer.startup(function(use)
 
   use("theHamsta/nvim-dap-virtual-text")
   use("rcarriga/nvim-dap-ui")
-  use({
-    "microsoft/vscode-js-debug",
-    opt = true,
-    run = "npm install --legacy-peer-deps && npm run compile",
-  })
-  use({
-    "microsoft/vscode-node-debug2",
-    opt = true,
-    run = "npm install && NODE_OPTIONS=--no-experimental-fetch npm run build",
-  })
 
   -- ------
 
