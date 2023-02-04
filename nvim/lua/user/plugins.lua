@@ -46,6 +46,7 @@ return packer.startup(function(use)
 
   -- surround.vim replacement
   use("machakann/vim-sandwich")
+  use("tpope/vim-surround")
 
   use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
   use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
@@ -75,6 +76,7 @@ return packer.startup(function(use)
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use("kvrohit/mellow.nvim")
   use("ray-x/aurora")
+  use("ramojus/mellifluous.nvim")
   --use("Domeee/mosel.nvim")
   use("shaunsingh/oxocarbon.nvim")
   --use("Yazeed1s/minimal.nvim")

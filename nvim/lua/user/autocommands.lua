@@ -36,34 +36,35 @@ vim.cmd([[
     autocmd BufWritePre * lua vim.lsp.buf.format()
   augroup end
 
-  autocmd BufRead,BufNewFile /Users/vinsonchuong/Code/zeck/*
+  autocmd BufRead,BufEnter,BufNewFile /Users/vinsonchuong/Code/zeck/*
   \ let test#project_root = './'
 
-  autocmd BufRead,BufNewFile /Users/ignu/code/zeck/api/app/*
+  autocmd BufRead,BufEnter,BufNewFile /Users/ignu/code/zeck/api/app/*
     \ let test#project_root = './api/app' |
     \ let test#python#runner = 'mamba' |
     \ let test#python#mamba#options = '--format documentation'
   
-  autocmd BufRead,BufNewFile /Users/ignu/code/zeck/ui/*
+  autocmd BufRead,BufEnter,BufNewFile /Users/ignu/code/zeck/ui/*
     \ let test#project_root = './ui' |
     \ let test#javascript#runner = 'jest' |
     \ let test#javascript#jest#options = '--env=jest-environment-jsdom-global --setupFilesAfterEnv ./config/env --setupFilesAfterEnv ./config/testEnv --setupFilesAfterEnv ./src/setupTests.js --runInBand'
   
-  autocmd BufRead,BufNewFile /Users/ignu/code/zeck/ui/playwright/*
+  autocmd BufRead,BufEnter,BufNewFile /Users/ignu/code/zeck/ui/playwright/*
     \ let test#project_root = './ui' |
     \ let test#javascript#runner = 'playwright' |
+    \ let test#javascript#playwright#options = '--workers=6 --trace=on --reporter=list --headed'
 
-  autocmd BufRead,BufNewFile /Users/ignu/code/zeck/lambdas-api/*
+  autocmd BufRead,BufEnter,BufNewFile /Users/ignu/code/zeck/lambdas-api/*
     \ let test#project_root = './lambdas-api' |
     \ let test#javascript#runner = 'jest' |
     \ let test#javascript#jest#options = ''
   
-  autocmd BufRead,BufNewFile /Users/ignu/code/zeck/editor-content/*
+  autocmd BufRead,BufEnter,BufNewFile /Users/ignu/code/zeck/editor-content/*
     \ let test#project_root = './editor-content' |
     \ let test#javascript#runner = 'jest' |
     \ let test#javascript#jest#options = ''
   
-  autocmd BufRead,BufNewFile /Users/ignu/code/zeck/editor/*
+  autocmd BufRead,BufEnter,BufNewFile /Users/ignu/code/zeck/editor/*
     \ let test#project_root = './editor' |
     \ let test#javascript#runner = 'jest' |
     \ let test#javascript#jest#options = ''

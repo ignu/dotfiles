@@ -1,7 +1,7 @@
 return {
-	settings = {
-		preferences = {
-			importModuleSpecifierPreference = "relative",
-		},
-	},
+  settings = {
+    preferences = {
+      importModuleSpecifierPreference = "relative",
+    },
+  },
 }
