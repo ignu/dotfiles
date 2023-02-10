@@ -10,6 +10,7 @@ bindkey '^r' history-incremental-search-backward
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/Users/ignu/.rvm/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin/
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -54,10 +55,8 @@ bashcompinit
 
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(osx ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fast-syntax-highlighting fzf)
+plugins=(macos ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fast-syntax-highlighting fzf)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-source ~/.zshrc.local
 
 source $ZSH/oh-my-zsh.sh
 
@@ -132,7 +131,7 @@ bindkey '^Z' fancy-ctrl-z
 [ -f /Users/ignu/.travis/travis.sh ] && source /Users/ignu/.travis/travis.sh
 
 [[ $TERM == eterm-color ]] && export TERM=xterm
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 #export TERM="xterm-256color-italic"
 
 function defaultbranch() {
@@ -172,12 +171,6 @@ function wb() {
 
   git stash pop
   echo "********** Done. Sorry. *************"
-}
-
-function gpr() {
-  git commit -m "$1"
-  git push origin HEAD
-  hub compare
 }
 
 function fuckit() {
@@ -252,7 +245,7 @@ function reprofile() {
   rm -rf ~/.vim
   rm -rf ~/config/karabiner
   rm -rf ~/.config/nvim
-  mkdir ~/.config/nvim
+  ln -s ~/bin/dotfiles/nvim ~/.config/nvim
   ln -s ~/bin/dotfiles/init.vim ~/.config/nvim/init.vim
   ln -s ~/bin/dotfiles/vim .vim
   ln -s ~/bin/dotfiles/karabiner ~/.config/
@@ -277,6 +270,9 @@ function reprofile() {
 
   echo "Profile linked! 🌈"
 }
+
+source ~/.zshrc.local
+
 
 function readme() {
   if [ -f ./README.md ]; then
@@ -351,7 +347,9 @@ function when_delete() {
 }
 
 [[ -s "$HOME/.asdf/asdf.sh" ]] && source ~/.asdf/asdf.sh
-
+[[ -s "$HOME/.asdf/asdf.sh" ]] && source ~/.asdf/asdf.
+[[ -s "$HOME/homebrew/opt/asdf/libexec/asdf.sh" ]] && source "$HOME/homebrew/opt/asdf/libexec/asdf.sh"
+[[ -s "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]] && . "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 [[ -s "$HOME/.cargo/env" ]] && source $HOME/.cargo/env
 
 alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
@@ -379,11 +377,37 @@ export RUBY_GC_HEAP_FREE_SLOTS=$RUBY_HEAP_FREE_MIN
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/lensmith/.asdf/installs/nodejs/8.10.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/lensmith/.asdf/installs/nodejs/8.10.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
-
 prompt_context() {}
 
 #source /Users/lensmith/.config/broot/launcher/bash/br
 eval "$(starship init zsh)"
+
+function gpr() {
+  git commit -m "$1"
+  git push origin HEAD
+  hub compare
+}
+
+function editlocal() {
+  vim ~/.zshrc.local
+  source ~/.zshrc.local
+}
+
+function gppp() {
+  git commit -m "$1"
+  git push origin HEAD
+  hub compare
+}
+
+
+# bun completions
+[ -s "/Users/ignu/.bun/_bun" ] && source "/Users/ignu/.bun/_bun"
+
+# Bun
+export BUN_INSTALL="/Users/ignu/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/ignu/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

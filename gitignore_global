@@ -6,3 +6,8 @@
 .vscode/
 .tool-versions
 .scratch.sh
+.lvimrc
+.null-ls-root
+vim_all
+.nvimrc
+.tool-versions

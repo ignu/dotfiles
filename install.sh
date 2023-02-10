@@ -6,6 +6,8 @@ echo "installing prereqs..."
   brew install wget
   brew install ripgrep
   brew install fzf
+  brew install asdf
+  brew install neovim
   brew install tree
   brew install elixir
   brew install diff-so-fancy
@@ -13,6 +15,16 @@ echo "installing prereqs..."
   brew install curlie
   brew install tldr
   brew install starship
+  brew install alacritty
+  brew install tmuxinator
+  brew install nnn
+  brew install jq
+  brew install fd
+  brew install tokei
+  brew install procs
+  brew install stylua
+  brew install python
+  brew install --cask keycastr
   pip install pygments
 
 echo "installing oh my zsh"
@@ -28,10 +40,12 @@ echo "linking files"
   cd
   ln ~/bin/dotfiles/vimrc .vimrc
   ln -s ~/bin/dotfiles/vim .vim
-  ln -s ~/bin/dotfiles/vim ~/config/nvim
+  ln -s ~/bin/dotfiles/vim ~/.config/nvim
   ln ~/bin/dotfiles/gitconfig .gitconfig
   ln ~/bin/dotfiles/aliasrc .aliasrc
   ln ~/bin/dotfiles/tmux.conf .tmux.conf
+  ln -s ~/bin/dotfiles/nvim nvim
+  ln -s ~/bin/dotfiles/nvim ~/.config/nvim
 
   rm .zshrc
   ln ~/bin/dotfiles/zshrc .zshrc
@@ -46,5 +60,6 @@ source ~/.zshrc
 reprofile
 
 
+git config --global core.excludesfile ~/.gitignore_global
 
 
