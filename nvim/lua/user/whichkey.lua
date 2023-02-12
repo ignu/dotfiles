@@ -156,7 +156,7 @@ local mappings = {
     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
     i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
     Z = {
-      ':lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>',
+      '<cmd>lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>',
     },
     j = {
       "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
@@ -167,6 +167,7 @@ local mappings = {
       "Prev Diagnostic",
     },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    L = { ':lua require("lsp_lines").toggle()<CR>', "Toggle Lua Lines" },
 
     q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
@@ -197,6 +198,7 @@ local mappings = {
     C = { "<cmd>Telescope commands<cr>", "Commands" },
     t = { "<cmd>Telescope<cr>", "Telescopes" },
     T = { "<cmd>Telescope tagstack<cr>", "tagstack" },
+    y = { "<cmd>Telescope yankhistory<cr>", "Yank History" },
   },
   s = {
     name = "Sandwich",

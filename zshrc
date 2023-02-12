@@ -393,6 +393,16 @@ function editlocal() {
   source ~/.zshrc.local
 }
 
+function editzsh() {
+  vim ~/.zshrc
+  source ~/.zshrc
+}
+
+function sourcelocal() {
+  source ~/.zshrc.local
+}
+
+
 function gppp() {
   git commit -m "$1"
   git push origin HEAD

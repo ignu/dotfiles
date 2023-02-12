@@ -55,6 +55,8 @@ keymap("n", "p", "<Plug>(YankyPutBefore)", opts)
 keymap("n", "P", "<Plug>(YankyPutAfter)", opts)
 keymap("n", "gp", "<Plug>(YankyGPutAfter)", opts)
 keymap("n", "gP", "<Plug>(YankyGPutBefore)", opts)
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
+vim.keymap.set("n", "<c-m>", "<Plug>(YankyCycleBackward)")
 
 -- OSCYANK
 keymap("n", "<leader>c", ":OSCYankReg +", opts)
@@ -87,8 +89,8 @@ keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
 
 -- tab through tabs
-keymap("n", "<Tab>", ":tabn<cr>", opts)
-keymap("n", "<S-Tab>", ":tabp<cr>", opts)
+--keymap("n", "<Tab>", ":tabn<cr>", opts)
+--keymap("n", "<S-Tab>", ":tabp<cr>", opts)
 
 keymap("n", "<S-Tab>", ":tabp<cr>", opts)
 
@@ -109,17 +111,24 @@ keymap("n", "<Leader>\\", ":copen<CR>", opts)
 
 -- lsp
 keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
-keymap("n", "ga", "lua vim.lsp.buf.code_action()<cr>", opts)
-
+keymap("n", "ga", ":lua vim.lsp.buf.code_action()<cr>", opts)
+keymap(-- ORGANIZE IMPORTS
+  "n",
+  "gA",
+  ':lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>',
+  opts
+)
 -- FUNCTION KEYS
 keymap("n", "<F1>", '"+y', opts)
 keymap("n", "<F2>", ":vsp<CR>", opts)
 -- toggle endlines
 keymap("n", "<F3>", ":NvimContextVtToggle<CR>", opts)
 keymap("n", "<F4>", ":set hls!<CR>", opts)
-keymap("n", "<F6>", ":set hls!<CR>", opts)
+
 keymap("n", "<F10>", ":lua TroubleToggle", opts)
+keymap("n", ",L", ':lua require("lsp_lines").toggle()', opts)
 keymap("n", "<F12>", ":lua R'sessionverse'.openDirtyFiles()<CR>", opts)
+keymap("v", "<Leader>y", '"+y', opts)
 
 -- Terminal --
 -- Better terminal navigation

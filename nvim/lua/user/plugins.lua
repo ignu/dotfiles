@@ -191,7 +191,8 @@ return packer.startup(function(use)
 
   -- ------
 
-  use({ "kevinhwang91/nvim-bqf", ft = "qf" })
+  -- disable bqf
+  -- use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 
   -- -----	-- -------
   -- 🔭 Telescope
