@@ -12,7 +12,7 @@ alias noo='fuckit'
 
 alias hg="history | grep "
 
-alias weather="curl wttr.in/98144"
+alias weather="curl wttr.in/94086"
 
 # RUBY
 alias be="bundle exec"
