@@ -1,9 +1,10 @@
 -- "Forked" from https://github.com/LunarVim/Neovim-from-scratch as I wanted to start
 -- clean, but also have a working vim. Also don't want to deal with submodules.
 
+require("user.plugins")
+
 require("user.options")
 require("user.keymaps")
-require("user.plugins")
 require("user.colorscheme")
 require("user.cmp")
 require("user.lsp")
@@ -23,7 +24,7 @@ require("user.whichkey")
 require("user.autocommands")
 require("user.yanky")
 require("user.quickfix")
-require("user.dap")
+--require("user.dap")
 require("globals")
 
 vim.g.symbols_outline = {
