@@ -195,6 +195,8 @@ local mappings = {
 		a = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search In Buffer" },
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 		c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+		o = { "<cmd>Telescope vim_options<cr>", "Options" },
+		J = { "<cmd>Telescope jumplist<cr>", "Jumplist" },
 		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 		m = { "<cmd>Telescope marks<cr>", "Marks" },
@@ -207,6 +209,7 @@ local mappings = {
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
 		t = { "<cmd>Telescope<cr>", "Telescopes" },
 		T = { "<cmd>Telescope tagstack<cr>", "tagstack" },
+		y = { "<cmd>Telescope resume<cr>", "Resume" },
 		--[[ y = { "<cmd>Telescope yankhistory<cr>", "Yank History" }, ]]
 	},
 	--[[ s = { ]]
