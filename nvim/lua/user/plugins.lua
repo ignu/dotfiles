@@ -103,6 +103,7 @@ return packer.startup(function(use)
 	--use("Abstract-IDE/Abstract-cs")
 	use("rafamadriz/neon")
 	use("beikome/cosme.vim")
+	use("arturgoms/moonbow.nvim")
 	use("cocopon/iceberg.vim")
 	use("rose-pine/neovim")
 	use("ray-x/starry.nvim")
@@ -164,6 +165,9 @@ return packer.startup(function(use)
 			require("lsp_lines").setup()
 		end,
 	})
+	use({
+		"jinzhongjia/LspUI.nvim",
+	})
 
 	use("folke/trouble.nvim") -- for troubleshooting
 	use("haringsrob/nvim_context_vt") -- see method vt
@@ -191,7 +195,7 @@ return packer.startup(function(use)
 	-- ------
 
 	-- disable bqf
-	-- use({ "kevinhwang91/nvim-bqf", ft = "qf" })
+	use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 
 	-- -----	-- -------
 	-- 🔭 Telescope
@@ -258,11 +262,6 @@ return packer.startup(function(use)
 	-- Lua
 	use({
 		"olimorris/persisted.nvim",
-		--module = "persisted", -- For lazy loading
-		config = function()
-			require("persisted").setup()
-			require("telescope").load_extension("persisted") -- To load the telescope extension
-		end,
 	})
 	use({
 		"nvim-zh/colorful-winsep.nvim",

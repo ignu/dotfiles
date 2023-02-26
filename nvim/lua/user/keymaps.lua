@@ -58,12 +58,6 @@ keymap("n", "gP", "<Plug>(YankyGPutBefore)", opts)
 vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
 vim.keymap.set("n", "<c-m>", "<Plug>(YankyCycleBackward)")
 
--- OSCYANK
-keymap("n", "<leader>c", ":OSCYankReg +", opts)
-
-keymap("n", "<c-up>", "<Plug>(YankyCycleForward)", opts)
-keymap("n", "<c-down>", "<Plug>(YankCycleBackward)", opts)
-
 -- open git files
 keymap("n", "<C-p>", ":Telescope git_files<CR>", opts)
 keymap("n", "<leader>ff", ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', opts)
@@ -73,7 +67,7 @@ keymap("n", "<c-s>", ":w<cr>", opts)
 keymap("i", "<c-s>", "<esc>:w<cr>", opts)
 
 -- Insert --
--- Press jk fast to enter
+-- Press jk fast to esc
 keymap("i", "jk", "<ESC>", opts)
 
 keymap("n", "-", ":Exp<CR>", opts)
@@ -112,11 +106,11 @@ keymap("n", "<Leader>\\", ":copen<CR>", opts)
 -- lsp
 keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
 keymap("n", "ga", ":lua vim.lsp.buf.code_action()<cr>", opts)
-keymap(-- ORGANIZE IMPORTS
-  "n",
-  "gA",
-  ':lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>',
-  opts
+keymap( -- ORGANIZE IMPORTS
+	"n",
+	"gA",
+	':lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>',
+	opts
 )
 -- FUNCTION KEYS
 keymap("n", "<F1>", '"+y', opts)

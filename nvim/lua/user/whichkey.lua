@@ -6,7 +6,7 @@ end
 local setup = {
 	plugins = {
 		marks = true, -- shows a list of your marks on ' and `
-		registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+		registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
 		spelling = {
 			enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
 			suggestions = 20, -- how many suggestions should be shown in the list?
@@ -79,7 +79,7 @@ local mappings = {
 		"Buffers",
 	},
 	-- nnoremap <silent> <Leader>r :Bclose<CR>
-	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+	["e"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
 	["N"] = { ":set relativenumber!<CR>", "Toggle Nums" },
 	["n"] = { ":set number!<CR>", "Toggle Rel" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
@@ -96,11 +96,12 @@ local mappings = {
 	},
 
 	["j"] = {
-		"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>lua vim.lsp.buf.code_action()<cr>",
+		--"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>lua vim.lsp.buf.code_action()<cr>",
+		"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>LspUI code_action<cr>",
 		"Next Diagnostic",
 	},
 	["k"] = {
-		"<cmd>lua vim.diagnostic.goto_prev()<cr>",
+		"<cmd>lua vim.diagnostic.goto_prev()<cr><cmd>LspUI code_action<cr>",
 		"Prev Diagnostic",
 	},
 	--["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
@@ -127,7 +128,6 @@ local mappings = {
 		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
 		B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-		l = { ":ToggleBlameLine<CR>", "Toggle BLAME" },
 		d = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Diff",
@@ -139,7 +139,10 @@ local mappings = {
 	},
 	l = {
 		name = "LSP",
-		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+
+		--a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+		a = { "<cmd>LspUI code_action<cr>", "Code Action" },
+
 		d = {
 			"<cmd>Telescope lsp_document_diagnostics<cr>",
 			"Document Diagnostics",
@@ -148,15 +151,17 @@ local mappings = {
 			"<cmd>Telescope lsp_workspace_diagnostics<cr>",
 			"Workspace Diagnostics",
 		},
+
 		K = {
-			":lua vim.lsp.buf.hover()<cr>",
+			--":lua vim.lsp.buf.hover()<cr>",
+			":LspUI hover<cr>",
 			"Hover Doc",
 		},
 		f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
 		i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
-		Z = {
-			'<cmd>lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>',
-		},
+		--[[ Z = { ]]
+		--[[ 	'<cmd>lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>', ]]
+		--[[ }, ]]
 		j = {
 			"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
 			"Next Diagnostic",
@@ -169,7 +174,9 @@ local mappings = {
 		L = { ':lua require("lsp_lines").toggle()<CR>', "Toggle Lua Lines" },
 
 		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+
+		--r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+		r = { "<cmd>LspUI rename<cr>", "Rename" },
 		R = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 		S = {
@@ -177,6 +184,9 @@ local mappings = {
 			"Workspace Symbols",
 		},
 		t = { ":Telescope lsp_references<CR>", "Telescope references" },
+		w = { "<cmd>LspUI peek_definition<CR>", "peek def" },
+		--[[ LspUI peek_definition ]]
+
 		y = { "<cmd>LspInfo<cr>", "Info" },
 		Y = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
 	},
@@ -197,36 +207,36 @@ local mappings = {
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
 		t = { "<cmd>Telescope<cr>", "Telescopes" },
 		T = { "<cmd>Telescope tagstack<cr>", "tagstack" },
-		y = { "<cmd>Telescope yankhistory<cr>", "Yank History" },
+		--[[ y = { "<cmd>Telescope yankhistory<cr>", "Yank History" }, ]]
 	},
-	s = {
-		name = "Sandwich",
-		D = {
-			"<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)",
-			"Delete",
-		},
-		d = {
-			"<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)",
-			"Delete named char",
-		},
-		a = { "<Plug>(operator-sandwich-add)", "Add" },
-		C = {
-			"<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)",
-			"Change named char",
-		},
-		c = {
-			"<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)",
-			"Change",
-		},
-		s = {
-			"<Plug>(textobj-sandwich-auto-i)",
-			"Select inside",
-		},
-		S = {
-			"<Plug>(textobj-sandwich-auto-a)",
-			"Select outside",
-		},
-	},
+	--[[ s = { ]]
+	--[[ 	name = "Sandwich", ]]
+	--[[ 	D = { ]]
+	--[[ 		"<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)", ]]
+	--[[ 		"Delete", ]]
+	--[[ 	}, ]]
+	--[[ 	d = { ]]
+	--[[ 		"<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)", ]]
+	--[[ 		"Delete named char", ]]
+	--[[ 	}, ]]
+	--[[ 	a = { "<Plug>(operator-sandwich-add)", "Add" }, ]]
+	--[[ 	C = { ]]
+	--[[ 		"<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)", ]]
+	--[[ 		"Change named char", ]]
+	--[[ 	}, ]]
+	--[[ 	c = { ]]
+	--[[ 		"<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)", ]]
+	--[[ 		"Change", ]]
+	--[[ 	}, ]]
+	--[[ 	s = { ]]
+	--[[ 		"<Plug>(textobj-sandwich-auto-i)", ]]
+	--[[ 		"Select inside", ]]
+	--[[ 	}, ]]
+	--[[ 	S = { ]]
+	--[[ 		"<Plug>(textobj-sandwich-auto-a)", ]]
+	--[[ 		"Select outside", ]]
+	--[[ 	}, ]]
+	--[[ }, ]]
 	t = {
 		name = "Terminal",
 		n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
