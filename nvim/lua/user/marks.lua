@@ -1,6 +1,3 @@
-
-require("todo-comments").setup({})
-
 require("marks").setup({
 	-- whether to map keybinds or not. default true
 	default_mappings = true,

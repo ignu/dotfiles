@@ -24,6 +24,7 @@ require("user.whichkey")
 require("user.autocommands")
 require("user.yanky")
 require("user.quickfix")
+require("user.marks")
 --require("user.dap")
 require("globals")
 

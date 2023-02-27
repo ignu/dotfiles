@@ -25,7 +25,7 @@ vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappin
 
 local plugins = {
 	"wbthomason/packer.nvim", -- Have packer manage itself
-	"mrjones2014/nvim-ts-rainbow",
+	{ "mrjones2014/nvim-ts-rainbow", event = "VeryLazy" },
 	"tpope/vim-surround",
 	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
@@ -43,10 +43,9 @@ local plugins = {
 	-- 	rocks = { "lsqlite3" },
 	-- })
 	"lewis6991/impatient.nvim",
-	"lukas-reineke/indent-blankline.nvim",
+	{ "lukas-reineke/indent-blankline.nvim", event = "VeryLazy" },
 	"antoinemadec/FixCursorHold.nvim", -- This is needed to fix lsp doc highlight
 	"folke/which-key.nvim",
-	"folke/todo-comments.nvim",
 
 	-------------------
 	-- 🎨 Colorschemes
@@ -101,7 +100,8 @@ local plugins = {
 	--[[ }) ]]
 
 	-- remember last color
-	"rojspencer/vim-colorminder",
+	--{ "rojspencer/vim-colorminder", event = "VeryLazy" },
+	{ "rojspencer/vim-colorminder" },
 
 	-- cmp plugins
 	"hrsh7th/nvim-cmp", -- The completion plugin
@@ -111,7 +111,18 @@ local plugins = {
 	"saadparwaiz1/cmp_luasnip", -- snippet completions
 	"hrsh7th/cmp-nvim-lsp",
 
-	"stevearc/aerial.nvim",
+	{
+		"stevearc/aerial.nvim",
+		config = function()
+			require("aerial").setup({
+				on_attach = function(bufnr)
+					-- Jump forwards/backwards with '{' and '}'
+					vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+					vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+				end,
+			})
+		end,
+	},
 	"AndrewRadev/tagalong.vim",
 
 	--use("simrat39/symbols-outline.nvim")
@@ -212,7 +223,7 @@ local plugins = {
 	"lewis6991/gitsigns.nvim",
 	"tveskag/nvim-blame-line",
 	--use("TimUntersberger/neogit")
-	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
+	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", event = "VeryLazy" },
 
 	"ojroques/vim-oscyank",
 	"ruifm/gitlinker.nvim",
@@ -220,6 +231,7 @@ local plugins = {
 	-- modern YankRing
 	{
 		"gbprod/yanky.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("yanky").setup({})
 		end,
@@ -241,12 +253,6 @@ local plugins = {
 
 	-- Lua
 	--"olimorris/persisted.nvim",
-	{
-		"nvim-zh/colorful-winsep.nvim",
-		config = function()
-			require("colorful-winsep").setup()
-		end,
-	},
 	-- marks
 	"chentoast/marks.nvim",
 
@@ -261,3 +267,4 @@ local plugins = {
 local opts = {}
 
 lazy.setup(plugins, opts)
+vim.keymap.set("n", "<leader>B", "<cmd>AerialToggle!<CR>")
