@@ -162,6 +162,21 @@ local plugins = {
 	{
 		"ray-x/lsp_signature.nvim",
 	},
+	{
+		"SmiteshP/nvim-navic",
+	},
+	{
+		"MunifTanjim/nui.nvim",
+	},
+
+	{
+		"SmiteshP/nvim-navbuddy",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"MunifTanjim/nui.nvim",
+		},
+	},
 	-- ------	-- ------
 	-- 💻 DAP
 	-- -----	-- -------
@@ -200,6 +215,15 @@ local plugins = {
 		end,
 	},
 
+	{
+		"sudormrfbin/cheatsheet.nvim",
+
+		dependencies = {
+			{ "nvim-telescope/telescope.nvim" },
+			{ "nvim-lua/popup.nvim" },
+			{ "nvim-lua/plenary.nvim" },
+		},
+	},
 	{
 		"klen/nvim-config-local",
 		config = function()
@@ -276,6 +300,14 @@ local plugins = {
 	-- tmux
 	"LnL7/vim-tslime",
 	"janko-m/vim-test",
+
+	-- window titles
+	--[[ { ]]
+	--[[ 	"b0o/incline.nvim", ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("incline").setup() ]]
+	--[[ 	end, ]]
+	--[[ }, ]]
 }
 
 local opts = {}

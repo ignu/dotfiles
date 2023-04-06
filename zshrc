@@ -55,8 +55,9 @@ bashcompinit
 
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(macos ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fast-syntax-highlighting fzf)
+plugins=(macos ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fzf)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -408,6 +409,11 @@ function gppp() {
   git push origin HEAD
   hub compare
 }
+
+function fbat() {
+  rg "$1" | fzf | bat
+}
+
 
 
 # bun completions

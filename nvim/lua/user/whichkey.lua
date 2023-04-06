@@ -142,6 +142,7 @@ local mappings = {
 
 		--a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 		a = { "<cmd>LspUI code_action<cr>", "Code Action" },
+		b = { "<cmd>:lua require('nvim-navbuddy').open()<CR>", "Code Action" },
 
 		d = {
 			"<cmd>Telescope lsp_document_diagnostics<cr>",

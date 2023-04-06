@@ -78,3 +78,4 @@ alias l="exa -l"
 alias :sp='cowsay "this isnt vim."'
 alias :vsp='cowsay "this isnt vim."'
 alias :w='cowsay "this isnt vim."'
+alias pn='pnpm'

@@ -124,6 +124,12 @@ keymap("n", ",L", ':lua require("lsp_lines").toggle()', opts)
 keymap("n", "<F12>", ":lua R'sessionverse'.openDirtyFiles()<CR>", opts)
 keymap("v", "<Leader>y", '"+y', opts)
 
+-- Copilot
+keymap("n", "<PageUp>", ":copilot#Previous()<CR>", opts)
+keymap("n", "<PageDown>", ":copilot#Next()<CR>", opts)
+keymap("n", "<Home>", ":copilot#Accept()<CR>", opts)
+keymap("n", "<End>", ":copilot#Dismiss()<CR>", opts)
+
 -- Terminal --
 -- Better terminal navigation
 local term_opts = { silent = true }
