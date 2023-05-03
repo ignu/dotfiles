@@ -30,7 +30,6 @@ keymap("n", "<Up>", ":Gitsigns prev_hunk<CR>", opts)
 
 -- YANK TO EOL
 keymap("n", "Y", "y$", opts)
-
 keymap("n", "p", "y$", opts)
 
 -- toggle twilight
@@ -47,8 +46,8 @@ keymap("n", ",,", ":Telescope jumplist<CR>", opts)
 
 -- jump to the previous item, skipping the groups
 -- Alt-y and Alt-p to use clipboard
-keymap("n", "<A-y>", '"+y', opts)
-keymap("n", "<A-p>", '"+p', opts)
+keymap("v", "<c-y>", '"+y', opts)
+keymap("v", "<A-p>", '"+p', opts)
 
 -- yanky/yankring
 keymap("n", "p", "<Plug>(YankyPutBefore)", opts)
@@ -129,6 +128,7 @@ keymap("n", "<PageUp>", ":copilot#Previous()<CR>", opts)
 keymap("n", "<PageDown>", ":copilot#Next()<CR>", opts)
 keymap("n", "<Home>", ":copilot#Accept()<CR>", opts)
 keymap("n", "<End>", ":copilot#Dismiss()<CR>", opts)
+keymap("n", "=", ":TroubleToggle<CR>", opts)
 
 -- Terminal --
 -- Better terminal navigation

@@ -40,11 +40,11 @@ _G.formatting_async = function(bufnr)
 end
 
 null_ls.setup({
-	debug = true,
+	debug = false,
 	sources = {
 		formatting.prettier,
-		null_ls.builtins.diagnostics.eslint,
-		null_ls.builtins.code_actions.eslint,
+		--[[ null_ls.builtins.diagnostics.eslint, ]]
+		--null_ls.builtins.code_actions.eslint,
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
 		-- diagnostics.flake8

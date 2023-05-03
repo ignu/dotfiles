@@ -51,53 +51,19 @@ local plugins = {
 	-- 🎨 Colorschemes
 	-------------------
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-	"kvrohit/mellow.nvim",
-	"ray-x/aurora",
-	"ramojus/mellifluous.nvim",
-	--use("Domeee/mosel.nvim")
 	--use("shaunsingh/oxocarbon.nvim")
 	--use("Yazeed1s/minimal.nvim")
 	--use("adisen99/codeschool.nvim")
 	--use("tjdevries/colorbuddy.nvim")
 	--use("lunarvim/darkplus.nvim")
 	"rebelot/kanagawa.nvim",
-	--use("AlessandroYorba/Alduin")
-	"yashguptaz/calvera-dark.nvim",
-	"shaunsingh/moonlight.nvim",
-	"trevordmiller/nova-vim",
-	"whatyouhide/vim-gotham",
 	"gruvbox-community/gruvbox",
-	"nanotech/jellybeans.vim",
-	"noahfrederick/vim-hemisu",
 	"sainnhe/everforest",
-	--"savq/melange",
-	"shaeinst/roshnivim-cs",
+	"savq/melange",
 	"EdenEast/nightfox.nvim",
 	"folke/tokyonight.nvim",
-	--use("sainnhe/edge")
-	--use("kvrohit/rasmus.nvim")
-	--use("Abstract-IDE/Abstract-cs")
-	"rafamadriz/neon",
-	--use("beikome/cosme.vim")
 	"arturgoms/moonbow.nvim",
-	--use("cocopon/iceberg.vim")
-	--use("rose-pine/neovim")
-	"ray-x/starry.nvim",
-	--use("kyazdani42/blue-moon")
-	--use("glepnir/zephyr-nvim")
-	--use("adisen99/apprentice.nvim")
-	"rockerBOO/boo-colorscheme-nvim",
 	"bluz71/vim-moonfly-colors",
-	--[[ use({ ]]
-	--[[ 	"olivercederborg/poimandres.nvim", ]]
-	--[[ 	config = function() ]]
-	--[[ 		require("poimandres").setup({ ]]
-	--[[ 			-- leave this setup function empty for default config ]]
-	--[[ 			-- or refer to the configuration section ]]
-	--[[ 			-- for configuration options ]]
-	--[[ 		}) ]]
-	--[[ 	end, ]]
-	--[[ }) ]]
 
 	-- remember last color
 	--{ "rojspencer/vim-colorminder", event = "VeryLazy" },
@@ -311,6 +277,5 @@ local plugins = {
 }
 
 local opts = {}
-
 lazy.setup(plugins, opts)
 vim.keymap.set("n", "<leader>B", "<cmd>AerialToggle!<CR>")

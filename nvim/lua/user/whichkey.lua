@@ -172,7 +172,7 @@ local mappings = {
 			"Prev Diagnostic",
 		},
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-		L = { ':lua require("lsp_lines").toggle()<CR>', "Toggle Lua Lines" },
+		--[[ L = { ':lua require("lsp_lines").toggle()<CR>', "Toggle Lua Lines" }, ]]
 
 		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
 
