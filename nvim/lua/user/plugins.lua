@@ -143,6 +143,13 @@ local plugins = {
 			"MunifTanjim/nui.nvim",
 		},
 	},
+
+	-- ------	-- ------
+	-- ☕️ TypeScript
+	-- -----	-- -------
+
+	"dmmulroy/tsc.nvim",
+
 	-- ------	-- ------
 	-- 💻 DAP
 	-- -----	-- -------

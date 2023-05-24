@@ -72,6 +72,7 @@
   "telescope.nvim": { "branch": "master", "commit": "057ee0f8783872635bc9bc9249a4448da9f99123" },
   "tokyonight.nvim": { "branch": "main", "commit": "6972aade12a9c6ecbbd163739d7617c21fc6bc4b" },
   "trouble.nvim": { "branch": "main", "commit": "5da13b5007eb2b952834186cd640a22c765b64cf" },
+  "tsc.nvim": { "branch": "main", "commit": "502f44da1f6c6248c0642c373f72b874c3a60e47" },
   "vim-bbye": { "branch": "master", "commit": "25ef93ac5a87526111f43e5110675032dbcacf56" },
   "vim-colorminder": { "branch": "master", "commit": "7e170c2f8a179bcfc7c1a9ae7bbdd6e8bb44f8d3" },
   "vim-moonfly-colors": { "branch": "master", "commit": "c4ae6851441edfe74f7fb46b0e8cc43f534b0aa5" },

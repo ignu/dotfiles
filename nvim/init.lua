@@ -29,6 +29,8 @@ require("user.navbuddy")
 --require("user.dap")
 require("globals")
 
+require("tsc").setup()
+
 vim.g.symbols_outline = {
 	highlight_hovered_item = true,
 	show_guides = true,
