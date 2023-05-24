@@ -69,7 +69,9 @@ keymap("i", "<c-s>", "<esc>:w<cr>", opts)
 -- Press jk fast to esc
 keymap("i", "jk", "<ESC>", opts)
 
-keymap("n", "-", ":Exp<CR>", opts)
+--keymap("n", "-", ":Exp<CR>", opts)
+--keymap("n", "-", require("oil").open, { desc = "Open parent directory" })
+vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
 
 -- Visual --
 -- Stay in indent mode

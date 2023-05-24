@@ -180,7 +180,7 @@ local plugins = {
 			require("telescope").load_extension("file_browser")
 		end,
 	},
-
+	"stevearc/oil.nvim",
 	{
 		"sudormrfbin/cheatsheet.nvim",
 
