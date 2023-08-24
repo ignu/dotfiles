@@ -205,7 +205,7 @@ function gc() {
 }
 
 function whilepass() {
-  while $1; do :; done
+  while "$1"; do :; done
 }
 
 function whilefail() {

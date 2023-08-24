@@ -33,7 +33,7 @@ local plugins = {
 	"numToStr/Comment.nvim", -- Easily comment stuff
 	"kyazdani42/nvim-web-devicons",
 	"kyazdani42/nvim-tree.lua",
-	--use 'akinsho/bufferline.nvim'
+	"akinsho/bufferline.nvim",
 	"moll/vim-bbye",
 	"nvim-lualine/lualine.nvim",
 	--use("akinsho/toggleterm.nvim")
@@ -43,7 +43,7 @@ local plugins = {
 	-- 	rocks = { "lsqlite3" },
 	-- })
 	"lewis6991/impatient.nvim",
-	{ "lukas-reineke/indent-blankline.nvim", event = "VeryLazy" },
+	-- { "lukas-reineke/indent-blankline.nvim", event = "VeryLazy" },
 	"antoinemadec/FixCursorHold.nvim", -- This is needed to fix lsp doc highlight
 	"folke/which-key.nvim",
 
@@ -56,6 +56,12 @@ local plugins = {
 	--use("adisen99/codeschool.nvim")
 	--use("tjdevries/colorbuddy.nvim")
 	--use("lunarvim/darkplus.nvim")
+	"rockerBOO/boo-colorscheme-nvim",
+	{
+		"zootedb0t/citruszest.nvim",
+		lazy = false,
+		priority = 1000,
+	},
 	"rebelot/kanagawa.nvim",
 	"gruvbox-community/gruvbox",
 	"sainnhe/everforest",
@@ -64,6 +70,7 @@ local plugins = {
 	"folke/tokyonight.nvim",
 	"arturgoms/moonbow.nvim",
 	"bluz71/vim-moonfly-colors",
+	"dasupradyumna/midnight.nvim",
 
 	-- remember last color
 	--{ "rojspencer/vim-colorminder", event = "VeryLazy" },
