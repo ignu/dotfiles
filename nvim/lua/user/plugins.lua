@@ -27,7 +27,7 @@ local plugins = {
 	"wbthomason/packer.nvim", -- Have packer manage itself
 	{ "mrjones2014/nvim-ts-rainbow", event = "VeryLazy" },
 	"tpope/vim-surround",
-	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
+	"nvim-lua/popup.nvim",  -- An implementation of the Popup API from vim in Neovim
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 	"numToStr/Comment.nvim", -- Easily comment stuff
@@ -77,10 +77,10 @@ local plugins = {
 	{ "rojspencer/vim-colorminder" },
 
 	-- cmp plugins
-	"hrsh7th/nvim-cmp", -- The completion plugin
-	"hrsh7th/cmp-buffer", -- buffer completions
-	"hrsh7th/cmp-path", -- path completions
-	"hrsh7th/cmp-cmdline", -- cmdline completions
+	"hrsh7th/nvim-cmp",        -- The completion plugin
+	"hrsh7th/cmp-buffer",      -- buffer completions
+	"hrsh7th/cmp-path",        -- path completions
+	"hrsh7th/cmp-cmdline",     -- cmdline completions
 	"saadparwaiz1/cmp_luasnip", -- snippet completions
 	"hrsh7th/cmp-nvim-lsp",
 
@@ -109,20 +109,25 @@ local plugins = {
 	-- ---	-- ------
 	-- 🔊 LSP
 	-- ---	-- -------
+	'williamboman/mason.nvim',
+	'williamboman/mason-lspconfig.nvim',
 	"neovim/nvim-lspconfig", -- enable LSP
-	{
-		"SmiteshP/nvim-navic",
-		dependencies = { "neovim/nvim-lspconfig" },
-	},
-	"williamboman/nvim-lsp-installer", -- simple to use language server installer
-	"tamago324/nlsp-settings.nvim", -- language server settings defined in json for
+	-- {
+	-- 	"SmiteshP/nvim-navic",
+	-- 	dependencies = { "neovim/nvim-lspconfig" },
+	-- },
+	--"williamboman/nvim-lsp-installer", -- simple to use language server installer
+	"tamago324/nlsp-settings.nvim",   -- language server settings defined in json for
 	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 	--[[ config = function() ]]
 	--[[ 	require("lsp_lines").setup() ]]
-	"jinzhongjia/LspUI.nvim",
+	{
+		"jinzhongjia/LspUI.nvim",
+		branch = "legacy"
+	},
 
-	"folke/trouble.nvim", -- for troubleshooting
+	"folke/trouble.nvim",        -- for troubleshooting
 	"haringsrob/nvim_context_vt", -- see method vt
 
 	{
@@ -142,14 +147,14 @@ local plugins = {
 		"MunifTanjim/nui.nvim",
 	},
 
-	{
-		"SmiteshP/nvim-navbuddy",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			"SmiteshP/nvim-navic",
-			"MunifTanjim/nui.nvim",
-		},
-	},
+	-- {
+	-- 	"SmiteshP/nvim-navbuddy",
+	-- 	dependencies = {
+	-- 		"neovim/nvim-lspconfig",
+	-- 		"SmiteshP/nvim-navic",
+	-- 		"MunifTanjim/nui.nvim",
+	-- 	},
+	-- },
 
 	-- ------	-- ------
 	-- ☕️ TypeScript
@@ -168,7 +173,7 @@ local plugins = {
 
 	-- ------
 
-	{ "kevinhwang91/nvim-bqf", ft = "qf" },
+	{ "kevinhwang91/nvim-bqf",                    ft = "qf" },
 
 	-- -----	-- -------
 	-- 🔭 Telescope
@@ -209,12 +214,12 @@ local plugins = {
 		config = function()
 			require("config-local").setup({
 				-- Default configuration (optional)
-				config_files = { ".vimrc.lua", ".vimrc" }, -- Config file patterns to load (lua supported)
+				config_files = { ".vimrc.lua", ".vimrc" },        -- Config file patterns to load (lua supported)
 				hashfile = vim.fn.stdpath("data") .. "/config-local", -- Where the plugin keeps files data
-				autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
-				commands_create = true, -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
-				silent = true, -- Disable plugin messages (Config loaded/ignored)
-				lookup_parents = false, -- Lookup config files in parent directories
+				autocommands_create = true,                       -- Create autocommands (VimEnter, DirectoryChanged)
+				commands_create = true,                           -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
+				silent = true,                                    -- Disable plugin messages (Config loaded/ignored)
+				lookup_parents = false,                           -- Lookup config files in parent directories
 			})
 		end,
 	},

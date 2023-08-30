@@ -25,7 +25,7 @@ require("user.autocommands")
 require("user.yanky")
 require("user.quickfix")
 require("user.marks")
-require("user.navbuddy")
+--require("user.navbuddy")
 --require("user.dap")
 require("globals")
 
