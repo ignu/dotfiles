@@ -15,7 +15,7 @@ M.setup = function()
 
 	local config = {
 		-- disable virtual text redunant with lsp_lines
-		virtual_text = false,
+		virtual_text = true,
 		-- show signs
 		signs = {
 			active = signs,
@@ -88,14 +88,14 @@ require("nvim-treesitter.configs").setup({
 		-- ...
 	},
 	-- ...
-	rainbow = {
-		enable = true,
-		-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-		max_file_lines = nil, -- Do not enable for files with more than n lines, int
-		-- colors = {}, -- table of hex strings
-		-- termcolors = {} -- table of colour name strings
-	},
+	-- rainbow = {
+	-- 	enable = true,
+	-- 	-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+	-- 	extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+	-- 	max_file_lines = nil, -- Do not enable for files with more than n lines, int
+	-- 	-- colors = {}, -- table of hex strings
+	-- 	-- termcolors = {} -- table of colour name strings
+	-- },
 })
 M.on_attach = function(client, bufnr)
 	--if client.name == "tsserver" then
@@ -113,5 +113,6 @@ if not status_ok then
 end
 
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+
 
 return M

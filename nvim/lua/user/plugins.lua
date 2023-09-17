@@ -111,6 +111,7 @@ local plugins = {
 	-- ---	-- -------
 	'williamboman/mason.nvim',
 	'williamboman/mason-lspconfig.nvim',
+	'jay-babu/mason-null-ls.nvim',
 	"neovim/nvim-lspconfig", -- enable LSP
 	-- {
 	-- 	"SmiteshP/nvim-navic",

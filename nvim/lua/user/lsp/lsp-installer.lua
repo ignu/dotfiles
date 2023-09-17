@@ -5,6 +5,7 @@ require("mason-lspconfig").setup()
 require("lspconfig").lua_ls.setup {}
 require("lspconfig").tsserver.setup {}
 require("lspconfig").eslint.setup {}
+require("lspconfig")["null-ls"].setup {}
 
 -- require("lspconfig").rust_analyzer.setup {}
 -- ...

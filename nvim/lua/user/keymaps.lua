@@ -18,6 +18,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- i never want to increment a number
 keymap("n", "<C-a>", ":echo 'blah'<CR>", opts)
 
+keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+
 -- bind something to this later, i never want to alter case
 keymap("n", "gu", ":echo no<CR>", opts)
 keymap("n", "gU", ":echo no<CR>", opts)
@@ -62,8 +64,8 @@ keymap("n", "<C-p>", ":Telescope git_files<CR>", opts)
 keymap("n", "<leader>ff", ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', opts)
 
 -- ctrl-save
-keymap("n", "<c-s>", ":w<cr>", opts)
-keymap("i", "<c-s>", "<esc>:w<cr>", opts)
+keymap("n", "<c-s>", ":w!<cr>", opts)
+keymap("i", "<c-s>", "<esc>:w!<cr>", opts)
 
 -- Insert --
 -- Press jk fast to esc
