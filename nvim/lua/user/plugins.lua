@@ -25,26 +25,20 @@ vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappin
 
 local plugins = {
 	"wbthomason/packer.nvim", -- Have packer manage itself
-	{ "mrjones2014/nvim-ts-rainbow", event = "VeryLazy" },
 	"tpope/vim-surround",
-	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
+	--"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
+	--"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
+	--"akinsho/bufferline.nvim",
+
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
-	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 	"numToStr/Comment.nvim", -- Easily comment stuff
 	"kyazdani42/nvim-web-devicons",
 	"kyazdani42/nvim-tree.lua",
-	"akinsho/bufferline.nvim",
 	"moll/vim-bbye",
 	"nvim-lualine/lualine.nvim",
 	--use("akinsho/toggleterm.nvim")
 	"ahmedkhalf/project.nvim",
-	-- use({
-	-- 	"charludo/projectmgr.nvim",
-	-- 	rocks = { "lsqlite3" },
-	-- })
 	"lewis6991/impatient.nvim",
-	-- { "lukas-reineke/indent-blankline.nvim", event = "VeryLazy" },
-	"antoinemadec/FixCursorHold.nvim", -- This is needed to fix lsp doc highlight
 	"folke/which-key.nvim",
 
 	-------------------
@@ -74,7 +68,7 @@ local plugins = {
 
 	-- remember last color
 	--{ "rojspencer/vim-colorminder", event = "VeryLazy" },
-	{ "rojspencer/vim-colorminder" },
+	{ "rojspencer/vim-colorminder" }, -- remember last colorscheme
 
 	-- cmp plugins
 	"hrsh7th/nvim-cmp", -- The completion plugin
@@ -96,7 +90,7 @@ local plugins = {
 			})
 		end,
 	},
-	"AndrewRadev/tagalong.vim",
+	"AndrewRadev/tagalong.vim", --rename both pairs of html
 
 	--use("simrat39/symbols-outline.nvim")
 	-- ----------------
@@ -113,16 +107,9 @@ local plugins = {
 	"williamboman/mason-lspconfig.nvim",
 	"jay-babu/mason-null-ls.nvim",
 	"neovim/nvim-lspconfig", -- enable LSP
-	-- {
-	-- 	"SmiteshP/nvim-navic",
-	-- 	dependencies = { "neovim/nvim-lspconfig" },
-	-- },
-	--"williamboman/nvim-lsp-installer", -- simple to use language server installer
 	"tamago324/nlsp-settings.nvim", -- language server settings defined in json for
 	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-	--[[ config = function() ]]
-	--[[ 	require("lsp_lines").setup() ]]
+	"https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- full lines of diagnostics
 	{
 		"jinzhongjia/LspUI.nvim",
 		branch = "legacy",
@@ -130,7 +117,6 @@ local plugins = {
 
 	"folke/trouble.nvim", -- for troubleshooting
 	"haringsrob/nvim_context_vt", -- see method vt
-
 	{
 		"ojroques/nvim-lspfuzzy",
 		dependencies = {
@@ -200,7 +186,7 @@ local plugins = {
 			require("telescope").load_extension("file_browser")
 		end,
 	},
-	"stevearc/oil.nvim",
+	"stevearc/oil.nvim", -- nvim file explorer
 	{
 		"sudormrfbin/cheatsheet.nvim",
 

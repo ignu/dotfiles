@@ -15,7 +15,7 @@ M.setup = function()
 
 	local config = {
 		-- disable virtual text redunant with lsp_lines
-		virtual_text = true,
+		virtual_text = false,
 		-- show signs
 		signs = {
 			active = signs,
@@ -113,6 +113,5 @@ if not status_ok then
 end
 
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-
 
 return M

@@ -7,6 +7,7 @@ require("user.lsp.lsp-installer")
 require("user.lsp.handlers").setup()
 require("user.lsp.null-ls")
 require("fidget").setup({})
+require("lsp_lines").setup()
 -- local navic = require("nvim-navic")
 
 -- lspconfig.clangd.setup({

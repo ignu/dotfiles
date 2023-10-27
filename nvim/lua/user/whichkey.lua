@@ -100,6 +100,11 @@ local mappings = {
 		"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>LspUI code_action<cr>",
 		"Next Diagnostic",
 	},
+	["J"] = {
+		--"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>lua vim.lsp.buf.code_action()<cr>",
+		"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>lua vim.diagnostic.open_float()<cr>",
+		"Popup Next Diagnostic",
+	},
 	["k"] = {
 		"<cmd>lua vim.diagnostic.goto_prev()<cr><cmd>LspUI code_action<cr>",
 		"Prev Diagnostic",
@@ -139,20 +144,13 @@ local mappings = {
 	},
 	l = {
 		name = "LSP",
-
-		--a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 		a = { "<cmd>LspUI code_action<cr>", "Code Action" },
 		b = { "<cmd>:lua require('nvim-navbuddy').open()<CR>", "Code Action" },
-
+		c = { "<cmd>Telescope lsp_incoming_calls ", "Code Action" },
 		d = {
 			"<cmd>Telescope lsp_document_diagnostics<cr>",
 			"Document Diagnostics",
 		},
-		w = {
-			"<cmd>Telescope lsp_workspace_diagnostics<cr>",
-			"Workspace Diagnostics",
-		},
-
 		K = {
 			--":lua vim.lsp.buf.hover()<cr>",
 			":LspUI hover<cr>",
@@ -186,9 +184,11 @@ local mappings = {
 		},
 		t = { ":Telescope lsp_references<CR>", "Telescope references" },
 		w = { "<cmd>LspUI peek_definition<CR>", "peek def" },
-		--[[ LspUI peek_definition ]]
-
-		y = { "<cmd>LspInfo<cr>", "Info" },
+		W = {
+			"<cmd>Telescope lsp_workspace_diagnostics<cr>",
+			"Workspace Diagnostics",
+		},
+		y = { "<cmd>LspInfo<cr>", "LSP Info" },
 		Y = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
 	},
 	f = {
