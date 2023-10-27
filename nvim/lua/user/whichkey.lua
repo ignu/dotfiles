@@ -3,6 +3,9 @@ if not status_ok then
 	return
 end
 
+local horizontalLayout =
+	'{ layout_strategy = "vertical", layout_config = { width = 0.95, height = 0.95, preview_height = { 0.7, min = 10 } } }'
+
 local setup = {
 	plugins = {
 		marks = true, -- shows a list of your marks on ' and `
@@ -130,9 +133,12 @@ local mappings = {
 			":LazyGit<cr>",
 			"Lazy Git",
 		},
-		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+		o = {
+			"<cmd>Telescope git_status(" .. horizontalLayout .. ")}), <cr>",
+			"Open changed file",
+		},
 		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-		B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		B = { "<cmd>Telescope git_branches theme=ivy<cr>", "Checkout branch" },
 		d = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Diff",
@@ -196,12 +202,12 @@ local mappings = {
 		a = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search In Buffer" },
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 		c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-		o = { "<cmd>Telescope vim_options<cr>", "Options" },
 		J = { "<cmd>Telescope jumplist<cr>", "Jumplist" },
 		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 		m = { "<cmd>Telescope marks<cr>", "Marks" },
 		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+		O = { "<cmd>Telescope vim_options<cr>", "Options" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 		--f = { "<cmd>Telescope live_grep<cr>", "Rg" }, mapped in keymaps now
 		G = { "<cmd>Telescope lazygit<cr>", "Lazygit" },

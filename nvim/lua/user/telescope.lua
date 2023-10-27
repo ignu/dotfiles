@@ -4,15 +4,21 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions")
+local horizontalLayout =
+	'{ layout_strategy = "vertical", layout_config = { width = 0.95, height = 0.95, preview_height = { 0.7, min = 10 } } }'
 
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
 		shorten_path = true,
-
+		layout_strategy = "vertical",
+		layout_config = {
+			vertical = { width = 0.95 },
+			horizontal = { width = 0.95 },
+			preview_height = { 0.7, min = 10 },
+		},
 		mappings = {
 			i = {
 				["<C-n>"] = actions.cycle_history_next,

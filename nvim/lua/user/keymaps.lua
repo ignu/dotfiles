@@ -2,6 +2,8 @@ local opts = { noremap = true, silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
+local horizontalLayout =
+	'{ layout_strategy = "vertical", layout_config = { width = 0.95, height = 0.95, preview_height = { 0.7, min = 10 } } }'
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -61,7 +63,12 @@ vim.keymap.set("n", "<c-m>", "<Plug>(YankyCycleBackward)")
 
 -- open git files
 keymap("n", "<C-p>", ":Telescope git_files<CR>", opts)
-keymap("n", "<leader>ff", ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', opts)
+keymap(
+	"n",
+	"<leader>ff",
+	':lua require("telescope").extensions.live_grep_args.live_grep_args(' .. horizontalLayout .. ")<CR>",
+	opts
+)
 
 -- ctrl-save
 keymap("n", "<c-s>", ":w!<cr>", opts)
