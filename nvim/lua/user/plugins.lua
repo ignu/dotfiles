@@ -174,6 +174,12 @@ local plugins = {
 		},
 	},
 	{
+		"nvim-telescope/telescope-node-modules.nvim",
+		config = function()
+			require("telescope").load_extension("node_modules")
+		end,
+	},
+	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		keys = {
 			{
@@ -220,6 +226,7 @@ local plugins = {
 	"hashivim/vim-terraform",
 	"JoosepAlviste/nvim-ts-context-commentstring",
 	"nvim-treesitter/nvim-treesitter-context",
+	"mfussenegger/nvim-treehopper", -- select and navigate
 	{
 		"Kasama/nvim-custom-diagnostic-highlight",
 		config = function()

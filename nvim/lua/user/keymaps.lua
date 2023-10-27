@@ -96,6 +96,9 @@ keymap("v", "p", '"_dP', opts)
 --keymap("n", "<Tab>", ":tabn<cr>", opts)
 --keymap("n", "<S-Tab>", ":tabp<cr>", opts)
 
+-- nvim treehopper
+keymap("n", "M", ":lua require('tsht').nodes()<CR>", opts)
+
 keymap("n", "<S-Tab>", ":tabp<cr>", opts)
 
 -- testing
