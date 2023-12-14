@@ -119,7 +119,7 @@ local mappings = {
 		--g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
 		--j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		--k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-		b = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+		b = { "<cmd>lua require 'gitsigns'.blame_line() full=true<cr>", "Blame" },
 		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
 		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
 		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
@@ -143,6 +143,11 @@ local mappings = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Diff",
 		},
+		D = {
+			"<cmd>Gitsigns toggle_deleted<cr>",
+			"Diff",
+		},
+
 		w = {
 			":echo \"getting url\"<CR><cmd>lua require'gitlinker'.get_buf_range_url('n')<cr>",
 			"Github url",
@@ -151,8 +156,8 @@ local mappings = {
 	l = {
 		name = "LSP",
 		a = { "<cmd>LspUI code_action<cr>", "Code Action" },
-		b = { "<cmd>:lua require('nvim-navbuddy').open()<CR>", "Code Action" },
-		c = { "<cmd>Telescope lsp_incoming_calls ", "Code Action" },
+		b = { "<cmd>:lua require('nvim-navbuddy').open()<CR>", "Nav (B)uddy" },
+		c = { "<cmd>Telescope lsp_incoming_calls<CR>", "Incoming (C)alls" },
 		d = {
 			"<cmd>Telescope lsp_document_diagnostics<cr>",
 			"Document Diagnostics",
@@ -176,6 +181,7 @@ local mappings = {
 			"Prev Diagnostic",
 		},
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+		L = { '<cmd>:lua require("lsp_lines").toggle()<CR>', "Toggle lsp_lines" },
 		--[[ L = { ':lua require("lsp_lines").toggle()<CR>', "Toggle Lua Lines" }, ]]
 
 		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
@@ -214,6 +220,9 @@ local mappings = {
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
+		w = { "<cmd>:Rg <cword><CR>", "Search for word" },
+		-- search for word in file's directory
+		W = { "<cmd>:Rg <cword> %:p:h<CR>", "Search for word in file's directory" },
 		t = { "<cmd>Telescope<cr>", "Telescopes" },
 		T = { "<cmd>Telescope tagstack<cr>", "tagstack" },
 		y = { "<cmd>Telescope resume<cr>", "Resume" },

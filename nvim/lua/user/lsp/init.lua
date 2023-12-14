@@ -16,6 +16,18 @@ require("lsp_lines").setup()
 -- 	end,
 -- })
 
+require("nvim_context_vt").setup({
+	enabled = true,
+	prefix = "",
+	disable_ft = { "markdown" },
+	disable_virtual_lines = true,
+	disable_virtual_lines_ft = { "yaml" },
+	min_rows = 7,
+	-- Same as above but only for spesific filetypes
+	-- Default: {}
+	--min_rows_ft = {},
+})
+
 local signature_cfg = {
 	debug = false, -- set to true to enable debug logging
 	log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on

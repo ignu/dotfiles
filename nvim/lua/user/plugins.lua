@@ -134,14 +134,25 @@ local plugins = {
 		"MunifTanjim/nui.nvim",
 	},
 
-	-- {
-	-- 	"SmiteshP/nvim-navbuddy",
-	-- 	dependencies = {
-	-- 		"neovim/nvim-lspconfig",
-	-- 		"SmiteshP/nvim-navic",
-	-- 		"MunifTanjim/nui.nvim",
-	-- 	},
-	-- },
+	{
+		"ThePrimeagen/refactoring.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("refactoring").setup()
+		end,
+	},
+	{
+		"SmiteshP/nvim-navbuddy",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"MunifTanjim/nui.nvim",
+		},
+	},
+	"HiPhish/rainbow-delimiters.nvim",
 
 	-- ------	-- ------
 	-- ☕️ TypeScript
@@ -216,6 +227,7 @@ local plugins = {
 			})
 		end,
 	},
+	"duane9/nvim-rg",
 	-- ----------
 	-- 🌲 Treesitter
 	-- ----------
