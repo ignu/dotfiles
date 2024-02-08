@@ -205,11 +205,23 @@ function gc() {
 }
 
 function whilepass() {
-  while eval "$@"; do :; done
+  local attempt=1
+  echo "🚀🚀🚀Attempt #$attempt"
+
+  while eval "$@"; do
+    ((attempt++))
+    echo "🚀🚀🚀Attempt #$attempt"
+  done
 }
 
 function whilefail() {
-  until eval "$@"; do :; done
+  local attempt=1
+  echo "🚀🚀🚀Attempt #$attempt"
+
+  until eval "$@"; do
+    ((attempt++))
+    echo "🚀🚀🚀Attempt #$attempt"
+  done
 }
 
 function gbtr() {
