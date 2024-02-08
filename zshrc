@@ -205,13 +205,11 @@ function gc() {
 }
 
 function whilepass() {
-  cmd="$0"
-  while eval "$cmd"; do :; done
+  while eval "$@"; do :; done
 }
 
 function whilefail() {
-  cmd="$0"
-  while ! eval "$cmd"; do :; done
+  until eval "$@"; do :; done
 }
 
 function gbtr() {
