@@ -1,6 +1,8 @@
 local fn = vim.fn
 
 local lazypath = fn.stdpath("data") .. "/lazy/lazy.nvim"
+vim.g.skip_ts_context_commentstring_module = true
+
 if not vim.loop.fs_stat(lazypath) then
 	fn.system({
 		"git",

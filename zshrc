@@ -206,22 +206,34 @@ function gc() {
 
 function whilepass() {
   local attempt=1
-  echo "🚀🚀🚀Attempt #$attempt"
+    echo "*-------------------*"
+    echo " 🚀Attempt #$attempt"
+    echo "*-------------------*"
 
   while eval "$@"; do
     ((attempt++))
-    echo "🚀🚀🚀Attempt #$attempt"
+    echo "*-------------------*"
+    echo " 🚀Attempt #$attempt"
+    echo "*-------------------*"
   done
+  echo "🤯 FAILED Attempt #$attempt"
+
 }
 
 function whilefail() {
   local attempt=1
-  echo "🚀🚀🚀Attempt #$attempt"
+    echo "*-------------------*"
+    echo " 🚀Attempt #$attempt"
+    echo "*-------------------*"
 
   until eval "$@"; do
     ((attempt++))
-    echo "🚀🚀🚀Attempt #$attempt"
+    echo "*-------------------*"
+    echo " 🚀Attempt #$attempt"
+    echo "*-------------------*"
   done
+  echo "🤯 Unexpected pass on attempt #$attempt"
+
 }
 
 function gbtr() {

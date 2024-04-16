@@ -12,3 +12,4 @@ vim_all
 .nvimrc
 .tool-versions
 .vimrc.lua
+vitest.workspace.ts
