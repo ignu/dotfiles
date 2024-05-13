@@ -75,7 +75,8 @@ alias iph="iex -S mix phx.server"
 # DOCKER
 alias burn="docker kill $(docker ps -q)"
 #alias l="exa -l"
-alias l="eza --color=always --long --git --icons=always --no-time --no-user --no-permissions"
+alias l="eza --color=always --long --git --icons=always --no-time --no-user --no-permissions --group-directories-first"
+alias la="ls -lAh"
 
 # OOPS
 alias :sp='cowsay "this isnt vim."'
