@@ -168,6 +168,8 @@ local mappings = {
 			"Hover Doc",
 		},
 		f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+		h = { "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", "Toggle Inlay Hints" },
+		H = { "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", "Toggle Inlay Hints" },
 		i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
 		--[[ Z = { ]]
 		--[[ 	'<cmd>lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>', ]]

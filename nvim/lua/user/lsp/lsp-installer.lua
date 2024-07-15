@@ -7,7 +7,34 @@ require("mason-null-ls").setup({
 -- After setting up mason-lspconfig you may set up servers via lspconfig
 require("lspconfig").lua_ls.setup({})
 require("lspconfig").tsserver.setup({
-	importModuleSpecifierPreference = "relative",
+	settings = {
+		importModuleSpecifierPreference = "relative",
+		javascript = {
+			importModuleSpecifierPreference = "relative",
+
+			--[[ inlayHints = { ]]
+			--[[ 	includeInlayEnumMemberValueHints = true, ]]
+			--[[ 	includeInlayFunctionLikeReturnTypeHints = true, ]]
+			--[[ 	includeInlayFunctionParameterTypeHints = true, ]]
+			--[[ 	includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'; ]]
+			--[[ 	includeInlayParameterNameHintsWhenArgumentMatchesName = true, ]]
+			--[[ 	includeInlayPropertyDeclarationTypeHints = true, ]]
+			--[[ 	includeInlayVariableTypeHints = true, ]]
+			--[[ }, ]]
+		},
+		typescript = {
+			importModuleSpecifierPreference = "relative",
+			--[[ inlayHints = { ]]
+			--[[ 	includeInlayEnumMemberValueHints = true, ]]
+			--[[ 	includeInlayFunctionLikeReturnTypeHints = true, ]]
+			--[[ 	includeInlayFunctionParameterTypeHints = true, ]]
+			--[[ 	includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'; ]]
+			--[[ 	includeInlayParameterNameHintsWhenArgumentMatchesName = true, ]]
+			--[[ 	includeInlayPropertyDeclarationTypeHints = true, ]]
+			--[[ 	includeInlayVariableTypeHints = true, ]]
+			--[[ }, ]]
+		},
+	},
 })
 require("lspconfig").eslint.setup({})
 --require("lspconfig")["null-ls"].setup({})
