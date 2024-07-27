@@ -6,279 +6,648 @@ end
 local horizontalLayout =
 	'{ layout_strategy = "vertical", layout_config = { width = 0.95, height = 0.95, preview_height = { 0.7, min = 10 } } }'
 
-local setup = {
+local defaults = {
+	---@type false | "classic" | "modern" | "helix"
+	preset = "classic",
+	-- Delay before showing the popup. Can be a number or a function that returns a number.
+	---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
+	delay = function(ctx)
+		return ctx.plugin and 0 or 200
+	end,
+	filter = function(mapping)
+		-- example to exclude mappings without a description
+		-- return mapping.desc and mapping.desc ~= ""
+		return true
+	end,
+	spec = {},
+	-- show a warning when issues were detected with your mappings
+	notify = true,
+	-- Which-key automatically sets up triggers for your mappings.
+	-- But you can disable this and setup the triggers manually.
+	-- Check the docs for more info.
+	triggers = {
+		{ "<auto>", mode = "nxsot" },
+	},
+	-- Start hidden and wait for a key to be pressed before showing the popup
+	-- Only used by enabled xo mapping modes.
+	---@param ctx { mode: string, operator: string }
+	defer = function(ctx)
+		return ctx.mode == "V" or ctx.mode == "<C-V>"
+	end,
 	plugins = {
 		marks = true, -- shows a list of your marks on ' and `
 		registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+		-- the presets plugin, adds help for a bunch of default keybindings in Neovim
+		-- No actual key bindings are created
 		spelling = {
 			enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
 			suggestions = 20, -- how many suggestions should be shown in the list?
 		},
-		-- the presets plugin, adds help for a bunch of default keybindings in Neovim
-		-- No actual key bindings are created
 		presets = {
-			operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+			operators = true, -- adds help for operators like d, y, ...
 			motions = true, -- adds help for motions
 			text_objects = true, -- help for text objects triggered after entering an operator
 			windows = true, -- default bindings on <c-w>
 			nav = true, -- misc bindings to work with windows
-			--z = true, -- bindings for folds, spelling and others prefixed with z
+			z = true, -- bindings for folds, spelling and others prefixed with z
 			g = true, -- bindings for prefixed with g
 		},
 	},
-	-- add operators that will trigger motion and text object completion
-	-- to enable all native operators, set the preset / operators plugin above
-	-- operators = { gc = "Comments" },
-	key_labels = {},
+	win = {
+		-- don't allow the popup to overlap with the cursor
+		no_overlap = true,
+		-- width = 1,
+		-- height = { min = 4, max = 25 },
+		-- col = 0,
+		-- row = math.huge,
+		-- border = "none",
+		padding = { 1, 2 }, -- extra window padding [top/bottom, right/left]
+		title = true,
+		title_pos = "center",
+		zindex = 1000,
+		-- Additional vim.wo and vim.bo options
+		bo = {},
+		wo = {
+			-- winblend = 10, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+		},
+	},
+	layout = {
+		width = { min = 20 }, -- min and max width of the columns
+		spacing = 3, -- spacing between columns
+	},
+	keys = {
+		scroll_down = "<c-d>", -- binding to scroll down inside the popup
+		scroll_up = "<c-u>", -- binding to scroll up inside the popup
+	},
+	--- Mappings are sorted using configured sorters and natural sort of the keys
+	--- Available sorters:
+	--- * local: buffer-local mappings first
+	--- * order: order of the items (Used by plugins like marks / registers)
+	--- * group: groups last
+	--- * alphanum: alpha-numerical first
+	--- * mod: special modifier keys last
+	--- * manual: the order the mappings were added
+	--- * case: lower-case first
+	sort = { "local", "order", "group", "alphanum", "mod" },
+	expand = 0, -- expand groups when <= n mappings
+	-- expand = function(node)
+	--   return not node.desc -- expand all nodes without a description
+	-- end,
+	-- Functions/Lua Patterns for formatting the labels
+	---@type table<string, ({[1]:string, [2]:string}|fun(str:string):string)[]>
+	replace = {
+		key = {
+			function(key)
+				return require("which-key.view").format(key)
+			end,
+			-- { "<Space>", "SPC" },
+		},
+		desc = {
+			{ "<Plug>%(?(.*)%)?", "%1" },
+			{ "^%+", "" },
+			{ "<[cC]md>", "" },
+			{ "<[cC][rR]>", "" },
+			{ "<[sS]ilent>", "" },
+			{ "^lua%s+", "" },
+			{ "^call%s+", "" },
+			{ "^:%s*", "" },
+		},
+	},
 	icons = {
 		breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
 		separator = "➜", -- symbol used between a key and it's label
 		group = "+", -- symbol prepended to a group
+		ellipsis = "…",
+		-- set to false to disable all mapping icons,
+		-- both those explicitely added in a mapping
+		-- and those from rules
+		mappings = true,
+		--- See `lua/which-key/icons.lua` for more details
+		--- Set to `false` to disable keymap icons from rules
+		rules = {},
+		-- use the highlights from mini.icons
+		-- When `false`, it will use `WhichKeyIcon` instead
+		colors = true,
+		-- used by key format
+		keys = {
+			Up = " ",
+			Down = " ",
+			Left = " ",
+			Right = " ",
+			C = "󰘴 ",
+			M = "󰘵 ",
+			D = "󰘳 ",
+			S = "󰘶 ",
+			CR = "󰌑 ",
+			Esc = "󱊷 ",
+			ScrollWheelDown = "󱕐 ",
+			ScrollWheelUp = "󱕑 ",
+			NL = "󰌑 ",
+			BS = "󰁮",
+			Space = "󱁐 ",
+			Tab = "󰌒 ",
+			F1 = "󱊫",
+			F2 = "󱊬",
+			F3 = "󱊭",
+			F4 = "󱊮",
+			F5 = "󱊯",
+			F6 = "󱊰",
+			F7 = "󱊱",
+			F8 = "󱊲",
+			F9 = "󱊳",
+			F10 = "󱊴",
+			F11 = "󱊵",
+			F12 = "󱊶",
+		},
 	},
-	popup_mappings = {
-		scroll_down = "<c-d>", -- binding to scroll down inside the popup
-		scroll_up = "<c-u>", -- binding to scroll up inside the popup
+	show_help = true, -- show a help message in the command line for using WhichKey
+	show_keys = true, -- show the currently pressed key and its label as a message in the command line
+	-- disable WhichKey for certain buf types and file types.
+	disable = {
+		ft = {},
+		bt = {},
 	},
-	window = {
-		border = "rounded", -- none, single, double, shadow
-		position = "bottom", -- bottom, top
-		margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-		padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-		winblend = 6,
-	},
-	layout = {
-		height = { min = 4, max = 25 }, -- min and max height of the columns
-		width = { min = 60, max = 180 }, -- min and max width of the columns
-		spacing = 3, -- spacing between columns
-		align = "left", -- align columns left, center or right
-	},
-	ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
-	hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-	show_help = true, -- show help message on the command line when the popup is visible
-	triggers = "auto", -- automatically setup triggers
-	-- triggers = {"<leader>"} -- or specify a list manually
-	triggers_blacklist = {
-		-- list of mode / prefixes that should never be hooked by WhichKey
-		-- this is mostly relevant for key maps that start with a native binding
-		-- most people should not need to change this
-		i = { "j", "k" },
-		v = { "j", "k" },
-		n = { "s", "k" },
-	},
+	debug = false, -- enable wk.log in the current directory
 }
 
-local opts = {
-	mode = "n", -- NORMAL mode
-	prefix = "<leader>",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
-}
+--[[ local opts = { ]]
+--[[ 	mode = "n", -- NORMAL mode ]]
+--[[ 	prefix = "<leader>", ]]
+--[[ 	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings ]]
+--[[ 	silent = true, -- use `silent` when creating keymaps ]]
+--[[ 	noremap = true, -- use `noremap` when creating keymaps ]]
+--[[ 	nowait = true, -- use `nowait` when creating keymaps ]]
+--[[ } ]]
 
 local mappings = {
-	["b"] = {
+	{ "<leader>b", group = "buffers" }, -- group
+	{
+		"<leader>bb",
 		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-		"Buffers",
+		desc = "Buffers",
+		mode = "n",
 	},
-	-- nnoremap <silent> <Leader>r :Bclose<CR>
-	["e"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
-	["N"] = { ":set relativenumber!<CR>", "Toggle Nums" },
-	["n"] = { ":set number!<CR>", "Toggle Rel" },
-	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-	["!"] = { ':w!<cr>:source %<cr>:echo "🚀sourced "<cr>', "Source" },
-	["-"] = {
+	{ "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Explorer", mode = "n" },
+	{ "<leader>N", ":set relativenumber!<CR>", desc = "Toggle Nums", mode = "n" },
+	{ "<leader>n", ":set number!<CR>", desc = "Toggle Rel", mode = "n" },
+	{ "<leader>h", "<cmd>nohlsearch<CR>", desc = "No Highlight", mode = "n" },
+	{ "<leader>F", "<cmd>Telescope live_grep theme=ivy<cr>", desc = "Find Text", mode = "n" },
+	{ "<leader>!", ':w!<cr>:source %<cr>:echo "🚀sourced "<cr>', desc = "Source", mode = "n" },
+	{
+		"<leader>-",
 		[[
-               :w!<cr>:source ~/.config/nvim/init.lua<CR>
-               :w!<cr>:source ~/.config/nvim/lua/user/keymaps.lua<CR>
-               :w!<cr>:source ~/.config/nvim/lua/user/whichkey.lua<CR>
-               :echo "👾RELOADED VIM SETTNINGS"<cr>
-            ]],
-		"Reload VIM init.lua",
+    :w!<cr>:source ~/.config/nvim/init.lua<CR>
+    :w!<cr>:source ~/.config/nvim/lua/user/keymaps.lua<CR>
+    :w!<cr>:source ~/.config/nvim/lua/user/whichkey.lua<CR>
+    :echo "👾RELOADED VIM SETTNINGS"<cr>
+  ]],
+		desc = "Reload VIM init.lua",
+		mode = "n",
 	},
-
-	["j"] = {
-		--"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>lua vim.lsp.buf.code_action()<cr>",
+	{
+		"<leader>j",
 		"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>LspUI code_action<cr>",
-		"Next Diagnostic",
+		desc = "Next Diagnostic",
+		mode = "n",
 	},
-	["J"] = {
-		--"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>lua vim.lsp.buf.code_action()<cr>",
+	{
+		"<leader>J",
 		"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>lua vim.diagnostic.open_float()<cr>",
-		"Popup Next Diagnostic",
+		desc = "Popup Next Diagnostic",
+		mode = "n",
 	},
-	["k"] = {
+	{
+		"<leader>k",
 		"<cmd>lua vim.diagnostic.goto_prev()<cr><cmd>LspUI code_action<cr>",
-		"Prev Diagnostic",
+		desc = "Prev Diagnostic",
+		mode = "n",
 	},
-	--["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-	--g = {},
-	G = {
-		name = "Git",
-		--g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-		--j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-		--k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-		b = { "<cmd>lua require 'gitsigns'.blame_line() full=true<cr>", "Blame" },
-		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-		h = { ":DiffviewFileHistory %<cr>", "File history" },
-		u = {
-			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-			"Undo Stage Hunk",
-		},
-		G = {
-			":LazyGit<cr>",
-			"Lazy Git",
-		},
-		o = {
-			"<cmd>Telescope git_status(" .. horizontalLayout .. ")}), <cr>",
-			"Open changed file",
-		},
-		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-		B = { "<cmd>Telescope git_branches theme=ivy<cr>", "Checkout branch" },
-		d = {
-			"<cmd>Gitsigns diffthis HEAD<cr>",
-			"Diff",
-		},
-		D = {
-			"<cmd>Gitsigns toggle_deleted<cr>",
-			"Diff",
-		},
-
-		w = {
-			":echo \"getting url\"<CR><cmd>lua require'gitlinker'.get_buf_range_url('n')<cr>",
-			"Github url",
-		},
+	{ "<leader>G", group = "Git" }, -- group
+	{
+		"<leader>Gb",
+		"<cmd>lua require 'gitsigns'.blame_line() full=true<cr>",
+		desc = "Blame",
+		mode = "n",
 	},
-	l = {
-		name = "LSP",
-		a = { "<cmd>LspUI code_action<cr>", "Code Action" },
-		b = { "<cmd>:lua require('nvim-navbuddy').open()<CR>", "Nav (B)uddy" },
-		c = { "<cmd>Telescope lsp_incoming_calls<CR>", "Incoming (C)alls" },
-		d = {
-			"<cmd>Telescope lsp_document_diagnostics<cr>",
-			"Document Diagnostics",
-		},
-		K = {
-			--":lua vim.lsp.buf.hover()<cr>",
-			":LspUI hover<cr>",
-			"Hover Doc",
-		},
-		f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
-		h = { "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", "Toggle Inlay Hints" },
-		H = { "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", "Toggle Inlay Hints" },
-		i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
-		--[[ Z = { ]]
-		--[[ 	'<cmd>lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>', ]]
-		--[[ }, ]]
-		j = {
-			"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
-			"Next Diagnostic",
-		},
-		k = {
-			"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
-			"Prev Diagnostic",
-		},
-		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-		L = { '<cmd>:lua require("lsp_lines").toggle()<CR>', "Toggle lsp_lines" },
-		--[[ L = { ':lua require("lsp_lines").toggle()<CR>', "Toggle Lua Lines" }, ]]
-
-		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-
-		--r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-		r = { "<cmd>LspUI rename<cr>", "Rename" },
-		R = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
-		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-		S = {
-			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-			"Workspace Symbols",
-		},
-		t = { ":Telescope lsp_references<CR>", "Telescope references" },
-		w = { "<cmd>LspUI peek_definition<CR>", "peek def" },
-		W = {
-			"<cmd>Telescope lsp_workspace_diagnostics<cr>",
-			"Workspace Diagnostics",
-		},
-		y = { "<cmd>LspInfo<cr>", "LSP Info" },
-		Y = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+	{
+		"<leader>Gp",
+		"<cmd>lua require 'gitsigns'.preview_hunk()<cr>",
+		desc = "Preview Hunk",
+		mode = "n",
 	},
-	f = {
-		name = "Telescope", -- find
-		a = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search In Buffer" },
-		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-		c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-		J = { "<cmd>Telescope jumplist<cr>", "Jumplist" },
-		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-		m = { "<cmd>Telescope marks<cr>", "Marks" },
-		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-		O = { "<cmd>Telescope vim_options<cr>", "Options" },
-		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-		--f = { "<cmd>Telescope live_grep<cr>", "Rg" }, mapped in keymaps now
-		G = { "<cmd>Telescope lazygit<cr>", "Lazygit" },
-		R = { "<cmd>Telescope registers<cr>", "Registers" },
-		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-		C = { "<cmd>Telescope commands<cr>", "Commands" },
-		w = { "<cmd>:Rg <cword><CR>", "Search for word" },
-		-- search for word in file's directory
-		W = { "<cmd>:Rg <cword> %:p:h<CR>", "Search for word in file's directory" },
-		t = { "<cmd>Telescope<cr>", "Telescopes" },
-		T = { "<cmd>Telescope tagstack<cr>", "tagstack" },
-		y = { "<cmd>Telescope resume<cr>", "Resume" },
-		--[[ y = { "<cmd>Telescope yankhistory<cr>", "Yank History" }, ]]
+	{
+		"<leader>Gr",
+		"<cmd>lua require 'gitsigns'.reset_hunk()<cr>",
+		desc = "Reset Hunk",
+		mode = "n",
 	},
-	--[[ s = { ]]
-	--[[ 	name = "Sandwich", ]]
-	--[[ 	D = { ]]
-	--[[ 		"<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)", ]]
-	--[[ 		"Delete", ]]
-	--[[ 	}, ]]
-	--[[ 	d = { ]]
-	--[[ 		"<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)", ]]
-	--[[ 		"Delete named char", ]]
-	--[[ 	}, ]]
-	--[[ 	a = { "<Plug>(operator-sandwich-add)", "Add" }, ]]
-	--[[ 	C = { ]]
-	--[[ 		"<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)", ]]
-	--[[ 		"Change named char", ]]
-	--[[ 	}, ]]
-	--[[ 	c = { ]]
-	--[[ 		"<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)", ]]
-	--[[ 		"Change", ]]
-	--[[ 	}, ]]
-	--[[ 	s = { ]]
-	--[[ 		"<Plug>(textobj-sandwich-auto-i)", ]]
-	--[[ 		"Select inside", ]]
-	--[[ 	}, ]]
-	--[[ 	S = { ]]
-	--[[ 		"<Plug>(textobj-sandwich-auto-a)", ]]
-	--[[ 		"Select outside", ]]
-	--[[ 	}, ]]
-	--[[ }, ]]
-	t = {
-		name = "Terminal",
-		n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-		t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
-		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+	{
+		"<leader>GR",
+		"<cmd>lua require 'gitsigns'.reset_buffer()<cr>",
+		desc = "Reset Buffer",
+		mode = "n",
 	},
-	X = {
-		name = "Window",
-		j = { "<cmd>:resize -8<CR>", "shorter" },
-		k = { "<cmd>:resize +8<CR>", "taller" },
-		h = { "<cmd>:vertical resize +8<CR>", "wider" },
-		l = { "<cmd>:vertical resize -8<CR>", "shorter" },
-		J = { "<cmd>:resize -18<CR>", "way shorter" },
-		K = { "<cmd>:resize +18<CR>", "way taller" },
-		H = { "<cmd>:vertical resize +18<CR>", "way wider" },
-		L = { "<cmd>:vertical resize -8<CR>", "way Shorter" },
-		y = { '<cmd>:"+y', "copy to clipboard" },
+	{
+		"<leader>Gs",
+		"<cmd>lua require 'gitsigns'.stage_hunk()<cr>",
+		desc = "Stage Hunk",
+		mode = "n",
+	},
+	{
+		"<leader>Gh",
+		":DiffviewFileHistory %<cr>",
+		desc = "File history",
+		mode = "n",
+	},
+	{
+		"<leader>Gu",
+		"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+		desc = "Undo Stage Hunk",
+		mode = "n",
+	},
+	{
+		"<leader>GG",
+		":LazyGit<cr>",
+		desc = "Lazy Git",
+		mode = "n",
+	},
+	{
+		"<leader>Go",
+		"<cmd>Telescope git_status(" .. horizontalLayout .. ")}), <cr>",
+		desc = "Open changed file",
+		mode = "n",
+	},
+	{
+		"<leader>Gc",
+		"<cmd>Telescope git_commits<cr>",
+		desc = "Checkout commit",
+		mode = "n",
+	},
+	{
+		"<leader>GB",
+		"<cmd>Telescope git_branches theme=ivy<cr>",
+		desc = "Checkout branch",
+		mode = "n",
+	},
+	{
+		"<leader>Gd",
+		"<cmd>Gitsigns diffthis HEAD<cr>",
+		desc = "Diff",
+		mode = "n",
+	},
+	{
+		"<leader>GD",
+		"<cmd>Gitsigns toggle_deleted<cr>",
+		desc = "Toggle Deleted",
+		mode = "n",
+	},
+	{
+		"<leader>Gw",
+		":echo \"getting url\"<CR><cmd>lua require'gitlinker'.get_buf_range_url('n')<cr>",
+		desc = "Github url",
+		mode = "n",
+	},
+	{ "<leader>l", group = "LSP" }, -- group
+	{
+		"<leader>la",
+		"<cmd>LspUI code_action<cr>",
+		desc = "Code Action",
+		mode = "n",
+	},
+	{
+		"<leader>lb",
+		"<cmd>:lua require('nvim-navbuddy').open()<CR>",
+		desc = "Nav (B)uddy",
+		mode = "n",
+	},
+	{
+		"<leader>lc",
+		"<cmd>Telescope lsp_incoming_calls<CR>",
+		desc = "Incoming (C)alls",
+		mode = "n",
+	},
+	{
+		"<leader>ld",
+		"<cmd>Telescope lsp_document_diagnostics<cr>",
+		desc = "Document Diagnostics",
+		mode = "n",
+	},
+	{
+		"<leader>lK",
+		":LspUI hover<cr>",
+		desc = "Hover Doc",
+		mode = "n",
+	},
+	{
+		"<leader>lf",
+		"<cmd>lua vim.lsp.buf.formatting()<cr>",
+		desc = "Format",
+		mode = "n",
+	},
+	{
+		"<leader>lh",
+		"<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
+		desc = "Toggle Inlay Hints",
+		mode = "n",
+	},
+	{
+		"<leader>lH",
+		"<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
+		desc = "Toggle Inlay Hints",
+		mode = "n",
+	},
+	{
+		"<leader>li",
+		"<cmd>lua vim.lsp.buf.implementation()<CR>",
+		desc = "Goto implementation",
+		mode = "n",
+	},
+	{
+		"<leader>lj",
+		"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+		desc = "Next Diagnostic",
+		mode = "n",
+	},
+	{
+		"<leader>lk",
+		"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+		desc = "Prev Diagnostic",
+		mode = "n",
+	},
+	{
+		"<leader>ll",
+		"<cmd>lua vim.lsp.codelens.run()<cr>",
+		desc = "CodeLens Action",
+		mode = "n",
+	},
+	{
+		"<leader>lL",
+		'<cmd>:lua require("lsp_lines").toggle()<CR>',
+		desc = "Toggle lsp_lines",
+		mode = "n",
+	},
+	{
+		"<leader>lq",
+		"<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>",
+		desc = "Quickfix",
+		mode = "n",
+	},
+	{
+		"<leader>lr",
+		"<cmd>LspUI rename<cr>",
+		desc = "Rename",
+		mode = "n",
+	},
+	{
+		"<leader>lR",
+		"<cmd>lua vim.lsp.buf.references()<cr>",
+		desc = "References",
+		mode = "n",
+	},
+	{
+		"<leader>ls",
+		"<cmd>Telescope lsp_document_symbols<cr>",
+		desc = "Document Symbols",
+		mode = "n",
+	},
+	{
+		"<leader>lS",
+		"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+		desc = "Workspace Symbols",
+		mode = "n",
+	},
+	{
+		"<leader>lt",
+		":Telescope lsp_references<CR>",
+		desc = "Telescope references",
+		mode = "n",
+	},
+	{
+		"<leader>lw",
+		"<cmd>LspUI peek_definition<CR>",
+		desc = "peek def",
+		mode = "n",
+	},
+	{
+		"<leader>lW",
+		"<cmd>Telescope lsp_workspace_diagnostics<cr>",
+		desc = "Workspace Diagnostics",
+		mode = "n",
+	},
+	{
+		"<leader>ly",
+		"<cmd>LspInfo<cr>",
+		desc = "LSP Info",
+		mode = "n",
+	},
+	{
+		"<leader>lY",
+		"<cmd>LspInstallInfo<cr>",
+		desc = "Installer Info",
+		mode = "n",
+	},
+	{ "<leader>f", group = "Telescope" }, -- group
+	{
+		"<leader>fa",
+		"<cmd>Telescope current_buffer_fuzzy_find<cr>",
+		desc = "Search In Buffer",
+		mode = "n",
+	},
+	{
+		"<leader>fb",
+		"<cmd>Telescope git_branches<cr>",
+		desc = "Checkout branch",
+		mode = "n",
+	},
+	{
+		"<leader>fc",
+		"<cmd>Telescope colorscheme<cr>",
+		desc = "Colorscheme",
+		mode = "n",
+	},
+	{
+		"<leader>fJ",
+		"<cmd>Telescope jumplist<cr>",
+		desc = "Jumplist",
+		mode = "n",
+	},
+	{
+		"<leader>fh",
+		"<cmd>Telescope help_tags<cr>",
+		desc = "Find Help",
+		mode = "n",
+	},
+	{
+		"<leader>fM",
+		"<cmd>Telescope man_pages<cr>",
+		desc = "Man Pages",
+		mode = "n",
+	},
+	{
+		"<leader>fm",
+		"<cmd>Telescope marks<cr>",
+		desc = "Marks",
+		mode = "n",
+	},
+	{
+		"<leader>fo",
+		"<cmd>Telescope git_status<cr>",
+		desc = "Open changed file",
+		mode = "n",
+	},
+	{
+		"<leader>fO",
+		"<cmd>Telescope vim_options<cr>",
+		desc = "Options",
+		mode = "n",
+	},
+	{
+		"<leader>fr",
+		"<cmd>Telescope oldfiles<cr>",
+		desc = "Open Recent File",
+		mode = "n",
+	},
+	{
+		"<leader>fG",
+		"<cmd>Telescope lazygit<cr>",
+		desc = "Lazygit",
+		mode = "n",
+	},
+	{
+		"<leader>fR",
+		"<cmd>Telescope registers<cr>",
+		desc = "Registers",
+		mode = "n",
+	},
+	{
+		"<leader>fk",
+		"<cmd>Telescope keymaps<cr>",
+		desc = "Keymaps",
+		mode = "n",
+	},
+	{
+		"<leader>fC",
+		"<cmd>Telescope commands<cr>",
+		desc = "Commands",
+		mode = "n",
+	},
+	{
+		"<leader>fw",
+		"<cmd>:Rg <cword><CR>",
+		desc = "Search for word",
+		mode = "n",
+	},
+	{
+		"<leader>fW",
+		"<cmd>:Rg <cword> %:p:h<CR>",
+		desc = "Search for word in file's directory",
+		mode = "n",
+	},
+	{
+		"<leader>ft",
+		"<cmd>Telescope<cr>",
+		desc = "Telescopes",
+		mode = "n",
+	},
+	{
+		"<leader>fT",
+		"<cmd>Telescope tagstack<cr>",
+		desc = "Tagstack",
+		mode = "n",
+	},
+	{
+		"<leader>fy",
+		"<cmd>Telescope resume<cr>",
+		desc = "Resume",
+		mode = "n",
+	},
+	{ "<leader>t", group = "Terminal" }, -- group
+	{
+		"<leader>tn",
+		"<cmd>lua _NODE_TOGGLE()<cr>",
+		desc = "Node",
+		mode = "n",
+	},
+	{
+		"<leader>tt",
+		"<cmd>lua _HTOP_TOGGLE()<cr>",
+		desc = "Htop",
+		mode = "n",
+	},
+	{
+		"<leader>tf",
+		"<cmd>ToggleTerm direction=float<cr>",
+		desc = "Float",
+		mode = "n",
+	},
+	{
+		"<leader>th",
+		"<cmd>ToggleTerm size=10 direction=horizontal<cr>",
+		desc = "Horizontal",
+		mode = "n",
+	},
+	{
+		"<leader>tv",
+		"<cmd>ToggleTerm size=80 direction=vertical<cr>",
+		desc = "Vertical",
+		mode = "n",
+	},
+	{ "<leader>X", group = "Window" }, -- group
+	{
+		"<leader>Xj",
+		"<cmd>:resize -8<CR>",
+		desc = "shorter",
+		mode = "n",
+	},
+	{
+		"<leader>Xk",
+		"<cmd>:resize +8<CR>",
+		desc = "taller",
+		mode = "n",
+	},
+	{
+		"<leader>Xh",
+		"<cmd>:vertical resize +8<CR>",
+		desc = "wider",
+		mode = "n",
+	},
+	{
+		"<leader>Xl",
+		"<cmd>:vertical resize -8<CR>",
+		desc = "shorter",
+		mode = "n",
+	},
+	{
+		"<leader>XJ",
+		"<cmd>:resize -18<CR>",
+		desc = "way shorter",
+		mode = "n",
+	},
+	{
+		"<leader>XK",
+		"<cmd>:resize +18<CR>",
+		desc = "way taller",
+		mode = "n",
+	},
+	{
+		"<leader>XH",
+		"<cmd>:vertical resize +18<CR>",
+		desc = "way wider",
+		mode = "n",
+	},
+	{
+		"<leader>XL",
+		"<cmd>:vertical resize -8<CR>",
+		desc = "way Shorter",
+		mode = "n",
+	},
+	{
+		"<leader>Xy",
+		'<cmd>:"+y',
+		desc = "copy to clipboard",
+		mode = "n",
 	},
 }
 
-which_key.setup(setup)
-which_key.register(mappings, opts)
+which_key.setup(defaults)
+which_key.add(mappings)
