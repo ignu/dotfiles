@@ -3,7 +3,7 @@ alias cpu='top -o cpu'
 alias mem='top -o vsize'
 alias ..="cd .."
 alias ...="cd ../.."
-alias dotfiles="code ~/bin/dotfiles/"
+alias dotfiles="cd ~/bin/dotfiles/ && vim"
 alias q="exit"
 alias :q="exit"
 alias :wq="exit"
@@ -12,12 +12,12 @@ alias noo='fuckit'
 
 alias hg="history | grep "
 
-alias weather="curl wttr.in/98144"
+alias weather="curl wttr.in/94086"
 
 # RUBY
 alias be="bundle exec"
-alias br="bundle exec rake"
 alias bet="be rake test TEST="
+alias br="bundle exec rake"
 alias s="bundle exec rspec"
 
 # GIT
@@ -32,10 +32,17 @@ alias gitme='git log --author=Len'
 alias glo='git log --graph --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias co='git checkout'
 alias gap="git add -p"
-alias gpp="git push origin head"
+alias gpr="gppp"
 alias wat="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | fzf | xargs git checkout"
+alias pwtrace="ls ~/code/zeck/e2e/test-results | fzf | xargs -I {} yarn playwright show-trace ~/code/zeck/e2e/test-results/{}/trace.zip"
+
+alias xx="gt" # gt is way too close to git and my fingers hate it
+
+alias RG='rg --hidden --no-ignore-vcs'
 
 alias hc="hub compare"
+
+alias lg="lazygit"
 
 #javascrittt
 alias que="cat package.json | jq .scripts"
@@ -55,9 +62,7 @@ alias emul="/Users/ignu/Library/Android/sdk/tools/emulator -netdelay none -netsp
 
 alias editalias="vim ~/bin/dotfiles/aliasrc"
 alias editvim="vim ~/bin/dotfiles/vimrc"
-alias editzsh="vim ~/bin/dotfiles/zshrc"
-alias editlocal="vim ~/.zshrc.local"
-alias godot="cd ~/bin/dotfiles && git add -p"
+alias godot="cd ~/bin/dotfiles && gs && echo '🚀' && gl"
 
 # NODE
 alias nod="nodemon --exec npm run babel-node -- "
@@ -69,11 +74,12 @@ alias iph="iex -S mix phx.server"
 
 # DOCKER
 alias burn="docker kill $(docker ps -q)"
-
-
-alias l="exa -l"
+#alias l="exa -l"
+alias l="eza --color=always --long --git --icons=always --no-time --no-user --no-permissions --group-directories-first"
+alias la="ls -lAh"
 
 # OOPS
 alias :sp='cowsay "this isnt vim."'
 alias :vsp='cowsay "this isnt vim."'
 alias :w='cowsay "this isnt vim."'
+alias pn='pnpm'
