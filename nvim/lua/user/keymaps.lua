@@ -112,6 +112,7 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
 -- quick fix list
 keymap("n", "\\", ":cclose<CR>", opts)
 keymap("n", "<Leader>\\", ":copen<CR>", opts)
@@ -125,6 +126,8 @@ keymap( -- ORGANIZE IMPORTS
 	':lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>',
 	opts
 )
+-- gD opens definition in new vertical split
+keymap("n", "gD", ":vsp<CR>:lua vim.lsp.buf.definition()<CR>", opts)
 -- FUNCTION KEYS
 keymap("n", "<F1>", '"+y', opts)
 keymap("n", "<F2>", ":vsp<CR>", opts)

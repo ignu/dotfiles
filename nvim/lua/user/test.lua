@@ -7,7 +7,7 @@ nvimtest.setup({
 	run = true, -- run tests (using for debug)
 	commands_create = true, -- create commands (TestFile, TestLast, ...)
 	filename_modifier = ":.", -- modify filenames before tests run(:h filename-modifiers)
-	silent = false, -- less notifications
+	silent = true, -- less notifications
 	term = "terminal", -- a terminal to run ("terminal"|"toggleterm")
 	termOpts = {
 		direction = "vertical", -- terminal's direction ("horizontal"|"vertical"|"float")

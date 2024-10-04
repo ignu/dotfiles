@@ -328,8 +328,8 @@ local mappings = {
 	},
 	{
 		"<leader>ld",
-		"<cmd>Telescope lsp_document_diagnostics<cr>",
-		desc = "Document Diagnostics",
+		"<cmd> :lua vim.lsp.buf.definition()<CR>",
+		desc = "Go to definition",
 		mode = "n",
 	},
 	{
@@ -401,7 +401,7 @@ local mappings = {
 	{
 		"<leader>lR",
 		"<cmd>lua vim.lsp.buf.references()<cr>",
-		desc = "References",
+		desc = "Telescope References",
 		mode = "n",
 	},
 	{
@@ -477,12 +477,12 @@ local mappings = {
 		desc = "Find Help",
 		mode = "n",
 	},
-	{
-		"<leader>fM",
-		"<cmd>Telescope man_pages<cr>",
-		desc = "Man Pages",
-		mode = "n",
-	},
+	--[[ { ]]
+	--[[   "<leader>fM", ]]
+	--[[   "<cmd>Telescope man_pages<cr>", ]]
+	--[[   desc = "Man Pages", ]]
+	--[[   mode = "n", ]]
+	--[[ }, ]]
 	{
 		"<leader>fm",
 		"<cmd>Telescope marks<cr>",

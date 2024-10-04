@@ -45,7 +45,7 @@ telescope.setup({
 
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+				["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				["<C-Q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				["<C-z>"] = actions.send_to_qflist + actions.open_qflist,
@@ -136,6 +136,90 @@ telescope.setup({
 		},
 	},
 })
+
+local Job = require("plenary.job")
+local builtin = require("telescope.builtin")
+
+local function files_from_previous_commit()
+	Job:new({
+		command = "git",
+		args = { "diff", "--name-status", "HEAD^" },
+		on_exit = vim.schedule_wrap(function(j, return_val)
+			if return_val ~= 0 then
+				vim.notify("Error getting files from previous commit", vim.log.levels.ERROR)
+				return
+			end
+
+			local result = {}
+			for _, line in ipairs(j:result()) do
+				local status, file = line:match("^(%w)%s+(.+)$")
+				if status == "A" or status == "M" then
+					table.insert(result, file)
+				end
+			end
+
+			if #result == 0 then
+				vim.notify("No useful files found in the previous commit", vim.log.levels.WARN)
+				return
+			end
+
+			builtin.find_files({
+				prompt_title = "Files from Previous Commit",
+				results_title = "Previous Commit Files",
+				find_command = { "echo", table.concat(result, "\n") },
+			})
+		end),
+	}):start()
+end
+
+vim.api.nvim_create_user_command("FilesFromPreviousCommit", files_from_previous_commit, {})
+
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local conf = require("telescope.config").values
+
+local function files_changed_from_main()
+	Job:new({
+		command = "git",
+		args = { "diff", "--name-status", "main" },
+		on_exit = vim.schedule_wrap(function(j, return_val)
+			if return_val ~= 0 then
+				vim.notify("Error getting files changed from main", vim.log.levels.ERROR)
+				return
+			end
+
+			local result = {}
+			for _, line in ipairs(j:result()) do
+				local status, file = line:match("^(%w)%s+(.+)$")
+				if status == "A" or status == "M" then
+					table.insert(result, file)
+				end
+			end
+
+			if #result == 0 then
+				vim.notify("No useful files found changed from main", vim.log.levels.WARN)
+				return
+			end
+
+			pickers
+				.new({}, {
+					prompt_title = "Files Changed from Main",
+					finder = finders.new_table({
+						results = result,
+					}),
+					sorter = conf.generic_sorter({}),
+				})
+				:find()
+		end),
+	}):start()
+end
+
+vim.api.nvim_create_user_command("FilesChangedFromMain", files_changed_from_main, {})
+
+vim.api.nvim_create_user_command("FilesChangedFromMain", files_changed_from_main, {})
+
+vim.keymap.set("n", "<leader>fM", files_changed_from_main, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>fp", files_from_previous_commit, { noremap = true, silent = true })
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("live_grep_args")
 -- yanky setup
