@@ -10,6 +10,7 @@ bindkey '^r' history-incremental-search-backward
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/Users/ignu/.rvm/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin/
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -17,36 +18,58 @@ export PATH="/opt/homebrew/bin:$PATH"
 ZSH_THEME="cloud"
 ZSH_THEME="agnoster"
 
-
-POWERLEVEL9K_VCS_GIT_ICON='\ue60a'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time time background_jobs ssh rbenv)
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
-
-POWERLEVEL9K_VCS_STAGED_ICON=$'\uf055'
-POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uf421'
-POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uf00d'
-POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\uf0ab '
-POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\uf0aa '
-
-POWERLEVEL9K_BATTERY_LOW_FOREGROUND='red'
-POWERLEVEL9K_BATTERY_CHARGING_FOREGROUND='yellow'
-POWERLEVEL9K_BATTERY_CHARGED_FOREGROUND='green'
-POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND='blue'
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON=''
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\ue0c5'
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\ue0c4'
-POWERLEVEL9K_BACKGROUND_JOBS_ICON=$'\uf27b'
-POWERLEVEL9K_EXECUTION_TIME_ICON=$'\ufa1a'
-POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M}"
-POWERLEVEL9K_STATUS_VERBOSE=false
-
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 COMPLETION_WAITING_DOTS="true"
 
-export DISABLE_FZF_AUTO_COMPLETION="true"
+export EDITOR='nvim'
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#  ___ _______ 
+# | __|_  / __|
+# | _| / /| _| 
+# |_| /___|_|  
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#export DISABLE_FZF_AUTO_COMPLETION="true"
+# export FZF_COMPLETION_TRIGGER='**'
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo ${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
+
+function fbat() {
+  rg "$1" | fzf | bat
+}
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # use bash complete compat for asdf
 autoload bashcompinit
@@ -54,10 +77,9 @@ bashcompinit
 
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(osx ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fast-syntax-highlighting fzf)
+plugins=(macos ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fzf)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-source ~/.zshrc.local
+source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -132,7 +154,7 @@ bindkey '^Z' fancy-ctrl-z
 [ -f /Users/ignu/.travis/travis.sh ] && source /Users/ignu/.travis/travis.sh
 
 [[ $TERM == eterm-color ]] && export TERM=xterm
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 #export TERM="xterm-256color-italic"
 
 function defaultbranch() {
@@ -174,12 +196,6 @@ function wb() {
   echo "********** Done. Sorry. *************"
 }
 
-function gpr() {
-  git commit -m "$1"
-  git push origin HEAD
-  hub compare
-}
-
 function fuckit() {
   git reset --hard
   git clean -fd
@@ -211,11 +227,35 @@ function gc() {
 }
 
 function whilepass() {
-  while $1; do :; done
+  local attempt=1
+    echo "*-------------------*"
+    echo " 🚀Attempt #$attempt"
+    echo "*-------------------*"
+
+  while eval "$@"; do
+    ((attempt++))
+    echo "*-------------------*"
+    echo " 🚀Attempt #$attempt"
+    echo "*-------------------*"
+  done
+  echo "🤯 FAILED Attempt #$attempt"
+
 }
 
 function whilefail() {
-  while ! $1 ; do :; done
+  local attempt=1
+    echo "*-------------------*"
+    echo " 🚀Attempt #$attempt"
+    echo "*-------------------*"
+
+  until eval "$@"; do
+    ((attempt++))
+    echo "*-------------------*"
+    echo " 🚀Attempt #$attempt"
+    echo "*-------------------*"
+  done
+  echo "🤯 Unexpected pass on attempt #$attempt"
+
 }
 
 function gbtr() {
@@ -252,7 +292,7 @@ function reprofile() {
   rm -rf ~/.vim
   rm -rf ~/config/karabiner
   rm -rf ~/.config/nvim
-  mkdir ~/.config/nvim
+  ln -s ~/bin/dotfiles/nvim ~/.config/nvim
   ln -s ~/bin/dotfiles/init.vim ~/.config/nvim/init.vim
   ln -s ~/bin/dotfiles/vim .vim
   ln -s ~/bin/dotfiles/karabiner ~/.config/
@@ -277,6 +317,9 @@ function reprofile() {
 
   echo "Profile linked! 🌈"
 }
+
+source ~/.zshrc.local
+
 
 function readme() {
   if [ -f ./README.md ]; then
@@ -351,7 +394,9 @@ function when_delete() {
 }
 
 [[ -s "$HOME/.asdf/asdf.sh" ]] && source ~/.asdf/asdf.sh
-
+[[ -s "$HOME/.asdf/asdf.sh" ]] && source ~/.asdf/asdf.
+[[ -s "$HOME/homebrew/opt/asdf/libexec/asdf.sh" ]] && source "$HOME/homebrew/opt/asdf/libexec/asdf.sh"
+[[ -s "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]] && . "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 [[ -s "$HOME/.cargo/env" ]] && source $HOME/.cargo/env
 
 alias ours="!f() { git checkout --ours $@ && git add $@; }; f"
@@ -379,11 +424,56 @@ export RUBY_GC_HEAP_FREE_SLOTS=$RUBY_HEAP_FREE_MIN
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/lensmith/.asdf/installs/nodejs/8.10.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/lensmith/.asdf/installs/nodejs/8.10.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
-
 prompt_context() {}
 
 #source /Users/lensmith/.config/broot/launcher/bash/br
 eval "$(starship init zsh)"
+
+function gpr() {
+  git commit -m "$1"
+  git push origin HEAD
+  hub compare
+}
+
+function editlocal() {
+  vim ~/.zshrc.local
+  source ~/.zshrc.local
+}
+
+function editzsh() {
+  vim ~/.zshrc
+  source ~/.zshrc
+}
+
+function sourcelocal() {
+  source ~/.zshrc.local
+}
+
+
+function gppp() {
+  git commit -m "$1"
+  git push origin HEAD
+  hub compare
+}
+
+function fbat() {
+  rg "$1" | fzf | bat
+}
+
+
+
+# bun completions
+[ -s "/Users/ignu/.bun/_bun" ] && source "/Users/ignu/.bun/_bun"
+
+# Bun
+export BUN_INSTALL="/Users/ignu/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/ignu/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
