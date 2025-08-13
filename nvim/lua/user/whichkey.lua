@@ -508,6 +508,12 @@ local mappings = {
 		mode = "n",
 	},
 	{
+		"<leader>fB",
+		"<cmd>BranchSearch<cr>",
+		desc = "Not in Main",
+		mode = "n",
+	},
+	{
 		"<leader>fG",
 		"<cmd>Telescope lazygit<cr>",
 		desc = "Lazygit",
@@ -526,7 +532,7 @@ local mappings = {
 		mode = "n",
 	},
 	{
-		"<leader>fC",
+		"<leader>fX",
 		"<cmd>Telescope commands<cr>",
 		desc = "Commands",
 		mode = "n",

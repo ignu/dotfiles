@@ -24,6 +24,7 @@ alias s="bundle exec rspec"
 alias g='git status'
 alias gsp='git stash show -p stash@{0}'
 alias gs='git show --stat'
+alias ghostscript='/opt/homebrew/bin/gs'
 alias gl='git log -n 21'
 alias gb='git checkout -b'
 alias gca='git commit --amend'
@@ -39,6 +40,7 @@ alias pwtrace="ls ~/code/zeck/e2e/test-results | fzf | xargs -I {} yarn playwrig
 alias xx="gt" # gt is way too close to git and my fingers hate it
 
 alias RG='rg --hidden --no-ignore-vcs'
+alias searchHidden='RG'
 
 alias hc="hub compare"
 
@@ -83,3 +85,7 @@ alias :sp='cowsay "this isnt vim."'
 alias :vsp='cowsay "this isnt vim."'
 alias :w='cowsay "this isnt vim."'
 alias pn='pnpm'
+
+alias lex='cowsay "you meant yarn lex dipshipt"'
+alias mkmp3="~/bin/mkmp3.sh"
+

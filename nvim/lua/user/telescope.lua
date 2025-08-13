@@ -214,10 +214,55 @@ local function files_changed_from_main()
 	}):start()
 end
 
+local action_state = require("telescope.actions.state")
+
+local function open_conflicting_file(prompt_bufnr)
+	local selection = action_state.get_selected_entry()
+	actions.close(prompt_bufnr)
+	if selection and selection[1] then
+		vim.cmd("edit " .. selection[1])
+	end
+end
+
+local function git_conflicting_files()
+	Job:new({
+		command = "git",
+		args = { "diff", "--name-only", "--diff-filter=U" },
+		on_exit = vim.schedule_wrap(function(j, return_val)
+			if return_val ~= 0 then
+				vim.notify("Error getting conflicting files", vim.log.levels.ERROR)
+				return
+			end
+
+			local result = j:result()
+			if #result == 0 then
+				vim.notify("No conflicting files found", vim.log.levels.WARN)
+				return
+			end
+
+			pickers
+				.new({}, {
+					prompt_title = "Conflicting Files",
+					finder = finders.new_table({
+						results = result,
+					}),
+					sorter = conf.generic_sorter({}),
+					attach_mappings = function(_, map)
+						map("i", "<CR>", open_conflicting_file)
+						map("n", "<CR>", open_conflicting_file)
+						return true
+					end,
+				})
+				:find()
+		end),
+	}):start()
+end
+
+vim.api.nvim_create_user_command("GitConflictingFiles", git_conflicting_files, {})
+vim.api.nvim_create_user_command("FilesChangedFromMain", files_changed_from_main, {})
 vim.api.nvim_create_user_command("FilesChangedFromMain", files_changed_from_main, {})
 
-vim.api.nvim_create_user_command("FilesChangedFromMain", files_changed_from_main, {})
-
+vim.keymap.set("n", "<leader>fC", git_conflicting_files, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>fM", files_changed_from_main, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>fp", files_from_previous_commit, { noremap = true, silent = true })
 require("telescope").load_extension("fzf")
