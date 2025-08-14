@@ -291,9 +291,6 @@ local plugins = {
 	-- go to alt file, replacement for projectionist
 	"rgroli/other.nvim",
 
-	-- Copilot
-	"github/copilot.vim",
-	"hrsh7th/cmp-copilot",
 
 	--Sessions
 	--use("rmagatti/auto-session")
