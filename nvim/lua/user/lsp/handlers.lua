@@ -34,28 +34,29 @@ M.setup = function()
 
 	vim.diagnostic.config(config)
 
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
-	})
+	vim.lsp.handlers["textDocument/hover"] = function(err, result, ctx, config)
+		return vim.lsp.handlers.hover(err, result, ctx, vim.tbl_extend("force", { border = "rounded" }, config or {}))
+	end
 
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
-	})
+	vim.lsp.handlers["textDocument/signatureHelp"] = function(err, result, ctx, config)
+		return vim.lsp.handlers.signature_help(err, result, ctx, vim.tbl_extend("force", { border = "rounded" }, config or {}))
+	end
 end
 
-local function lsp_highlight_document(client)
-	-- Set autocommands conditional on server_capabilities
+local function lsp_highlight_document(client, bufnr)
 	if client.server_capabilities.document_highlight then
-		vim.api.nvim_exec(
-			[[
-     augroup lsp_document_highlight
-       autocmd! * <buffer>
-       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-     augroup END
-   ]],
-			false
-		)
+		local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
+		vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
+		vim.api.nvim_create_autocmd("CursorHold", {
+			group = group,
+			buffer = bufnr,
+			callback = vim.lsp.buf.document_highlight,
+		})
+		vim.api.nvim_create_autocmd("CursorMoved", {
+			group = group,
+			buffer = bufnr,
+			callback = vim.lsp.buf.clear_references,
+		})
 	end
 end
 
@@ -75,35 +76,21 @@ local function lsp_keymaps(bufnr)
 		bufnr,
 		"n",
 		"gl",
-		'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
+		'<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
 		opts
 	)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 end
 
-require("nvim-treesitter.configs").setup({
-	highlight = {
-		-- ...
-	},
-	-- ...
-	-- rainbow = {
-	-- 	enable = true,
-	-- 	-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-	-- 	extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-	-- 	max_file_lines = nil, -- Do not enable for files with more than n lines, int
-	-- 	-- colors = {}, -- table of hex strings
-	-- 	-- termcolors = {} -- table of colour name strings
-	-- },
-})
 M.on_attach = function(client, bufnr)
-	if client.name == "tsserver" then
+	if client.name == "ts_ls" then
 		--client.server_capabilities.document_formatting = false
 		client.server_capabilities.documentFormattingProvider = false
 	end
 	lsp_keymaps(bufnr)
-	lsp_highlight_document(client)
+	lsp_highlight_document(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -26,7 +26,6 @@ end
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 
 local plugins = {
-	"wbthomason/packer.nvim", -- Have packer manage itself
 	"tpope/vim-surround",
 	--"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
 	--"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
@@ -40,7 +39,6 @@ local plugins = {
 	"nvim-lualine/lualine.nvim",
 	--use("akinsho/toggleterm.nvim")
 	"ahmedkhalf/project.nvim",
-	"lewis6991/impatient.nvim",
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -127,12 +125,8 @@ local plugins = {
 	"jay-babu/mason-null-ls.nvim",
 	"neovim/nvim-lspconfig", -- enable LSP
 	"tamago324/nlsp-settings.nvim", -- language server settings defined in json for
-	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+	"nvimtools/none-ls.nvim", -- community-maintained null-ls fork
 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- full lines of diagnostics
-	{
-		"jinzhongjia/LspUI.nvim",
-		branch = "legacy",
-	},
 
 	"folke/trouble.nvim", -- for troubleshooting
 	"haringsrob/nvim_context_vt", -- see method vt
@@ -158,6 +152,7 @@ local plugins = {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
+			"lewis6991/async.nvim",
 		},
 		config = function()
 			require("refactoring").setup()

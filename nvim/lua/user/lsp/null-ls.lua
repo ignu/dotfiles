@@ -25,7 +25,7 @@ _G.formatting_async = function(bufnr)
 			end
 
 			-- don't apply results if buffer is unloaded or has been modified
-			if not vim.api.nvim_buf_is_loaded(bufnr) or vim.api.nvim_buf_get_option(bufnr, "modified") then
+			if not vim.api.nvim_buf_is_loaded(bufnr) or vim.api.nvim_get_option_value("modified", { buf = bufnr }) then
 				return
 			end
 
@@ -50,7 +50,7 @@ null_ls.setup({
 		-- diagnostics.flake8
 	},
 	on_attach = function(client, bufnr)
-		if client.supports_method("textDocument/formatting") then
+		if client:supports_method("textDocument/formatting") then
 			-- wrap in an augroup to prevent duplicate autocmds
 			-- TODO: have a per project toggle for this
 			-- vim.cmd([[

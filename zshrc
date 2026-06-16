@@ -78,8 +78,8 @@ bashcompinit
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(macos ruby git npm nvm colorize pow react-native zsh-syntax-highlighting history-substring-search fzf)
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting/F-Sy-H.plugin.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -473,7 +473,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PNPM_HOME="/Users/ignu/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+#source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

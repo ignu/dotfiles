@@ -206,7 +206,7 @@ local mappings = {
 	},
 	{
 		"<leader>j",
-		"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>LspUI code_action<cr>",
+		"<cmd>lua vim.diagnostic.goto_next()<cr><cmd>lua vim.lsp.buf.code_action()<cr>",
 		desc = "Next Diagnostic",
 		mode = "n",
 	},
@@ -218,7 +218,7 @@ local mappings = {
 	},
 	{
 		"<leader>k",
-		"<cmd>lua vim.diagnostic.goto_prev()<cr><cmd>LspUI code_action<cr>",
+		"<cmd>lua vim.diagnostic.goto_prev()<cr><cmd>lua vim.lsp.buf.code_action()<cr>",
 		desc = "Prev Diagnostic",
 		mode = "n",
 	},
@@ -310,7 +310,7 @@ local mappings = {
 	{ "<leader>l", group = "LSP" }, -- group
 	{
 		"<leader>la",
-		"<cmd>LspUI code_action<cr>",
+		"<cmd>lua vim.lsp.buf.code_action()<cr>",
 		desc = "Code Action",
 		mode = "n",
 	},
@@ -334,13 +334,13 @@ local mappings = {
 	},
 	{
 		"<leader>lK",
-		":LspUI hover<cr>",
+		"<cmd>lua vim.lsp.buf.hover()<cr>",
 		desc = "Hover Doc",
 		mode = "n",
 	},
 	{
 		"<leader>lf",
-		"<cmd>lua vim.lsp.buf.formatting()<cr>",
+		"<cmd>lua vim.lsp.buf.format()<cr>",
 		desc = "Format",
 		mode = "n",
 	},
@@ -364,13 +364,13 @@ local mappings = {
 	},
 	{
 		"<leader>lj",
-		"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+		"<cmd>lua vim.diagnostic.goto_next()<CR>",
 		desc = "Next Diagnostic",
 		mode = "n",
 	},
 	{
 		"<leader>lk",
-		"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+		"<cmd>lua vim.diagnostic.goto_prev()<cr>",
 		desc = "Prev Diagnostic",
 		mode = "n",
 	},
@@ -394,7 +394,7 @@ local mappings = {
 	},
 	{
 		"<leader>lr",
-		"<cmd>LspUI rename<cr>",
+		"<cmd>lua vim.lsp.buf.rename()<cr>",
 		desc = "Rename",
 		mode = "n",
 	},
@@ -424,8 +424,8 @@ local mappings = {
 	},
 	{
 		"<leader>lw",
-		"<cmd>LspUI peek_definition<CR>",
-		desc = "peek def",
+		"<cmd>lua vim.lsp.buf.definition()<CR>",
+		desc = "Go to definition",
 		mode = "n",
 	},
 	{

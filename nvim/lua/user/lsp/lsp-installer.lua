@@ -4,40 +4,22 @@ require("mason-null-ls").setup({
 	ensure_installed = { "stylua", "jq", "eslint" },
 })
 
--- After setting up mason-lspconfig you may set up servers via lspconfig
-require("lspconfig").lua_ls.setup({})
-require("lspconfig").tsserver.setup({
+local handlers = require("user.lsp.handlers")
+
+vim.lsp.config("*", {
+	on_attach = handlers.on_attach,
+	capabilities = handlers.capabilities,
+})
+
+vim.lsp.config("ts_ls", {
 	settings = {
-		importModuleSpecifierPreference = "relative",
 		javascript = {
 			importModuleSpecifierPreference = "relative",
-
-			--[[ inlayHints = { ]]
-			--[[ 	includeInlayEnumMemberValueHints = true, ]]
-			--[[ 	includeInlayFunctionLikeReturnTypeHints = true, ]]
-			--[[ 	includeInlayFunctionParameterTypeHints = true, ]]
-			--[[ 	includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'; ]]
-			--[[ 	includeInlayParameterNameHintsWhenArgumentMatchesName = true, ]]
-			--[[ 	includeInlayPropertyDeclarationTypeHints = true, ]]
-			--[[ 	includeInlayVariableTypeHints = true, ]]
-			--[[ }, ]]
 		},
 		typescript = {
 			importModuleSpecifierPreference = "relative",
-			--[[ inlayHints = { ]]
-			--[[ 	includeInlayEnumMemberValueHints = true, ]]
-			--[[ 	includeInlayFunctionLikeReturnTypeHints = true, ]]
-			--[[ 	includeInlayFunctionParameterTypeHints = true, ]]
-			--[[ 	includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'; ]]
-			--[[ 	includeInlayParameterNameHintsWhenArgumentMatchesName = true, ]]
-			--[[ 	includeInlayPropertyDeclarationTypeHints = true, ]]
-			--[[ 	includeInlayVariableTypeHints = true, ]]
-			--[[ }, ]]
 		},
 	},
 })
-require("lspconfig").eslint.setup({})
---require("lspconfig")["null-ls"].setup({})
 
--- require("lspconfig").rust_analyzer.setup {}
--- ...
+vim.lsp.enable({ "lua_ls", "ts_ls", "eslint" })
