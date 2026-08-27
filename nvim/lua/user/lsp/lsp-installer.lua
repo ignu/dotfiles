@@ -22,4 +22,4 @@ vim.lsp.config("ts_ls", {
 	},
 })
 
-vim.lsp.enable({ "lua_ls", "ts_ls", "eslint" })
+--[[ vim.lsp.enable({ "lua_ls", "ts_ls", "eslint" }) ]]
