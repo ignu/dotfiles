@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+set -u
+
+usage() {
+  echo 'Usage: die_in "command" [minutes]' >&2
+  echo 'Example: die_in "yarn start" 10' >&2
+}
+
+if (( $# < 1 || $# > 2 )); then
+  usage
+  exit 64
+fi
+
+command_string=$1
+minutes=${2:-10}
+
+if [[ ! $minutes =~ ^[0-9]+([.][0-9]+)?$ ]] || ! awk -v minutes="$minutes" 'BEGIN { exit !(minutes > 0) }'; then
+  echo "die_in: minutes must be a positive number" >&2
+  exit 64
+fi
+
+seconds=$(awk -v minutes="$minutes" 'BEGIN { print minutes * 60 }')
+
+# Give the command its own process group so its child processes are stopped too.
+set -m
+bash -c "$command_string" &
+command_pid=$!
+
+terminate_command() {
+  kill -TERM -- "-$command_pid" 2>/dev/null || true
+}
+
+force_terminate_command() {
+  kill -KILL -- "-$command_pid" 2>/dev/null || true
+}
+
+(
+  sleep "$seconds"
+  terminate_command
+  sleep 5
+  force_terminate_command
+) &
+timer_pid=$!
+set +m
+
+cleanup_timer() {
+  kill -TERM -- "-$timer_pid" 2>/dev/null || true
+  wait "$timer_pid" 2>/dev/null || true
+}
+
+handle_signal() {
+  cleanup_timer
+  terminate_command
+  exit 128
+}
+
+trap handle_signal INT TERM HUP
+
+wait "$command_pid"
+status=$?
+
+cleanup_timer
+trap - INT TERM HUP
+
+exit "$status"
