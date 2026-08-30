@@ -6,3 +6,4 @@ vim/undodir
 vim/init.vim
 vim/.vim
 vim/.colorminder_last_colorscheme
+nvim/plugin/packer_compiled.lua
